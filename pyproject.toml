@@ -3,7 +3,7 @@ authors = [
   {name = "andersonby", email = "andersonby@163.com"},
 ]
 dependencies = ["httpx>=0.28.1"]
-description = "Default template for PDM package"
+description = "Python SDK for Xiaohongshu (Little Red Book) ecommerce API with automatic token management"
 license = {text = "MIT"}
 name = "xiaohongshu-ecommerce"
 readme = "README.md"
