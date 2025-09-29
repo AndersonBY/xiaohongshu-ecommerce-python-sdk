@@ -13,6 +13,7 @@ from xiaohongshu_ecommerce.models.boutique import (
 
 
 def _build_client(monkeypatch, handler):
+    import time
     monkeypatch.setattr(
         "xiaohongshu_ecommerce.client.base.utc_timestamp",
         lambda: 1700000000,
@@ -25,7 +26,20 @@ def _build_client(monkeypatch, handler):
     )
     transport = httpx.MockTransport(handler)
     session = httpx.Client(transport=transport)
-    return XhsClient(config=config, session=session)
+    client = XhsClient(config=config, session=session)
+
+    # Set test tokens for automatic token management with future expiration
+    current_time_ms = int(time.time() * 1000)
+    client.set_tokens_manually(
+        access_token="test_access_token",
+        refresh_token="test_refresh_token",
+        access_token_expires_at=current_time_ms + (3600 * 1000),  # 1 hour from now
+        refresh_token_expires_at=current_time_ms + (7200 * 1000), # 2 hours from now
+        seller_id="test_seller",
+        seller_name="Test Seller"
+    )
+
+    return client
 
 
 def test_create_boutique_item(monkeypatch):
@@ -41,7 +55,7 @@ def test_create_boutique_item(monkeypatch):
     response = client.boutique.create_item(
         spu_id="spu-1",
         boutique_modes=[BoutiqueMode.DOMESTIC_FAST_SHIPPING],
-        with_item_detail=True
+        with_item_detail=True,
     )
 
     assert response.success is True
@@ -61,8 +75,7 @@ def test_update_boutique_item(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.boutique.update_item(
-        item_id="item-1",
-        boutique_item_batch_info=BoutiqueItemBatchInfo(qty=10)
+        item_id="item-1", boutique_item_batch_info=BoutiqueItemBatchInfo(qty=10)
     )
 
     assert response.success is True
@@ -82,8 +95,7 @@ def test_create_boutique_sku(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.boutique.create_sku(
-        item_id="item-1",
-        boutique_modes=[BoutiqueMode.DOMESTIC_GENERAL_SHIPPING]
+        item_id="item-1", boutique_modes=[BoutiqueMode.DOMESTIC_GENERAL_SHIPPING]
     )
 
     assert response.success is True
@@ -103,8 +115,7 @@ def test_update_boutique_sku(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.boutique.update_sku(
-        sku_id="sku-1",
-        operate_info=StockOperateInfo(operate_type=1)
+        sku_id="sku-1", operate_info=StockOperateInfo(operate_type=1)
     )
 
     assert response.success is True

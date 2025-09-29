@@ -188,7 +188,9 @@ class UpdateBoutiqueItemRequest(BaseRequest):
             "withItemDetail": self.with_item_detail,
         }
         if self.boutique_item_batch_info is not None:
-            payload["boutiqueItemBatchInfo"] = self.boutique_item_batch_info.to_payload()
+            payload["boutiqueItemBatchInfo"] = (
+                self.boutique_item_batch_info.to_payload()
+            )
         if self.boutique_batch_id is not None:
             payload["boutiqueBatchId"] = self.boutique_batch_id
         if self.identity_id is not None:

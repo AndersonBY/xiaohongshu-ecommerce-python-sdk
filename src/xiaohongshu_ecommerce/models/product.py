@@ -344,7 +344,9 @@ class GetDetailSkuListRequest(BaseRequest):
 
     def __init__(self, **filters: object) -> None:
         super().__init__(method="product.getDetailSkuList")
-        self.filters = {key: value for key, value in filters.items() if value is not None}
+        self.filters = {
+            key: value for key, value in filters.items() if value is not None
+        }
 
     def extra_payload(self) -> Dict[str, object]:
         return dict(self.filters)
@@ -353,7 +355,13 @@ class GetDetailSkuListRequest(BaseRequest):
 class GetItemInfoRequest(BaseRequest):
     """Request wrapper for ``product.getItemInfo``."""
 
-    def __init__(self, *, page_no: Optional[int] = None, page_size: Optional[int] = None, item_id: Optional[str] = None) -> None:
+    def __init__(
+        self,
+        *,
+        page_no: Optional[int] = None,
+        page_size: Optional[int] = None,
+        item_id: Optional[str] = None,
+    ) -> None:
         super().__init__(method="product.getItemInfo")
         self.page_no = page_no
         self.page_size = page_size
@@ -451,7 +459,9 @@ class UpdateSkuAvailableRequest(BaseRequest):
 class UpdateItemImageRequest(BaseRequest):
     """Request wrapper for ``product.updateItemImage``."""
 
-    def __init__(self, *, item_id: str, material_type: int, material_urls: Sequence[str]) -> None:
+    def __init__(
+        self, *, item_id: str, material_type: int, material_urls: Sequence[str]
+    ) -> None:
         super().__init__(method="product.updateItemImage")
         self.item_id = item_id
         self.material_type = material_type
@@ -475,7 +485,7 @@ class UpdateSpuImageRequest(BaseRequest):
         material_type: Optional[int] = None,
         material_urls: Optional[Sequence[str]] = None,
         image_urls: Optional[Sequence[str]] = None,
-        extra: Optional[Mapping[str, object]] = None
+        extra: Optional[Mapping[str, object]] = None,
     ) -> None:
         super().__init__(method="product.updateSpuImage")
         self.spu_id = spu_id
@@ -508,7 +518,7 @@ class UpdateVariantImageRequest(BaseRequest):
         material_url: Optional[str] = None,
         image_url: Optional[str] = None,
         variant_type: Optional[str] = None,
-        extra: Optional[Mapping[str, object]] = None
+        extra: Optional[Mapping[str, object]] = None,
     ) -> None:
         super().__init__(method="product.updateVariantImage")
         self.variant_id = variant_id
@@ -653,19 +663,29 @@ def _item_and_sku_payload(
     if images:
         payload["images"] = [material.to_payload() for material in images]
     if standard_images:
-        payload["standardImages"] = [material.to_payload() for material in standard_images]
+        payload["standardImages"] = [
+            material.to_payload() for material in standard_images
+        ]
     if long_images:
         payload["longImages"] = [material.to_payload() for material in long_images]
     if videos:
         payload["videos"] = [material.to_payload() for material in videos]
     if image_descriptions:
-        payload["imageDescriptions"] = [material.to_payload() for material in image_descriptions]
+        payload["imageDescriptions"] = [
+            material.to_payload() for material in image_descriptions
+        ]
     if size_table_image:
-        payload["sizeTableImage"] = [material.to_payload() for material in size_table_image]
+        payload["sizeTableImage"] = [
+            material.to_payload() for material in size_table_image
+        ]
     if recommend_size_table_image:
-        payload["recommendSizeTableImage"] = [material.to_payload() for material in recommend_size_table_image]
+        payload["recommendSizeTableImage"] = [
+            material.to_payload() for material in recommend_size_table_image
+        ]
     if model_try_on_size_table_image:
-        payload["modelTryOnSizeTableImage"] = [material.to_payload() for material in model_try_on_size_table_image]
+        payload["modelTryOnSizeTableImage"] = [
+            material.to_payload() for material in model_try_on_size_table_image
+        ]
     if create_sku_list:
         payload["createSkuList"] = [sku.to_payload() for sku in create_sku_list]
     return payload
@@ -681,7 +701,9 @@ class CreateItemV3Request(BaseRequest):
         ename: Optional[str] = None,
         brand_id: Optional[int] = None,
         category_id: Optional[str] = None,
-        attributes: Optional[Sequence[Union["ItemAttributeV3", Mapping[str, object]]]] = None,
+        attributes: Optional[
+            Sequence[Union["ItemAttributeV3", Mapping[str, object]]]
+        ] = None,
         shipping_template_id: Optional[str] = None,
         shipping_gross_weight: Optional[int] = None,
         variant_ids: Optional[Sequence[str]] = None,
@@ -775,7 +797,9 @@ class UpdateItemV3Request(BaseRequest):
         ename: Optional[str] = None,
         brand_id: Optional[int] = None,
         category_id: Optional[str] = None,
-        attributes: Optional[Sequence[Union["ItemAttributeV3", Mapping[str, object]]]] = None,
+        attributes: Optional[
+            Sequence[Union["ItemAttributeV3", Mapping[str, object]]]
+        ] = None,
         shipping_template_id: Optional[str] = None,
         shipping_gross_weight: Optional[int] = None,
         variant_ids: Optional[Sequence[str]] = None,
@@ -877,28 +901,48 @@ class CreateItemAndSkuRequest(BaseRequest):
         ename: Optional[str] = None,
         brand_id: Optional[int] = None,
         category_id: Optional[str] = None,
-        attributes: Optional[Sequence[Union["ItemAttributeV3", Mapping[str, object]]]] = None,
+        attributes: Optional[
+            Sequence[Union["ItemAttributeV3", Mapping[str, object]]]
+        ] = None,
         shipping_template_id: Optional[str] = None,
         shipping_gross_weight: Optional[int] = None,
         variant_ids: Optional[Sequence[str]] = None,
-        images: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        standard_images: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        long_images: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        videos: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
+        images: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        standard_images: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        long_images: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        videos: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
         video_url: Optional[str] = None,
         article_no: Optional[str] = None,
-        image_descriptions: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
+        image_descriptions: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
         transparent_image: Optional[str] = None,
         description: Optional[str] = None,
         faq: Optional[Sequence[Union["ItemFaq", Mapping[str, object]]]] = None,
         delivery_mode: Optional[int] = None,
         free_return: Optional[int] = None,
         enable_multi_warehouse: Optional[bool] = None,
-        size_table_image: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        recommend_size_table_image: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        model_try_on_size_table_image: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
+        size_table_image: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        recommend_size_table_image: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        model_try_on_size_table_image: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
         enable_main_spec_image: Optional[int] = None,
-        create_sku_list: Optional[Sequence[Union["SkuV3", Mapping[str, object]]]] = None,
+        create_sku_list: Optional[
+            Sequence[Union["SkuV3", Mapping[str, object]]]
+        ] = None,
         enable_step_presale: Optional[bool] = None,
         item_short_title: Optional[str] = None,
         # SKU parameters
@@ -925,41 +969,66 @@ class CreateItemAndSkuRequest(BaseRequest):
         self.shipping_gross_weight = shipping_gross_weight
         self.variant_ids = list(variant_ids or [])
         self.images = [_ensure_material_resource(item) for item in images or []]
-        self.standard_images = [_ensure_material_resource(item) for item in standard_images or []]
-        self.long_images = [_ensure_material_resource(item) for item in long_images or []]
+        self.standard_images = [
+            _ensure_material_resource(item) for item in standard_images or []
+        ]
+        self.long_images = [
+            _ensure_material_resource(item) for item in long_images or []
+        ]
         self.videos = [_ensure_material_resource(item) for item in videos or []]
         self.video_url = video_url
         self.article_no = article_no
-        self.image_descriptions = [_ensure_material_resource(item) for item in image_descriptions or []]
+        self.image_descriptions = [
+            _ensure_material_resource(item) for item in image_descriptions or []
+        ]
         self.transparent_image = transparent_image
         self.description = description
         self.faq = [_ensure_faq(entry) for entry in faq or []]
         self.delivery_mode = delivery_mode
         self.free_return = free_return
         self.enable_multi_warehouse = enable_multi_warehouse
-        self.size_table_image = [_ensure_material_resource(item) for item in size_table_image or []]
-        self.recommend_size_table_image = [_ensure_material_resource(item) for item in recommend_size_table_image or []]
-        self.model_try_on_size_table_image = [_ensure_material_resource(item) for item in model_try_on_size_table_image or []]
+        self.size_table_image = [
+            _ensure_material_resource(item) for item in size_table_image or []
+        ]
+        self.recommend_size_table_image = [
+            _ensure_material_resource(item) for item in recommend_size_table_image or []
+        ]
+        self.model_try_on_size_table_image = [
+            _ensure_material_resource(item)
+            for item in model_try_on_size_table_image or []
+        ]
         self.enable_main_spec_image = enable_main_spec_image
 
         # If individual SKU parameters are provided and no create_sku_list, create a default SKU
-        if (price is not None or original_price is not None or stock is not None or
-            logistics_plan_id is not None or variants or delivery_time is not None or
-            erp_code is not None or spec_image is not None or barcode is not None) and not create_sku_list:
+        if (
+            price is not None
+            or original_price is not None
+            or stock is not None
+            or logistics_plan_id is not None
+            or variants
+            or delivery_time is not None
+            or erp_code is not None
+            or spec_image is not None
+            or barcode is not None
+        ) and not create_sku_list:
             default_sku = SkuV3(
                 price=price,
                 original_price=original_price,
                 stock=stock,
                 logistics_plan_id=logistics_plan_id,
                 variants=[_ensure_variant_v3(v) for v in (variants or [])],
-                delivery_time=_ensure_delivery_time_v3(delivery_time) if delivery_time else None,
+                delivery_time=_ensure_delivery_time_v3(delivery_time)
+                if delivery_time
+                else None,
                 erp_code=erp_code,
                 spec_image=spec_image,
                 barcode=barcode,
             )
             self.create_sku_list = [default_sku]
         else:
-            self.create_sku_list = [_ensure_sku_v3(item) for item in create_sku_list or []]
+            self.create_sku_list = [
+                _ensure_sku_v3(item) for item in create_sku_list or []
+            ]
 
         self.enable_step_presale = enable_step_presale
         self.item_short_title = item_short_title
@@ -969,7 +1038,9 @@ class CreateItemAndSkuRequest(BaseRequest):
         self.stock = stock
         self.logistics_plan_id = logistics_plan_id
         self.variants = [_ensure_variant_v3(entry) for entry in variants or []]
-        self.delivery_time = _ensure_delivery_time_v3(delivery_time) if delivery_time else None
+        self.delivery_time = (
+            _ensure_delivery_time_v3(delivery_time) if delivery_time else None
+        )
         self.whcode = whcode
         self.price_type = price_type
         self.erp_code = erp_code
@@ -1022,28 +1093,48 @@ class UpdateItemAndSkuRequest(CreateItemAndSkuRequest):
         ename: Optional[str] = None,
         brand_id: Optional[int] = None,
         category_id: Optional[str] = None,
-        attributes: Optional[Sequence[Union["ItemAttributeV3", Mapping[str, object]]]] = None,
+        attributes: Optional[
+            Sequence[Union["ItemAttributeV3", Mapping[str, object]]]
+        ] = None,
         shipping_template_id: Optional[str] = None,
         shipping_gross_weight: Optional[int] = None,
         variant_ids: Optional[Sequence[str]] = None,
-        images: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        standard_images: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        long_images: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        videos: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
+        images: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        standard_images: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        long_images: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        videos: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
         video_url: Optional[str] = None,
         article_no: Optional[str] = None,
-        image_descriptions: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
+        image_descriptions: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
         transparent_image: Optional[str] = None,
         description: Optional[str] = None,
         faq: Optional[Sequence[Union["ItemFaq", Mapping[str, object]]]] = None,
         delivery_mode: Optional[int] = None,
         free_return: Optional[int] = None,
         enable_multi_warehouse: Optional[bool] = None,
-        size_table_image: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        recommend_size_table_image: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
-        model_try_on_size_table_image: Optional[Sequence[Union["MaterialResource", Mapping[str, object], str]]] = None,
+        size_table_image: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        recommend_size_table_image: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
+        model_try_on_size_table_image: Optional[
+            Sequence[Union["MaterialResource", Mapping[str, object], str]]
+        ] = None,
         enable_main_spec_image: Optional[int] = None,
-        create_sku_list: Optional[Sequence[Union["SkuV3", Mapping[str, object]]]] = None,
+        create_sku_list: Optional[
+            Sequence[Union["SkuV3", Mapping[str, object]]]
+        ] = None,
         enable_step_presale: Optional[bool] = None,
         item_short_title: Optional[str] = None,
         # SKU parameters
@@ -1059,7 +1150,9 @@ class UpdateItemAndSkuRequest(CreateItemAndSkuRequest):
         spec_image: Optional[str] = None,
         barcode: Optional[str] = None,
         # Update-specific parameters
-        update_sku_list: Optional[Sequence[Union["SkuV3", Mapping[str, object]]]] = None,
+        update_sku_list: Optional[
+            Sequence[Union["SkuV3", Mapping[str, object]]]
+        ] = None,
         delete_sku_id_list: Optional[Sequence[str]] = None,
         extra: Optional[Mapping[str, object]] = None,
     ) -> None:
@@ -1115,7 +1208,9 @@ class UpdateItemAndSkuRequest(CreateItemAndSkuRequest):
         payload: Dict[str, object] = super().extra_payload()
         payload["itemId"] = self.item_id
         if self.update_sku_list:
-            payload["updateSkuList"] = [sku.to_payload() for sku in self.update_sku_list]
+            payload["updateSkuList"] = [
+                sku.to_payload() for sku in self.update_sku_list
+            ]
         if self.delete_sku_id_list:
             payload["deleteSkuIdList"] = list(self.delete_sku_id_list)
         return payload
@@ -1155,7 +1250,9 @@ class CreateSkuV3Request(BaseRequest):
         self.price_type = price_type
         self.erp_code = erp_code
         self.variants = [_ensure_variant_v3(entry) for entry in variants or []]
-        self.delivery_time = _ensure_delivery_time_v3(delivery_time) if delivery_time else None
+        self.delivery_time = (
+            _ensure_delivery_time_v3(delivery_time) if delivery_time else None
+        )
         self.spec_image = spec_image
         self.barcode = barcode
         self.origin_sku_id = origin_sku_id
@@ -1309,12 +1406,16 @@ def _as_mapping(value: Mapping[str, object]) -> Dict[str, object]:
 def _sequence(raw: object) -> List[object]:
     if raw is None:
         return []
-    if isinstance(raw, SequenceABC) and not isinstance(raw, (str, bytes, bytearray, memoryview)):
+    if isinstance(raw, SequenceABC) and not isinstance(
+        raw, (str, bytes, bytearray, memoryview)
+    ):
         return list(raw)
     return [raw]
 
 
-def _ensure_attribute_value_v3(value: Union["AttributeValueV3", Mapping[str, object]]) -> "AttributeValueV3":
+def _ensure_attribute_value_v3(
+    value: Union["AttributeValueV3", Mapping[str, object]],
+) -> "AttributeValueV3":
     if isinstance(value, AttributeValueV3):
         return value
     if isinstance(value, MappingABC):
@@ -1322,7 +1423,9 @@ def _ensure_attribute_value_v3(value: Union["AttributeValueV3", Mapping[str, obj
     raise TypeError("attribute value must be AttributeValueV3 or mapping")
 
 
-def _ensure_attribute_v3(value: Union["ItemAttributeV3", Mapping[str, object]]) -> "ItemAttributeV3":
+def _ensure_attribute_v3(
+    value: Union["ItemAttributeV3", Mapping[str, object]],
+) -> "ItemAttributeV3":
     if isinstance(value, ItemAttributeV3):
         return value
     if isinstance(value, MappingABC):
@@ -1338,7 +1441,9 @@ def _ensure_faq(value: Union["ItemFaq", Mapping[str, object]]) -> "ItemFaq":
     raise TypeError("faq entry must be ItemFaq or mapping")
 
 
-def _ensure_material_resource(value: Union["MaterialResource", Mapping[str, object], str]) -> "MaterialResource":
+def _ensure_material_resource(
+    value: Union["MaterialResource", Mapping[str, object], str],
+) -> "MaterialResource":
     if isinstance(value, MaterialResource):
         return value
     if isinstance(value, MappingABC):
@@ -1354,7 +1459,9 @@ def _ensure_variant_v3(value: Union["VariantV3", Mapping[str, object]]) -> "Vari
     raise TypeError("variant must be VariantV3 or mapping")
 
 
-def _ensure_delivery_time_v3(value: Union["DeliveryTimeV3", Mapping[str, object], str, int]) -> "DeliveryTimeV3":
+def _ensure_delivery_time_v3(
+    value: Union["DeliveryTimeV3", Mapping[str, object], str, int],
+) -> "DeliveryTimeV3":
     if isinstance(value, DeliveryTimeV3):
         return value
     if isinstance(value, (str, int)):
@@ -1644,13 +1751,35 @@ class ItemDetailV3:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, object]) -> "ItemDetailV3":
-        attributes = [ItemAttributeV3.from_dict(entry) for entry in _sequence(data.get("attributes")) if isinstance(entry, MappingABC)]
-        variant_ids = [str(item) for item in _sequence(data.get("variantIds")) if item is not None]
-        images = [str(item) for item in _sequence(data.get("images")) if item is not None]
-        standard_images = [str(item) for item in _sequence(data.get("standardImages")) if item is not None]
-        long_images = [str(item) for item in _sequence(data.get("longImages")) if item is not None]
-        image_descriptions = [str(item) for item in _sequence(data.get("imageDescriptions")) if item is not None]
-        faq = [ItemFaq.from_dict(entry) for entry in _sequence(data.get("faq")) if isinstance(entry, MappingABC)]
+        attributes = [
+            ItemAttributeV3.from_dict(entry)
+            for entry in _sequence(data.get("attributes"))
+            if isinstance(entry, MappingABC)
+        ]
+        variant_ids = [
+            str(item) for item in _sequence(data.get("variantIds")) if item is not None
+        ]
+        images = [
+            str(item) for item in _sequence(data.get("images")) if item is not None
+        ]
+        standard_images = [
+            str(item)
+            for item in _sequence(data.get("standardImages"))
+            if item is not None
+        ]
+        long_images = [
+            str(item) for item in _sequence(data.get("longImages")) if item is not None
+        ]
+        image_descriptions = [
+            str(item)
+            for item in _sequence(data.get("imageDescriptions"))
+            if item is not None
+        ]
+        faq = [
+            ItemFaq.from_dict(entry)
+            for entry in _sequence(data.get("faq"))
+            if isinstance(entry, MappingABC)
+        ]
         return cls(
             item_id=_opt_str(data.get("id")),
             create_time=_opt_int(data.get("createTime")),
@@ -1717,17 +1846,51 @@ class ItemAndSkuDetail:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, object]) -> "ItemAndSkuDetail":
-        attributes = [ItemAttributeV3.from_dict(entry) for entry in _sequence(data.get("attributes")) if isinstance(entry, MappingABC)]
-        variant_ids = [str(entry) for entry in _sequence(data.get("variantIds")) if entry is not None]
-        images = [MaterialResource.from_dict(entry) for entry in _sequence(data.get("images"))]
-        standard_images = [MaterialResource.from_dict(entry) for entry in _sequence(data.get("standardImages"))]
-        long_images = [MaterialResource.from_dict(entry) for entry in _sequence(data.get("longImages"))]
-        videos = [MaterialResource.from_dict(entry) for entry in _sequence(data.get("videos"))]
-        image_descriptions = [MaterialResource.from_dict(entry) for entry in _sequence(data.get("imageDescriptions"))]
-        size_table_image = [MaterialResource.from_dict(entry) for entry in _sequence(data.get("sizeTableImage"))]
-        recommend_size_table_image = [MaterialResource.from_dict(entry) for entry in _sequence(data.get("recommendSizeTableImage"))]
-        model_try_on_size_table_image = [MaterialResource.from_dict(entry) for entry in _sequence(data.get("modelTryOnSizeTableImage"))]
-        sku_list = [SkuV3.from_dict(entry) for entry in _sequence(data.get("skuList")) if isinstance(entry, MappingABC)]
+        attributes = [
+            ItemAttributeV3.from_dict(entry)
+            for entry in _sequence(data.get("attributes"))
+            if isinstance(entry, MappingABC)
+        ]
+        variant_ids = [
+            str(entry)
+            for entry in _sequence(data.get("variantIds"))
+            if entry is not None
+        ]
+        images = [
+            MaterialResource.from_dict(entry) for entry in _sequence(data.get("images"))
+        ]
+        standard_images = [
+            MaterialResource.from_dict(entry)
+            for entry in _sequence(data.get("standardImages"))
+        ]
+        long_images = [
+            MaterialResource.from_dict(entry)
+            for entry in _sequence(data.get("longImages"))
+        ]
+        videos = [
+            MaterialResource.from_dict(entry) for entry in _sequence(data.get("videos"))
+        ]
+        image_descriptions = [
+            MaterialResource.from_dict(entry)
+            for entry in _sequence(data.get("imageDescriptions"))
+        ]
+        size_table_image = [
+            MaterialResource.from_dict(entry)
+            for entry in _sequence(data.get("sizeTableImage"))
+        ]
+        recommend_size_table_image = [
+            MaterialResource.from_dict(entry)
+            for entry in _sequence(data.get("recommendSizeTableImage"))
+        ]
+        model_try_on_size_table_image = [
+            MaterialResource.from_dict(entry)
+            for entry in _sequence(data.get("modelTryOnSizeTableImage"))
+        ]
+        sku_list = [
+            SkuV3.from_dict(entry)
+            for entry in _sequence(data.get("skuList"))
+            if isinstance(entry, MappingABC)
+        ]
         return cls(
             item_id=_opt_str(data.get("itemId")),
             name=_opt_str(data.get("name")),
@@ -1886,7 +2049,11 @@ class GetBasicItemListResponse:
         hits_raw = data.get("hits", [])
         if not isinstance(hits_raw, SequenceABC):
             hits_raw = []
-        hits = [BasicItem.from_dict(item) for item in hits_raw if isinstance(item, MappingABC)]
+        hits = [
+            BasicItem.from_dict(item)
+            for item in hits_raw
+            if isinstance(item, MappingABC)
+        ]
         page = PageInfo.from_dict(data)
         return cls(hits=hits, page=page)
 
@@ -1903,7 +2070,9 @@ class SpuInfo:
     @classmethod
     def from_dict(cls, data: Mapping[str, object]) -> "SpuInfo":
         images = data.get("imageUrls")
-        image_list = [str(item) for item in images] if isinstance(images, SequenceABC) else []
+        image_list = (
+            [str(item) for item in images] if isinstance(images, SequenceABC) else []
+        )
         return cls(
             spu_id=_opt_str(data.get("id")) or _opt_str(data.get("spuId")),
             name=_opt_str(data.get("name")),
@@ -1924,7 +2093,11 @@ class ItemDetail:
         spu_data = data.get("spuData")
         item_data = data.get("itemData")
         spu = SpuInfo.from_dict(spu_data) if isinstance(spu_data, MappingABC) else None
-        item = BasicItem.from_dict(item_data) if isinstance(item_data, MappingABC) else None
+        item = (
+            BasicItem.from_dict(item_data)
+            if isinstance(item_data, MappingABC)
+            else None
+        )
         return cls(spu=spu, item=item)
 
 
@@ -1938,7 +2111,11 @@ class GetDetailItemListResponse:
         records = data.get("data", [])
         if not isinstance(records, SequenceABC):
             records = []
-        items = [ItemDetail.from_dict(item) for item in records if isinstance(item, MappingABC)]
+        items = [
+            ItemDetail.from_dict(item)
+            for item in records
+            if isinstance(item, MappingABC)
+        ]
         page = PageInfo.from_dict(data)
         return cls(items=items, page=page)
 
@@ -1991,7 +2168,11 @@ class SpuBasicInfo:
     @classmethod
     def from_dict(cls, data: Mapping[str, object]) -> "SpuBasicInfo":
         top_image_data = data.get("topImage")
-        top_image = SpuImage.from_dict(top_image_data) if isinstance(top_image_data, MappingABC) else None
+        top_image = (
+            SpuImage.from_dict(top_image_data)
+            if isinstance(top_image_data, MappingABC)
+            else None
+        )
         return cls(
             spu_id=_opt_str(data.get("id")),
             name=_opt_str(data.get("name")),
@@ -2016,7 +2197,11 @@ class GetBasicSpuResponse:
         spus_raw = data.get("spuBasicInfos", [])
         if not isinstance(spus_raw, SequenceABC):
             spus_raw = []
-        spus = [SpuBasicInfo.from_dict(item) for item in spus_raw if isinstance(item, MappingABC)]
+        spus = [
+            SpuBasicInfo.from_dict(item)
+            for item in spus_raw
+            if isinstance(item, MappingABC)
+        ]
         page = PageInfo.from_dict(data)
         return cls(spus=spus, page=page)
 

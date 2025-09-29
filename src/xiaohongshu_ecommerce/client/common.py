@@ -56,6 +56,7 @@ class CommonClient(SyncSubClient):
     此客户端提供访问各种通用API的功能，包括类目管理、商品属性、
     物流信息、品牌信息和内容验证等基础数据服务。
     """
+
     def get_categories(
         self,
         category_id: Optional[str] = None,
@@ -214,7 +215,9 @@ class CommonClient(SyncSubClient):
         request = GetVariationsRequest(category_id=category_id)
         return self._execute(request, response_model=GetVariationsResponse)
 
-    def get_express_company_list(self,) -> BaseResponse[GetExpressCompanyListResponse]:
+    def get_express_company_list(
+        self,
+    ) -> BaseResponse[GetExpressCompanyListResponse]:
         """获取快递公司信息 (API: common.getExpressCompanyList).
 
         获取平台支持的快递公司信息列表。
@@ -246,7 +249,9 @@ class CommonClient(SyncSubClient):
         request = GetExpressCompanyListRequest()
         return self._execute(request, response_model=GetExpressCompanyListResponse)
 
-    def get_logistics_list(self,) -> BaseResponse[GetLogisticsListResponse]:
+    def get_logistics_list(
+        self,
+    ) -> BaseResponse[GetLogisticsListResponse]:
         """获取物流方案列表 (API: common.getLogisticsList).
 
         获取商家配置的物流方案列表。
@@ -288,7 +293,9 @@ class CommonClient(SyncSubClient):
         request = GetLogisticsListRequest()
         return self._execute(request, response_model=GetLogisticsListResponse)
 
-    def get_logistics_mode(self,) -> BaseResponse[GetLogisticsModeResponse]:
+    def get_logistics_mode(
+        self,
+    ) -> BaseResponse[GetLogisticsModeResponse]:
         """获取物流模式列表 (API: common.logisticsMode).
 
         获取平台支持的物流模式列表。
@@ -476,7 +483,9 @@ class CommonClient(SyncSubClient):
         )
         return self._execute(request, response_model=GetBrandResponse)
 
-    def get_seller_key_info(self,) -> BaseResponse[GetSellerKeyInfoResponse]:
+    def get_seller_key_info(
+        self,
+    ) -> BaseResponse[GetSellerKeyInfoResponse]:
         """获取老版本商家授权信息 (API: common.getSellerKeyInfo).
 
         获取商家在新旧授权体系中的标识信息。
@@ -504,7 +513,9 @@ class CommonClient(SyncSubClient):
         request = GetSellerKeyInfoRequest()
         return self._execute(request, response_model=GetSellerKeyInfoResponse)
 
-    def get_nest_zone(self,) -> BaseResponse[GetNestZoneResponse]:
+    def get_nest_zone(
+        self,
+    ) -> BaseResponse[GetNestZoneResponse]:
         """获取地址信息 (API: common.getNestZone).
 
         获取分层级的行政区划信息，包括省市区三级结构。
@@ -858,7 +869,10 @@ class CommonClient(SyncSubClient):
         )
         response = self._execute(request)
         if response.success and isinstance(response.data, list):
-            response.data = [ZoneInfo.from_dict(item) if isinstance(item, Mapping) else item for item in response.data]
+            response.data = [
+                ZoneInfo.from_dict(item) if isinstance(item, Mapping) else item
+                for item in response.data
+            ]
         return response
 
     def check_forbidden_keyword(

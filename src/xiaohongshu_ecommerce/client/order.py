@@ -249,85 +249,85 @@ class OrderClient(SyncSubClient):
     ) -> BaseResponse[BatchBindOrderSkuIdentifyCodeInfoResponse]:
         """批量上传国补订单序列号等信息 (API: order.batchBindSkuIdentifyInfo).
 
-        为政府补贴订单批量上传商品识别信息，包括序列号、条形码、
-IMEI等代码。特定商品类别在补贴项目中为必需。
+                为政府补贴订单批量上传商品识别信息，包括序列号、条形码、
+        IMEI等代码。特定商品类别在补贴项目中为必需。
 
-        Args:
-            order_sku_identify_code_info_list (List[dict]): 订单商品信息列表 (必填):
-                每个项目包含:
-                - packageId (str): 订单号
-                - skuIdentifyCodeInfo (dict): 商品身份信息 (必填):
-                    - sNCode (str): 序列号 (必填)
-                    - barCode (str): 条形码 (必填)
-                    - iMEI2Code (str): i1码 (必填)
-                    - iMEI1Code (str, optional): i1码
-
-        Returns:
-            BaseResponse[BatchBindOrderSkuIdentifyCodeInfoResponse]: 响应包含:
-                - error_msg (str): 错误信息
-                - error_code (int): 错误码（0为成功）
-                - success (bool): 整体操作是否成功
-                - data (object): 结果数据:
-                    - res (List): 每个订单的结果:
+                Args:
+                    order_sku_identify_code_info_list (List[dict]): 订单商品信息列表 (必填):
+                        每个项目包含:
                         - packageId (str): 订单号
-                        - success (bool): 该订单是否成功
-                        - msg (str): 失败时的错误描述
+                        - skuIdentifyCodeInfo (dict): 商品身份信息 (必填):
+                            - sNCode (str): 序列号 (必填)
+                            - barCode (str): 条形码 (必填)
+                            - iMEI2Code (str): i1码 (必填)
+                            - iMEI1Code (str, optional): i1码
 
-        Examples:
-            >>> # Upload identification codes for single order
-            >>> identify_info = {
-            ...     "sNCode": "sncode测试001",
-            ...     "barCode": "barcode测试001",
-            ...     "iMEI1Code": "imei1code测试001",
-            ...     "iMEI2Code": "imei2code测试001"
-            ... }
-            >>> order_info = {
-            ...     "packageId": "P763821122427443521",
-            ...     "skuIdentifyCodeInfo": identify_info
-            ... }
-            >>> response = client.order.batch_bind_sku_identify_info(
-            ...     access_token, order_sku_identify_code_info_list=[order_info]
-            ... )
-            >>>
-            >>> for result in response.data.res:
-            ...     if result.success:
-            ...         print(f"Order {result.packageId}: Success")
-            ...     else:
-            ...         print(f"Order {result.packageId}: Failed - {result.msg}")
+                Returns:
+                    BaseResponse[BatchBindOrderSkuIdentifyCodeInfoResponse]: 响应包含:
+                        - error_msg (str): 错误信息
+                        - error_code (int): 错误码（0为成功）
+                        - success (bool): 整体操作是否成功
+                        - data (object): 结果数据:
+                            - res (List): 每个订单的结果:
+                                - packageId (str): 订单号
+                                - success (bool): 该订单是否成功
+                                - msg (str): 失败时的错误描述
 
-            >>> # Upload for multiple orders
-            >>> orders_info = [
-            ...     {
-            ...         "packageId": "P763821122427443521",
-            ...         "skuIdentifyCodeInfo": {
-            ...             "sNCode": "SN001",
-            ...             "barCode": "BC001",
-            ...             "iMEI2Code": "IMEI2_001"
-            ...         }
-            ...     },
-            ...     {
-            ...         "packageId": "P763821122427443522",
-            ...         "skuIdentifyCodeInfo": {
-            ...             "sNCode": "SN002",
-            ...             "barCode": "BC002",
-            ...             "iMEI2Code": "IMEI2_002"
-            ...         }
-            ...     }
-            ... ]
-            >>> response = client.order.batch_bind_sku_identify_info(
-            ...     access_token, order_sku_identify_code_info_list=orders_info
-            ... )
+                Examples:
+                    >>> # Upload identification codes for single order
+                    >>> identify_info = {
+                    ...     "sNCode": "sncode测试001",
+                    ...     "barCode": "barcode测试001",
+                    ...     "iMEI1Code": "imei1code测试001",
+                    ...     "iMEI2Code": "imei2code测试001"
+                    ... }
+                    >>> order_info = {
+                    ...     "packageId": "P763821122427443521",
+                    ...     "skuIdentifyCodeInfo": identify_info
+                    ... }
+                    >>> response = client.order.batch_bind_sku_identify_info(
+                    ...     access_token, order_sku_identify_code_info_list=[order_info]
+                    ... )
+                    >>>
+                    >>> for result in response.data.res:
+                    ...     if result.success:
+                    ...         print(f"Order {result.packageId}: Success")
+                    ...     else:
+                    ...         print(f"Order {result.packageId}: Failed - {result.msg}")
 
-        Common Error Messages:
-            - "已完结的国补订单禁止上传商品序列号等信息": 已完成的补贴订单不能上传识别代码
-            - 订单状态必须允许上传识别代码
+                    >>> # Upload for multiple orders
+                    >>> orders_info = [
+                    ...     {
+                    ...         "packageId": "P763821122427443521",
+                    ...         "skuIdentifyCodeInfo": {
+                    ...             "sNCode": "SN001",
+                    ...             "barCode": "BC001",
+                    ...             "iMEI2Code": "IMEI2_001"
+                    ...         }
+                    ...     },
+                    ...     {
+                    ...         "packageId": "P763821122427443522",
+                    ...         "skuIdentifyCodeInfo": {
+                    ...             "sNCode": "SN002",
+                    ...             "barCode": "BC002",
+                    ...             "iMEI2Code": "IMEI2_002"
+                    ...         }
+                    ...     }
+                    ... ]
+                    >>> response = client.order.batch_bind_sku_identify_info(
+                    ...     access_token, order_sku_identify_code_info_list=orders_info
+                    ... )
 
-        Note:
-            - 仅适用于政府补贴订单
-            - 特定商品类别为必需（电子产品、家电）
-            - 必须在订单完成前上传
-            - 序列号必须唯一有效
-            - 手机设备需要IMEI码
+                Common Error Messages:
+                    - "已完结的国补订单禁止上传商品序列号等信息": 已完成的补贴订单不能上传识别代码
+                    - 订单状态必须允许上传识别代码
+
+                Note:
+                    - 仅适用于政府补贴订单
+                    - 特定商品类别为必需（电子产品、家电）
+                    - 必须在订单完成前上传
+                    - 序列号必须唯一有效
+                    - 手机设备需要IMEI码
         """
         request = BatchBindOrderSkuIdentifyCodeInfoRequest(
             order_sku_identify_code_info_list=order_sku_identify_code_info_list

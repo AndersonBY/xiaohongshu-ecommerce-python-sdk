@@ -11,6 +11,7 @@ from xiaohongshu_ecommerce.models.product import (
 
 
 def _build_client(monkeypatch, handler):
+    import time
     monkeypatch.setattr(
         "xiaohongshu_ecommerce.client.base.utc_timestamp",
         lambda: 1700000000,
@@ -23,7 +24,20 @@ def _build_client(monkeypatch, handler):
     )
     transport = httpx.MockTransport(handler)
     session = httpx.Client(transport=transport)
-    return XhsClient(config=config, session=session)
+    client = XhsClient(config=config, session=session)
+
+    # Set test tokens for automatic token management with future expiration
+    current_time_ms = int(time.time() * 1000)
+    client.set_tokens_manually(
+        access_token="test_access_token",
+        refresh_token="test_refresh_token",
+        access_token_expires_at=current_time_ms + (3600 * 1000),  # 1 hour from now
+        refresh_token_expires_at=current_time_ms + (7200 * 1000), # 2 hours from now
+        seller_id="test_seller",
+        seller_name="Test Seller"
+    )
+
+    return client
 
 
 def test_get_basic_item_list(monkeypatch):
@@ -155,7 +169,9 @@ def test_get_item_info(monkeypatch):
         payload = json.loads(request.content.decode())
         assert payload["method"] == "product.getItemInfo"
         assert payload["itemId"] == "item-1"
-        return httpx.Response(200, json={"success": True, "data": {"itemInfo": {"id": "item-1"}}})
+        return httpx.Response(
+            200, json={"success": True, "data": {"itemInfo": {"id": "item-1"}}}
+        )
 
     client = _build_client(monkeypatch, handler)
     response = client.product.get_item_info(

@@ -11,6 +11,7 @@ from .base import BaseRequest
 
 class CustomsStatusEnum(Enum):
     """Customs status enumeration."""
+
     PENDING = "pending"
     DECLARED = "declared"
     PASSED = "passed"
@@ -20,6 +21,7 @@ class CustomsStatusEnum(Enum):
 
 class CustomFailReasonEnum(Enum):
     """Custom failure reason enumeration."""
+
     CUSTOMS_CODE_ERROR = "customs_code_error"
     PRODUCT_INFO_ERROR = "product_info_error"
     RECEIVER_INFO_ERROR = "receiver_info_error"
@@ -28,6 +30,7 @@ class CustomFailReasonEnum(Enum):
 
 class CustomAbnormalReasonEnum(Enum):
     """Custom abnormal reason enumeration."""
+
     TIMEOUT = "timeout"
     SYSTEM_ERROR = "system_error"
     REVIEW_REQUIRED = "review_required"
@@ -37,6 +40,7 @@ class CustomAbnormalReasonEnum(Enum):
 @dataclass
 class CustomsStatusInfo:
     """Customs status information."""
+
     status: Optional[CustomsStatusEnum] = None
     fail_reason: Optional[CustomFailReasonEnum] = None
     abnormal_reason: Optional[CustomAbnormalReasonEnum] = None
@@ -46,6 +50,7 @@ class CustomsStatusInfo:
 @dataclass
 class CustomsItem:
     """Customs item information."""
+
     hs_code: Optional[str] = None
     product_name: Optional[str] = None
     product_name_en: Optional[str] = None
@@ -63,6 +68,7 @@ class CustomsItem:
 @dataclass
 class SkuIdentifyCodeInfo:
     """SKU identify code information."""
+
     sku_id: Optional[str] = None
     identify_code: Optional[str] = None
     quantity: Optional[int] = None
@@ -71,6 +77,7 @@ class SkuIdentifyCodeInfo:
 @dataclass
 class OrderSimpleDetail:
     """Simple order detail."""
+
     order_id: Optional[str] = None
     order_no: Optional[str] = None
     order_status: Optional[int] = None
@@ -86,6 +93,7 @@ class OrderSimpleDetail:
 @dataclass
 class OrderDetailInfo:
     """Detailed order information."""
+
     order_id: Optional[str] = None
     order_no: Optional[str] = None
     order_status: Optional[int] = None
@@ -108,6 +116,7 @@ class OrderDetailInfo:
 @dataclass
 class ReceiverInfo:
     """Order receiver information."""
+
     name: Optional[str] = None
     phone: Optional[str] = None
     province: Optional[str] = None
@@ -120,6 +129,7 @@ class ReceiverInfo:
 @dataclass
 class TrackingInfo:
     """Order tracking information."""
+
     express_company: Optional[str] = None
     express_no: Optional[str] = None
     tracking_details: List[dict] = field(default_factory=list)
@@ -128,6 +138,7 @@ class TrackingInfo:
 @dataclass
 class DeclareInfo:
     """Order declare information."""
+
     declare_no: Optional[str] = None
     declare_status: Optional[int] = None
     customs_code: Optional[str] = None
@@ -138,6 +149,7 @@ class DeclareInfo:
 @dataclass
 class SupportedPort:
     """Supported port information."""
+
     port_code: Optional[str] = None
     port_name: Optional[str] = None
     customs_code: Optional[str] = None
@@ -146,6 +158,7 @@ class SupportedPort:
 @dataclass
 class TransferBatch:
     """Transfer batch information."""
+
     batch_id: Optional[str] = None
     batch_no: Optional[str] = None
     status: Optional[int] = None
@@ -155,6 +168,7 @@ class TransferBatch:
 @dataclass
 class KosData:
     """KOS data information."""
+
     data_type: Optional[str] = None
     data_content: Optional[str] = None
     timestamp: Optional[int] = None
@@ -163,6 +177,7 @@ class KosData:
 @dataclass
 class GetOrderListRequest(BaseRequest):
     """Get order list request."""
+
     start_time: Optional[int] = None
     end_time: Optional[int] = None
     time_type: Optional[int] = None
@@ -196,6 +211,7 @@ class GetOrderListRequest(BaseRequest):
 @dataclass
 class GetOrderDetailRequest(BaseRequest):
     """Get order detail request."""
+
     order_id: Optional[str] = None
     order_no: Optional[str] = None
 
@@ -214,6 +230,7 @@ class GetOrderDetailRequest(BaseRequest):
 @dataclass
 class GetOrderDeclareRequest(BaseRequest):
     """Get order declare request."""
+
     order_id: Optional[str] = None
 
     def __post_init__(self):
@@ -240,20 +257,20 @@ class GetSupportedPortListRequest(BaseRequest):
 @dataclass
 class BatchBindOrderSkuIdentifyCodeInfoRequest(BaseRequest):
     """Batch bind order SKU identify code info request."""
+
     order_sku_identify_code_info_list: List[dict] = field(default_factory=list)
 
     def __post_init__(self):
         super().__init__(method="")
 
     def extra_payload(self) -> dict:
-        return {
-            "orderSkuIdentifyCodeInfoList": self.order_sku_identify_code_info_list
-        }
+        return {"orderSkuIdentifyCodeInfoList": self.order_sku_identify_code_info_list}
 
 
 @dataclass
 class BondedPaymentRecordRequest(BaseRequest):
     """Bonded payment record request."""
+
     order_id: Optional[str] = None
     customs_type: Optional[str] = None
 
@@ -272,6 +289,7 @@ class BondedPaymentRecordRequest(BaseRequest):
 @dataclass
 class SyncCustomsInfoRequest(BaseRequest):
     """Sync customs info request."""
+
     item_id: Optional[str] = None
     barcode: Optional[str] = None
     customs_info: Optional[dict] = None
@@ -293,6 +311,7 @@ class SyncCustomsInfoRequest(BaseRequest):
 @dataclass
 class GetCustomInfoRequest(BaseRequest):
     """Get customs info request."""
+
     barcode: Optional[str] = None
 
     def __post_init__(self):
@@ -308,6 +327,7 @@ class GetCustomInfoRequest(BaseRequest):
 @dataclass
 class GetOrderReceiverInfoRequest(BaseRequest):
     """Get order receiver info request."""
+
     receiver_queries: List[dict] = field(default_factory=list)
     is_return: Optional[bool] = None
 
@@ -326,6 +346,7 @@ class GetOrderReceiverInfoRequest(BaseRequest):
 @dataclass
 class ModifyOrderExpressRequest(BaseRequest):
     """Modify order express request."""
+
     order_id: Optional[str] = None
     express_no: Optional[str] = None
     express_company_code: Optional[str] = None
@@ -356,6 +377,7 @@ class ModifyOrderExpressRequest(BaseRequest):
 @dataclass
 class OrderDeliverRequest(BaseRequest):
     """Order deliver request."""
+
     order_id: Optional[str] = None
     express_no: Optional[str] = None
     express_company_code: Optional[str] = None
@@ -395,6 +417,7 @@ class OrderDeliverRequest(BaseRequest):
 @dataclass
 class ModifySellerMarkRequest(BaseRequest):
     """Modify seller mark request."""
+
     order_id: Optional[str] = None
     seller_mark_note: Optional[str] = None
     operator: Optional[str] = None
@@ -419,6 +442,7 @@ class ModifySellerMarkRequest(BaseRequest):
 @dataclass
 class GetOrderTrackRequest(BaseRequest):
     """Get order tracking request."""
+
     order_id: Optional[str] = None
 
     def __post_init__(self):
@@ -431,11 +455,10 @@ class GetOrderTrackRequest(BaseRequest):
         return payload
 
 
-
-
 @dataclass
 class CreateTransferBatchRequest(BaseRequest):
     """Create transfer batch request."""
+
     orders: List[dict] = field(default_factory=list)
     plan_info_id: Optional[str] = None
 
@@ -454,6 +477,7 @@ class CreateTransferBatchRequest(BaseRequest):
 @dataclass
 class GetKosDataRequest(BaseRequest):
     """Get KOS data request."""
+
     start_date: Optional[str] = None
     end_date: Optional[str] = None
     page_no: Optional[int] = None
@@ -478,6 +502,7 @@ class GetKosDataRequest(BaseRequest):
 @dataclass
 class ModifyCustomsStatusRequest(BaseRequest):
     """Modify customs status request."""
+
     order_id: Optional[str] = None
     customs_status: Optional[str] = None
     customs_remark: Optional[str] = None
@@ -502,6 +527,7 @@ class ModifyCustomsStatusRequest(BaseRequest):
 @dataclass
 class BatchApproveSubscribeOrdersRequest(BaseRequest):
     """Batch approve subscribe orders request."""
+
     order_ids: List[str] = field(default_factory=list)
     approval_reason: Optional[str] = None
     operator_id: Optional[str] = None
@@ -527,6 +553,7 @@ class BatchApproveSubscribeOrdersRequest(BaseRequest):
 @dataclass
 class GetOrderListResponse:
     """Get order list response."""
+
     total: int = 0
     page_no: int = 0
     page_size: int = 0
@@ -537,12 +564,14 @@ class GetOrderListResponse:
 @dataclass
 class GetOrderDetailResponse:
     """Get order detail response."""
+
     order_detail: Optional[OrderDetailInfo] = None
 
 
 @dataclass
 class BatchBindOrderSkuIdentifyCodeInfoResponse:
     """Batch bind order SKU identify code info response."""
+
     success_count: int = 0
     failed_count: int = 0
     failed_orders: List[str] = field(default_factory=list)
@@ -551,6 +580,7 @@ class BatchBindOrderSkuIdentifyCodeInfoResponse:
 @dataclass
 class GetCustomsInfoResponse:
     """Get customs info response."""
+
     order_id: Optional[str] = None
     customs_status: Optional[CustomsStatusInfo] = None
     customs_items: List[CustomsItem] = field(default_factory=list)
@@ -559,34 +589,40 @@ class GetCustomsInfoResponse:
 @dataclass
 class GetOrderReceiverInfoResponse:
     """Get order receiver info response."""
+
     receiver_info: Optional[ReceiverInfo] = None
 
 
 @dataclass
 class GetOrderTrackingResponse:
     """Get order tracking response."""
+
     tracking_info: Optional[TrackingInfo] = None
 
 
 @dataclass
 class GetOrderDeclareInfoResponse:
     """Get order declare info response."""
+
     declare_info: Optional[DeclareInfo] = None
 
 
 @dataclass
 class GetSupportedPortListResponse:
     """Get supported port list response."""
+
     ports: List[SupportedPort] = field(default_factory=list)
 
 
 @dataclass
 class CreateTransferBatchResponse:
     """Create transfer batch response."""
+
     transfer_batch: Optional[TransferBatch] = None
 
 
 @dataclass
 class GetKosDataResponse:
     """Get KOS data response."""
+
     kos_data: List[KosData] = field(default_factory=list)

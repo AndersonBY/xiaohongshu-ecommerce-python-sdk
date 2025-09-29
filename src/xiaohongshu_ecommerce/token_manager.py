@@ -120,7 +120,7 @@ class FileTokenStorage:
         try:
             if not os.path.exists(self.file_path):
                 return None
-            with open(self.file_path, 'r', encoding='utf-8') as f:
+            with open(self.file_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 return TokenInfo(**data)
         except (FileNotFoundError, json.JSONDecodeError, TypeError):
@@ -129,7 +129,8 @@ class FileTokenStorage:
     def save_tokens(self, tokens: TokenInfo) -> None:
         """Save tokens to file."""
         from dataclasses import asdict
-        with open(self.file_path, 'w', encoding='utf-8') as f:
+
+        with open(self.file_path, "w", encoding="utf-8") as f:
             json.dump(asdict(tokens), f, ensure_ascii=False, indent=2)
 
     def clear_tokens(self) -> None:
@@ -169,8 +170,10 @@ class TokenManager:
                 self._current_tokens = self._storage.load_tokens()
 
             # 如果没有token或刷新token过期，需要重新授权
-            if (self._current_tokens is None or
-                self._current_tokens.is_refresh_token_expired):
+            if (
+                self._current_tokens is None
+                or self._current_tokens.is_refresh_token_expired
+            ):
                 if self._auth_code_provider is None:
                     raise TokenManagerError(
                         "No valid tokens and no auth_code_provider configured. "
@@ -179,8 +182,9 @@ class TokenManager:
                 self._obtain_initial_tokens()
 
             # 检查是否需要刷新access token
-            if (self._current_tokens is not None and
-                self._current_tokens.should_refresh(self._refresh_buffer_seconds)):
+            if self._current_tokens is not None and self._current_tokens.should_refresh(
+                self._refresh_buffer_seconds
+            ):
                 self._refresh_tokens()
 
             # 确保有有效的tokens
@@ -194,7 +198,9 @@ class TokenManager:
         with self._lock:
             response = self._oauth_client.get_access_token(code=auth_code)
             if not response.success or response.data is None:
-                raise TokenManagerError(f"Failed to get access token: {response.error_message}")
+                raise TokenManagerError(
+                    f"Failed to get access token: {response.error_message}"
+                )
 
             self._current_tokens = TokenInfo.from_access_token_response(response.data)
             self._storage.save_tokens(self._current_tokens)
@@ -227,7 +233,9 @@ class TokenManager:
         auth_code = self._auth_code_provider()
         response = self._oauth_client.get_access_token(code=auth_code)
         if not response.success or response.data is None:
-            raise TokenManagerError(f"Failed to get access token: {response.error_message}")
+            raise TokenManagerError(
+                f"Failed to get access token: {response.error_message}"
+            )
 
         self._current_tokens = TokenInfo.from_access_token_response(response.data)
         self._storage.save_tokens(self._current_tokens)
@@ -243,7 +251,9 @@ class TokenManager:
         if not response.success or response.data is None:
             # 刷新失败，可能refresh token也过期了，清除tokens
             self.clear_tokens()
-            raise TokenManagerError(f"Failed to refresh token: {response.error_message}")
+            raise TokenManagerError(
+                f"Failed to refresh token: {response.error_message}"
+            )
 
         self._current_tokens = TokenInfo.from_refresh_token_response(response.data)
         self._storage.save_tokens(self._current_tokens)
@@ -251,4 +261,5 @@ class TokenManager:
 
 class TokenManagerError(Exception):
     """Token manager related errors."""
+
     pass

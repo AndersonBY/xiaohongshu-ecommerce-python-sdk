@@ -11,6 +11,7 @@ from .base import BaseRequest
 @dataclass
 class AddressLocation:
     """Address location information."""
+
     latitude: Optional[str] = None
     longitude: Optional[str] = None
     address: Optional[str] = None
@@ -19,6 +20,7 @@ class AddressLocation:
 @dataclass
 class InstantShoppingTrackingDTO:
     """Instant shopping tracking DTO."""
+
     xhs_order_id: Optional[str] = None
     express_company_code: Optional[str] = None
     express_no: Optional[str] = None
@@ -39,6 +41,7 @@ class InstantShoppingTrackingDTO:
 @dataclass
 class UpdateInstantShoppingTrackRequest(BaseRequest):
     """Update instant shopping track request."""
+
     xhs_order_id: Optional[str] = None
     express_no: Optional[str] = None
     express_company_code: Optional[str] = None
@@ -48,6 +51,7 @@ class UpdateInstantShoppingTrackRequest(BaseRequest):
 @dataclass
 class UpdateRiderLocationRequest(BaseRequest):
     """Update rider location request."""
+
     xhs_order_id: Optional[str] = None
     express_no: Optional[str] = None
     express_company_code: Optional[str] = None

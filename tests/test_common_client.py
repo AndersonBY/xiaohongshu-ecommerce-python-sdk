@@ -10,6 +10,7 @@ from xiaohongshu_ecommerce.models.common import (
 
 
 def _build_client(monkeypatch, handler):
+    import time
     monkeypatch.setattr(
         "xiaohongshu_ecommerce.client.base.utc_timestamp",
         lambda: 1700000000,
@@ -22,7 +23,20 @@ def _build_client(monkeypatch, handler):
     )
     transport = httpx.MockTransport(handler)
     session = httpx.Client(transport=transport)
-    return XhsClient(config=config, session=session)
+    client = XhsClient(config=config, session=session)
+
+    # Set test tokens for automatic token management with future expiration
+    current_time_ms = int(time.time() * 1000)
+    client.set_tokens_manually(
+        access_token="test_access_token",
+        refresh_token="test_refresh_token",
+        access_token_expires_at=current_time_ms + (3600 * 1000),  # 1 hour from now
+        refresh_token_expires_at=current_time_ms + (7200 * 1000), # 2 hours from now
+        seller_id="test_seller",
+        seller_name="Test Seller"
+    )
+
+    return client
 
 
 def test_common_get_categories(monkeypatch):
@@ -227,8 +241,7 @@ def test_common_category_match_v2(monkeypatch):
         handler,
     )
     response = client.common.category_match_v2(
-        name="测试",
-        image_urls=["https://example.com/1.jpg"]
+        name="测试", image_urls=["https://example.com/1.jpg"]
     )
 
     assert response.success is True
@@ -314,7 +327,10 @@ def test_common_get_carriage_template(monkeypatch):
         assert payload["templateId"] == "tmp-1"
         return httpx.Response(
             200,
-            json={"success": True, "data": {"templateId": "tmp-1", "templateName": "Default"}},
+            json={
+                "success": True,
+                "data": {"templateId": "tmp-1", "templateName": "Default"},
+            },
         )
 
     client = _build_client(monkeypatch, handler)
@@ -400,7 +416,12 @@ def test_common_get_delivery_rule(monkeypatch):
                         {
                             "sellerId": "seller-1",
                             "existing": [
-                                {"timeType": 1, "value": 2, "desc": "48h", "isDefault": True}
+                                {
+                                    "timeType": 1,
+                                    "value": 2,
+                                    "desc": "48h",
+                                    "isDefault": True,
+                                }
                             ],
                         }
                     ]
@@ -440,10 +461,7 @@ def test_common_get_address_record(monkeypatch):
         )
 
     client = _build_client(monkeypatch, handler)
-    response = client.common.get_address_record(
-        page_no=1,
-        page_size=20
-    )
+    response = client.common.get_address_record(page_no=1, page_size=20)
 
     assert response.success is True
     data = response.data
@@ -492,9 +510,7 @@ def test_common_check_forbidden_keyword(monkeypatch):
         )
 
     client = _build_client(monkeypatch, handler)
-    response = client.common.check_forbidden_keyword(
-        text="违禁词"
-    )
+    response = client.common.check_forbidden_keyword(text="违禁词")
 
     assert response.success is True
     data = response.data

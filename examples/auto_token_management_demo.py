@@ -5,7 +5,7 @@ from xiaohongshu_ecommerce import (
     ClientConfig,
     FileTokenStorage,
     MemoryTokenStorage,
-    TokenManagerError
+    TokenManagerError,
 )
 
 
@@ -21,7 +21,7 @@ def example_auto_token_management():
         app_id="your_app_id",
         app_secret="your_app_secret",
         token_storage=FileTokenStorage("example_tokens.json"),  # 文件存储
-        token_refresh_buffer_seconds=300  # 提前5分钟刷新
+        token_refresh_buffer_seconds=300,  # 提前5分钟刷新
     )
 
     client = XhsClient.create(config)
@@ -44,7 +44,7 @@ def example_auto_token_management():
                 access_token_expires_at=1640995200000,
                 refresh_token_expires_at=1641081600000,
                 seller_id="demo_seller",
-                seller_name="演示商家"
+                seller_name="演示商家",
             )
             print("✅ 演示token设置完成")
     except Exception as e:
@@ -71,21 +71,18 @@ def example_auto_token_management():
         # 🎉 不需要传递access_token参数！
         print("   获取商品列表...")
         products = client.product.get_detail_sku_list(
-            page_no=1,
-            page_size=5,
-            buyable=True
+            page_no=1, page_size=5, buyable=True
         )
 
         if products.success:
-            print(f"   ✅ 获取商品成功，找到 {len(products.data.get('data', []))} 个商品")
+            print(
+                f"   ✅ 获取商品成功，找到 {len(products.data.get('data', []))} 个商品"
+            )
         else:
             print(f"   ❌ 获取商品失败: {products.error_message}")
 
         print("   获取订单列表...")
-        orders = client.order.get_order_list(
-            page_no=1,
-            page_size=5
-        )
+        orders = client.order.get_order_list(page_no=1, page_size=5)
 
         if orders.success:
             order_list = orders.data.order_list or []
@@ -112,7 +109,7 @@ def example_auto_token_management():
     # 演示清除token
     print("\n6. 清理演示...")
     choice = input("是否清除演示token？(y/N): ").strip().lower()
-    if choice == 'y':
+    if choice == "y":
         client.clear_tokens()
         print("   ✅ Token已清除")
     else:
@@ -130,7 +127,7 @@ def example_memory_storage():
         base_url="https://openapi.xiaohongshu.com",
         app_id="your_app_id",
         app_secret="your_app_secret",
-        token_storage=MemoryTokenStorage()  # 使用内存存储
+        token_storage=MemoryTokenStorage(),  # 使用内存存储
     )
 
     _client = XhsClient.create(config)  # Create client but mark as intentionally unused
@@ -161,7 +158,7 @@ def example_custom_storage():
                 return None
 
             try:
-                with open(self.db_file, 'r', encoding='utf-8') as f:
+                with open(self.db_file, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 return TokenInfo(**data)
             except Exception:
@@ -170,7 +167,8 @@ def example_custom_storage():
         def save_tokens(self, tokens: TokenInfo) -> None:
             """保存token到模拟数据库"""
             from dataclasses import asdict
-            with open(self.db_file, 'w', encoding='utf-8') as f:
+
+            with open(self.db_file, "w", encoding="utf-8") as f:
                 json.dump(asdict(tokens), f, ensure_ascii=False, indent=2)
 
         def clear_tokens(self) -> None:
@@ -183,7 +181,7 @@ def example_custom_storage():
         base_url="https://openapi.xiaohongshu.com",
         app_id="your_app_id",
         app_secret="your_app_secret",
-        token_storage=DatabaseTokenStorage(user_id="user123")
+        token_storage=DatabaseTokenStorage(user_id="user123"),
     )
 
     _client = XhsClient.create(config)  # Create client but mark as intentionally unused
@@ -204,12 +202,16 @@ def example_advanced_usage():
             base_url="https://openapi.xiaohongshu.com",
             app_id="your_app_id",
             app_secret="your_app_secret",
-            token_storage=FileTokenStorage(f"seller_{seller_id}_tokens.json")
+            token_storage=FileTokenStorage(f"seller_{seller_id}_tokens.json"),
         )
         return XhsClient.create(config)
 
-    _seller1_client = create_seller_client("seller_001")  # Create but mark as intentionally unused
-    _seller2_client = create_seller_client("seller_002")  # Create but mark as intentionally unused
+    _seller1_client = create_seller_client(
+        "seller_001"
+    )  # Create but mark as intentionally unused
+    _seller2_client = create_seller_client(
+        "seller_002"
+    )  # Create but mark as intentionally unused
     print("✅ 为多个商家创建了独立的客户端")
 
     # 并发安全演示
@@ -249,4 +251,4 @@ if __name__ == "__main__":
         else:
             print("无效选择，请重试")
 
-        print("\n" + "="*50 + "\n")
+        print("\n" + "=" * 50 + "\n")

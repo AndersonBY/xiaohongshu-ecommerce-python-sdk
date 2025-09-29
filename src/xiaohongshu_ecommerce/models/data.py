@@ -31,7 +31,9 @@ class IndexItem:
 
 
 class BatchDecryptRequest(BaseRequest):
-    def __init__(self, base_infos: Sequence[DecryptItem], action_type: str, app_user_id: str) -> None:
+    def __init__(
+        self, base_infos: Sequence[DecryptItem], action_type: str, app_user_id: str
+    ) -> None:
         super().__init__(method="data.batchDecrypt")
         self.base_infos = list(base_infos)
         self.action_type = action_type
@@ -179,8 +181,7 @@ _ModelT = TypeVar("_ModelT", bound="_SupportsFromDict")
 
 class _SupportsFromDict(Protocol):
     @classmethod
-    def from_dict(cls: Type[_ModelT], data: Mapping[str, object]) -> _ModelT:
-        ...
+    def from_dict(cls: Type[_ModelT], data: Mapping[str, object]) -> _ModelT: ...
 
 
 def _coerce(raw: object, model: Type[_ModelT]) -> _ModelT:

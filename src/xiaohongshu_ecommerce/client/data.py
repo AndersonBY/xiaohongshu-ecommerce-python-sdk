@@ -29,7 +29,9 @@ class DataClient(SyncSubClient):
     为可搜索数据生成索引。
     """
 
-    def batch_decrypt(self, base_infos: List[DecryptItem], action_type: str, app_user_id: str) -> "BaseResponse[BatchDecryptResponse]":
+    def batch_decrypt(
+        self, base_infos: List[DecryptItem], action_type: str, app_user_id: str
+    ) -> "BaseResponse[BatchDecryptResponse]":
         """批量解密 - 数据解密 (API: data.batchDecrypt).
 
         在单个请求中解密多个加密数据项。此API用于为授权操作（如订单履行和客户服务）
@@ -102,7 +104,9 @@ class DataClient(SyncSubClient):
         )
         return self._execute(request, response_model=BatchDecryptResponse)
 
-    def batch_desensitise(self, base_infos: List[DecryptItem]) -> "BaseResponse[BatchDesensitiseResponse]":
+    def batch_desensitise(
+        self, base_infos: List[DecryptItem]
+    ) -> "BaseResponse[BatchDesensitiseResponse]":
         """批量脱敏 - 数据脱敏 (API: data.batchDesensitise).
 
         将加密的敏感数据转换为适合在用户界面中显示的脱敏格式，同时保护隐私。
@@ -173,7 +177,9 @@ class DataClient(SyncSubClient):
         request = BatchDesensitiseRequest(base_infos=base_infos)
         return self._execute(request, response_model=BatchDesensitiseResponse)
 
-    def batch_index(self, index_infos: List[IndexItem]) -> "BaseResponse[BatchIndexResponse]":
+    def batch_index(
+        self, index_infos: List[IndexItem]
+    ) -> "BaseResponse[BatchIndexResponse]":
         """批量获取索引串 - 索引串查询 (API: data.batchIndex).
 
         从明文数据生成可搜索索引，同时保持隐私保护。这允许数据可搜索

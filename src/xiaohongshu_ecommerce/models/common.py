@@ -64,7 +64,9 @@ class GetLogisticsModeRequest(BaseRequest):
 
 
 class GetCarriageTemplateListRequest(BaseRequest):
-    def __init__(self, page_index: Optional[int] = None, page_size: Optional[int] = None) -> None:
+    def __init__(
+        self, page_index: Optional[int] = None, page_size: Optional[int] = None
+    ) -> None:
         super().__init__(method="common.getCarriageTemplateList")
         self.page_index = page_index
         self.page_size = page_size
@@ -88,7 +90,14 @@ class GetCarriageTemplateRequest(BaseRequest):
 
 
 class GetBrandRequest(BaseRequest):
-    def __init__(self, *, category_id: Optional[str] = None, keyword: Optional[str] = None, page_no: Optional[int] = None, page_size: Optional[int] = None) -> None:
+    def __init__(
+        self,
+        *,
+        category_id: Optional[str] = None,
+        keyword: Optional[str] = None,
+        page_no: Optional[int] = None,
+        page_size: Optional[int] = None,
+    ) -> None:
         super().__init__(method="common.brandSearch")
         self.category_id = category_id
         self.keyword = keyword
@@ -132,7 +141,12 @@ class CategoryMatchRequest(BaseRequest):
 
 
 class CategoryMatchV2Request(BaseRequest):
-    def __init__(self, name: str, scene: Optional[str] = None, image_urls: Optional[List[str]] = None) -> None:
+    def __init__(
+        self,
+        name: str,
+        scene: Optional[str] = None,
+        image_urls: Optional[List[str]] = None,
+    ) -> None:
         super().__init__(method="common.categoryMatchV2")
         self.name = name
         self.scene = scene
@@ -174,7 +188,9 @@ class BatchGetDeliveryRuleRequest(BaseRequest):
                 if value is not None
             }
 
-    def __init__(self, queries: List["BatchGetDeliveryRuleRequest.DeliveryRuleQuery"]) -> None:
+    def __init__(
+        self, queries: List["BatchGetDeliveryRuleRequest.DeliveryRuleQuery"]
+    ) -> None:
         super().__init__(method="common.getDeliveryRule")
         self.queries = queries
 
@@ -183,7 +199,9 @@ class BatchGetDeliveryRuleRequest(BaseRequest):
 
 
 class GetSellerAddressRecordBySellerIdRequest(BaseRequest):
-    def __init__(self, page_index: Optional[int] = None, page_size: Optional[int] = None) -> None:
+    def __init__(
+        self, page_index: Optional[int] = None, page_size: Optional[int] = None
+    ) -> None:
         super().__init__(method="common.getAddressRecord")
         self.page_index = page_index
         self.page_size = page_size
@@ -253,8 +271,12 @@ class Category:
             name=str(data.get("name", "")),
             en_name=_opt_str(data.get("enName")),
             support_size_table=_opt_bool(data.get("supportSizeTable")),
-            support_recommend_size_table=_opt_bool(data.get("supportRecommendSizeTable")),
-            support_model_try_on_size_table=_opt_bool(data.get("supportModelTryOnSizeTable")),
+            support_recommend_size_table=_opt_bool(
+                data.get("supportRecommendSizeTable")
+            ),
+            support_model_try_on_size_table=_opt_bool(
+                data.get("supportModelTryOnSizeTable")
+            ),
             support_main_spec_image=_opt_bool(data.get("supportMainSpecImage")),
             main_spec_id=_opt_str(data.get("mainSpecId")),
             is_leaf=_opt_bool(data.get("isLeaf")),
@@ -458,7 +480,9 @@ class CarriageTemplate:
             cost_type=_opt_int(data.get("costType")),
             express_type=_opt_int(data.get("expressType")),
             support_not_delivery=_opt_bool(data.get("supportNotDelivery")),
-            not_delivery_areas=[str(item) for item in _sequence(data.get("notDeliveryAreas"))],
+            not_delivery_areas=[
+                str(item) for item in _sequence(data.get("notDeliveryAreas"))
+            ],
             normal_config=_opt_mapping(data.get("normalConfig")),
             enabled=_opt_bool(data.get("enabled")),
             syncd_at=_opt_int(data.get("syncdAt")),
@@ -716,7 +740,9 @@ class DeliveryTimeRuleConfigItem:
             max=_opt_int(data.get("max")),
             desc=_opt_str(data.get("desc")),
             is_default=_opt_bool(data.get("isDefault")),
-            step_delivery_time=[_int(item) for item in _sequence(data.get("stepDeliveryTime"))],
+            step_delivery_time=[
+                _int(item) for item in _sequence(data.get("stepDeliveryTime"))
+            ],
         )
 
 
@@ -746,7 +772,9 @@ class DeliveryRule:
             logistics_mode=_opt_int(data.get("logisticsMode")),
             existing=_coerce_many(data.get("existing"), DeliveryTimeRuleConfigItem),
             presale=_coerce_many(data.get("presale"), DeliveryTimeRuleConfigItem),
-            step_presale=_coerce_many(data.get("stepPresale"), DeliveryTimeRuleConfigItem),
+            step_presale=_coerce_many(
+                data.get("stepPresale"), DeliveryTimeRuleConfigItem
+            ),
             comment=_opt_str(data.get("comment")),
             must_free_return=_opt_bool(data.get("mustFreeReturn")),
             not_support_pre_sale_code=_opt_int(data.get("notSupportPreSaleCode")),
@@ -830,9 +858,13 @@ class GetSellerAddressRecordListResponse:
     total: Optional[int]
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, object]) -> "GetSellerAddressRecordListResponse":
+    def from_dict(
+        cls, data: Mapping[str, object]
+    ) -> "GetSellerAddressRecordListResponse":
         records = _coerce_many(data.get("sellerAddressRecordList"), SellerAddressRecord)
-        return cls(seller_address_record_list=records, total=_opt_int(data.get("total")))
+        return cls(
+            seller_address_record_list=records, total=_opt_int(data.get("total"))
+        )
 
 
 @dataclass
@@ -864,7 +896,11 @@ class CheckForbiddenKeywordResponse:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, object]) -> "CheckForbiddenKeywordResponse":
-        return cls(forbidden_keywords=[str(item) for item in _sequence(data.get("forbiddenKeywords"))])
+        return cls(
+            forbidden_keywords=[
+                str(item) for item in _sequence(data.get("forbiddenKeywords"))
+            ]
+        )
 
 
 @dataclass
@@ -888,8 +924,12 @@ class CategoryV3:
             name=_opt_str(data.get("name")),
             en_name=_opt_str(data.get("enName")),
             support_size_table=_opt_bool(data.get("supportSizeTable")),
-            support_recommend_size_table=_opt_bool(data.get("supportRecommendSizeTable")),
-            support_model_try_on_size_table=_opt_bool(data.get("supportModelTryOnSizeTable")),
+            support_recommend_size_table=_opt_bool(
+                data.get("supportRecommendSizeTable")
+            ),
+            support_model_try_on_size_table=_opt_bool(
+                data.get("supportModelTryOnSizeTable")
+            ),
             support_main_spec_image=_opt_bool(data.get("supportMainSpecImage")),
             main_spec_id=_opt_str(data.get("mainSpecId")),
             is_leaf=_opt_bool(data.get("isLeaf")),
@@ -963,8 +1003,7 @@ _ModelT = TypeVar("_ModelT", bound="_SupportsFromDict")
 
 class _SupportsFromDict(Protocol):
     @classmethod
-    def from_dict(cls: Type[_ModelT], data: Mapping[str, object]) -> _ModelT:
-        ...
+    def from_dict(cls: Type[_ModelT], data: Mapping[str, object]) -> _ModelT: ...
 
 
 def _coerce(raw: object, model: Type[_ModelT]) -> _ModelT:
@@ -994,7 +1033,9 @@ def _mapping_sequence(raw: object) -> List[Mapping[str, object]]:
 def _sequence(raw: object) -> List[object]:
     if raw is None:
         return []
-    if isinstance(raw, SequenceABC) and not isinstance(raw, (str, bytes, bytearray, MappingABC)):
+    if isinstance(raw, SequenceABC) and not isinstance(
+        raw, (str, bytes, bytearray, MappingABC)
+    ):
         return list(raw)
     return [raw]
 

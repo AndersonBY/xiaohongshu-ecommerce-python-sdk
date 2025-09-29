@@ -8,6 +8,7 @@ from xiaohongshu_ecommerce.config import ClientConfig
 
 
 def _build_client(monkeypatch, handler):
+    import time
     monkeypatch.setattr(
         "xiaohongshu_ecommerce.client.base.utc_timestamp",
         lambda: 1700000000,
@@ -20,7 +21,20 @@ def _build_client(monkeypatch, handler):
     )
     transport = httpx.MockTransport(handler)
     session = httpx.Client(transport=transport)
-    return XhsClient(config=config, session=session)
+    client = XhsClient(config=config, session=session)
+
+    # Set test tokens for automatic token management with future expiration
+    current_time_ms = int(time.time() * 1000)
+    client.set_tokens_manually(
+        access_token="test_access_token",
+        refresh_token="test_refresh_token",
+        access_token_expires_at=current_time_ms + (3600 * 1000),  # 1 hour from now
+        refresh_token_expires_at=current_time_ms + (7200 * 1000), # 2 hours from now
+        seller_id="test_seller",
+        seller_name="Test Seller"
+    )
+
+    return client
 
 
 def test_get_item_stock(monkeypatch):
@@ -85,8 +99,7 @@ def test_sync_sku_stock_v2(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.inventory.sync_sku_stock_v2(
-        sku_id="sku-1",
-        qty_with_whcode={"WH1": 10, "WH2": 5}
+        sku_id="sku-1", qty_with_whcode={"WH1": 10, "WH2": 5}
     )
 
     assert response.success is True
@@ -129,10 +142,7 @@ def test_list_warehouse(monkeypatch):
         )
 
     client = _build_client(monkeypatch, handler)
-    response = client.inventory.list_warehouse(
-        page_no=2,
-        name="Test Warehouse"
-    )
+    response = client.inventory.list_warehouse(page_no=2, name="Test Warehouse")
 
     assert response.success is True
     data = response.data
@@ -149,13 +159,15 @@ def test_set_warehouse_priority(monkeypatch):
         payload = json.loads(request.content.decode())
         assert payload["method"] == "warehouse.setPriority"
         assert payload["zoneCode"] == "ZJ"
-        assert payload["warehousePriorityList"] == [{"whCode": "WH1"}, {"whCode": "WH2"}]
+        assert payload["warehousePriorityList"] == [
+            {"whCode": "WH1"},
+            {"whCode": "WH2"},
+        ]
         return httpx.Response(200, json={"success": True, "data": "ok"})
 
     client = _build_client(monkeypatch, handler)
     response = client.inventory.set_warehouse_priority(
-        zone_code="ZJ",
-        warehouse_priority_list=[{"whCode": "WH1"}, {"whCode": "WH2"}]
+        zone_code="ZJ", warehouse_priority_list=[{"whCode": "WH1"}, {"whCode": "WH2"}]
     )
 
     assert response.success is True
@@ -179,7 +191,7 @@ def test_create_warehouse(monkeypatch):
         zone_code="330100",
         address="No.1 Road",
         contact_name="Alice",
-        contact_tel="13800000000"
+        contact_tel="13800000000",
     )
 
     assert response.success is True

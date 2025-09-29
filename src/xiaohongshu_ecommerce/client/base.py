@@ -70,8 +70,7 @@ class SyncSubClient:
             access_token = self._client.token_manager.get_valid_access_token()
         except Exception as e:
             raise OpenSdkException(
-                OpenSdkErrorCode.AUTH_ERROR,
-                f"Failed to get valid access token: {e}"
+                OpenSdkErrorCode.AUTH_ERROR, f"Failed to get valid access token: {e}"
             ) from e
 
         prepared = self._client.prepare_request(request, access_token)
@@ -80,7 +79,9 @@ class SyncSubClient:
             http_response = self.session.post(self.config.base_url, content=payload)
         except httpx.RequestError as exc:
             raise OpenSdkException(OpenSdkErrorCode.NETWORK_ERROR, str(exc)) from exc
-        return self._client.handle_response(http_response, response_model=response_model)
+        return self._client.handle_response(
+            http_response, response_model=response_model
+        )
 
 
 @dataclass
@@ -362,6 +363,7 @@ class XhsClient:
             seller_name: Seller name
         """
         from ..token_manager import TokenInfo
+
         tokens = TokenInfo(
             access_token=access_token,
             refresh_token=refresh_token,

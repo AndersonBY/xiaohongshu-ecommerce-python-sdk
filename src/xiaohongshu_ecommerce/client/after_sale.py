@@ -33,6 +33,7 @@ class AfterSaleClient(SyncSubClient):
     此客户端提供全面的售后管理功能，包括列出售后请求、处理退货/换货、
     管理审批和处理售后操作的物流。
     """
+
     def list_after_sale_infos(
         self,
         page_no: int,

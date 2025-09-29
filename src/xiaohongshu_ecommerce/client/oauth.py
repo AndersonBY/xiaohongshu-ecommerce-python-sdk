@@ -169,4 +169,6 @@ class OauthClient(SyncSubClient):
             http_response = self.session.post(self.config.base_url, content=payload)
         except httpx.RequestError as exc:
             raise OpenSdkException(OpenSdkErrorCode.NETWORK_ERROR, str(exc)) from exc
-        return self._client.handle_response(http_response, response_model=response_model)
+        return self._client.handle_response(
+            http_response, response_model=response_model
+        )

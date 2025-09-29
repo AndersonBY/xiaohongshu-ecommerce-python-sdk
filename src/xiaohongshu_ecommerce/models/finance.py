@@ -11,6 +11,7 @@ from .base import BaseRequest
 
 class SettleStatus(Enum):
     """Settlement status enumeration."""
+
     WAIT_SETTLE = 0
     SETTLED = 1
 
@@ -19,6 +20,7 @@ class SettleStatus(Enum):
 @dataclass
 class QueryCpsSettleRequest(BaseRequest):
     """Query CPS settlement request."""
+
     package_id: Optional[str] = None
 
     def __init__(self, package_id: Optional[str] = None):
@@ -34,6 +36,7 @@ class QueryCpsSettleRequest(BaseRequest):
 @dataclass
 class DownloadStatementRequest(BaseRequest):
     """Download statement request."""
+
     month: Optional[str] = None
 
     def __init__(self, month: Optional[str] = None):
@@ -49,6 +52,7 @@ class DownloadStatementRequest(BaseRequest):
 @dataclass
 class QuerySellerAccountRecordsRequest(BaseRequest):
     """Query seller account records request."""
+
     start_time: Optional[int] = None
     end_time: Optional[int] = None
     page_num: Optional[int] = None
@@ -95,6 +99,7 @@ class QuerySellerAccountRecordsRequest(BaseRequest):
 @dataclass
 class PageQueryTransactionRequest(BaseRequest):
     """Page query transaction request."""
+
     settle_biz_type: Optional[int] = None
     start_time: Optional[int] = None
     end_time: Optional[int] = None
@@ -141,6 +146,7 @@ class PageQueryTransactionRequest(BaseRequest):
 @dataclass
 class PageQueryExpenseRequest(BaseRequest):
     """Page query expense request."""
+
     start_time: Optional[int] = None
     end_time: Optional[int] = None
     page_num: Optional[int] = None
@@ -180,6 +186,7 @@ class PageQueryExpenseRequest(BaseRequest):
 @dataclass
 class CpsUserSettleDetail:
     """CPS user settlement detail."""
+
     package_id: Optional[str] = None
     return_ids: Optional[List[str]] = None
     goods_id: Optional[str] = None
@@ -206,6 +213,7 @@ class CpsUserSettleDetail:
 @dataclass
 class TransactionGoodsDetail:
     """Transaction goods detail."""
+
     transaction_id: Optional[int] = None
     new_sku_id: Optional[str] = None
     new_sku_quantity: Optional[int] = None
@@ -230,6 +238,7 @@ class TransactionGoodsDetail:
 @dataclass
 class Transaction:
     """Transaction detail."""
+
     transaction_id: Optional[int] = None
     package_id: Optional[str] = None
     statement_type: Optional[int] = None
@@ -272,12 +281,16 @@ class Transaction:
 @dataclass
 class QueryCpsSettleResponse:
     """Query CPS settlement response."""
-    cps_user_settle_details: Optional[List[CpsUserSettleDetail]] = field(default_factory=list)
+
+    cps_user_settle_details: Optional[List[CpsUserSettleDetail]] = field(
+        default_factory=list
+    )
 
 
 @dataclass
 class DownloadStatementResponse:
     """Download statement response."""
+
     # Based on Java pattern, this seems to be a file download response
     # The actual structure may depend on the API implementation
     download_url: Optional[str] = None
@@ -287,6 +300,7 @@ class DownloadStatementResponse:
 @dataclass
 class QuerySellerAccountRecordsResponse:
     """Query seller account records response."""
+
     # Based on Java pattern, specific structure not available in decompiled code
     # Will need to be determined from actual API response
     records: Optional[List[Dict[str, Any]]] = field(default_factory=list)
@@ -295,6 +309,7 @@ class QuerySellerAccountRecordsResponse:
 @dataclass
 class PageQueryTransactionResponse:
     """Page query transaction response."""
+
     page_num: Optional[int] = None
     page_size: Optional[int] = None
     total: Optional[int] = None
@@ -305,6 +320,7 @@ class PageQueryTransactionResponse:
 @dataclass
 class PageQueryExpenseResponse:
     """Page query expense response."""
+
     # Based on pattern similarity with PageQueryTransactionResponse
     page_num: Optional[int] = None
     page_size: Optional[int] = None

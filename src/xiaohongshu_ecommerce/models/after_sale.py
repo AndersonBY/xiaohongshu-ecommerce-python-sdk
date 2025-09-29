@@ -93,7 +93,9 @@ class ListAfterSaleInfosRequest(BaseRequest):
 
 
 class GetAfterSaleInfoRequest(BaseRequest):
-    def __init__(self, returns_id: str, *, need_negotiate_record: Optional[bool] = None) -> None:
+    def __init__(
+        self, returns_id: str, *, need_negotiate_record: Optional[bool] = None
+    ) -> None:
         super().__init__(method="afterSale.getAfterSaleInfo")
         self.returns_id = returns_id
         self.need_negotiate_record = need_negotiate_record
@@ -106,7 +108,9 @@ class GetAfterSaleInfoRequest(BaseRequest):
 
 
 class ListReturnRejectReasonRequest(BaseRequest):
-    def __init__(self, returns_id: str, *, reject_reason_type: Optional[int] = None) -> None:
+    def __init__(
+        self, returns_id: str, *, reject_reason_type: Optional[int] = None
+    ) -> None:
         super().__init__(method="afterSale.rejectReasons")
         self.returns_id = returns_id
         self.reject_reason_type = reject_reason_type
@@ -268,7 +272,13 @@ class GetAfterSaleDetailRequest(BaseRequest):
 
 
 class ReturnsAbnormalRequest(BaseRequest):
-    def __init__(self, returns_id: str, *, abnormal_type: Optional[int] = None, abnormal_note: Optional[str] = None) -> None:
+    def __init__(
+        self,
+        returns_id: str,
+        *,
+        abnormal_type: Optional[int] = None,
+        abnormal_note: Optional[str] = None,
+    ) -> None:
         super().__init__(method="afterSale.setReturnsAbnormal")
         self.returns_id = returns_id
         self.abnormal_type = abnormal_type
@@ -284,7 +294,13 @@ class ReturnsAbnormalRequest(BaseRequest):
 
 
 class ReceiveAndShipRequest(BaseRequest):
-    def __init__(self, returns_id: str, *, express_company_code: Optional[str] = None, express_no: Optional[str] = None) -> None:
+    def __init__(
+        self,
+        returns_id: str,
+        *,
+        express_company_code: Optional[str] = None,
+        express_no: Optional[str] = None,
+    ) -> None:
         super().__init__(method="afterSale.receiveAndShip")
         self.returns_id = returns_id
         self.express_company_code = express_company_code
@@ -327,7 +343,10 @@ class ListAfterSaleInfosResponse:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "ListAfterSaleInfosResponse":
-        infos = [_coerce_after_sale_basic(item) for item in data.get("afterSaleBasicInfos", [])]
+        infos = [
+            _coerce_after_sale_basic(item)
+            for item in data.get("afterSaleBasicInfos", [])
+        ]
         return cls(
             after_sale_basic_infos=infos,
             total_count=_opt_int(data.get("totalCount")),
@@ -368,7 +387,11 @@ class GetAfterSaleListResponse:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "GetAfterSaleListResponse":
-        items = [SimpleAfterSale.from_dict(item) for item in data.get("simpleAfterSaleList", []) if isinstance(item, Mapping)]
+        items = [
+            SimpleAfterSale.from_dict(item)
+            for item in data.get("simpleAfterSaleList", [])
+            if isinstance(item, Mapping)
+        ]
         return cls(
             total=_opt_int(data.get("total")),
             page_no=_opt_int(data.get("pageNo")),
@@ -401,7 +424,11 @@ class ListReturnRejectReasonResponse:
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "ListReturnRejectReasonResponse":
         return cls(
-            reject_reasons=[RejectReason.from_dict(item) for item in data.get("rejectReasons", []) if isinstance(item, Mapping)]
+            reject_reasons=[
+                RejectReason.from_dict(item)
+                for item in data.get("rejectReasons", [])
+                if isinstance(item, Mapping)
+            ]
         )
 
 

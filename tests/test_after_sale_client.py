@@ -10,6 +10,7 @@ from xiaohongshu_ecommerce.models.after_sale import (
 
 
 def _build_client(monkeypatch, handler):
+    import time
     monkeypatch.setattr(
         "xiaohongshu_ecommerce.client.base.utc_timestamp",
         lambda: 1700000000,
@@ -22,7 +23,20 @@ def _build_client(monkeypatch, handler):
     )
     transport = httpx.MockTransport(handler)
     session = httpx.Client(transport=transport)
-    return XhsClient(config=config, session=session)
+    client = XhsClient(config=config, session=session)
+
+    # Set test tokens for automatic token management with future expiration
+    current_time_ms = int(time.time() * 1000)
+    client.set_tokens_manually(
+        access_token="test_access_token",
+        refresh_token="test_refresh_token",
+        access_token_expires_at=current_time_ms + (3600 * 1000),  # 1 hour from now
+        refresh_token_expires_at=current_time_ms + (7200 * 1000), # 2 hours from now
+        seller_id="test_seller",
+        seller_name="Test Seller"
+    )
+
+    return client
 
 
 def test_list_after_sale_infos(monkeypatch):
@@ -55,11 +69,7 @@ def test_list_after_sale_infos(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.after_sale.list_after_sale_infos(
-        page_no=1,
-        page_size=20,
-        order_id="order-1",
-        return_types=[1, 2],
-        statuses=[10]
+        page_no=1, page_size=20, order_id="order-1", return_types=[1, 2], statuses=[10]
     )
 
     assert response.success is True
@@ -90,8 +100,7 @@ def test_get_after_sale_info(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.after_sale.get_after_sale_info(
-        returns_id="ret-1",
-        need_negotiate_record=True
+        returns_id="ret-1", need_negotiate_record=True
     )
 
     assert response.success is True
@@ -118,8 +127,7 @@ def test_list_return_reject_reasons(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.after_sale.list_return_reject_reasons(
-        returns_id="ret-1",
-        reject_reason_type=1
+        returns_id="ret-1", reject_reason_type=1
     )
 
     assert response.success is True
@@ -151,10 +159,7 @@ def test_list_after_sale(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.after_sale.list_after_sale(
-        start_time=1617724800000,
-        end_time=1617811200000,
-        time_type=1,
-        status=1
+        start_time=1617724800000, end_time=1617811200000, time_type=1, status=1
     )
 
     assert response.success is True
@@ -176,10 +181,7 @@ def test_confirm_receive(monkeypatch):
         )
 
     client = _build_client(monkeypatch, handler)
-    response = client.after_sale.confirm_receive(
-        returns_id="ret-1",
-        action=1
-    )
+    response = client.after_sale.confirm_receive(returns_id="ret-1", action=1)
 
     assert response.success is True
     assert response.data == "确认收货成功"
@@ -200,9 +202,7 @@ def test_audit_returns(monkeypatch):
     client = _build_client(monkeypatch, handler)
     receiver_info = AuditReturnsReceiverInfo(receiver_name="张三")
     response = client.after_sale.audit_returns(
-        returns_id="ret-1",
-        action=1,
-        receiver_info=receiver_info
+        returns_id="ret-1", action=1, receiver_info=receiver_info
     )
 
     assert response.success is True
@@ -222,9 +222,7 @@ def test_get_after_sale_detail(monkeypatch):
         )
 
     client = _build_client(monkeypatch, handler)
-    response = client.after_sale.get_after_sale_detail(
-        after_sale_id="asd-1"
-    )
+    response = client.after_sale.get_after_sale_detail(after_sale_id="asd-1")
 
     assert response.success is True
     data = response.data
@@ -246,8 +244,7 @@ def test_set_returns_abnormal(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.after_sale.set_returns_abnormal(
-        returns_id="ret-1",
-        abnormal_type=2
+        returns_id="ret-1", abnormal_type=2
     )
 
     assert response.success is True
@@ -268,9 +265,7 @@ def test_receive_and_ship(monkeypatch):
 
     client = _build_client(monkeypatch, handler)
     response = client.after_sale.receive_and_ship(
-        returns_id="ret-1",
-        express_company_code="SF",
-        express_no="SF123456"
+        returns_id="ret-1", express_company_code="SF", express_no="SF123456"
     )
 
     assert response.success is True

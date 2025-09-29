@@ -11,6 +11,7 @@ from .base import BaseRequest
 
 class PackageStatusEnum(Enum):
     """Package status enumeration."""
+
     PENDING = "pending"
     PROCESSING = "processing"
     SHIPPED = "shipped"
@@ -20,6 +21,7 @@ class PackageStatusEnum(Enum):
 
 class PackageTypeEnum(Enum):
     """Package type enumeration."""
+
     NORMAL = "normal"
     BONDED = "bonded"
     OVERSEAS = "overseas"
@@ -28,6 +30,7 @@ class PackageTypeEnum(Enum):
 @dataclass
 class PackageSimpleDetail:
     """Simple package detail."""
+
     package_id: Optional[str] = None
     package_no: Optional[str] = None
     package_status: Optional[int] = None
@@ -43,6 +46,7 @@ class PackageSimpleDetail:
 @dataclass
 class PackageDetailInfo:
     """Detailed package information."""
+
     package_id: Optional[str] = None
     package_no: Optional[str] = None
     package_status: Optional[int] = None
@@ -65,6 +69,7 @@ class PackageDetailInfo:
 @dataclass
 class PackageCustomsItem:
     """Package customs item information."""
+
     hs_code: Optional[str] = None
     product_name: Optional[str] = None
     product_name_en: Optional[str] = None
@@ -82,6 +87,7 @@ class PackageCustomsItem:
 @dataclass
 class PackageReceiverInfo:
     """Package receiver information."""
+
     name: Optional[str] = None
     phone: Optional[str] = None
     province: Optional[str] = None
@@ -94,6 +100,7 @@ class PackageReceiverInfo:
 @dataclass
 class PackageTrackingInfo:
     """Package tracking information."""
+
     express_company: Optional[str] = None
     express_no: Optional[str] = None
     tracking_details: List[dict] = field(default_factory=list)
@@ -102,6 +109,7 @@ class PackageTrackingInfo:
 @dataclass
 class PackageDeclareInfo:
     """Package declare information."""
+
     declare_no: Optional[str] = None
     declare_status: Optional[int] = None
     customs_code: Optional[str] = None
@@ -112,6 +120,7 @@ class PackageDeclareInfo:
 @dataclass
 class PackageSupportedPort:
     """Package supported port information."""
+
     port_code: Optional[str] = None
     port_name: Optional[str] = None
     customs_code: Optional[str] = None
@@ -120,6 +129,7 @@ class PackageSupportedPort:
 @dataclass
 class CancelApplyInfo:
     """Cancel apply information."""
+
     apply_id: Optional[str] = None
     package_id: Optional[str] = None
     apply_status: Optional[int] = None
@@ -132,6 +142,7 @@ class CancelApplyInfo:
 @dataclass
 class PackageTransferBatch:
     """Package transfer batch information."""
+
     batch_id: Optional[str] = None
     batch_no: Optional[str] = None
     status: Optional[int] = None
@@ -142,6 +153,7 @@ class PackageTransferBatch:
 @dataclass
 class GetPackageListRequest(BaseRequest):
     """Get package list request."""
+
     start_time: Optional[int] = None
     end_time: Optional[int] = None
     time_type: Optional[int] = None
@@ -154,6 +166,7 @@ class GetPackageListRequest(BaseRequest):
 @dataclass
 class GetPackageDetailRequest(BaseRequest):
     """Get package detail request."""
+
     package_id: Optional[str] = None
     package_no: Optional[str] = None
 
@@ -161,6 +174,7 @@ class GetPackageDetailRequest(BaseRequest):
 @dataclass
 class ResendBondedPaymentRequest(BaseRequest):
     """Resend bonded payment request."""
+
     package_id: Optional[str] = None
     payment_no: Optional[str] = None
 
@@ -168,6 +182,7 @@ class ResendBondedPaymentRequest(BaseRequest):
 @dataclass
 class SyncItemCustomsRequest(BaseRequest):
     """Sync item customs request."""
+
     package_id: Optional[str] = None
     customs_items: List[PackageCustomsItem] = field(default_factory=list)
 
@@ -175,18 +190,21 @@ class SyncItemCustomsRequest(BaseRequest):
 @dataclass
 class GetItemCustomInfoRequest(BaseRequest):
     """Get item customs info request."""
+
     package_id: Optional[str] = None
 
 
 @dataclass
 class GetReceiverInfoRequest(BaseRequest):
     """Get receiver info request."""
+
     package_id: Optional[str] = None
 
 
 @dataclass
 class ModifyPackageExpressRequest(BaseRequest):
     """Modify package express request."""
+
     package_id: Optional[str] = None
     express_company: Optional[str] = None
     express_no: Optional[str] = None
@@ -195,6 +213,7 @@ class ModifyPackageExpressRequest(BaseRequest):
 @dataclass
 class PackageDeliverRequest(BaseRequest):
     """Package deliver request."""
+
     package_id: Optional[str] = None
     express_company: Optional[str] = None
     express_no: Optional[str] = None
@@ -204,6 +223,7 @@ class PackageDeliverRequest(BaseRequest):
 @dataclass
 class ModifySellerMarkRequest(BaseRequest):
     """Modify seller mark request."""
+
     package_id: Optional[str] = None
     seller_mark: Optional[str] = None
 
@@ -211,6 +231,7 @@ class ModifySellerMarkRequest(BaseRequest):
 @dataclass
 class GetPackageTrackRequest(BaseRequest):
     """Get package tracking request."""
+
     package_id: Optional[str] = None
     express_no: Optional[str] = None
 
@@ -218,18 +239,21 @@ class GetPackageTrackRequest(BaseRequest):
 @dataclass
 class GetPackageDeclareRequest(BaseRequest):
     """Get package declare request."""
+
     package_id: Optional[str] = None
 
 
 @dataclass
 class GetSupportedPortListRequest(BaseRequest):
     """Get supported port list request."""
+
     customs_code: Optional[str] = None
 
 
 @dataclass
 class GetCancelApplyListRequest(BaseRequest):
     """Get cancel apply list request."""
+
     start_time: Optional[int] = None
     end_time: Optional[int] = None
     status: Optional[int] = None
@@ -240,6 +264,7 @@ class GetCancelApplyListRequest(BaseRequest):
 @dataclass
 class AuditCancelApplyRequest(BaseRequest):
     """Audit cancel apply request."""
+
     apply_id: Optional[str] = None
     audit_result: Optional[int] = None
     audit_reason: Optional[str] = None
@@ -248,6 +273,7 @@ class AuditCancelApplyRequest(BaseRequest):
 @dataclass
 class AddDeclarePortRequest(BaseRequest):
     """Add declare port request."""
+
     package_id: Optional[str] = None
     port_code: Optional[str] = None
 
@@ -255,6 +281,7 @@ class AddDeclarePortRequest(BaseRequest):
 @dataclass
 class UpdateProxyPackageWeightRequest(BaseRequest):
     """Update proxy package weight request."""
+
     package_id: Optional[str] = None
     weight: Optional[float] = None
 
@@ -262,6 +289,7 @@ class UpdateProxyPackageWeightRequest(BaseRequest):
 @dataclass
 class CreateTransferBatchRequest(BaseRequest):
     """Create transfer batch request."""
+
     package_ids: List[str] = field(default_factory=list)
     batch_type: Optional[int] = None
 
@@ -270,6 +298,7 @@ class CreateTransferBatchRequest(BaseRequest):
 @dataclass
 class GetPackagesListResponse:
     """Get packages list response."""
+
     total: int = 0
     page_no: int = 0
     page_size: int = 0
@@ -280,12 +309,14 @@ class GetPackagesListResponse:
 @dataclass
 class GetPackageDetailResponse:
     """Get package detail response."""
+
     package_detail: Optional[PackageDetailInfo] = None
 
 
 @dataclass
 class GetItemCustomsInfoResponse:
     """Get item customs info response."""
+
     package_id: Optional[str] = None
     customs_items: List[PackageCustomsItem] = field(default_factory=list)
 
@@ -293,30 +324,35 @@ class GetItemCustomsInfoResponse:
 @dataclass
 class GetReceiveInfoResponse:
     """Get receive info response."""
+
     receiver_info: Optional[PackageReceiverInfo] = None
 
 
 @dataclass
 class GetPackageTrackResponse:
     """Get package tracking response."""
+
     tracking_info: Optional[PackageTrackingInfo] = None
 
 
 @dataclass
 class GetPackageDeclareResponse:
     """Get package declare response."""
+
     declare_info: Optional[PackageDeclareInfo] = None
 
 
 @dataclass
 class GetSupportedPortListResponse:
     """Get supported port list response."""
+
     ports: List[PackageSupportedPort] = field(default_factory=list)
 
 
 @dataclass
 class GetCancelApplyListResponse:
     """Get cancel apply list response."""
+
     total: int = 0
     page_no: int = 0
     page_size: int = 0
@@ -327,4 +363,5 @@ class GetCancelApplyListResponse:
 @dataclass
 class CreateTransferBatchResponse:
     """Create transfer batch response."""
+
     transfer_batch: Optional[PackageTransferBatch] = None

@@ -62,7 +62,7 @@ def test_data_batch_decrypt(monkeypatch):
     result = client.data.batch_decrypt(
         base_infos=[DecryptItem(data_tag="phone", encrypted_data="abc123")],
         action_type="test",
-        app_user_id="user-1"
+        app_user_id="user-1",
     )
 
     assert result.success is True
@@ -102,7 +102,7 @@ def test_data_batch_decrypt_error(monkeypatch):
     result = client.data.batch_decrypt(
         base_infos=[DecryptItem(data_tag="phone", encrypted_data="abc123")],
         action_type="test",
-        app_user_id="user-1"
+        app_user_id="user-1",
     )
 
     assert result.success is False

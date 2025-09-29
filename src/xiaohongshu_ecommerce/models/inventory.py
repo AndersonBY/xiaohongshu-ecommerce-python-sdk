@@ -77,7 +77,10 @@ class SyncItemStockRequest(BaseRequest):
         self.sku_qty_list = sku_qty_list or []
 
     def extra_payload(self) -> Dict[str, object]:
-        payload: Dict[str, object] = {"itemId": self.item_id, "totalQty": self.total_qty}
+        payload: Dict[str, object] = {
+            "itemId": self.item_id,
+            "totalQty": self.total_qty,
+        }
         if self.distribution_mode is not None:
             payload["distributionMode"] = self.distribution_mode
         if self.sku_qty_list:
@@ -322,15 +325,21 @@ class SetWarehousePriorityRequest(BaseRequest):
     def __init__(
         self,
         zone_code: str,
-        warehouse_priority_list: Sequence[Mapping[str, object] | "SetWarehousePriorityRequest.WarehousePriority" | str],
+        warehouse_priority_list: Sequence[
+            Mapping[str, object] | "SetWarehousePriorityRequest.WarehousePriority" | str
+        ],
     ) -> None:
         super().__init__(method="warehouse.setPriority")
         self.zone_code = zone_code
-        self.warehouse_priority_list = [self._coerce_priority(item) for item in warehouse_priority_list]
+        self.warehouse_priority_list = [
+            self._coerce_priority(item) for item in warehouse_priority_list
+        ]
 
     def _coerce_priority(
         self,
-        item: Mapping[str, object] | "SetWarehousePriorityRequest.WarehousePriority" | str,
+        item: Mapping[str, object]
+        | "SetWarehousePriorityRequest.WarehousePriority"
+        | str,
     ) -> "SetWarehousePriorityRequest.WarehousePriority":
         if isinstance(item, SetWarehousePriorityRequest.WarehousePriority):
             return item
@@ -346,7 +355,9 @@ class SetWarehousePriorityRequest(BaseRequest):
     def extra_payload(self) -> Dict[str, object]:
         payload: Dict[str, object] = {"zoneCode": self.zone_code}
         if self.warehouse_priority_list:
-            payload["warehousePriorityList"] = [entry.to_payload() for entry in self.warehouse_priority_list]
+            payload["warehousePriorityList"] = [
+                entry.to_payload() for entry in self.warehouse_priority_list
+            ]
         return payload
 
 
@@ -402,9 +413,13 @@ class SkuStock:
             total=_opt_int(data.get("total")),
             occupied_quantity=_opt_int(data.get("occupiedQuantity")),
             product_channel_quantity=_opt_int(data.get("productChannelQuantity")),
-            product_channel_occupied_quantity=_opt_int(data.get("productChannelOccupiedQuantity")),
+            product_channel_occupied_quantity=_opt_int(
+                data.get("productChannelOccupiedQuantity")
+            ),
             activity_channel_quantity=_opt_int(data.get("activityChannelQuantity")),
-            activity_channel_occupied_quantity=_opt_int(data.get("activityChannelOccupiedQuantity")),
+            activity_channel_occupied_quantity=_opt_int(
+                data.get("activityChannelOccupiedQuantity")
+            ),
         )
 
 
@@ -435,7 +450,9 @@ class SkuStockWithWarehouseCode:
         return cls(
             sku_id=_opt_str(data.get("skuId")),
             whcode=_opt_str(data.get("whcode")),
-            sku_stock=SkuStock.from_dict(_as_mapping(stock)) if isinstance(stock, Mapping) else None,
+            sku_stock=SkuStock.from_dict(_as_mapping(stock))
+            if isinstance(stock, Mapping)
+            else None,
         )
 
 
@@ -456,8 +473,16 @@ class SkuStockResponseData:
         for entry in _as_sequence(wh_list_raw):
             if isinstance(entry, Mapping):
                 wh_list.append(SkuStockWithWarehouseCode.from_dict(entry))
-        sku_stock = SkuStock.from_dict(_as_mapping(stock_info)) if isinstance(stock_info, Mapping) else None
-        status = SkuStockOperationStatus.from_dict(response) if isinstance(response, Mapping) else None
+        sku_stock = (
+            SkuStock.from_dict(_as_mapping(stock_info))
+            if isinstance(stock_info, Mapping)
+            else None
+        )
+        status = (
+            SkuStockOperationStatus.from_dict(response)
+            if isinstance(response, Mapping)
+            else None
+        )
         return cls(
             sku_id=_opt_str(data.get("skuId")),
             sku_stock=sku_stock,
@@ -477,7 +502,9 @@ class SkuStockInfo:
         stock = data.get("skuStockInfo")
         return cls(
             sku_id=_opt_str(data.get("skuId")),
-            sku_stock_info=SkuStock.from_dict(_as_mapping(stock)) if isinstance(stock, Mapping) else None,
+            sku_stock_info=SkuStock.from_dict(_as_mapping(stock))
+            if isinstance(stock, Mapping)
+            else None,
         )
 
 
@@ -493,7 +520,9 @@ class SkuStockInfoWithWhcode:
         return cls(
             sku_id=_opt_str(data.get("skuId")),
             whcode=_opt_str(data.get("whcode")),
-            sku_stock_info=SkuStock.from_dict(_as_mapping(stock)) if isinstance(stock, Mapping) else None,
+            sku_stock_info=SkuStock.from_dict(_as_mapping(stock))
+            if isinstance(stock, Mapping)
+            else None,
         )
 
 
@@ -514,9 +543,13 @@ class GetSkuStockV2ResponseData:
             if isinstance(entry, Mapping):
                 wh_items.append(SkuStockInfoWithWhcode.from_dict(entry))
         return cls(
-            response=SkuStockOperationStatus.from_dict(response) if isinstance(response, Mapping) else None,
+            response=SkuStockOperationStatus.from_dict(response)
+            if isinstance(response, Mapping)
+            else None,
             api_version=_opt_str(data.get("apiVersion")),
-            sku_stock_info=SkuStockInfo.from_dict(info) if isinstance(info, Mapping) else None,
+            sku_stock_info=SkuStockInfo.from_dict(info)
+            if isinstance(info, Mapping)
+            else None,
             sku_stock_info_with_whcode=wh_items,
         )
 
@@ -539,9 +572,13 @@ class SyncSkuStockV2ResponseData:
                 if isinstance(value, Mapping):
                     parsed_entries[str(key)] = SkuStockInfoWithWhcode.from_dict(value)
         return cls(
-            response=SkuStockOperationStatus.from_dict(response) if isinstance(response, Mapping) else None,
+            response=SkuStockOperationStatus.from_dict(response)
+            if isinstance(response, Mapping)
+            else None,
             api_version=_opt_str(data.get("apiVersion")),
-            sku_stock_info=SkuStockInfo.from_dict(info) if isinstance(info, Mapping) else None,
+            sku_stock_info=SkuStockInfo.from_dict(info)
+            if isinstance(info, Mapping)
+            else None,
             data=parsed_entries,
         )
 

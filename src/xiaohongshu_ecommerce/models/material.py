@@ -11,6 +11,7 @@ from .base import BaseRequest
 
 class MaterialType(Enum):
     """Material type enumeration."""
+
     IMAGE = 0
     VIDEO = 1
 
@@ -18,6 +19,7 @@ class MaterialType(Enum):
 @dataclass
 class MaterialDetail:
     """Material detail information."""
+
     material_id: Optional[str] = None
     name: Optional[str] = None
     type: Optional[MaterialType] = None
@@ -34,6 +36,7 @@ class MaterialDetail:
 @dataclass
 class UploadMaterialInfoRequest(BaseRequest):
     """Upload material info request."""
+
     name: Optional[str] = None
     type: Optional[MaterialType] = None
     material_content: Optional[bytes] = None
@@ -48,7 +51,9 @@ class UploadMaterialInfoRequest(BaseRequest):
         if self.name is not None:
             payload["name"] = self.name
         if self.type is not None:
-            payload["type"] = self.type.value if isinstance(self.type, MaterialType) else self.type
+            payload["type"] = (
+                self.type.value if isinstance(self.type, MaterialType) else self.type
+            )
         if self.material_content is not None:
             payload["materialContent"] = self.material_content
         if self.description is not None:
@@ -61,6 +66,7 @@ class UploadMaterialInfoRequest(BaseRequest):
 @dataclass
 class UpdateMaterialInfoRequest(BaseRequest):
     """Update material info request."""
+
     material_id: Optional[str] = None
     name: Optional[str] = None
     type: Optional[MaterialType] = None
@@ -77,7 +83,9 @@ class UpdateMaterialInfoRequest(BaseRequest):
         if self.name is not None:
             payload["name"] = self.name
         if self.type is not None:
-            payload["type"] = self.type.value if isinstance(self.type, MaterialType) else self.type
+            payload["type"] = (
+                self.type.value if isinstance(self.type, MaterialType) else self.type
+            )
         if self.description is not None:
             payload["description"] = self.description
         if self.tags:
@@ -88,6 +96,7 @@ class UpdateMaterialInfoRequest(BaseRequest):
 @dataclass
 class DeleteMaterialInfoRequest(BaseRequest):
     """Delete material info request."""
+
     material_id: Optional[str] = None
 
     def __post_init__(self):
@@ -103,6 +112,7 @@ class DeleteMaterialInfoRequest(BaseRequest):
 @dataclass
 class QueryMaterialInfoRequest(BaseRequest):
     """Query material info request."""
+
     material_id: Optional[str] = None
     name: Optional[str] = None
     type: Optional[MaterialType] = None
@@ -121,7 +131,9 @@ class QueryMaterialInfoRequest(BaseRequest):
         if self.name is not None:
             payload["name"] = self.name
         if self.type is not None:
-            payload["type"] = self.type.value if isinstance(self.type, MaterialType) else self.type
+            payload["type"] = (
+                self.type.value if isinstance(self.type, MaterialType) else self.type
+            )
         if self.page_no is not None:
             payload["pageNo"] = self.page_no
         if self.page_size is not None:
@@ -137,6 +149,7 @@ class QueryMaterialInfoRequest(BaseRequest):
 @dataclass
 class QueryMaterialInfoResponse:
     """Query material info response."""
+
     total: int = 0
     page_no: int = 0
     page_size: int = 0

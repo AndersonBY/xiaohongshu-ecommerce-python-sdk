@@ -33,7 +33,11 @@ class BoutiqueClient(SyncSubClient):
     """
 
     def create_item(
-        self, spu_id: str, boutique_modes: Optional[List[BoutiqueMode]] = None, with_item_detail: bool = False, operation_type: Optional[OperationType] = None
+        self,
+        spu_id: str,
+        boutique_modes: Optional[List[BoutiqueMode]] = None,
+        with_item_detail: bool = False,
+        operation_type: Optional[OperationType] = None,
     ) -> "BaseResponse[CreateBoutiqueItemResponse]":
         """创建精品模式商品 (API: boutique.createBoutiqueItem).
 
@@ -74,7 +78,17 @@ class BoutiqueClient(SyncSubClient):
         return self._execute(request, response_model=CreateBoutiqueItemResponse)
 
     def update_item(
-        self, item_id: str, boutique_item_batch_info: Optional[BoutiqueItemBatchInfo] = None, boutique_batch_id: Optional[str] = None, identity_id: Optional[str] = None, with_item_detail: bool = False, free_return: Optional[int] = None, skucode: Optional[str] = None, whcode: Optional[str] = None, qty: Optional[int] = None, operate_info: Optional[StockOperateInfo] = None
+        self,
+        item_id: str,
+        boutique_item_batch_info: Optional[BoutiqueItemBatchInfo] = None,
+        boutique_batch_id: Optional[str] = None,
+        identity_id: Optional[str] = None,
+        with_item_detail: bool = False,
+        free_return: Optional[int] = None,
+        skucode: Optional[str] = None,
+        whcode: Optional[str] = None,
+        qty: Optional[int] = None,
+        operate_info: Optional[StockOperateInfo] = None,
     ) -> "BaseResponse[BasicBoutiqueItemData]":
         """更新精品模式商品配置 (API: boutique.updateBoutiqueItem).
 
@@ -118,7 +132,11 @@ class BoutiqueClient(SyncSubClient):
         return self._execute(request, response_model=BasicBoutiqueItemData)
 
     def create_sku(
-        self, item_id: str, boutique_modes: Optional[List[BoutiqueMode]] = None, with_sku_detail: bool = False, operation_type: Optional[OperationType] = None
+        self,
+        item_id: str,
+        boutique_modes: Optional[List[BoutiqueMode]] = None,
+        with_sku_detail: bool = False,
+        operation_type: Optional[OperationType] = None,
     ) -> "BaseResponse[CreateBoutiqueSkuResponse]":
         """创建精品模式SKU (API: boutique.createBoutiqueSku).
 
@@ -150,7 +168,17 @@ class BoutiqueClient(SyncSubClient):
         return self._execute(request, response_model=CreateBoutiqueSkuResponse)
 
     def update_sku(
-        self, sku_id: str, boutique_sku_batch_info: Optional[BoutiqueItemBatchInfo] = None, boutique_batch_id: Optional[str] = None, identity_id: Optional[str] = None, with_sku_detail: bool = False, free_return: Optional[int] = None, sc_skucode: Optional[str] = None, whcode: Optional[str] = None, qty: Optional[int] = None, operate_info: Optional[StockOperateInfo] = None
+        self,
+        sku_id: str,
+        boutique_sku_batch_info: Optional[BoutiqueItemBatchInfo] = None,
+        boutique_batch_id: Optional[str] = None,
+        identity_id: Optional[str] = None,
+        with_sku_detail: bool = False,
+        free_return: Optional[int] = None,
+        sc_skucode: Optional[str] = None,
+        whcode: Optional[str] = None,
+        qty: Optional[int] = None,
+        operate_info: Optional[StockOperateInfo] = None,
     ) -> "BaseResponse[BasicBoutiqueSkuData]":
         """更新精品模式SKU配置 (API: boutique.updateBoutiqueSku).
 
@@ -193,9 +221,7 @@ class BoutiqueClient(SyncSubClient):
         )
         return self._execute(request, response_model=BasicBoutiqueSkuData)
 
-    def create_item_v2(
-        self, request: "BaseRequest"
-    ) -> "BaseResponse[Any]":
+    def create_item_v2(self, request: "BaseRequest") -> "BaseResponse[Any]":
         """创建精品模式商品V2版本 (API: boutique.createBoutiqueItemV2).
 
         使用增强的V2 API创建精品模式商品，提供高级功能和改进的性能。

@@ -12,6 +12,7 @@ from .base import BaseRequest
 @dataclass
 class ElectronicBillAddress:
     """Electronic bill address information."""
+
     city: Optional[str] = None
     detail: Optional[str] = None
     district: Optional[str] = None
@@ -22,6 +23,7 @@ class ElectronicBillAddress:
 @dataclass
 class ElectronicBillUserInfo:
     """Electronic bill user information."""
+
     address: Optional[ElectronicBillAddress] = None
     mobile: Optional[str] = None
     name: Optional[str] = None
@@ -32,6 +34,7 @@ class ElectronicBillUserInfo:
 @dataclass
 class ElectronicBillItem:
     """Electronic bill item information."""
+
     count: Optional[int] = None
     name: Optional[str] = None
     specification: Optional[str] = None
@@ -40,6 +43,7 @@ class ElectronicBillItem:
 @dataclass
 class ElectronicBillOrderInfo:
     """Electronic bill order information."""
+
     order_channels_type: Optional[str] = None
     trade_order_list: List[str] = field(default_factory=list)
     buyer_memo: List[str] = field(default_factory=list)
@@ -51,6 +55,7 @@ class ElectronicBillOrderInfo:
 @dataclass
 class ElectronicBillPackageInfo:
     """Electronic bill package information."""
+
     id: Optional[str] = None
     items: List[ElectronicBillItem] = field(default_factory=list)
     volume: Optional[int] = None
@@ -67,6 +72,7 @@ class ElectronicBillPackageInfo:
 @dataclass
 class ElectronicBillTradeOrderInfo:
     """Electronic bill trade order information."""
+
     logistics_services: Optional[str] = None
     object_id: Optional[str] = None
     order_info: Optional[ElectronicBillOrderInfo] = None
@@ -81,6 +87,7 @@ class ElectronicBillTradeOrderInfo:
 @dataclass
 class Subscribe:
     """Subscribe information in query response."""
+
     cp_code: Optional[str] = None
     cp_name: Optional[str] = None
     cp_type: Optional[int] = None
@@ -96,6 +103,7 @@ class Subscribe:
 @dataclass
 class SenderAddress:
     """Sender address information."""
+
     address: Optional[ElectronicBillAddress] = None
     mobile: Optional[str] = None
     name: Optional[str] = None
@@ -105,6 +113,7 @@ class SenderAddress:
 @dataclass
 class Usage:
     """Usage statistics information."""
+
     quantity: Optional[int] = None
     allocated_quantity: Optional[int] = None
     cancel_quantity: Optional[int] = None
@@ -114,6 +123,7 @@ class Usage:
 @dataclass
 class Template:
     """Template information in query response."""
+
     id: Optional[int] = None
     cp_code: Optional[str] = None
     brand_code: Optional[str] = None
@@ -131,6 +141,7 @@ class Template:
 @dataclass
 class QueryEbillSubscribesRequest(BaseRequest):
     """Query electronic bill subscribes request."""
+
     bill_version: Optional[int] = None
     cp_code: Optional[str] = None
     need_usage: Optional[bool] = None
@@ -140,6 +151,7 @@ class QueryEbillSubscribesRequest(BaseRequest):
 @dataclass
 class QueryEbillTemplatesRequest(BaseRequest):
     """Query electronic bill templates request."""
+
     bill_version: Optional[int] = None
     cp_code: Optional[str] = None
     brand_code: Optional[str] = None
@@ -150,6 +162,7 @@ class QueryEbillTemplatesRequest(BaseRequest):
 @dataclass
 class QueryEbillOrderRequest(BaseRequest):
     """Query electronic bill order request."""
+
     bill_version: Optional[int] = None
     cp_code: Optional[str] = None
     waybill_code: Optional[str] = None
@@ -158,10 +171,13 @@ class QueryEbillOrderRequest(BaseRequest):
 @dataclass
 class CreateEbillOrdersRequest(BaseRequest):
     """Create electronic bill orders request."""
+
     bill_version: Optional[int] = None
     cp_code: Optional[str] = None
     sender: Optional[ElectronicBillUserInfo] = None
-    trade_order_info_list: List[ElectronicBillTradeOrderInfo] = field(default_factory=list)
+    trade_order_info_list: List[ElectronicBillTradeOrderInfo] = field(
+        default_factory=list
+    )
     extra_info: Optional[str] = None
     customer_code: Optional[str] = None
     brand_code: Optional[str] = None
@@ -177,11 +193,14 @@ class CreateEbillOrdersRequest(BaseRequest):
 @dataclass
 class UpdateEbillOrderRequest(BaseRequest):
     """Update electronic bill order request."""
+
     bill_version: Optional[int] = None
     cp_code: Optional[str] = None
     waybill_code: Optional[str] = None
     sender: Optional[ElectronicBillUserInfo] = None
-    trade_order_info_list: List[ElectronicBillTradeOrderInfo] = field(default_factory=list)
+    trade_order_info_list: List[ElectronicBillTradeOrderInfo] = field(
+        default_factory=list
+    )
     extra_info: Optional[str] = None
     customer_code: Optional[str] = None
     brand_code: Optional[str] = None
@@ -197,6 +216,7 @@ class UpdateEbillOrderRequest(BaseRequest):
 @dataclass
 class CancelEbillOrderRequest(BaseRequest):
     """Cancel electronic bill order request."""
+
     bill_version: Optional[int] = None
     cp_code: Optional[str] = None
     waybill_code: Optional[str] = None
@@ -207,6 +227,7 @@ class CancelEbillOrderRequest(BaseRequest):
 @dataclass
 class UpdateEbillInstantShoppingTrackRequest(BaseRequest):
     """Update electronic bill instant shopping track request."""
+
     waybill_code: Optional[str] = None
     track_info: Optional[str] = None
     status: Optional[int] = None
@@ -216,6 +237,7 @@ class UpdateEbillInstantShoppingTrackRequest(BaseRequest):
 @dataclass
 class UpdateEbillRiderLocationRequest(BaseRequest):
     """Update electronic bill rider location request."""
+
     waybill_code: Optional[str] = None
     rider_id: Optional[str] = None
     latitude: Optional[float] = None
@@ -227,6 +249,7 @@ class UpdateEbillRiderLocationRequest(BaseRequest):
 @dataclass
 class QueryEbillSubscribesResponse:
     """Query electronic bill subscribes response."""
+
     subscribe_list: List[Subscribe] = field(default_factory=list)
     account_id: Optional[int] = None
 
@@ -234,12 +257,14 @@ class QueryEbillSubscribesResponse:
 @dataclass
 class QueryEbillTemplatesResponse:
     """Query electronic bill templates response."""
+
     template_list: List[Template] = field(default_factory=list)
 
 
 @dataclass
 class QueryEbillOrderResponse:
     """Query electronic bill order response."""
+
     waybill_code: Optional[str] = None
     parent_waybill_code: Optional[str] = None
     print_data: Optional[str] = None
@@ -250,6 +275,7 @@ class QueryEbillOrderResponse:
 @dataclass
 class CreateEbillOrdersResponse:
     """Create electronic bill orders response."""
+
     waybill_codes: List[str] = field(default_factory=list)
     success_count: Optional[int] = None
     failed_count: Optional[int] = None
@@ -259,6 +285,7 @@ class CreateEbillOrdersResponse:
 @dataclass
 class UpdateEbillOrderResponse:
     """Update electronic bill order response."""
+
     waybill_code: Optional[str] = None
     success: Optional[bool] = None
     sub_error_code: Optional[str] = None
@@ -267,6 +294,7 @@ class UpdateEbillOrderResponse:
 @dataclass
 class CancelEbillOrderResponse:
     """Cancel electronic bill order response."""
+
     waybill_code: Optional[str] = None
     success: Optional[bool] = None
     sub_error_code: Optional[str] = None

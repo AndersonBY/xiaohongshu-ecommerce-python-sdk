@@ -11,6 +11,7 @@ from .base import BaseRequest
 @dataclass
 class DeliveryVoucherDTO:
     """Delivery voucher DTO."""
+
     id: Optional[str] = None
     no: Optional[str] = None
     start_time: Optional[int] = None
@@ -20,6 +21,7 @@ class DeliveryVoucherDTO:
 @dataclass
 class DeliveryVoucherInfoDTO:
     """Delivery voucher info DTO."""
+
     sku_id: Optional[str] = None
     delivery_vouchers: List[DeliveryVoucherDTO] = field(default_factory=list)
 
@@ -28,6 +30,7 @@ class DeliveryVoucherInfoDTO:
 @dataclass
 class BindOrderDeliveryVoucherRequest(BaseRequest):
     """Bind order delivery voucher request."""
+
     action_time: Optional[int] = None
     trace_id: Optional[str] = None
     order_id: Optional[str] = None
@@ -38,6 +41,7 @@ class BindOrderDeliveryVoucherRequest(BaseRequest):
 @dataclass
 class DeliveryVoucherActionRequest(BaseRequest):
     """Delivery voucher action request."""
+
     order_id: Optional[str] = None
     voucher_id: Optional[str] = None
     voucher_no: Optional[str] = None
