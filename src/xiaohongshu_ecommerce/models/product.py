@@ -349,7 +349,29 @@ class GetDetailSkuListRequest(BaseRequest):
         }
 
     def extra_payload(self) -> Dict[str, object]:
-        return dict(self.filters)
+        # Map Python snake_case parameter names to API camelCase field names
+        field_mapping = {
+            "page_no": "pageNo",
+            "page_size": "pageSize",
+            "create_time_from": "createTimeFrom",
+            "create_time_to": "createTimeTo",
+            "update_time_from": "updateTimeFrom",
+            "update_time_to": "updateTimeTo",
+            "stock_gte": "stockGte",
+            "stock_lte": "stockLte",
+            "sc_sku_code": "scSkuCode",
+            "single_pack_only": "singlePackOnly",
+            "last_id": "lastId",
+            "is_channel": "isChannel",
+        }
+
+        payload = {}
+        for key, value in self.filters.items():
+            api_key = field_mapping.get(
+                key, key
+            )  # Use mapping if exists, otherwise use original key
+            payload[api_key] = value
+        return payload
 
 
 class GetItemInfoRequest(BaseRequest):

@@ -1,4 +1,5 @@
 import json
+import time
 
 import httpx
 
@@ -9,27 +10,45 @@ from xiaohongshu_ecommerce.models.data import (
 )
 
 
-def test_data_batch_decrypt(monkeypatch):
-    fixed_timestamp = 1700000000
+def _build_client(monkeypatch, handler):
     monkeypatch.setattr(
         "xiaohongshu_ecommerce.client.base.utc_timestamp",
-        lambda: fixed_timestamp,
+        lambda: 1700000000,
     )
-
     config = ClientConfig(
         base_url="https://openapi.xiaohongshu.com",
         app_id="test-app",
         app_secret="secret-key",
         version="1.0",
     )
+    transport = httpx.MockTransport(handler)
+    session = httpx.Client(transport=transport)
+    client = XhsClient(config=config, session=session)
+
+    # Set test tokens for automatic token management with future expiration
+    current_time_ms = int(time.time() * 1000)
+    client.set_tokens_manually(
+        access_token="access-token",  # Use "access-token" to match test expectations
+        refresh_token="test_refresh_token",
+        access_token_expires_at=current_time_ms + (3600 * 1000),  # 1 hour from now
+        refresh_token_expires_at=current_time_ms + (7200 * 1000),  # 2 hours from now
+        seller_id="test_seller",
+        seller_name="Test Seller",
+    )
+
+    return client
+
+
+def test_data_batch_decrypt(monkeypatch):
+    fixed_timestamp = 1700000000
 
     def handler(request: httpx.Request) -> httpx.Response:
         payload = json.loads(request.content.decode("utf-8"))
         assert payload["method"] == "data.batchDecrypt"
         assert payload["accessToken"] == "access-token"
-        assert payload["appId"] == config.app_id
+        assert payload["appId"] == "test-app"
         assert payload["timestamp"] == str(fixed_timestamp)
-        assert payload["version"] == config.version
+        assert payload["version"] == "1.0"
         assert payload["actionType"] == "test"
         assert payload["appUserId"] == "user-1"
         assert isinstance(payload["baseInfos"], list)
@@ -55,9 +74,7 @@ def test_data_batch_decrypt(monkeypatch):
             },
         )
 
-    transport = httpx.MockTransport(handler)
-    session = httpx.Client(transport=transport)
-    client = XhsClient(config=config, session=session)
+    client = _build_client(monkeypatch, handler)
 
     result = client.data.batch_decrypt(
         base_infos=[DecryptItem(data_tag="phone", encrypted_data="abc123")],
@@ -73,18 +90,6 @@ def test_data_batch_decrypt(monkeypatch):
 
 
 def test_data_batch_decrypt_error(monkeypatch):
-    monkeypatch.setattr(
-        "xiaohongshu_ecommerce.client.base.utc_timestamp",
-        lambda: 1700000000,
-    )
-
-    config = ClientConfig(
-        base_url="https://openapi.xiaohongshu.com",
-        app_id="test-app",
-        app_secret="secret-key",
-        version="1.0",
-    )
-
     def handler(_: httpx.Request) -> httpx.Response:
         return httpx.Response(
             200,
@@ -95,9 +100,7 @@ def test_data_batch_decrypt_error(monkeypatch):
             },
         )
 
-    transport = httpx.MockTransport(handler)
-    session = httpx.Client(transport=transport)
-    client = XhsClient(config=config, session=session)
+    client = _build_client(monkeypatch, handler)
 
     result = client.data.batch_decrypt(
         base_infos=[DecryptItem(data_tag="phone", encrypted_data="abc123")],

@@ -14,6 +14,7 @@ from xiaohongshu_ecommerce.models.boutique import (
 
 def _build_client(monkeypatch, handler):
     import time
+
     monkeypatch.setattr(
         "xiaohongshu_ecommerce.client.base.utc_timestamp",
         lambda: 1700000000,
@@ -34,9 +35,9 @@ def _build_client(monkeypatch, handler):
         access_token="test_access_token",
         refresh_token="test_refresh_token",
         access_token_expires_at=current_time_ms + (3600 * 1000),  # 1 hour from now
-        refresh_token_expires_at=current_time_ms + (7200 * 1000), # 2 hours from now
+        refresh_token_expires_at=current_time_ms + (7200 * 1000),  # 2 hours from now
         seller_id="test_seller",
-        seller_name="Test Seller"
+        seller_name="Test Seller",
     )
 
     return client

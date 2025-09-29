@@ -878,8 +878,42 @@ class ProductClient(SyncSubClient):
             此V2 API提供增强的商品管理功能。
             更新时确保提供所有必需字段。
         """
+        # Automatically determine updated fields based on non-None parameters
+        updated_fields = []
+        params = locals()
+        field_names = [
+            "name",
+            "brand_id",
+            "category_id",
+            "attributes",
+            "images",
+            "image_descriptions",
+            "shipping_template_id",
+            "ename",
+            "shipping_gross_weight",
+            "variant_ids",
+            "video_url",
+            "article_no",
+            "transparent_image",
+            "description",
+            "faq",
+            "delivery_mode",
+            "free_return",
+            "enable_multi_warehouse",
+            "size_table_image",
+            "recommend_size_table_image",
+            "model_try_on_size_table_image",
+            "enable_main_spec_image",
+            "item_short_title",
+        ]
+
+        for field in field_names:
+            if params.get(field) is not None:
+                updated_fields.append(field)
+
         request = UpdateItemV3Request(
             item_id=item_id,
+            updated_fields=updated_fields,
             name=name,
             brand_id=brand_id,
             category_id=category_id,
@@ -1278,9 +1312,31 @@ class ProductClient(SyncSubClient):
             此API提供全面的SKU管理功能。
             仅提供需要更新的字段。
         """
+        # Automatically determine updated fields based on non-None parameters
+        updated_fields = []
+        params = locals()
+        field_names = [
+            "price",
+            "original_price",
+            "stock",
+            "logistics_plan_id",
+            "variants",
+            "delivery_time",
+            "whcode",
+            "price_type",
+            "erp_code",
+            "spec_image",
+            "barcode",
+        ]
+
+        for field in field_names:
+            if params.get(field) is not None:
+                updated_fields.append(field)
+
         request = UpdateSkuV3Request(
             sku_id=sku_id,
             item_id=item_id,
+            updated_fields=updated_fields,
             price=price,
             original_price=original_price,
             stock=stock,
@@ -1402,7 +1458,7 @@ class ProductClient(SyncSubClient):
             对于组合商品，请为每个子商品提供价格。
         """
         request = UpdateItemPriceRequest(
-            sku_id=sku_id,
+            item_id=sku_id,  # First parameter is item_id, not sku_id
             price=price or [],
             original_price=original_price,
         )
