@@ -1,0 +1,544 @@
+{
+  "api_info": {
+    "apiId": 29636,
+    "apiNavigationId": 243,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 85,
+    "method": "post",
+    "navigationDetailDesc": "批量取号",
+    "navigationDetailName": "批量取号",
+    "path": "express.createEbillOrders",
+    "seq": 2
+  },
+  "api_details": {
+    "id": 29636,
+    "path": "/api/openapi/express/createebillorders",
+    "summary": "[开放平台][电子面单]批量取号",
+    "method": "post",
+    "specJson": {
+      "summary": "[开放平台][电子面单]批量取号",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "cpCode",
+                "sender",
+                "tradeOrderInfoList",
+                "sellerName",
+                "branchCode",
+                "customerCode"
+              ],
+              "properties": {
+                "cpCode": {
+                  "type": "string",
+                  "description": "快递公司编码",
+                  "example": "zto"
+                },
+                "sender": {
+                  "required": [
+                    "name",
+                    "address"
+                  ],
+                  "properties": {
+                    "address": {
+                      "required": [
+                        "city",
+                        "detail",
+                        "province"
+                      ],
+                      "properties": {
+                        "city": {
+                          "type": "string",
+                          "description": "城市",
+                          "example": ""
+                        },
+                        "detail": {
+                          "type": "string",
+                          "description": "详细地址",
+                          "example": ""
+                        },
+                        "district": {
+                          "type": "string",
+                          "description": "区县，订购关系返回了district则必须要传",
+                          "example": ""
+                        },
+                        "province": {
+                          "type": "string",
+                          "description": "省份",
+                          "example": ""
+                        },
+                        "town": {
+                          "type": "string",
+                          "description": "乡镇街道，订购关系返回了town则必须要传",
+                          "example": ""
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "手机号码，明文",
+                      "example": ""
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "姓名，明文",
+                      "example": ""
+                    },
+                    "phone": {
+                      "type": "string",
+                      "description": "电话号码",
+                      "example": ""
+                    }
+                  },
+                  "type": "object",
+                  "description": "寄件人地址必须和订购关系的地址保持一致"
+                },
+                "tradeOrderInfoList": {
+                  "type": "array",
+                  "items": {
+                    "required": [
+                      "objectId",
+                      "orderInfo",
+                      "packageInfo",
+                      "recipient",
+                      "templateId"
+                    ],
+                    "properties": {
+                      "logisticsServices": {
+                        "type": "string",
+                        "description": "物流增值服务，见[对接说明](https://open.xiaohongshu.com/document/developer/file/52)附录物流增值服务，保价单位是元保留两位小数",
+                        "example": "{\"INSURE\":{\"value\":1.2},\"IN41\":{}}"
+                      },
+                      "objectId": {
+                        "type": "string",
+                        "description": "请求ID，最大长度40，保证一次批量请求不重复，返回结果基于该值取到对应的快递单号",
+                        "example": "1"
+                      },
+                      "orderInfo": {
+                        "required": [
+                          "orderChannelsType",
+                          "tradeOrderList"
+                        ],
+                        "properties": {
+                          "orderChannelsType": {
+                            "type": "string",
+                            "description": "订单渠道，见[对接说明](https://open.xiaohongshu.com/document/developer/file/52)附录渠道列表",
+                            "example": "XIAO_HONG_SHU"
+                          },
+                          "tradeOrderList": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "订单列表，如果是小红书订单并且没有传xhsOrderId参数则需要填写正确的订单号，否则可能导致用户信息解密出现问题",
+                            "example": "[\"order1\"]"
+                          },
+                          "buyerMemo": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "买家留言列表"
+                          },
+                          "sellerMemo": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "商家备注列表"
+                          },
+                          "xhsOrderId": {
+                            "type": "string",
+                            "description": "小红书订单号，如果传了值，密文解密的时候会基于这个参数来做解密",
+                            "example": "P123456"
+                          },
+                          "xhsOrderList": {
+                            "type": "array",
+                            "description": "合单订单号列表，合单情况下必填",
+                            "items": {
+                              "type": "string"
+                            },
+                            "example": "[\"P727161939787354831\", \"P727091626235291371\"]"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "packageInfo": {
+                        "required": [
+                          "id",
+                          "items"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "包裹ID",
+                            "example": ""
+                          },
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "required": [
+                                "count",
+                                "name"
+                              ],
+                              "properties": {
+                                "count": {
+                                  "type": "number",
+                                  "description": "数量",
+                                  "example": ""
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "description": "名称",
+                                  "example": ""
+                                },
+                                "specification": {
+                                  "type": "string",
+                                  "description": "规格",
+                                  "example": ""
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "description": "商品信息，上限100"
+                          },
+                          "volume": {
+                            "type": "number",
+                            "description": "体积, 单位 ml",
+                            "example": ""
+                          },
+                          "weight": {
+                            "type": "number",
+                            "description": "重量,单位 g",
+                            "example": ""
+                          },
+                          "length": {
+                            "type": "number",
+                            "description": "包裹长，单位厘米",
+                            "example": ""
+                          },
+                          "width": {
+                            "type": "number",
+                            "description": "包裹宽，单位厘米",
+                            "example": ""
+                          },
+                          "height": {
+                            "type": "number",
+                            "description": "包裹高，单位厘米",
+                            "example": ""
+                          },
+                          "totalPackagesCount": {
+                            "type": "number",
+                            "description": "子母件包裹数，该字段大于0则表示子母件",
+                            "example": ""
+                          },
+                          "packagingDescription": {
+                            "type": "string",
+                            "description": "大件快运中的包装方式描述",
+                            "example": ""
+                          },
+                          "goodsDescription": {
+                            "type": "string",
+                            "description": "大件快运中的货品描述，顺丰要求必传长度不能超过20，并且不能和商品名称相同",
+                            "example": "家具"
+                          },
+                          "goodValue": {
+                            "type": "number",
+                            "description": "物流价值，单位元",
+                            "example": ""
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "recipient": {
+                        "required": [],
+                        "properties": {
+                          "address": {
+                            "required": [],
+                            "properties": {
+                              "city": {
+                                "type": "string",
+                                "description": "城市",
+                                "example": ""
+                              },
+                              "detail": {
+                                "type": "string",
+                                "description": "详细地址",
+                                "example": ""
+                              },
+                              "district": {
+                                "type": "string",
+                                "description": "区县",
+                                "example": ""
+                              },
+                              "province": {
+                                "type": "string",
+                                "description": "省份",
+                                "example": ""
+                              },
+                              "town": {
+                                "type": "string",
+                                "description": "乡镇街道",
+                                "example": ""
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "mobile": {
+                            "type": "string",
+                            "description": "手机号码，明文或者密文，正确密文格式有4个#号：#xxxx#x##",
+                            "example": ""
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "姓名，明文或者密文",
+                            "example": ""
+                          },
+                          "phone": {
+                            "type": "string",
+                            "description": "电话号码",
+                            "example": ""
+                          },
+                          "openAddressId": {
+                            "type": "string",
+                            "description": "非必填但是对于WMS该参数必传，长度固定是32位，该参数来自于order.getOrderDetail接口。如果收件人信息缺失，该参数用来补充查询数据，但是要求小红书渠道并且订单号要匹配一致",
+                            "example": ""
+                          }
+                        },
+                        "type": "object",
+                        "description": "收件人信息，支持明文、密文、openAddressId + xhsOrderId三种"
+                      },
+                      "templateId": {
+                        "type": "number",
+                        "description": "电子面单模板ID，通过调用[查询电子面单模板列表express.queryEbillTemplates]接口查询得到，注意新版和旧版的ID不能混用",
+                        "example": "1"
+                      },
+                      "deliverExtendInfo": {
+                        "type": "string",
+                        "description": "用于传递数据给下游的拓展信息字段，json字符串，特殊业务场景下使用"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "description": "请求面单列表（上限10个）"
+                },
+                "extraInfo": {
+                  "type": "string",
+                  "description": "拓展信息，加盟总对总模式用到（见https://open.xiaohongshu.com/help/list/27/140的总对总模式）",
+                  "example": ""
+                },
+                "customerCode": {
+                  "type": "string",
+                  "description": "月结卡号，直营快递公司（顺丰 、邮政、京东、德邦等）要求必填，加盟快递传空字符串",
+                  "example": ""
+                },
+                "brandCode": {
+                  "type": "string",
+                  "description": "品牌编码，顺丰要求必填，其他快递不传或者空字符串",
+                  "example": ""
+                },
+                "productCode": {
+                  "type": "string",
+                  "description": "产品编码，京东要求必填，顺丰不传值则默认是1-顺丰特快，仅部分快递公司支持传入，见[对接说明](https://open.xiaohongshu.com/document/developer/file/52)附录物流产品类型",
+                  "example": ""
+                },
+                "callDoorPickUp": {
+                  "type": "boolean",
+                  "description": "是否预约上门，仅顺丰支持传入",
+                  "example": ""
+                },
+                "doorPickUpTime": {
+                  "type": "string",
+                  "description": "预约上门取件时间，'yyyy-MM-dd HH:mm:ss'，仅顺丰支持传入",
+                  "example": ""
+                },
+                "doorPickUpEndTime": {
+                  "type": "string",
+                  "description": "预约上门取件截止时间，'yyyy-MM-dd HH:mm:ss'，仅顺丰支持传入",
+                  "example": ""
+                },
+                "sellerName": {
+                  "type": "string",
+                  "description": "店铺名称，对参数内容没有限制，不会做校验，但是要求必传",
+                  "example": ""
+                },
+                "branchCode": {
+                  "type": "string",
+                  "description": "网点编码，加盟型快递公司要求必填，直营快递（顺丰 、邮政、京东、德邦等）传空字符",
+                  "example": ""
+                },
+                "billVersion": {
+                  "type": "number",
+                  "description": "电子面单版本号，1-默认值旧版电子面单 2-新版电子面单"
+                },
+                "payMethod": {
+                  "type": "number",
+                  "description": "付款方式；注意仅新版电子面单支持；顺丰，1:寄方付 2:收方付 3:第三方付；邮政（包括youzhengguonei、ems、youzhengbiaokuai）：1寄付，2-到付"
+                },
+                "returnsRecipient": {
+                  "type": "object",
+                  "description": "收件人拒收后退回用户信息，仅顺丰支持",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "姓名"
+                    },
+                    "phone": {
+                      "type": "string",
+                      "description": "电话"
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "手机号码"
+                    },
+                    "address": {
+                      "type": "object",
+                      "description": "地址",
+                      "properties": {
+                        "province": {
+                          "type": "string",
+                          "description": "省"
+                        },
+                        "city": {
+                          "type": "string",
+                          "description": "市"
+                        },
+                        "district": {
+                          "type": "string",
+                          "description": "区"
+                        },
+                        "town": {
+                          "type": "string",
+                          "description": "乡镇"
+                        },
+                        "detail": {
+                          "type": "string",
+                          "description": "详细地址"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "error_code",
+                  "success"
+                ],
+                "properties": {
+                  "error_code": {
+                    "type": "number",
+                    "description": "返回值code",
+                    "example": "0"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "请求是否成功",
+                    "example": "true"
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "description": "错误信息",
+                    "example": ""
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "wayBillList": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {
+                            "objectId": {
+                              "type": "string",
+                              "description": "请求ID，一次批量请求中的唯一ID",
+                              "example": "1"
+                            },
+                            "waybillCode": {
+                              "type": "string",
+                              "description": "面单号",
+                              "example": "78689455849606"
+                            },
+                            "printData": {
+                              "type": "string",
+                              "description": "面单打印数据，传输给打印组件的报文contents数组的第一个元素",
+                              "example": "{\\\"encryptedData\\\":\\\"打印数据密文\\\",\\\"signature\\\":\\\"MD:lH0r2gNxcIuY7dY3VvV4ag==\\\",\\\"templateURL\\\":\\\"http://cloudprint.cainiao.com/template/standard/644703\\\",\\\"ver\\\":\\\"waybill_print_xiaohongshu_secret\\\"}"
+                            },
+                            "parentWaybillCode": {
+                              "type": "string",
+                              "description": "子母单会返回母单",
+                              "example": ""
+                            },
+                            "extraInfo": {
+                              "type": "string",
+                              "description": "扩展信息",
+                              "example": ""
+                            },
+                            "cpCode": {
+                              "type": "string",
+                              "description": "快递公司编码",
+                              "example": ""
+                            },
+                            "customerPrintData": {
+                              "type": "string",
+                              "description": "自定义打印数据，可为空，如果有则是传输给打印组件报文contents数组的第二个元素",
+                              "example": "{\\\"data\\\":{\\\"item\\\":[\\\"商品名称\\\"],\\\"order\\\":[\\\"P000000001\\\"]},\\\"templateURL\\\":\\\"https://cloudprint.cainiao.com/template/standard/629505/24\\\"}"
+                            },
+                            "success": {
+                              "type": "boolean",
+                              "description": "是否取号成功"
+                            },
+                            "errorCode": {
+                              "type": "number",
+                              "description": "取号失败code"
+                            },
+                            "errorMsg": {
+                              "type": "string",
+                              "description": "取号失败原因"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": "面单列表"
+                      },
+                      "subErrorCode": {
+                        "type": "string",
+                        "description": "子错误码，开发者可以忽略这个值，取号异常可以联系我们定位我们",
+                        "example": ""
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2025-04-21T02:47:33.000Z"
+  },
+  "error_codes": [],
+  "category": "物流API",
+  "fetched_at": "2025-09-26 14:59:48"
+}

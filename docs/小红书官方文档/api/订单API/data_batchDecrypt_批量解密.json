@@ -1,0 +1,239 @@
+{
+  "api_info": {
+    "apiId": 29208,
+    "apiNavigationId": 201,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 43,
+    "method": "post",
+    "navigationDetailDesc": "批量解密",
+    "navigationDetailName": "批量解密",
+    "path": "data.batchDecrypt",
+    "seq": 19
+  },
+  "api_details": {
+    "id": 29208,
+    "path": "/ark/data.batchDecrypt",
+    "summary": "数据解密",
+    "method": "post",
+    "specJson": {
+      "summary": "数据解密",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "actionType",
+                "appUserId",
+                "baseInfos"
+              ],
+              "type": "object",
+              "properties": {
+                "baseInfos": {
+                  "type": "array",
+                  "description": "加密数据列表，上限100条",
+                  "items": {
+                    "required": [
+                      "dataTag",
+                      "encryptedData"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "dataTag": {
+                        "type": "string",
+                        "description": "标签，订单场景为packageId（具体订单号），售后场景为returnId（具体售后单号）",
+                        "example": "null"
+                      },
+                      "encryptedData": {
+                        "type": "string",
+                        "description": "密文数据",
+                        "example": "null"
+                      }
+                    },
+                    "description": "加密数据列表，上限100条",
+                    "example": null,
+                    "$$ref": "#/components/schemas/1757910",
+                    "x-schema": {
+                      "id": 1757910,
+                      "name": "baseInfo",
+                      "desc": "加密数据列表，上限100条",
+                      "createTime": "2023-06-06T07:26:51.000Z",
+                      "updateTime": "2023-06-06T07:26:51.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "5fa4f48970742e0001faee4b",
+                      "createUserName": "林松斌（实习）",
+                      "spec": "{\"required\":[\"dataTag\",\"encryptedData\"],\"type\":\"object\",\"properties\":{\"dataTag\":{\"type\":\"string\",\"description\":\"标签，订单场景为packageId（具体订单号），售后场景为returnId（具体售后单号）\",\"example\":\"null\"},\"encryptedData\":{\"type\":\"string\",\"description\":\"密文数据\",\"example\":\"null\"}},\"description\":\"加密数据列表，上限100条\",\"example\":null}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  }
+                },
+                "actionType": {
+                  "type": "string",
+                  "description": "操作类型1 - 单个查看订单明文，2 - 批量解密打单，3 - 批量解密后面向三方的数据下发，4 - 其他场景,解密接口必填",
+                  "example": "null"
+                },
+                "appUserId": {
+                  "type": "string",
+                  "description": "旧逻辑字段无实际意义，由服务商自定义，非空即可",
+                  "example": "null"
+                }
+              },
+              "$$ref": "#/components/schemas/1757909",
+              "x-schema": {
+                "id": 1757909,
+                "name": "DecryptBaseInfoRequest",
+                "desc": "",
+                "createTime": "2023-06-06T07:26:51.000Z",
+                "updateTime": "2025-04-30T08:57:38.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"actionType\",\"appUserId\",\"baseInfos\"],\"type\":\"object\",\"properties\":{\"baseInfos\":{\"type\":\"array\",\"description\":\"加密数据列表，上限100条\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=baseInfo&schemaId=1757910\"}},\"actionType\":{\"type\":\"string\",\"description\":\"操作类型1 - 单个查看订单明文，2 - 批量解密打单，3 - 批量解密后面向三方的数据下发，4 - 其他场景,解密接口必填\",\"example\":\"null\"},\"appUserId\":{\"type\":\"string\",\"description\":\"旧逻辑字段无实际意义，由服务商自定义，非空即可\",\"example\":\"null\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "dataInfoList": {
+                    "type": "array",
+                    "description": "解密数据",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "dataTag": {
+                          "type": "string",
+                          "description": "标签，订单场景为packageId",
+                          "example": "null"
+                        },
+                        "encryptedData": {
+                          "type": "string",
+                          "description": "密文数据",
+                          "example": "null"
+                        },
+                        "decryptedData": {
+                          "type": "string",
+                          "description": "解密信息",
+                          "example": "null"
+                        },
+                        "errorCode": {
+                          "type": "integer",
+                          "description": "错误码：-2000701 | -2000702",
+                          "format": "int32"
+                        },
+                        "errorMsg": {
+                          "type": "string",
+                          "description": "错误信息：触发解密限额，无法解密，请对接平台电子面单或联系平台处理 | 解密限额接口调用异常，无法解密，请联系平台",
+                          "example": "null"
+                        },
+                        "virtualNumber": {
+                          "type": "string",
+                          "description": "隐私号码",
+                          "example": "18000000000-9999"
+                        },
+                        "virtualNumberFlag": {
+                          "type": "boolean",
+                          "description": "返回是否隐私号码",
+                          "example": "false/true"
+                        },
+                        "virtualPhoneNumber": {
+                          "type": "string",
+                          "description": "隐私号码前11位",
+                          "example": "18000000000"
+                        },
+                        "virtualExtendNumber": {
+                          "type": "string",
+                          "description": "隐私号码后4位",
+                          "example": "9999"
+                        },
+                        "expireAt": {
+                          "type": "integer",
+                          "description": "过期时间(integer64)",
+                          "example": "1752556300075"
+                        }
+                      },
+                      "description": "解密数据",
+                      "example": null,
+                      "$$ref": "#/components/schemas/1757913",
+                      "x-schema": {
+                        "id": 1757913,
+                        "name": "DataInfo",
+                        "desc": "解密数据",
+                        "createTime": "2023-06-06T07:26:51.000Z",
+                        "updateTime": "2025-07-17T07:13:42.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"dataTag\":{\"type\":\"string\",\"description\":\"标签，订单场景为packageId\",\"example\":\"null\"},\"encryptedData\":{\"type\":\"string\",\"description\":\"密文数据\",\"example\":\"null\"},\"decryptedData\":{\"type\":\"string\",\"description\":\"解密信息\",\"example\":\"null\"},\"errorCode\":{\"type\":\"integer\",\"description\":\"错误码：-2000701 | -2000702\",\"format\":\"int32\"},\"errorMsg\":{\"type\":\"string\",\"description\":\"错误信息：触发解密限额，无法解密，请对接平台电子面单或联系平台处理 | 解密限额接口调用异常，无法解密，请联系平台\",\"example\":\"null\"},\"virtualNumber\":{\"type\":\"string\",\"description\":\"隐私号码\",\"example\":\"18000000000-9999\"},\"virtualNumberFlag\":{\"type\":\"boolean\",\"description\":\"返回是否隐私号码\",\"example\":\"false/true\"},\"virtualPhoneNumber\":{\"type\":\"string\",\"description\":\"隐私号码前11位\",\"example\":\"18000000000\"},\"virtualExtendNumber\":{\"type\":\"string\",\"description\":\"隐私号码后4位\",\"example\":\"9999\"},\"expireAt\":{\"type\":\"integer\",\"description\":\"过期时间(integer64)\",\"example\":\"1752556300075\"}},\"description\":\"解密数据\",\"example\":null}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1757914",
+                "x-schema": {
+                  "id": 1757914,
+                  "name": "DataInfoResult",
+                  "desc": "",
+                  "createTime": "2023-06-06T07:26:51.000Z",
+                  "updateTime": "2023-06-06T07:26:52.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"dataInfoList\":{\"type\":\"array\",\"description\":\"解密数据\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=DataInfo&schemaId=1757913\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-07-17T07:13:42.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:17"
+}

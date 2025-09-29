@@ -1,0 +1,461 @@
+{
+  "api_info": {
+    "apiId": 22012,
+    "apiNavigationId": 99,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 22,
+    "method": "post",
+    "navigationDetailDesc": "批量获取发货时间规则",
+    "navigationDetailName": "批量获取发货时间规则",
+    "path": "common.getDeliveryRule",
+    "seq": 15
+  },
+  "api_details": {
+    "id": 22012,
+    "path": "/ark/common.getDeliveryRule",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "获取发货时间规则",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "getDeliveryRuleRequests"
+              ],
+              "type": "object",
+              "properties": {
+                "getDeliveryRuleRequests": {
+                  "type": "array",
+                  "description": "批量查询",
+                  "example": "601a****fb4b",
+                  "items": {
+                    "required": [
+                      "categoryId",
+                      "logisticsPlanId"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "whcode": {
+                        "type": "string",
+                        "description": "仓库号，自营使用",
+                        "example": "601a****fb4b"
+                      },
+                      "logisticsPlanId": {
+                        "type": "string",
+                        "description": "物流方案id",
+                        "example": "601a****fb4b"
+                      },
+                      "categoryId": {
+                        "type": "string",
+                        "description": "类目id",
+                        "example": "601a****fb4b"
+                      },
+                      "itemId": {
+                        "type": "string",
+                        "description": "商品id"
+                      }
+                    },
+                    "description": "批量查询",
+                    "example": "601a****fb4b",
+                    "$$ref": "#/components/schemas/1181449",
+                    "x-schema": {
+                      "id": 1181449,
+                      "name": "GetDeliveryRuleRequest",
+                      "desc": "批量查询",
+                      "createTime": "2022-08-17T09:03:00.000Z",
+                      "updateTime": "2025-01-21T05:47:07.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "",
+                      "createUserName": "",
+                      "spec": "{\"required\":[\"categoryId\",\"logisticsPlanId\"],\"type\":\"object\",\"properties\":{\"whcode\":{\"type\":\"string\",\"description\":\"仓库号，自营使用\",\"example\":\"601a****fb4b\"},\"logisticsPlanId\":{\"type\":\"string\",\"description\":\"物流方案id\",\"example\":\"601a****fb4b\"},\"categoryId\":{\"type\":\"string\",\"description\":\"类目id\",\"example\":\"601a****fb4b\"},\"itemId\":{\"type\":\"string\",\"description\":\"商品id\"}},\"description\":\"批量查询\",\"example\":\"601a****fb4b\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  }
+                }
+              },
+              "$$ref": "#/components/schemas/1181448",
+              "x-schema": {
+                "id": 1181448,
+                "name": "BatchGetDeliveryRuleRequest",
+                "desc": "",
+                "createTime": "2022-08-17T09:03:00.000Z",
+                "updateTime": "2022-08-17T09:03:00.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"getDeliveryRuleRequests\"],\"type\":\"object\",\"properties\":{\"getDeliveryRuleRequests\":{\"type\":\"array\",\"description\":\"批量查询\",\"example\":\"601a****fb4b\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=GetDeliveryRuleRequest&schemaId=1181449\"}}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deliveryRuleList": {
+                    "type": "array",
+                    "description": "批量查询结果",
+                    "example": "601a****fb4b",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "sellerId": {
+                          "type": "string",
+                          "description": "商家id",
+                          "example": "601a****fb4b"
+                        },
+                        "planInfoId": {
+                          "type": "string",
+                          "description": "物流方案id",
+                          "example": "601a****fb4b"
+                        },
+                        "whcode": {
+                          "type": "string",
+                          "description": "仓库号，自营使用",
+                          "example": "601a****fb4b"
+                        },
+                        "categoryId": {
+                          "type": "string",
+                          "description": "类目id",
+                          "example": "601a****fb4b"
+                        },
+                        "logisticsMode": {
+                          "type": "integer",
+                          "description": "//1:内贸，2:保税，3:直邮",
+                          "format": "int32"
+                        },
+                        "existing": {
+                          "type": "array",
+                          "description": "//现货规则，分为当日发，和指定value的几个枚举",
+                          "example": "601a****fb4b",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "timeType": {
+                                "type": "integer",
+                                "description": "//时间类型，3:当日发，4:相对，5绝对（现货没有）",
+                                "format": "int32"
+                              },
+                              "value": {
+                                "type": "integer",
+                                "description": "//时间值，现货",
+                                "format": "int32"
+                              },
+                              "min": {
+                                "type": "integer",
+                                "description": "//最小设置时间范围（现货不需要使用）",
+                                "format": "int32"
+                              },
+                              "max": {
+                                "type": "integer",
+                                "description": "//最大设置时间范围（现货不需要使用）",
+                                "format": "int32"
+                              },
+                              "desc": {
+                                "type": "string",
+                                "description": "//提示商家的文案（现货有）",
+                                "example": "601a****fb4b"
+                              },
+                              "isDefault": {
+                                "type": "boolean",
+                                "description": "//默认选中（现货用）",
+                                "example": false
+                              },
+                              "default": {
+                                "type": "boolean"
+                              },
+                              "stepDeliveryTime": {
+                                "type": "array",
+                                "description": "阶梯预售的预售时间范围",
+                                "items": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "description": "//预售（最多只有两条规则，相对/绝对）",
+                            "example": "601a****fb4b",
+                            "code": "N/A",
+                            "msg": "Error",
+                            "$$ref": "#/components/schemas/1181452",
+                            "x-schema": {
+                              "id": 1181452,
+                              "name": "DeliveryTimeRuleConfigItem",
+                              "desc": "//预售（最多只有两条规则，相对/绝对）",
+                              "createTime": "2022-08-17T09:03:00.000Z",
+                              "updateTime": "2025-05-12T03:10:45.000Z",
+                              "type": 2,
+                              "gatewayId": 103,
+                              "createUserId": "",
+                              "createUserName": "",
+                              "spec": "{\"type\":\"object\",\"properties\":{\"timeType\":{\"type\":\"integer\",\"description\":\"//时间类型，3:当日发，4:相对，5绝对（现货没有）\",\"format\":\"int32\"},\"value\":{\"type\":\"integer\",\"description\":\"//时间值，现货\",\"format\":\"int32\"},\"min\":{\"type\":\"integer\",\"description\":\"//最小设置时间范围（现货不需要使用）\",\"format\":\"int32\"},\"max\":{\"type\":\"integer\",\"description\":\"//最大设置时间范围（现货不需要使用）\",\"format\":\"int32\"},\"desc\":{\"type\":\"string\",\"description\":\"//提示商家的文案（现货有）\",\"example\":\"601a****fb4b\"},\"isDefault\":{\"type\":\"boolean\",\"description\":\"//默认选中（现货用）\",\"example\":false},\"default\":{\"type\":\"boolean\"},\"stepDeliveryTime\":{\"type\":\"array\",\"description\":\"阶梯预售的预售时间范围\",\"items\":{\"type\":\"integer\"}}},\"description\":\"//预售（最多只有两条规则，相对/绝对）\",\"example\":\"601a****fb4b\",\"code\":\"N/A\",\"msg\":\"Error\"}",
+                              "isBase": 0,
+                              "gatewayGroupId": 0,
+                              "gatewayGroupKey": "",
+                              "gatewayVersionId": 1661,
+                              "gatewayVersionName": "feature/logan",
+                              "isMaster": false,
+                              "groupId": 0,
+                              "groupKey": ""
+                            }
+                          }
+                        },
+                        "presale": {
+                          "type": "array",
+                          "description": "//预售（最多只有两条规则，相对/绝对）",
+                          "example": "601a****fb4b",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "timeType": {
+                                "type": "integer",
+                                "description": "//时间类型，3:当日发，4:相对，5绝对（现货没有）",
+                                "format": "int32"
+                              },
+                              "value": {
+                                "type": "integer",
+                                "description": "//时间值，现货",
+                                "format": "int32"
+                              },
+                              "min": {
+                                "type": "integer",
+                                "description": "//最小设置时间范围（现货不需要使用）",
+                                "format": "int32"
+                              },
+                              "max": {
+                                "type": "integer",
+                                "description": "//最大设置时间范围（现货不需要使用）",
+                                "format": "int32"
+                              },
+                              "desc": {
+                                "type": "string",
+                                "description": "//提示商家的文案（现货有）",
+                                "example": "601a****fb4b"
+                              },
+                              "isDefault": {
+                                "type": "boolean",
+                                "description": "//默认选中（现货用）",
+                                "example": false
+                              },
+                              "default": {
+                                "type": "boolean"
+                              },
+                              "stepDeliveryTime": {
+                                "type": "array",
+                                "description": "阶梯预售的预售时间范围",
+                                "items": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "description": "//预售（最多只有两条规则，相对/绝对）",
+                            "example": "601a****fb4b",
+                            "code": "N/A",
+                            "msg": "Error",
+                            "$$ref": "#/components/schemas/1181452",
+                            "x-schema": {
+                              "id": 1181452,
+                              "name": "DeliveryTimeRuleConfigItem",
+                              "desc": "//预售（最多只有两条规则，相对/绝对）",
+                              "createTime": "2022-08-17T09:03:00.000Z",
+                              "updateTime": "2025-05-12T03:10:45.000Z",
+                              "type": 2,
+                              "gatewayId": 103,
+                              "createUserId": "",
+                              "createUserName": "",
+                              "spec": "{\"type\":\"object\",\"properties\":{\"timeType\":{\"type\":\"integer\",\"description\":\"//时间类型，3:当日发，4:相对，5绝对（现货没有）\",\"format\":\"int32\"},\"value\":{\"type\":\"integer\",\"description\":\"//时间值，现货\",\"format\":\"int32\"},\"min\":{\"type\":\"integer\",\"description\":\"//最小设置时间范围（现货不需要使用）\",\"format\":\"int32\"},\"max\":{\"type\":\"integer\",\"description\":\"//最大设置时间范围（现货不需要使用）\",\"format\":\"int32\"},\"desc\":{\"type\":\"string\",\"description\":\"//提示商家的文案（现货有）\",\"example\":\"601a****fb4b\"},\"isDefault\":{\"type\":\"boolean\",\"description\":\"//默认选中（现货用）\",\"example\":false},\"default\":{\"type\":\"boolean\"},\"stepDeliveryTime\":{\"type\":\"array\",\"description\":\"阶梯预售的预售时间范围\",\"items\":{\"type\":\"integer\"}}},\"description\":\"//预售（最多只有两条规则，相对/绝对）\",\"example\":\"601a****fb4b\",\"code\":\"N/A\",\"msg\":\"Error\"}",
+                              "isBase": 0,
+                              "gatewayGroupId": 0,
+                              "gatewayGroupKey": "",
+                              "gatewayVersionId": 1661,
+                              "gatewayVersionName": "feature/logan",
+                              "isMaster": false,
+                              "groupId": 0,
+                              "groupKey": ""
+                            }
+                          }
+                        },
+                        "comment": {
+                          "type": "string",
+                          "description": "//备注，如果无法返回配置数据的原因",
+                          "example": "601a****fb4b"
+                        },
+                        "mustFreeReturn": {
+                          "type": "boolean",
+                          "description": "//是否必须支持7天无理由",
+                          "example": true
+                        },
+                        "supportPreSale": {
+                          "type": "boolean",
+                          "description": "//是否支持预售（可用预售规则）",
+                          "example": true
+                        },
+                        "notSupportPreSaleCode": {
+                          "type": "integer",
+                          "description": "//不支持预售原因，1:发货时间格式不正确或不符合规则 2：该类目不支持，3：店铺分过低不支持预售",
+                          "format": "int32"
+                        },
+                        "stepPresale": {
+                          "type": "array",
+                          "description": "阶梯预售规则",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "timeType": {
+                                "type": "integer",
+                                "description": "//时间类型，3:当日发，4:相对，5绝对（现货没有）",
+                                "format": "int32"
+                              },
+                              "value": {
+                                "type": "integer",
+                                "description": "//时间值，现货",
+                                "format": "int32"
+                              },
+                              "min": {
+                                "type": "integer",
+                                "description": "//最小设置时间范围（现货不需要使用）",
+                                "format": "int32"
+                              },
+                              "max": {
+                                "type": "integer",
+                                "description": "//最大设置时间范围（现货不需要使用）",
+                                "format": "int32"
+                              },
+                              "desc": {
+                                "type": "string",
+                                "description": "//提示商家的文案（现货有）",
+                                "example": "601a****fb4b"
+                              },
+                              "isDefault": {
+                                "type": "boolean",
+                                "description": "//默认选中（现货用）",
+                                "example": false
+                              },
+                              "default": {
+                                "type": "boolean"
+                              },
+                              "stepDeliveryTime": {
+                                "type": "array",
+                                "description": "阶梯预售的预售时间范围",
+                                "items": {
+                                  "type": "integer"
+                                }
+                              }
+                            },
+                            "description": "//预售（最多只有两条规则，相对/绝对）",
+                            "example": "601a****fb4b",
+                            "code": "N/A",
+                            "msg": "Error",
+                            "$$ref": "#/components/schemas/1181452",
+                            "x-schema": {
+                              "id": 1181452,
+                              "name": "DeliveryTimeRuleConfigItem",
+                              "desc": "//预售（最多只有两条规则，相对/绝对）",
+                              "createTime": "2022-08-17T09:03:00.000Z",
+                              "updateTime": "2025-05-12T03:10:45.000Z",
+                              "type": 2,
+                              "gatewayId": 103,
+                              "createUserId": "",
+                              "createUserName": "",
+                              "spec": "{\"type\":\"object\",\"properties\":{\"timeType\":{\"type\":\"integer\",\"description\":\"//时间类型，3:当日发，4:相对，5绝对（现货没有）\",\"format\":\"int32\"},\"value\":{\"type\":\"integer\",\"description\":\"//时间值，现货\",\"format\":\"int32\"},\"min\":{\"type\":\"integer\",\"description\":\"//最小设置时间范围（现货不需要使用）\",\"format\":\"int32\"},\"max\":{\"type\":\"integer\",\"description\":\"//最大设置时间范围（现货不需要使用）\",\"format\":\"int32\"},\"desc\":{\"type\":\"string\",\"description\":\"//提示商家的文案（现货有）\",\"example\":\"601a****fb4b\"},\"isDefault\":{\"type\":\"boolean\",\"description\":\"//默认选中（现货用）\",\"example\":false},\"default\":{\"type\":\"boolean\"},\"stepDeliveryTime\":{\"type\":\"array\",\"description\":\"阶梯预售的预售时间范围\",\"items\":{\"type\":\"integer\"}}},\"description\":\"//预售（最多只有两条规则，相对/绝对）\",\"example\":\"601a****fb4b\",\"code\":\"N/A\",\"msg\":\"Error\"}",
+                              "isBase": 0,
+                              "gatewayGroupId": 0,
+                              "gatewayGroupKey": "",
+                              "gatewayVersionId": 1661,
+                              "gatewayVersionName": "feature/logan",
+                              "isMaster": false,
+                              "groupId": 0,
+                              "groupKey": ""
+                            }
+                          }
+                        },
+                        "supportStepPreSale": {
+                          "type": "boolean",
+                          "description": "是否支持阶梯预售"
+                        }
+                      },
+                      "description": "批量查询结果",
+                      "example": "601a****fb4b",
+                      "$$ref": "#/components/schemas/1181450",
+                      "x-schema": {
+                        "id": 1181450,
+                        "name": "DeliveryRule",
+                        "desc": "批量查询结果",
+                        "createTime": "2022-08-17T09:03:00.000Z",
+                        "updateTime": "2025-01-21T05:48:25.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"sellerId\":{\"type\":\"string\",\"description\":\"商家id\",\"example\":\"601a****fb4b\"},\"planInfoId\":{\"type\":\"string\",\"description\":\"物流方案id\",\"example\":\"601a****fb4b\"},\"whcode\":{\"type\":\"string\",\"description\":\"仓库号，自营使用\",\"example\":\"601a****fb4b\"},\"categoryId\":{\"type\":\"string\",\"description\":\"类目id\",\"example\":\"601a****fb4b\"},\"logisticsMode\":{\"type\":\"integer\",\"description\":\"//1:内贸，2:保税，3:直邮\",\"format\":\"int32\"},\"existing\":{\"type\":\"array\",\"description\":\"//现货规则，分为当日发，和指定value的几个枚举\",\"example\":\"601a****fb4b\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=DeliveryTimeRuleConfigItem&schemaId=1181452\"}},\"presale\":{\"type\":\"array\",\"description\":\"//预售（最多只有两条规则，相对/绝对）\",\"example\":\"601a****fb4b\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=DeliveryTimeRuleConfigItem&schemaId=1181452\"}},\"comment\":{\"type\":\"string\",\"description\":\"//备注，如果无法返回配置数据的原因\",\"example\":\"601a****fb4b\"},\"mustFreeReturn\":{\"type\":\"boolean\",\"description\":\"//是否必须支持7天无理由\",\"example\":true},\"supportPreSale\":{\"type\":\"boolean\",\"description\":\"//是否支持预售（可用预售规则）\",\"example\":true},\"notSupportPreSaleCode\":{\"type\":\"integer\",\"description\":\"//不支持预售原因，1:发货时间格式不正确或不符合规则 2：该类目不支持，3：店铺分过低不支持预售\",\"format\":\"int32\"},\"stepPresale\":{\"type\":\"array\",\"description\":\"阶梯预售规则\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=DeliveryTimeRuleConfigItem&schemaId=1181452\"}},\"supportStepPreSale\":{\"type\":\"boolean\",\"description\":\"是否支持阶梯预售\"}},\"description\":\"批量查询结果\",\"example\":\"601a****fb4b\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1181451",
+                "x-schema": {
+                  "id": 1181451,
+                  "name": "GetDeliveryRuleResponse",
+                  "desc": "",
+                  "createTime": "2022-08-17T09:03:00.000Z",
+                  "updateTime": "2022-08-17T09:03:00.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"deliveryRuleList\":{\"type\":\"array\",\"description\":\"批量查询结果\",\"example\":\"601a****fb4b\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=DeliveryRule&schemaId=1181450\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-05-12T03:10:45.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:59:03"
+}

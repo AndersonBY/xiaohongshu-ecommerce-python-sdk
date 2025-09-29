@@ -1,0 +1,397 @@
+{
+  "api_info": {
+    "apiId": 29896,
+    "apiNavigationId": 250,
+    "gatewayId": 165,
+    "gatewayVersionId": 2804,
+    "id": 92,
+    "method": "post",
+    "navigationDetailDesc": "分页查询订单货款结算明细",
+    "navigationDetailName": "分页查询订单货款结算明细",
+    "path": "finance.pageQueryTransaction",
+    "seq": 3
+  },
+  "api_details": {
+    "id": 29896,
+    "path": "/api/openapi/finance/pagequerytransaction",
+    "summary": "分页查询订单货款结算明细",
+    "method": "post",
+    "specJson": {
+      "summary": "分页查询订单货款结算明细",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "startTime",
+                "endTime",
+                "pageNum",
+                "pageSize"
+              ],
+              "properties": {
+                "settleBizType": {
+                  "type": "number",
+                  "description": "交易类型：0(结算入账) 1(退款)",
+                  "example": ""
+                },
+                "startTime": {
+                  "type": "number",
+                  "description": "开始时间（unix时间戳，包含；如果结算状态为「已结算」则时间指「结算时间」，如果结算状态为「未结算」则时间指「订单完成时间」）",
+                  "example": ""
+                },
+                "endTime": {
+                  "type": "number",
+                  "description": "结束时间（unix时间戳，不包含，每次最多查询一天数据，即startTime和endTime之间的差值不能超过24*60*60*1000；如果结算状态为「已结算」则时间指「结算时间」，如果结算状态为「未结算」则时间指「订单完成时间」）",
+                  "example": ""
+                },
+                "erqingType": {
+                  "type": "number",
+                  "description": "结算账户：0(店铺余额) 2(微信) 1(支付宝)",
+                  "example": ""
+                },
+                "commonSettleStatus": {
+                  "type": "number",
+                  "description": "结算状态：0(未结算) 1(已结算)",
+                  "example": ""
+                },
+                "pageSize": {
+                  "type": "number",
+                  "description": "分页大小",
+                  "example": ""
+                },
+                "pageNum": {
+                  "type": "number",
+                  "description": "页码",
+                  "example": ""
+                },
+                "shouldLoadGoodsInfo": {
+                  "type": "boolean",
+                  "description": "是否查询商品信息",
+                  "example": ""
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code",
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "msg": {
+                    "type": "string"
+                  },
+                  "success": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "integer",
+                        "description": "总数"
+                      },
+                      "totalPage": {
+                        "type": "integer",
+                        "description": "总页数"
+                      },
+                      "pageNum": {
+                        "type": "integer",
+                        "description": "页码"
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "description": "分页大小"
+                      },
+                      "transactions": {
+                        "type": "array",
+                        "description": "数据集",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "transactionId": {
+                              "type": "integer",
+                              "description": "结算唯一id"
+                            },
+                            "packageId": {
+                              "type": "string",
+                              "description": "订单号"
+                            },
+                            "statementType": {
+                              "type": "integer",
+                              "description": "结算类型：2(履约单单笔结算) 1(预约单打包结算) 0(订单结算)"
+                            },
+                            "transactionBizType": {
+                              "type": "integer",
+                              "description": "账本业务类型：3(售后退款) 2(客服退款) 1(退货退款) 0(销售)"
+                            },
+                            "settleBizType": {
+                              "type": "integer",
+                              "description": "交易类型：0(结算入账) 1(退款)"
+                            },
+                            "deliveryId": {
+                              "type": "string",
+                              "description": "履约单号"
+                            },
+                            "transactionBizNo": {
+                              "type": "string",
+                              "description": "账本业务单号"
+                            },
+                            "returnId": {
+                              "type": "string",
+                              "description": "售后单号"
+                            },
+                            "orderTime": {
+                              "type": "number",
+                              "format": "double",
+                              "description": "下单时间"
+                            },
+                            "canSettleTime": {
+                              "type": "number",
+                              "format": "double",
+                              "description": "可结算时间"
+                            },
+                            "settledTime": {
+                              "type": "number",
+                              "format": "double",
+                              "description": "结算时间"
+                            },
+                            "predictableSettleTime": {
+                              "type": "string",
+                              "description": "预计结算时间"
+                            },
+                            "erqingType": {
+                              "type": "integer",
+                              "description": "结算账户：0(店铺余额) 2(微信) 1(支付宝)"
+                            },
+                            "transactionSettleStatus": {
+                              "type": "integer",
+                              "description": "账本结算状态：2(可结算) 1(初始态) 0(不需要结算) 4(已结算) 5(结算异常) 6(正逆冲抵无需结算) 3(结算中)"
+                            },
+                            "commonSettleStatus": {
+                              "type": "integer",
+                              "description": "结算状态：0(未结算) 1(已结算)"
+                            },
+                            "amount": {
+                              "type": "string",
+                              "description": "动账金额"
+                            },
+                            "goodsAmount": {
+                              "type": "string",
+                              "description": "结算金额"
+                            },
+                            "payAmount": {
+                              "type": "string",
+                              "description": "商品实付/实退金额"
+                            },
+                            "appPromotion": {
+                              "type": "string",
+                              "description": "平台优惠金额"
+                            },
+                            "freightAmount": {
+                              "type": "string",
+                              "description": "运费实付/实退金额"
+                            },
+                            "noFreightReason": {
+                              "type": "string",
+                              "description": "运费不收取/退还的原因"
+                            },
+                            "taxAmount": {
+                              "type": "string",
+                              "description": "税金"
+                            },
+                            "noTaxReason": {
+                              "type": "string",
+                              "description": "税金不收取/退还的原因"
+                            },
+                            "freightTaxAmount": {
+                              "type": "string",
+                              "description": "运费税"
+                            },
+                            "noFreightTaxReason": {
+                              "type": "string",
+                              "description": "运费税不收取/退还的原因"
+                            },
+                            "commissionAmount": {
+                              "type": "string",
+                              "description": "总佣金"
+                            },
+                            "payChannelAmount": {
+                              "type": "string",
+                              "description": "总支付渠道费"
+                            },
+                            "noPayChannelReason": {
+                              "type": "string",
+                              "description": "总支付渠道费不收取/退还的原因"
+                            },
+                            "cpsAmount": {
+                              "type": "string",
+                              "description": "CPS佣金"
+                            },
+                            "installmentAmount": {
+                              "type": "string",
+                              "description": "花呗分期手续费"
+                            },
+                            "noInstallmentReason": {
+                              "type": "string",
+                              "description": "花呗分期手续费不收取/退还的原因"
+                            },
+                            "extraAmount": {
+                              "type": "string",
+                              "description": "附加费"
+                            },
+                            "noExtraReason": {
+                              "type": "string",
+                              "description": "附加费不收取/退还的原因"
+                            },
+                            "calculateRemark": {
+                              "type": "string",
+                              "description": "计费备注"
+                            },
+                            "goodsDetails": {
+                              "type": "array",
+                              "description": "商品信息",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "transactionId": {
+                                    "type": "number",
+                                    "description": "账本ID",
+                                    "example": ""
+                                  },
+                                  "newSkuId": {
+                                    "type": "string",
+                                    "description": "商品ID",
+                                    "example": ""
+                                  },
+                                  "newSkuQuantity": {
+                                    "type": "number",
+                                    "description": "商品数量",
+                                    "example": ""
+                                  },
+                                  "rawAmount": {
+                                    "type": "string",
+                                    "description": "原价",
+                                    "example": ""
+                                  },
+                                  "payAmount": {
+                                    "type": "string",
+                                    "description": "支付金额",
+                                    "example": ""
+                                  },
+                                  "sellerPromotion": {
+                                    "type": "string",
+                                    "description": "商家优惠金额",
+                                    "example": ""
+                                  },
+                                  "appPromotion": {
+                                    "type": "string",
+                                    "description": "平台优惠金额",
+                                    "example": ""
+                                  },
+                                  "goodsAmount": {
+                                    "type": "string",
+                                    "description": "货款金额",
+                                    "example": ""
+                                  },
+                                  "noGoodsReason": {
+                                    "type": "string",
+                                    "description": "货款不退原因",
+                                    "example": ""
+                                  },
+                                  "taxAmount": {
+                                    "type": "string",
+                                    "description": "商品税金",
+                                    "example": ""
+                                  },
+                                  "noTaxReason": {
+                                    "type": "string",
+                                    "description": "税金不退原因",
+                                    "example": ""
+                                  },
+                                  "commissionAmount": {
+                                    "type": "string",
+                                    "description": "佣金",
+                                    "example": ""
+                                  },
+                                  "serviceCommissionAmount": {
+                                    "type": "string",
+                                    "description": "服务商佣金",
+                                    "example": ""
+                                  },
+                                  "redCommissionAmount": {
+                                    "type": "string",
+                                    "description": "平台佣金",
+                                    "example": ""
+                                  },
+                                  "noCommissionReason": {
+                                    "type": "string",
+                                    "description": "佣金不退原因",
+                                    "example": ""
+                                  },
+                                  "cpsAmount": {
+                                    "type": "string",
+                                    "description": "KOL佣金",
+                                    "example": ""
+                                  },
+                                  "noCpsReason": {
+                                    "type": "string",
+                                    "description": "KOL佣金不退原因",
+                                    "example": ""
+                                  },
+                                  "commissionReturnAmount": {
+                                    "type": "string",
+                                    "description": "返佣",
+                                    "example": ""
+                                  },
+                                  "noCommissionReturnReason": {
+                                    "type": "string",
+                                    "description": "返佣不退原因",
+                                    "example": ""
+                                  }
+                                }
+                              }
+                            },
+                            "freightAppPromotion": {
+                              "type": "string",
+                              "description": "平台运费补贴"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "x-genric": "data"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-04-29T12:31:37.000Z"
+  },
+  "error_codes": [],
+  "category": "财务API",
+  "fetched_at": "2025-09-26 14:59:52"
+}

@@ -1,0 +1,182 @@
+{
+  "api_info": {
+    "apiId": 29894,
+    "apiNavigationId": 251,
+    "gatewayId": 165,
+    "gatewayVersionId": 2804,
+    "id": 93,
+    "method": "post",
+    "navigationDetailDesc": "分页查询其他服务款结算明细",
+    "navigationDetailName": "分页查询其他服务款结算明细",
+    "path": "finance.pageQueryExpense",
+    "seq": 4
+  },
+  "api_details": {
+    "id": 29894,
+    "path": "/api/openapi/finance/pagequeryexpense",
+    "summary": "分页查询其他服务款结算明细",
+    "method": "post",
+    "specJson": {
+      "summary": "分页查询其他服务款结算明细",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "startTime",
+                "endTime",
+                "pageNum",
+                "pageSize"
+              ],
+              "properties": {
+                "baseBizType": {
+                  "type": "number",
+                  "description": "交易类型：0(薯券) 1(在线寄件快递费) 2(极速退款赔付) 3(发货延误赔付) 4(运费宝) 5(分期免息平台补贴) 6(仲裁结算) 7(小额打款)8(运费报销赔付)",
+                  "example": ""
+                },
+                "startTime": {
+                  "type": "number",
+                  "description": "开始时间（unix时间戳，包含）",
+                  "example": ""
+                },
+                "endTime": {
+                  "type": "number",
+                  "description": "结束时间（unix时间戳，不包含，每次最多查询一天数据，即startTime和endTime之间的差值不能超过24*60*60*1000）",
+                  "example": ""
+                },
+                "settleStatus": {
+                  "type": "number",
+                  "description": "结算状态：0(未结算) 1(已结算)",
+                  "example": ""
+                },
+                "pageSize": {
+                  "type": "number",
+                  "description": "分页大小",
+                  "example": ""
+                },
+                "pageNum": {
+                  "type": "number",
+                  "description": "页码",
+                  "example": ""
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code",
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "msg": {
+                    "type": "string"
+                  },
+                  "success": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "integer",
+                        "description": "总数"
+                      },
+                      "totalPage": {
+                        "type": "integer",
+                        "description": "总页数"
+                      },
+                      "pageNum": {
+                        "type": "integer",
+                        "description": "页码"
+                      },
+                      "pageSize": {
+                        "type": "integer",
+                        "description": "分页大小"
+                      },
+                      "expenses": {
+                        "type": "array",
+                        "description": "数据集",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "expenseId": {
+                              "type": "integer",
+                              "format": "double",
+                              "description": "费用唯一id"
+                            },
+                            "baseBizType": {
+                              "type": "string",
+                              "description": "交易类型：0(薯券) 1(在线寄件快递费) 2(极速退款赔付) 3(发货延误赔付) 4(运费宝) 5(分期免息平台补贴) 6(仲裁结算) 7(小额打款)"
+                            },
+                            "packageId": {
+                              "type": "string",
+                              "description": "订单号"
+                            },
+                            "bizNo": {
+                              "type": "string",
+                              "description": "业务单号"
+                            },
+                            "settledTime": {
+                              "type": "number",
+                              "description": "动账时间，unix时间戳（毫秒）",
+                              "format": "double"
+                            },
+                            "erqingType": {
+                              "type": "integer",
+                              "description": "结算账户：0(店铺余额) 1(支付宝) 2(微信)"
+                            },
+                            "settleBizType": {
+                              "type": "integer",
+                              "description": "交易类型：0(结算入账) 1(退款)"
+                            },
+                            "transactionSettleStatus": {
+                              "type": "integer",
+                              "description": "账本结算状态：2(可结算) 1(初始态) 0(不需要结算) 4(已结算) 5(结算异常) 6(正逆冲抵无需结算) 3(结算中)"
+                            },
+                            "commonSettleStatus": {
+                              "type": "integer",
+                              "description": "结算状态：0(未结算) 1(已结算)"
+                            },
+                            "amount": {
+                              "type": "string",
+                              "description": "动账金额"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "x-genric": "data"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-05-14T12:13:38.000Z"
+  },
+  "error_codes": [],
+  "category": "财务API",
+  "fetched_at": "2025-09-26 14:59:53"
+}

@@ -1,0 +1,889 @@
+{
+  "api_info": {
+    "apiId": 27242,
+    "apiNavigationId": 184,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 26,
+    "method": "post",
+    "navigationDetailDesc": "订单详情",
+    "navigationDetailName": "订单详情",
+    "path": "order.getOrderDetail",
+    "seq": 1
+  },
+  "api_details": {
+    "id": 27242,
+    "path": "/ark/order.getOrderDetail",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "获取订单详情",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "orderId"
+              ],
+              "type": "object",
+              "properties": {
+                "orderId": {
+                  "type": "string",
+                  "description": "订单号",
+                  "example": "P194****4183"
+                }
+              },
+              "$$ref": "#/components/schemas/1585783",
+              "x-schema": {
+                "id": 1585783,
+                "name": "GetOrderDetailRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2023-03-10T12:35:05.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"orderId\"],\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号\",\"example\":\"P194****4183\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "type": "string",
+                    "description": "订单号",
+                    "example": "P321***4012"
+                  },
+                  "orderType": {
+                    "type": "integer",
+                    "description": "订单类型，1现货 2定金预售 3全款预售(废弃) 4全款预售(新) 5补发",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "orderStatus": {
+                    "type": "integer",
+                    "description": "订单状态，1已下单待付款 2已支付处理中 3清关中 4待发货 5部分发货 6待收货 7已完成 8已关闭 9已取消 10换货申请中",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "orderAfterSalesStatus": {
+                    "type": "integer",
+                    "description": "售后状态，1无售后 2售后处理中 3售后完成 4售后拒绝 5售后关闭 6平台介入中 7售后取消",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "cancelStatus": {
+                    "type": "integer",
+                    "description": "申请取消状态，0未申请取消 1取消处理中",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "createdTime": {
+                    "type": "integer",
+                    "description": "创建时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "paidTime": {
+                    "type": "integer",
+                    "description": "支付时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "updateTime": {
+                    "type": "integer",
+                    "description": "更新时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "deliveryTime": {
+                    "type": "integer",
+                    "description": "订单发货时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "cancelTime": {
+                    "type": "integer",
+                    "description": "订单取消时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "finishTime": {
+                    "type": "integer",
+                    "description": "订单完成时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "promiseLastDeliveryTime": {
+                    "type": "integer",
+                    "description": "承诺最晚发货时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "planInfoId": {
+                    "type": "string",
+                    "description": "物流方案id",
+                    "example": "601a***fb49"
+                  },
+                  "planInfoName": {
+                    "type": "string",
+                    "description": "物流方案名称",
+                    "example": "不包邮-默认模板"
+                  },
+                  "receiverCountryId": {
+                    "type": "string",
+                    "description": "收件人国家id",
+                    "example": "null"
+                  },
+                  "receiverCountryName": {
+                    "type": "string",
+                    "description": "目前仅 中国 ",
+                    "example": "中国"
+                  },
+                  "receiverProvinceId": {
+                    "type": "string",
+                    "description": "收件人省份id",
+                    "example": "null"
+                  },
+                  "receiverProvinceName": {
+                    "type": "string",
+                    "description": "收件人省份",
+                    "example": "江苏"
+                  },
+                  "receiverCityId": {
+                    "type": "string",
+                    "description": "收件人城市id",
+                    "example": "null"
+                  },
+                  "receiverCityName": {
+                    "type": "string",
+                    "description": "收件人城市",
+                    "example": "苏州"
+                  },
+                  "receiverDistrictId": {
+                    "type": "string",
+                    "description": "收件人区县id",
+                    "example": "null"
+                  },
+                  "receiverDistrictName": {
+                    "type": "string",
+                    "description": "收件人区县名称",
+                    "example": "相城区"
+                  },
+                  "customerRemark": {
+                    "type": "string",
+                    "description": "用户备注",
+                    "example": "请尽快送达"
+                  },
+                  "sellerRemark": {
+                    "type": "string",
+                    "description": "商家标记备注",
+                    "example": "请尽快送达"
+                  },
+                  "sellerRemarkFlag": {
+                    "type": "integer",
+                    "description": "商家标记优先级，ark订单列表展示旗子颜色 1灰旗 2红旗 3黄旗 4绿旗 5蓝旗 6紫旗",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "presaleDeliveryStartTime": {
+                    "type": "integer",
+                    "description": "预售最早发货时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "presaleDeliveryEndTime": {
+                    "type": "integer",
+                    "description": "预售最晚发货时间 单位ms",
+                    "format": "int64",
+                    "example": 1612518379000
+                  },
+                  "skuList": {
+                    "type": "array",
+                    "description": "sku列表 相同sku聚合  金额为价格总和 单位 分",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "skuId": {
+                          "type": "string",
+                          "description": "商品id",
+                          "example": "603c****0b0a"
+                        },
+                        "skuName": {
+                          "type": "string",
+                          "description": "商品名称",
+                          "example": "商品1号"
+                        },
+                        "erpcode": {
+                          "type": "string",
+                          "description": "商家编码(若为组合品，暂不支持组合品的商家编码，但skuDetailList会返回子商品商家编码)",
+                          "example": "null"
+                        },
+                        "skuSpec": {
+                          "type": "string",
+                          "description": "规格",
+                          "example": "null"
+                        },
+                        "skuImage": {
+                          "type": "string",
+                          "description": "商品图片url",
+                          "example": "null"
+                        },
+                        "skuQuantity": {
+                          "type": "integer",
+                          "description": "商品数量",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "skuDetailList": {
+                          "type": "array",
+                          "description": "商品sku信息列表,单品非渠道商品为自身信息，组合品为子商品信息，多包组和渠道商品为其对应非渠道单品信息）",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "skuId": {
+                                "type": "string",
+                                "description": "单品商品Id(渠道商品为生成渠道商品的原商品单品id，组合商品为各个子商品的单品id，多包组为对应单包组商品id,商家编码同理)",
+                                "example": "690***466"
+                              },
+                              "erpCode": {
+                                "type": "string",
+                                "description": "商家编码",
+                                "example": "null"
+                              },
+                              "barcode": {
+                                "type": "string",
+                                "description": "商品条码",
+                                "example": "690***466"
+                              },
+                              "scSkuCode": {
+                                "type": "string",
+                                "description": "小红书编码，即将废弃",
+                                "example": "620***301"
+                              },
+                              "quantity": {
+                                "type": "integer",
+                                "description": "购买数量",
+                                "format": "int32",
+                                "example": 100
+                              },
+                              "registerName": {
+                                "type": "string",
+                                "description": "商品备案名称",
+                                "example": "商品1号"
+                              },
+                              "skuName": {
+                                "type": "string",
+                                "description": "商品名",
+                                "example": "商品1号"
+                              },
+                              "pricePerSku": {
+                                "type": "integer",
+                                "description": "单个sku价格（也叫申报价，不含税）",
+                                "format": "int64",
+                                "example": 100
+                              },
+                              "taxPerSku": {
+                                "type": "integer",
+                                "description": "单个sku税金",
+                                "format": "int64",
+                                "example": 10
+                              },
+                              "paidAmountPerSku": {
+                                "type": "integer",
+                                "description": "单个sku实付",
+                                "format": "int64",
+                                "example": 100
+                              },
+                              "depositAmountPerSku": {
+                                "type": "integer",
+                                "description": "单个sku定金",
+                                "format": "int64",
+                                "example": 30
+                              },
+                              "merchantDiscountPerSku": {
+                                "type": "integer",
+                                "description": "单个sku商家承担优惠",
+                                "format": "int64",
+                                "example": 10
+                              },
+                              "redDiscountPerSku": {
+                                "type": "integer",
+                                "description": "单个sku平台承担优惠",
+                                "format": "int64",
+                                "example": 5
+                              },
+                              "rawPricePerSku": {
+                                "type": "integer",
+                                "description": "单个sku原价（商品发布时设置的售价，是否含税取决于商品发布时的设置）",
+                                "format": "int64",
+                                "example": 115
+                              }
+                            },
+                            "description": "商品sku信息列表,单品非渠道商品为自身信息，组合品为子商品信息，多包组和渠道商品为其对应非渠道单品信息）",
+                            "$$ref": "#/components/schemas/1585795",
+                            "x-schema": {
+                              "id": 1585795,
+                              "name": "OrderSkuDetailDTO",
+                              "desc": "商品sku信息列表,单品非渠道商品为自身信息，组合品为子商品信息，多包组和渠道商品为其对应单品信息）",
+                              "createTime": "2023-03-10T12:35:05.000Z",
+                              "updateTime": "2023-11-30T02:47:29.000Z",
+                              "type": 2,
+                              "gatewayId": 103,
+                              "createUserId": "",
+                              "createUserName": "",
+                              "spec": "{\"type\":\"object\",\"properties\":{\"skuId\":{\"type\":\"string\",\"description\":\"单品商品Id(渠道商品为生成渠道商品的原商品单品id，组合商品为各个子商品的单品id，多包组为对应单包组商品id,商家编码同理)\",\"example\":\"690***466\"},\"erpCode\":{\"type\":\"string\",\"description\":\"商家编码\",\"example\":\"null\"},\"barcode\":{\"type\":\"string\",\"description\":\"商品条码\",\"example\":\"690***466\"},\"scSkuCode\":{\"type\":\"string\",\"description\":\"小红书编码，即将废弃\",\"example\":\"620***301\"},\"quantity\":{\"type\":\"integer\",\"description\":\"购买数量\",\"format\":\"int32\",\"example\":100},\"registerName\":{\"type\":\"string\",\"description\":\"商品备案名称\",\"example\":\"商品1号\"},\"skuName\":{\"type\":\"string\",\"description\":\"商品名\",\"example\":\"商品1号\"},\"pricePerSku\":{\"type\":\"integer\",\"description\":\"单个sku价格（也叫申报价，不含税）\",\"format\":\"int64\",\"example\":100},\"taxPerSku\":{\"type\":\"integer\",\"description\":\"单个sku税金\",\"format\":\"int64\",\"example\":10},\"paidAmountPerSku\":{\"type\":\"integer\",\"description\":\"单个sku实付\",\"format\":\"int64\",\"example\":100},\"depositAmountPerSku\":{\"type\":\"integer\",\"description\":\"单个sku定金\",\"format\":\"int64\",\"example\":30},\"merchantDiscountPerSku\":{\"type\":\"integer\",\"description\":\"单个sku商家承担优惠\",\"format\":\"int64\",\"example\":10},\"redDiscountPerSku\":{\"type\":\"integer\",\"description\":\"单个sku平台承担优惠\",\"format\":\"int64\",\"example\":5},\"rawPricePerSku\":{\"type\":\"integer\",\"description\":\"单个sku原价（商品发布时设置的售价，是否含税取决于商品发布时的设置）\",\"format\":\"int64\",\"example\":115}},\"description\":\"商品sku信息列表,单品非渠道商品为自身信息，组合品为子商品信息，多包组和渠道商品为其对应非渠道单品信息）\"}",
+                              "isBase": 0,
+                              "gatewayGroupId": 0,
+                              "gatewayGroupKey": "",
+                              "gatewayVersionId": 1661,
+                              "gatewayVersionName": "feature/logan",
+                              "isMaster": false,
+                              "groupId": 0,
+                              "groupKey": ""
+                            }
+                          }
+                        },
+                        "totalPaidAmount": {
+                          "type": "integer",
+                          "description": "总支付金额（考虑总件数）商品总实付",
+                          "format": "int64",
+                          "example": 115
+                        },
+                        "totalMerchantDiscount": {
+                          "type": "integer",
+                          "description": "商家承担总优惠",
+                          "format": "int64",
+                          "example": 10
+                        },
+                        "totalRedDiscount": {
+                          "type": "integer",
+                          "description": "平台承担总优惠",
+                          "format": "int64",
+                          "example": 5
+                        },
+                        "totalTaxAmount": {
+                          "type": "integer",
+                          "description": "商品税金",
+                          "format": "int64",
+                          "example": 10
+                        },
+                        "totalNetWeight": {
+                          "type": "integer",
+                          "description": "商品总净重",
+                          "format": "int64",
+                          "example": 2000
+                        },
+                        "skuTag": {
+                          "type": "integer",
+                          "description": "是否赠品，1 赠品 0 普通商品",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "isChannel": {
+                          "type": "boolean",
+                          "description": "是否是渠道商品",
+                          "example": false
+                        },
+                        "deliveryMode": {
+                          "type": "integer",
+                          "description": "是否支持无物流发货, 1: 支持无物流发货 0：不支持无物流发货",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "kolId": {
+                          "type": "string",
+                          "description": "达人id(通过直播间下单 或者达人主页小清单下单才有值,直播间商品加到购物车下单 此字段为空)",
+                          "example": "112321"
+                        },
+                        "kolName": {
+                          "type": "string",
+                          "description": "达人名称(通过直播间下单 或者达人主页小清单下单才有值,直播间商品加到购物车下单 此字段为空)",
+                          "example": "达人a"
+                        },
+                        "skuAfterSaleStatus": {
+                          "type": "integer",
+                          "description": "Sku售后状态 1无售后 2售后处理中 3售后完成 4售后拒绝 5售后关闭 6平台介入中 7售后取消",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "skuIdentifyCodeInfo": {
+                          "type": "object",
+                          "description": "商品序列号等信息，仅部分类目的国补订单存在",
+                          "properties": {
+                            "sNCode": {
+                              "type": "string",
+                              "description": "序列号",
+                              "example": "123"
+                            },
+                            "barCode": {
+                              "type": "string",
+                              "description": "商品条码",
+                              "example": "234"
+                            },
+                            "iMEI1Code": {
+                              "type": "string",
+                              "description": "IMEI1",
+                              "example": "345"
+                            },
+                            "iMEI2Code": {
+                              "type": "string",
+                              "description": "IMEI2",
+                              "example": "456"
+                            }
+                          }
+                        },
+                        "itemId": {
+                          "type": "string",
+                          "description": "商品ID"
+                        },
+                        "itemName": {
+                          "type": "string",
+                          "description": "商品名称"
+                        }
+                      },
+                      "description": "sku列表 相同sku聚合  金额为价格总和 单位 分",
+                      "$$ref": "#/components/schemas/1585794",
+                      "x-schema": {
+                        "id": 1585794,
+                        "name": "OrderSkuDTOV3",
+                        "desc": "sku列表 相同itemid聚合  金额为相同item下sku价格总和 单位 分",
+                        "createTime": "2023-03-10T12:35:05.000Z",
+                        "updateTime": "2025-07-10T08:03:10.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"skuId\":{\"type\":\"string\",\"description\":\"商品id\",\"example\":\"603c****0b0a\"},\"skuName\":{\"type\":\"string\",\"description\":\"商品名称\",\"example\":\"商品1号\"},\"erpcode\":{\"type\":\"string\",\"description\":\"商家编码(若为组合品，暂不支持组合品的商家编码，但skuDetailList会返回子商品商家编码)\",\"example\":\"null\"},\"skuSpec\":{\"type\":\"string\",\"description\":\"规格\",\"example\":\"null\"},\"skuImage\":{\"type\":\"string\",\"description\":\"商品图片url\",\"example\":\"null\"},\"skuQuantity\":{\"type\":\"integer\",\"description\":\"商品数量\",\"format\":\"int32\",\"example\":1},\"skuDetailList\":{\"type\":\"array\",\"description\":\"商品sku信息列表,单品非渠道商品为自身信息，组合品为子商品信息，多包组和渠道商品为其对应非渠道单品信息）\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=OrderSkuDetailDTO&schemaId=1585795\"}},\"totalPaidAmount\":{\"type\":\"integer\",\"description\":\"总支付金额（考虑总件数）商品总实付\",\"format\":\"int64\",\"example\":115},\"totalMerchantDiscount\":{\"type\":\"integer\",\"description\":\"商家承担总优惠\",\"format\":\"int64\",\"example\":10},\"totalRedDiscount\":{\"type\":\"integer\",\"description\":\"平台承担总优惠\",\"format\":\"int64\",\"example\":5},\"totalTaxAmount\":{\"type\":\"integer\",\"description\":\"商品税金\",\"format\":\"int64\",\"example\":10},\"totalNetWeight\":{\"type\":\"integer\",\"description\":\"商品总净重\",\"format\":\"int64\",\"example\":2000},\"skuTag\":{\"type\":\"integer\",\"description\":\"是否赠品，1 赠品 0 普通商品\",\"format\":\"int32\",\"example\":1},\"isChannel\":{\"type\":\"boolean\",\"description\":\"是否是渠道商品\",\"example\":false},\"deliveryMode\":{\"type\":\"integer\",\"description\":\"是否支持无物流发货, 1: 支持无物流发货 0：不支持无物流发货\",\"format\":\"int32\",\"example\":1},\"kolId\":{\"type\":\"string\",\"description\":\"达人id(通过直播间下单 或者达人主页小清单下单才有值,直播间商品加到购物车下单 此字段为空)\",\"example\":\"112321\"},\"kolName\":{\"type\":\"string\",\"description\":\"达人名称(通过直播间下单 或者达人主页小清单下单才有值,直播间商品加到购物车下单 此字段为空)\",\"example\":\"达人a\"},\"skuAfterSaleStatus\":{\"type\":\"integer\",\"description\":\"Sku售后状态 1无售后 2售后处理中 3售后完成 4售后拒绝 5售后关闭 6平台介入中 7售后取消\",\"format\":\"int32\",\"example\":1},\"skuIdentifyCodeInfo\":{\"type\":\"object\",\"description\":\"商品序列号等信息，仅部分类目的国补订单存在\",\"properties\":{\"sNCode\":{\"type\":\"string\",\"description\":\"序列号\",\"example\":\"123\"},\"barCode\":{\"type\":\"string\",\"description\":\"商品条码\",\"example\":\"234\"},\"iMEI1Code\":{\"type\":\"string\",\"description\":\"IMEI1\",\"example\":\"345\"},\"iMEI2Code\":{\"type\":\"string\",\"description\":\"IMEI2\",\"example\":\"456\"}}},\"itemId\":{\"type\":\"string\",\"description\":\"商品ID\"},\"itemName\":{\"type\":\"string\",\"description\":\"商品名称\"}},\"description\":\"sku列表 相同sku聚合  金额为价格总和 单位 分\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  },
+                  "originalOrderId": {
+                    "type": "string",
+                    "description": "原始关联订单号(退换订单的原订单)",
+                    "example": "null"
+                  },
+                  "totalNetWeightAmount": {
+                    "type": "integer",
+                    "description": "订单商品总净重 单位g",
+                    "format": "int32",
+                    "example": 2000
+                  },
+                  "totalPayAmount": {
+                    "type": "integer",
+                    "description": "订单实付金额(包含运费和定金) 单位分",
+                    "format": "int32",
+                    "example": 10000
+                  },
+                  "totalShippingFree": {
+                    "type": "integer",
+                    "description": "订单实付运费 单位分",
+                    "format": "int32",
+                    "example": 1000
+                  },
+                  "unpack": {
+                    "type": "boolean",
+                    "description": "是否拆包 true已拆包  false未拆包",
+                    "example": true
+                  },
+                  "expressTrackingNo": {
+                    "type": "string",
+                    "description": "快递单号",
+                    "example": "1021***1412"
+                  },
+                  "expressCompanyCode": {
+                    "type": "string",
+                    "description": "快递公司编码",
+                    "example": "shunfeng"
+                  },
+                  "receiverName": {
+                    "type": "string",
+                    "description": "收件人姓名  暂不返回 详情通过getOrderReceiverInfo获取",
+                    "example": "null"
+                  },
+                  "receiverPhone": {
+                    "type": "string",
+                    "description": "收件人手机  暂不返回 详情通过getOrderReceiverInfo获取",
+                    "example": "null"
+                  },
+                  "receiverAddress": {
+                    "type": "string",
+                    "description": "收件人地址  暂不返回 详情通过getOrderReceiverInfo获取",
+                    "example": "null"
+                  },
+                  "boundExtendInfo": {
+                    "type": "object",
+                    "properties": {
+                      "payNo": {
+                        "type": "string",
+                        "description": "交易流水号",
+                        "example": "null"
+                      },
+                      "payChannel": {
+                        "type": "string",
+                        "description": "交易渠道，AliPay=支付宝，TP=微信",
+                        "example": "null"
+                      },
+                      "productValue": {
+                        "type": "number",
+                        "description": "订单价值（货值，订单商品申价之和（税前价））",
+                        "format": "double"
+                      },
+                      "payAmount": {
+                        "type": "number",
+                        "description": "订单支付金额（含运费）",
+                        "format": "double"
+                      },
+                      "taxAmount": {
+                        "type": "number",
+                        "description": "订单税金",
+                        "format": "double"
+                      },
+                      "shippingFee": {
+                        "type": "number",
+                        "description": "运费 含运费税",
+                        "format": "double"
+                      },
+                      "discountAmount": {
+                        "type": "number",
+                        "description": "订单优惠",
+                        "format": "double"
+                      },
+                      "zoneCodes": {
+                        "type": "array",
+                        "description": "海关三级地址区域编码",
+                        "items": {
+                          "type": "string",
+                          "description": "海关三级地址区域编码"
+                        }
+                      }
+                    },
+                    "description": "三方保税节点  金额单位 分",
+                    "$$ref": "#/components/schemas/217592",
+                    "x-schema": {
+                      "id": 217592,
+                      "name": "BoundExtendInfoDTO",
+                      "desc": "三方保税节点  金额单位 分",
+                      "createTime": "2021-08-03T08:22:26.000Z",
+                      "updateTime": "2021-12-17T11:46:16.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "5fa4f48970742e0001faee4b",
+                      "createUserName": "林松斌（实习）",
+                      "spec": "{\"type\":\"object\",\"properties\":{\"payNo\":{\"type\":\"string\",\"description\":\"交易流水号\",\"example\":\"null\"},\"payChannel\":{\"type\":\"string\",\"description\":\"交易渠道，AliPay=支付宝，TP=微信\",\"example\":\"null\"},\"productValue\":{\"type\":\"number\",\"description\":\"订单价值（货值，订单商品申价之和（税前价））\",\"format\":\"double\"},\"payAmount\":{\"type\":\"number\",\"description\":\"订单支付金额（含运费）\",\"format\":\"double\"},\"taxAmount\":{\"type\":\"number\",\"description\":\"订单税金\",\"format\":\"double\"},\"shippingFee\":{\"type\":\"number\",\"description\":\"运费 含运费税\",\"format\":\"double\"},\"discountAmount\":{\"type\":\"number\",\"description\":\"订单优惠\",\"format\":\"double\"},\"zoneCodes\":{\"type\":\"array\",\"description\":\"海关三级地址区域编码\",\"items\":{\"type\":\"string\",\"description\":\"海关三级地址区域编码\"}}},\"description\":\"三方保税节点  金额单位 分\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  },
+                  "transferExtendInfo": {
+                    "type": "object",
+                    "properties": {
+                      "internationalExpressNo": {
+                        "type": "string",
+                        "description": "国际快递单号",
+                        "example": "null"
+                      },
+                      "orderDeclaredAmount": {
+                        "type": "number",
+                        "description": "订单申报金额",
+                        "format": "double"
+                      },
+                      "paintMarker": {
+                        "type": "string",
+                        "description": "大头笔",
+                        "example": "null"
+                      },
+                      "collectionPlace": {
+                        "type": "string",
+                        "description": "集包地",
+                        "example": "null"
+                      },
+                      "threeSegmentCode": {
+                        "type": "string",
+                        "description": "三段码",
+                        "example": "null"
+                      }
+                    },
+                    "description": "小包转运节点",
+                    "$$ref": "#/components/schemas/217597",
+                    "x-schema": {
+                      "id": 217597,
+                      "name": "TransferExtendInfoDTO",
+                      "desc": "小包转运节点",
+                      "createTime": "2021-08-03T08:22:26.000Z",
+                      "updateTime": "2021-08-03T08:22:26.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "5fa4f48970742e0001faee4b",
+                      "createUserName": "林松斌（实习）",
+                      "spec": "{\"type\":\"object\",\"properties\":{\"internationalExpressNo\":{\"type\":\"string\",\"description\":\"国际快递单号\",\"example\":\"null\"},\"orderDeclaredAmount\":{\"type\":\"number\",\"description\":\"订单申报金额\",\"format\":\"double\"},\"paintMarker\":{\"type\":\"string\",\"description\":\"大头笔\",\"example\":\"null\"},\"collectionPlace\":{\"type\":\"string\",\"description\":\"集包地\",\"example\":\"null\"},\"threeSegmentCode\":{\"type\":\"string\",\"description\":\"三段码\",\"example\":\"null\"}},\"description\":\"小包转运节点\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  },
+                  "openAddressId": {
+                    "type": "string",
+                    "description": "收件人姓名+手机+地址等计算得出，用来查询收件人详情",
+                    "example": "null"
+                  },
+                  "simpleDeliveryOrderList": {
+                    "type": "array",
+                    "description": "拆包信息节点",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "deliveryOrderIndex": {
+                          "type": "integer",
+                          "description": "发货订单索引标识 修改快递单号会使用",
+                          "format": "int32"
+                        },
+                        "status": {
+                          "type": "integer",
+                          "description": "发货订单状态,1:已下单待付款  2:已支付处理中  3:清关中 4:待发货  6:待收货  7:已完成  8:已关闭  9:已取消  10:换货申请中",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "expressTrackingNo": {
+                          "type": "string",
+                          "description": "拆包快递单号",
+                          "example": "null"
+                        },
+                        "expressCompanyCode": {
+                          "type": "string",
+                          "description": "快递公司代码",
+                          "example": "shunfen"
+                        },
+                        "skuIdList": {
+                          "type": "array",
+                          "description": "此发货订单中有哪些商品，status=4待发货时，列表中的sku可以拆包发货。status=6时，列表中的sku共享相同的快递公司和单号，修改时一起修改",
+                          "items": {
+                            "type": "string",
+                            "description": "此发货订单中有哪些商品，status=4待发货时，列表中的sku可以拆包发货。status=6时，列表中的sku共享相同的快递公司和单号，修改时一起修改"
+                          }
+                        }
+                      },
+                      "description": "拆包信息节点",
+                      "$$ref": "#/components/schemas/1585796",
+                      "x-schema": {
+                        "id": 1585796,
+                        "name": "SimpleDeliveryOrder",
+                        "desc": "拆包信息节点",
+                        "createTime": "2023-03-10T12:35:05.000Z",
+                        "updateTime": "2023-03-10T12:35:05.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"deliveryOrderIndex\":{\"type\":\"integer\",\"description\":\"发货订单索引标识 修改快递单号会使用\",\"format\":\"int32\"},\"status\":{\"type\":\"integer\",\"description\":\"发货订单状态,1:已下单待付款  2:已支付处理中  3:清关中 4:待发货  6:待收货  7:已完成  8:已关闭  9:已取消  10:换货申请中\",\"format\":\"int32\",\"example\":1},\"expressTrackingNo\":{\"type\":\"string\",\"description\":\"拆包快递单号\",\"example\":\"null\"},\"expressCompanyCode\":{\"type\":\"string\",\"description\":\"快递公司代码\",\"example\":\"shunfen\"},\"skuIdList\":{\"type\":\"array\",\"description\":\"此发货订单中有哪些商品，status=4待发货时，列表中的sku可以拆包发货。status=6时，列表中的sku共享相同的快递公司和单号，修改时一起修改\",\"items\":{\"type\":\"string\",\"description\":\"此发货订单中有哪些商品，status=4待发货时，列表中的sku可以拆包发货。status=6时，列表中的sku共享相同的快递公司和单号，修改时一起修改\"}}},\"description\":\"拆包信息节点\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  },
+                  "logistics": {
+                    "type": "string",
+                    "description": "物流模式red_express三方备货直邮(备货海外仓),red_domestic_trade(三方备货内贸),red_standard(三方备货保税仓),red_auto(三方自主发货),red_box(三方小包),red_bonded(三方保税)",
+                    "example": "red_express"
+                  },
+                  "totalDepositAmount": {
+                    "type": "integer",
+                    "description": "订单定金 单位分",
+                    "format": "int32",
+                    "example": 10000
+                  },
+                  "totalMerchantDiscount": {
+                    "type": "integer",
+                    "description": "商家承担总优惠金额 单位分",
+                    "format": "int32",
+                    "example": 1000
+                  },
+                  "totalRedDiscount": {
+                    "type": "integer",
+                    "description": "平台承担总优惠金额 单位分",
+                    "format": "int32",
+                    "example": 1000
+                  },
+                  "merchantActualReceiveAmount": {
+                    "type": "integer",
+                    "description": "商家实收(=用户支付金额+定金+平台优惠) 单位分",
+                    "format": "int32",
+                    "example": 1000
+                  },
+                  "totalChangePriceAmount": {
+                    "type": "integer",
+                    "description": "改价总金额 单位分",
+                    "format": "int32",
+                    "example": 1000
+                  },
+                  "paymentType": {
+                    "type": "integer",
+                    "description": "支付方式 1：支付宝 2：微信 3：apple 内购 4：apple pay 5：花呗分期 7：支付宝免密支付 8：云闪付 -1：其他",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "shopId": {
+                    "type": "string",
+                    "description": "店铺id",
+                    "example": "shopabc"
+                  },
+                  "shopName": {
+                    "type": "string",
+                    "description": "店铺名称",
+                    "example": "xx的店面"
+                  },
+                  "whcode": {
+                    "type": "string",
+                    "description": "仓code",
+                    "example": "testWhCode"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "description": "用户id",
+                    "example": "12345"
+                  },
+                  "orderTagList": {
+                    "type": "array",
+                    "description": "订单标签列表 NEW_YEAR 新年礼  PLATFORM_DECLARE 平台报备 SELLER_DECLARE 商家报备 CONSULT 协商发货 MODIFIED_ADDR 已改地址 MODIFIED_PRICE 已改价 NO_LOGISTICS_SHIP 无物流发货 PRINTED 部分打单/已打单 URGENT_SHIP 催发货 QIC QIC质检 SAMPLE 拿样 HOME_DELIVERY 送货上门 LACK_GOOD 缺货 EXPLODE 发生现货爆单的订单 EXEMPT 发生现货爆单享受豁免 CERTIFICATION_WAREHOUSE 认证仓  COUNTRY_SUBSIDY: 国家补贴  CITY_SUBSIDY:城市补贴 COUNTRY_SUBSIDY_SUPPLY_SALE:国补供销  BUY_AGENT:代购   RDS:跨境出海订单",
+                    "items": {
+                      "type": "string",
+                      "description": "订单标签列表 NEW_YEAR 新年礼  PLATFORM_DECLARE 平台报备 SELLER_DECLARE 商家报备 CONSULT 协商发货 MODIFIED_ADDR 已改地址 MODIFIED_PRICE 已改价 NO_LOGISTICS_SHIP 无物流发货 PRINTED 部分打单/已打单 URGENT_SHIP 催发货 QIC QIC质检 SAMPLE 拿样 HOME_DELIVERY 送货上门 LACK_GOOD 缺货 EXPLODE 发生现货爆单的订单 EXEMPT 发生现货爆单享受豁免 CERTIFICATION_WAREHOUSE 认证仓"
+                    },
+                    "example": "rds"
+                  },
+                  "logisticsMode": {
+                    "type": "integer",
+                    "description": "物流模式 1: 普通内贸 2：保税bbc  3: 直邮bc  4:行邮cc",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "customsCode": {
+                    "type": "string",
+                    "description": "口岸code",
+                    "example": "YIWU"
+                  },
+                  "outPromotionAmount": {
+                    "type": "integer",
+                    "description": "支付渠道优惠金额 单位分 举例:支付宝/微信/云闪付等的单号 和paymentType对应",
+                    "example": "123"
+                  },
+                  "outTradeNo": {
+                    "type": "string",
+                    "description": "三方支付渠道单号  举例:支付宝/微信/云闪付等单号 和paymentType对应",
+                    "example": "P12312"
+                  },
+                  "subsidySupplierId": {
+                    "type": "string",
+                    "description": "国补供应商id",
+                    "example": "12345"
+                  },
+                  "subsidySupplierName": {
+                    "type": "string",
+                    "description": "国补供应商名称",
+                    "example": "xx店铺"
+                  },
+                  "subsidyWpServiceCode": {
+                    "type": "string",
+                    "description": "国补顺丰微派任务编码",
+                    "example": "234234234"
+                  },
+                  "subsidySkuIdentifyCodeRequiredInfo": {
+                    "type": "object",
+                    "description": "国补商品标识信息发货必传条件",
+                    "properties": {
+                      "snRequired": {
+                        "type": "boolean",
+                        "description": "sn码是否必填"
+                      },
+                      "barCodeRequired": {
+                        "type": "boolean",
+                        "description": "barCode是否必填"
+                      },
+                      "imei1Required": {
+                        "type": "boolean",
+                        "description": "imei1码是否必填"
+                      },
+                      "imei2Required": {
+                        "type": "boolean",
+                        "description": "imei2码是否必填"
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1585793",
+                "x-schema": {
+                  "id": 1585793,
+                  "name": "OrderDetailV3",
+                  "desc": "",
+                  "createTime": "2023-03-10T12:35:05.000Z",
+                  "updateTime": "2024-08-26T03:29:05.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号\",\"example\":\"P321***4012\"},\"orderType\":{\"type\":\"integer\",\"description\":\"订单类型，1现货 2定金预售 3全款预售(废弃) 4全款预售(新) 5补发\",\"format\":\"int32\",\"example\":1},\"orderStatus\":{\"type\":\"integer\",\"description\":\"订单状态，1已下单待付款 2已支付处理中 3清关中 4待发货 5部分发货 6待收货 7已完成 8已关闭 9已取消 10换货申请中\",\"format\":\"int32\",\"example\":1},\"orderAfterSalesStatus\":{\"type\":\"integer\",\"description\":\"售后状态，1无售后 2售后处理中 3售后完成 4售后拒绝 5售后关闭 6平台介入中 7售后取消\",\"format\":\"int32\",\"example\":1},\"cancelStatus\":{\"type\":\"integer\",\"description\":\"申请取消状态，0未申请取消 1取消处理中\",\"format\":\"int32\",\"example\":1},\"createdTime\":{\"type\":\"integer\",\"description\":\"创建时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"paidTime\":{\"type\":\"integer\",\"description\":\"支付时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"updateTime\":{\"type\":\"integer\",\"description\":\"更新时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"deliveryTime\":{\"type\":\"integer\",\"description\":\"订单发货时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"cancelTime\":{\"type\":\"integer\",\"description\":\"订单取消时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"finishTime\":{\"type\":\"integer\",\"description\":\"订单完成时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"promiseLastDeliveryTime\":{\"type\":\"integer\",\"description\":\"承诺最晚发货时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"planInfoId\":{\"type\":\"string\",\"description\":\"物流方案id\",\"example\":\"601a***fb49\"},\"planInfoName\":{\"type\":\"string\",\"description\":\"物流方案名称\",\"example\":\"不包邮-默认模板\"},\"receiverCountryId\":{\"type\":\"string\",\"description\":\"收件人国家id\",\"example\":\"null\"},\"receiverCountryName\":{\"type\":\"string\",\"description\":\"目前仅 中国 \",\"example\":\"中国\"},\"receiverProvinceId\":{\"type\":\"string\",\"description\":\"收件人省份id\",\"example\":\"null\"},\"receiverProvinceName\":{\"type\":\"string\",\"description\":\"收件人省份\",\"example\":\"江苏\"},\"receiverCityId\":{\"type\":\"string\",\"description\":\"收件人城市id\",\"example\":\"null\"},\"receiverCityName\":{\"type\":\"string\",\"description\":\"收件人城市\",\"example\":\"苏州\"},\"receiverDistrictId\":{\"type\":\"string\",\"description\":\"收件人区县id\",\"example\":\"null\"},\"receiverDistrictName\":{\"type\":\"string\",\"description\":\"收件人区县名称\",\"example\":\"相城区\"},\"customerRemark\":{\"type\":\"string\",\"description\":\"用户备注\",\"example\":\"请尽快送达\"},\"sellerRemark\":{\"type\":\"string\",\"description\":\"商家标记备注\",\"example\":\"请尽快送达\"},\"sellerRemarkFlag\":{\"type\":\"integer\",\"description\":\"商家标记优先级，ark订单列表展示旗子颜色 1灰旗 2红旗 3黄旗 4绿旗 5蓝旗 6紫旗\",\"format\":\"int32\",\"example\":1},\"presaleDeliveryStartTime\":{\"type\":\"integer\",\"description\":\"预售最早发货时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"presaleDeliveryEndTime\":{\"type\":\"integer\",\"description\":\"预售最晚发货时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"skuList\":{\"type\":\"array\",\"description\":\"sku列表 相同sku聚合  金额为价格总和 单位 分\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=OrderSkuDTOV3&schemaId=1585794\"}},\"originalOrderId\":{\"type\":\"string\",\"description\":\"原始关联订单号(退换订单的原订单)\",\"example\":\"null\"},\"totalNetWeightAmount\":{\"type\":\"integer\",\"description\":\"订单商品总净重 单位g\",\"format\":\"int32\",\"example\":2000},\"totalPayAmount\":{\"type\":\"integer\",\"description\":\"订单实付金额(包含运费和定金) 单位分\",\"format\":\"int32\",\"example\":10000},\"totalShippingFree\":{\"type\":\"integer\",\"description\":\"订单实付运费 单位分\",\"format\":\"int32\",\"example\":1000},\"unpack\":{\"type\":\"boolean\",\"description\":\"是否拆包 true已拆包  false未拆包\",\"example\":true},\"expressTrackingNo\":{\"type\":\"string\",\"description\":\"快递单号\",\"example\":\"1021***1412\"},\"expressCompanyCode\":{\"type\":\"string\",\"description\":\"快递公司编码\",\"example\":\"shunfeng\"},\"receiverName\":{\"type\":\"string\",\"description\":\"收件人姓名  暂不返回 详情通过getOrderReceiverInfo获取\",\"example\":\"null\"},\"receiverPhone\":{\"type\":\"string\",\"description\":\"收件人手机  暂不返回 详情通过getOrderReceiverInfo获取\",\"example\":\"null\"},\"receiverAddress\":{\"type\":\"string\",\"description\":\"收件人地址  暂不返回 详情通过getOrderReceiverInfo获取\",\"example\":\"null\"},\"boundExtendInfo\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=BoundExtendInfoDTO&schemaId=217592\"},\"transferExtendInfo\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=TransferExtendInfoDTO&schemaId=217597\"},\"openAddressId\":{\"type\":\"string\",\"description\":\"收件人姓名+手机+地址等计算得出，用来查询收件人详情\",\"example\":\"null\"},\"simpleDeliveryOrderList\":{\"type\":\"array\",\"description\":\"拆包信息节点\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=SimpleDeliveryOrder&schemaId=1585796\"}},\"logistics\":{\"type\":\"string\",\"description\":\"物流模式red_express三方备货直邮(备货海外仓),red_domestic_trade(三方备货内贸),red_standard(三方备货保税仓),red_auto(三方自主发货),red_box(三方小包),red_bonded(三方保税)\",\"example\":\"red_express\"},\"totalDepositAmount\":{\"type\":\"integer\",\"description\":\"订单定金 单位分\",\"format\":\"int32\",\"example\":10000},\"totalMerchantDiscount\":{\"type\":\"integer\",\"description\":\"商家承担总优惠金额 单位分\",\"format\":\"int32\",\"example\":1000},\"totalRedDiscount\":{\"type\":\"integer\",\"description\":\"平台承担总优惠金额 单位分\",\"format\":\"int32\",\"example\":1000},\"merchantActualReceiveAmount\":{\"type\":\"integer\",\"description\":\"商家实收(=用户支付金额+定金+平台优惠) 单位分\",\"format\":\"int32\",\"example\":1000},\"totalChangePriceAmount\":{\"type\":\"integer\",\"description\":\"改价总金额 单位分\",\"format\":\"int32\",\"example\":1000},\"paymentType\":{\"type\":\"integer\",\"description\":\"支付方式 1：支付宝 2：微信 3：apple 内购 4：apple pay 5：花呗分期 7：支付宝免密支付 8：云闪付 -1：其他\",\"format\":\"int32\",\"example\":1},\"shopId\":{\"type\":\"string\",\"description\":\"店铺id\",\"example\":\"shopabc\"},\"shopName\":{\"type\":\"string\",\"description\":\"店铺名称\",\"example\":\"xx的店面\"},\"whcode\":{\"type\":\"string\",\"description\":\"仓code\",\"example\":\"testWhCode\"},\"userId\":{\"type\":\"string\",\"description\":\"用户id\",\"example\":\"12345\"},\"orderTagList\":{\"type\":\"array\",\"description\":\"订单标签列表 NEW_YEAR 新年礼  PLATFORM_DECLARE 平台报备 SELLER_DECLARE 商家报备 CONSULT 协商发货 MODIFIED_ADDR 已改地址 MODIFIED_PRICE 已改价 NO_LOGISTICS_SHIP 无物流发货 PRINTED 部分打单/已打单 URGENT_SHIP 催发货 QIC QIC质检 SAMPLE 拿样 HOME_DELIVERY 送货上门 LACK_GOOD 缺货 EXPLODE 发生现货爆单的订单 EXEMPT 发生现货爆单享受豁免 CERTIFICATION_WAREHOUSE 认证仓\",\"items\":{\"type\":\"string\",\"description\":\"订单标签列表 NEW_YEAR 新年礼  PLATFORM_DECLARE 平台报备 SELLER_DECLARE 商家报备 CONSULT 协商发货 MODIFIED_ADDR 已改地址 MODIFIED_PRICE 已改价 NO_LOGISTICS_SHIP 无物流发货 PRINTED 部分打单/已打单 URGENT_SHIP 催发货 QIC QIC质检 SAMPLE 拿样 HOME_DELIVERY 送货上门 LACK_GOOD 缺货 EXPLODE 发生现货爆单的订单 EXEMPT 发生现货爆单享受豁免 CERTIFICATION_WAREHOUSE 认证仓\"}},\"logisticsMode\":{\"type\":\"integer\",\"description\":\"物流模式 1: 普通内贸 2：保税bbc  3: 直邮bc  4:行邮cc\",\"format\":\"int32\",\"example\":1},\"customsCode\":{\"type\":\"string\",\"description\":\"口岸code\",\"example\":\"YIWU\"}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-07-10T08:03:10.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:07"
+}

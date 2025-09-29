@@ -1,0 +1,384 @@
+{
+  "api_info": {
+    "apiId": 29204,
+    "apiNavigationId": 198,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 40,
+    "method": "post",
+    "navigationDetailDesc": "开票列表查询",
+    "navigationDetailName": "开票列表查询",
+    "path": "invoice.getInvoiceList",
+    "seq": 16
+  },
+  "api_details": {
+    "id": 29204,
+    "path": "/ark/invoice.getInvoiceList",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getInvoiceList",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "invoiceStatus",
+                "sortEnum"
+              ],
+              "type": "object",
+              "properties": {
+                "invoiceStatus": {
+                  "type": "integer",
+                  "description": "开票状态，1:待开票；6：已开票；10：待作废",
+                  "format": "int32"
+                },
+                "refNo": {
+                  "type": "string",
+                  "description": "来源单号",
+                  "example": "null"
+                },
+                "startDateLong": {
+                  "type": "integer",
+                  "description": "申请时间（开始时间）ms",
+                  "format": "int64"
+                },
+                "endDateLong": {
+                  "type": "integer",
+                  "description": "申请时间（结束时间）ms",
+                  "format": "int64"
+                },
+                "pageNum": {
+                  "type": "integer",
+                  "description": "分页号",
+                  "format": "int32"
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "description": "分页大小,分页大小建议在100以内",
+                  "format": "int32"
+                },
+                "sortEnum": {
+                  "type": "integer",
+                  "description": "升序or降序，1:升序；2：降序",
+                  "format": "int32"
+                },
+                "titleType": {
+                  "type": "integer",
+                  "description": "发票抬头类型，1：个人；2：企业",
+                  "format": "int32"
+                }
+              },
+              "$$ref": "#/components/schemas/1757895",
+              "x-schema": {
+                "id": 1757895,
+                "name": "QueryInvoiceRequest",
+                "desc": "",
+                "createTime": "2023-06-06T07:26:51.000Z",
+                "updateTime": "2023-06-06T07:26:51.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"invoiceStatus\",\"sortEnum\"],\"type\":\"object\",\"properties\":{\"invoiceStatus\":{\"type\":\"integer\",\"description\":\"开票状态，1:待开票；6：已开票；10：待作废\",\"format\":\"int32\"},\"refNo\":{\"type\":\"string\",\"description\":\"来源单号\",\"example\":\"null\"},\"startDateLong\":{\"type\":\"integer\",\"description\":\"申请时间（开始时间）ms\",\"format\":\"int64\"},\"endDateLong\":{\"type\":\"integer\",\"description\":\"申请时间（结束时间）ms\",\"format\":\"int64\"},\"pageNum\":{\"type\":\"integer\",\"description\":\"分页号\",\"format\":\"int32\"},\"pageSize\":{\"type\":\"integer\",\"description\":\"分页大小,分页大小建议在100以内\",\"format\":\"int32\"},\"sortEnum\":{\"type\":\"integer\",\"description\":\"升序or降序，1:升序；2：降序\",\"format\":\"int32\"},\"titleType\":{\"type\":\"integer\",\"description\":\"发票抬头类型，1：个人；2：企业\",\"format\":\"int32\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "pageSize": {
+                    "type": "integer",
+                    "description": "分页大小",
+                    "format": "int32"
+                  },
+                  "pageIndex": {
+                    "type": "integer",
+                    "description": "页码",
+                    "format": "int32"
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "总数",
+                    "format": "int32"
+                  },
+                  "totalPage": {
+                    "type": "integer",
+                    "description": "总页数",
+                    "format": "int32"
+                  },
+                  "invoiceRecords": {
+                    "type": "array",
+                    "description": "发票列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "invoiceStatus": {
+                          "type": "integer",
+                          "description": "开票状态，待开票：1；暂停中：2；冻结中：3；开票中：4；开票失败：5；已开票：6；已作废：7",
+                          "format": "int32"
+                        },
+                        "xhsInvoiceNo": {
+                          "type": "string",
+                          "description": "系统开票号",
+                          "example": "null"
+                        },
+                        "applyTime": {
+                          "type": "integer",
+                          "description": "申请时间",
+                          "format": "int64"
+                        },
+                        "title": {
+                          "type": "string",
+                          "description": "发票抬头",
+                          "example": "null"
+                        },
+                        "taxNo": {
+                          "type": "string",
+                          "description": "企业税号",
+                          "example": "null"
+                        },
+                        "taxBankAccount": {
+                          "type": "string",
+                          "description": "开户银行账户",
+                          "example": "null"
+                        },
+                        "taxBankName": {
+                          "type": "string",
+                          "description": "开户银行名称",
+                          "example": "null"
+                        },
+                        "invoiceType": {
+                          "type": "integer",
+                          "description": "发票类型，0:发票类型未知;1:增值税专用发票；2:增值税纸质普通发票；3:增值税电子普通发票；4:形式发票",
+                          "format": "int32"
+                        },
+                        "invoiceAmt": {
+                          "type": "string",
+                          "description": "开票总金额，单位元，精确到两位小数",
+                          "example": "null"
+                        },
+                        "invoiceNos": {
+                          "type": "string",
+                          "description": "发票号码",
+                          "example": "null"
+                        },
+                        "invoiceTotalAmt": {
+                          "type": "string"
+                        },
+                        "refNo": {
+                          "type": "string",
+                          "description": "来源单号",
+                          "example": "null"
+                        },
+                        "titleType": {
+                          "type": "integer",
+                          "description": "发票抬头类型，1：个人；2：企业",
+                          "format": "int32"
+                        },
+                        "updatedTime": {
+                          "type": "integer",
+                          "description": "更新时间",
+                          "format": "int64"
+                        },
+                        "attrMap": {
+                          "type": "object",
+                          "additionalProperties": {
+                            "type": "string"
+                          }
+                        },
+                        "itemList": {
+                          "type": "array",
+                          "description": "商品列表",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemId": {
+                                "type": "string",
+                                "description": "商品编号",
+                                "example": "null"
+                              },
+                              "itemName": {
+                                "type": "string",
+                                "description": "商品名称",
+                                "example": "null"
+                              },
+                              "price": {
+                                "type": "string",
+                                "description": "实付金额",
+                                "example": "null"
+                              },
+                              "taxRate": {
+                                "type": "string",
+                                "description": "税率",
+                                "example": "null"
+                              },
+                              "boughtCount": {
+                                "type": "string",
+                                "description": "购买数量",
+                                "example": "null"
+                              }
+                            },
+                            "description": "商品列表",
+                            "example": null,
+                            "$$ref": "#/components/schemas/1757898",
+                            "x-schema": {
+                              "id": 1757898,
+                              "name": "InvoiceItem",
+                              "desc": "商品列表",
+                              "createTime": "2023-06-06T07:26:51.000Z",
+                              "updateTime": "2023-06-06T07:26:51.000Z",
+                              "type": 2,
+                              "gatewayId": 103,
+                              "createUserId": "5fa4f48970742e0001faee4b",
+                              "createUserName": "林松斌（实习）",
+                              "spec": "{\"type\":\"object\",\"properties\":{\"itemId\":{\"type\":\"string\",\"description\":\"商品编号\",\"example\":\"null\"},\"itemName\":{\"type\":\"string\",\"description\":\"商品名称\",\"example\":\"null\"},\"price\":{\"type\":\"string\",\"description\":\"实付金额\",\"example\":\"null\"},\"taxRate\":{\"type\":\"string\",\"description\":\"税率\",\"example\":\"null\"},\"boughtCount\":{\"type\":\"string\",\"description\":\"购买数量\",\"example\":\"null\"}},\"description\":\"商品列表\",\"example\":null}",
+                              "isBase": 0,
+                              "gatewayGroupId": 0,
+                              "gatewayGroupKey": "",
+                              "gatewayVersionId": 1661,
+                              "gatewayVersionName": "feature/logan",
+                              "isMaster": false,
+                              "groupId": 0,
+                              "groupKey": ""
+                            }
+                          }
+                        },
+                        "invoiceFileList": {
+                          "type": "array",
+                          "description": "发票文件",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "originUrl": {
+                                "type": "string",
+                                "description": "电子票pdf链接",
+                                "example": "null"
+                              },
+                              "downloadUrl": {
+                                "type": "string",
+                                "description": "电子票下载链接",
+                                "example": "null"
+                              },
+                              "fileName": {
+                                "type": "string",
+                                "description": "文件名称",
+                                "example": "null"
+                              }
+                            },
+                            "description": "发票文件",
+                            "example": null,
+                            "$$ref": "#/components/schemas/1757897",
+                            "x-schema": {
+                              "id": 1757897,
+                              "name": "File",
+                              "desc": "发票文件",
+                              "createTime": "2023-06-06T07:26:51.000Z",
+                              "updateTime": "2023-06-06T07:26:51.000Z",
+                              "type": 2,
+                              "gatewayId": 103,
+                              "createUserId": "5fa4f48970742e0001faee4b",
+                              "createUserName": "林松斌（实习）",
+                              "spec": "{\"type\":\"object\",\"properties\":{\"originUrl\":{\"type\":\"string\",\"description\":\"电子票pdf链接\",\"example\":\"null\"},\"downloadUrl\":{\"type\":\"string\",\"description\":\"电子票下载链接\",\"example\":\"null\"},\"fileName\":{\"type\":\"string\",\"description\":\"文件名称\",\"example\":\"null\"}},\"description\":\"发票文件\",\"example\":null}",
+                              "isBase": 0,
+                              "gatewayGroupId": 0,
+                              "gatewayGroupKey": "",
+                              "gatewayVersionId": 1661,
+                              "gatewayVersionName": "feature/logan",
+                              "isMaster": false,
+                              "groupId": 0,
+                              "groupKey": ""
+                            }
+                          }
+                        },
+                        "picUrl": {
+                          "type": "string",
+                          "description": "电子发票图片地址",
+                          "example": "null"
+                        },
+                        "pdfUrl": {
+                          "type": "string",
+                          "description": "电子发票H5地址",
+                          "example": "null"
+                        }
+                      },
+                      "description": "发票列表",
+                      "example": null,
+                      "$$ref": "#/components/schemas/1757899",
+                      "x-schema": {
+                        "id": 1757899,
+                        "name": "InvoiceRecord",
+                        "desc": "发票列表",
+                        "createTime": "2023-06-06T07:26:51.000Z",
+                        "updateTime": "2023-06-06T07:26:52.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"invoiceStatus\":{\"type\":\"integer\",\"description\":\"开票状态，待开票：1；暂停中：2；冻结中：3；开票中：4；开票失败：5；已开票：6；已作废：7\",\"format\":\"int32\"},\"xhsInvoiceNo\":{\"type\":\"string\",\"description\":\"系统开票号\",\"example\":\"null\"},\"applyTime\":{\"type\":\"integer\",\"description\":\"申请时间\",\"format\":\"int64\"},\"title\":{\"type\":\"string\",\"description\":\"发票抬头\",\"example\":\"null\"},\"taxNo\":{\"type\":\"string\",\"description\":\"企业税号\",\"example\":\"null\"},\"taxBankAccount\":{\"type\":\"string\",\"description\":\"开户银行账户\",\"example\":\"null\"},\"taxBankName\":{\"type\":\"string\",\"description\":\"开户银行名称\",\"example\":\"null\"},\"invoiceType\":{\"type\":\"integer\",\"description\":\"发票类型，0:发票类型未知;1:增值税专用发票；2:增值税纸质普通发票；3:增值税电子普通发票；4:形式发票\",\"format\":\"int32\"},\"invoiceAmt\":{\"type\":\"string\",\"description\":\"开票总金额，单位元，精确到两位小数\",\"example\":\"null\"},\"invoiceNos\":{\"type\":\"string\",\"description\":\"发票号码\",\"example\":\"null\"},\"invoiceTotalAmt\":{\"type\":\"string\"},\"refNo\":{\"type\":\"string\",\"description\":\"来源单号\",\"example\":\"null\"},\"titleType\":{\"type\":\"integer\",\"description\":\"发票抬头类型，1：个人；2：企业\",\"format\":\"int32\"},\"updatedTime\":{\"type\":\"integer\",\"description\":\"更新时间\",\"format\":\"int64\"},\"attrMap\":{\"type\":\"object\",\"additionalProperties\":{\"type\":\"string\"}},\"itemList\":{\"type\":\"array\",\"description\":\"商品列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=InvoiceItem&schemaId=1757898\"}},\"invoiceFileList\":{\"type\":\"array\",\"description\":\"发票文件\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=File&schemaId=1757897\"}},\"picUrl\":{\"type\":\"string\",\"description\":\"电子发票图片地址\",\"example\":\"null\"},\"pdfUrl\":{\"type\":\"string\",\"description\":\"电子发票H5地址\",\"example\":\"null\"}},\"description\":\"发票列表\",\"example\":null}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1757900",
+                "x-schema": {
+                  "id": 1757900,
+                  "name": "QueryInvoiceResponse",
+                  "desc": "",
+                  "createTime": "2023-06-06T07:26:51.000Z",
+                  "updateTime": "2023-06-06T07:26:52.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"pageSize\":{\"type\":\"integer\",\"description\":\"分页大小\",\"format\":\"int32\"},\"pageIndex\":{\"type\":\"integer\",\"description\":\"页码\",\"format\":\"int32\"},\"total\":{\"type\":\"integer\",\"description\":\"总数\",\"format\":\"int32\"},\"totalPage\":{\"type\":\"integer\",\"description\":\"总页数\",\"format\":\"int32\"},\"invoiceRecords\":{\"type\":\"array\",\"description\":\"发票列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=InvoiceRecord&schemaId=1757899\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getInvoiceList"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-06-06T11:01:46.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:15"
+}

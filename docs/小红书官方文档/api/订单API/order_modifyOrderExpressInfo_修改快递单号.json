@@ -1,0 +1,146 @@
+{
+  "api_info": {
+    "apiId": 27237,
+    "apiNavigationId": 188,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 30,
+    "method": "post",
+    "navigationDetailDesc": "修改快递单号",
+    "navigationDetailName": "修改快递单号",
+    "path": "order.modifyOrderExpressInfo",
+    "seq": 5
+  },
+  "api_details": {
+    "id": 27237,
+    "path": "/ark/order.modifyOrderExpressInfo",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "修改运单",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "expressCompanyCode",
+                "expressNo",
+                "orderId"
+              ],
+              "type": "object",
+              "properties": {
+                "orderId": {
+                  "type": "string",
+                  "description": "订单号",
+                  "example": "P292****0482"
+                },
+                "expressNo": {
+                  "type": "string",
+                  "description": "快递单号",
+                  "example": "102***4021"
+                },
+                "expressCompanyCode": {
+                  "type": "string",
+                  "description": "快递公司编码",
+                  "example": "zto"
+                },
+                "expressCompanyName": {
+                  "type": "string",
+                  "description": "快递公司名称",
+                  "example": "中通"
+                },
+                "deliveryOrderIndex": {
+                  "type": "integer",
+                  "description": "修改拆包订单快递单号必传",
+                  "format": "int32"
+                },
+                "oldExpressNo": {
+                  "type": "string",
+                  "example": "\"SF432234534534345\"",
+                  "description": "旧快递单号,非必填,优先级高于deliveryOrderIndex,只传oldExpressNo,会修改订单号下面所有快递单号为oldExpressNo的包裹(可能更新多个);oldExpressNo和deliveryOrderIndex同时传,只会修改一个包裹"
+                }
+              },
+              "$$ref": "#/components/schemas/1585782",
+              "x-schema": {
+                "id": 1585782,
+                "name": "ModifyOrderExpressRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2025-01-18T03:18:16.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"expressCompanyCode\",\"expressNo\",\"orderId\"],\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号\",\"example\":\"P292****0482\"},\"expressNo\":{\"type\":\"string\",\"description\":\"快递单号\",\"example\":\"102***4021\"},\"expressCompanyCode\":{\"type\":\"string\",\"description\":\"快递公司编码\",\"example\":\"zto\"},\"expressCompanyName\":{\"type\":\"string\",\"description\":\"快递公司名称\",\"example\":\"中通\"},\"deliveryOrderIndex\":{\"type\":\"integer\",\"description\":\"修改拆包订单快递单号必传\",\"format\":\"int32\"},\"oldExpressNo\":{\"type\":\"string\",\"example\":\"\\\"SF432234534534345\\\"\",\"description\":\"旧快递单号,非必填,优先级高于deliveryOrderIndex,只传oldExpressNo,会修改订单号下面所有快递单号为oldExpressNo的包裹(可能更新多个);oldExpressNo和deliveryOrderIndex同时传,只会修改一个包裹\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error_code": {
+                    "type": "integer",
+                    "description": "错误码",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "返回信息"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "是否成功",
+                    "example": true
+                  }
+                },
+                "$$ref": "#/components/schemas/217570",
+                "x-schema": {
+                  "id": 217570,
+                  "name": "SuccessResponse",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-08-03T08:22:26.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"error_code\":{\"type\":\"integer\",\"description\":\"错误码\",\"format\":\"int32\",\"example\":1},\"data\":{\"type\":\"object\",\"description\":\"返回信息\"},\"success\":{\"type\":\"boolean\",\"description\":\"是否成功\",\"example\":true}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-01-18T03:18:16.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:10"
+}

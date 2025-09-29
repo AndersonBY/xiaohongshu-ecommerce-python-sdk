@@ -1,0 +1,176 @@
+{
+  "api_info": {
+    "apiId": 5965,
+    "apiNavigationId": 62,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 9,
+    "method": "post",
+    "navigationDetailDesc": "获取品牌信息",
+    "navigationDetailName": "获取品牌信息",
+    "path": "common.brandSearch",
+    "seq": 8
+  },
+  "api_details": {
+    "id": 5965,
+    "path": "/ark/common.brandSearch",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "brandSearch",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "categoryId"
+              ],
+              "type": "object",
+              "properties": {
+                "categoryId": {
+                  "type": "string",
+                  "description": "末级类目id",
+                  "example": "5a31****9876"
+                },
+                "keyword": {
+                  "type": "string",
+                  "description": "品牌关键字",
+                  "example": "Charles & Keith"
+                },
+                "pageNo": {
+                  "type": "integer",
+                  "description": "品牌页数, 从第一页开始,默认为1",
+                  "format": "int32",
+                  "example": 1
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "description": "品牌列表每页数量，默认为20,最大20",
+                  "format": "int32",
+                  "example": 50
+                }
+              },
+              "$$ref": "#/components/schemas/217663",
+              "x-schema": {
+                "id": 217663,
+                "name": "BrandRequest",
+                "desc": "",
+                "createTime": "2021-08-03T08:22:26.000Z",
+                "updateTime": "2022-12-15T03:11:27.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"categoryId\"],\"type\":\"object\",\"properties\":{\"categoryId\":{\"type\":\"string\",\"description\":\"末级类目id\",\"example\":\"5a31****9876\"},\"keyword\":{\"type\":\"string\",\"description\":\"品牌关键字\",\"example\":\"Charles & Keith\"},\"pageNo\":{\"type\":\"integer\",\"description\":\"品牌页数, 从第一页开始,默认为1\",\"format\":\"int32\",\"example\":1},\"pageSize\":{\"type\":\"integer\",\"description\":\"品牌列表每页数量，默认为20,最大20\",\"format\":\"int32\",\"example\":50}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "brands": {
+                    "type": "array",
+                    "description": "品牌信息列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "description": "品牌名",
+                          "example": "Charles & Keith"
+                        },
+                        "enName": {
+                          "type": "string",
+                          "description": "品牌英文名",
+                          "example": "Charles & Keith"
+                        },
+                        "id": {
+                          "type": "string",
+                          "description": "品牌id",
+                          "example": "53f9b1feb4c4d67cd88605aa"
+                        },
+                        "image": {
+                          "type": "string",
+                          "description": "品牌图片",
+                          "example": "null"
+                        }
+                      },
+                      "description": "品牌信息列表",
+                      "$$ref": "#/components/schemas/217665",
+                      "x-schema": {
+                        "id": 217665,
+                        "name": "BrandV3",
+                        "desc": "品牌信息列表",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2021-08-03T08:22:26.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"品牌名\",\"example\":\"Charles & Keith\"},\"enName\":{\"type\":\"string\",\"description\":\"品牌英文名\",\"example\":\"Charles & Keith\"},\"id\":{\"type\":\"string\",\"description\":\"品牌id\",\"example\":\"53f9b1feb4c4d67cd88605aa\"},\"image\":{\"type\":\"string\",\"description\":\"品牌图片\",\"example\":\"null\"}},\"description\":\"品牌信息列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217664",
+                "x-schema": {
+                  "id": 217664,
+                  "name": "BrandSearchResponse",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"brands\":{\"type\":\"array\",\"description\":\"品牌信息列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=BrandV3&schemaId=217665\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "brandSearch"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-08-03T08:22:36.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:58:59"
+}

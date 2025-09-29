@@ -1,0 +1,140 @@
+{
+  "api_info": {
+    "apiId": 27225,
+    "apiNavigationId": 233,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 75,
+    "method": "post",
+    "navigationDetailDesc": "修改商品主图、主图视频",
+    "navigationDetailName": "修改商品主图、主图视频",
+    "path": "product.updateItemImage",
+    "seq": 13
+  },
+  "api_details": {
+    "id": 27225,
+    "path": "/ark/product.updateItemImage",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "updateItemImage",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "itemId",
+                "materialType",
+                "materialUrls"
+              ],
+              "type": "object",
+              "properties": {
+                "itemId": {
+                  "type": "string",
+                  "description": "itemId",
+                  "example": "1"
+                },
+                "materialType": {
+                  "type": "integer",
+                  "description": "素材类型，1：图片，2：视频",
+                  "format": "int32"
+                },
+                "materialUrls": {
+                  "type": "array",
+                  "description": "素材url，图片全量覆盖、视频取第一个",
+                  "example": true,
+                  "items": {
+                    "type": "string",
+                    "description": "素材url，图片全量覆盖、视频取第一个",
+                    "example": "true"
+                  }
+                }
+              },
+              "$$ref": "#/components/schemas/1585767",
+              "x-schema": {
+                "id": 1585767,
+                "name": "UpdateItemImageRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2023-03-10T12:35:05.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"itemId\",\"materialType\",\"materialUrls\"],\"type\":\"object\",\"properties\":{\"itemId\":{\"type\":\"string\",\"description\":\"itemId\",\"example\":\"1\"},\"materialType\":{\"type\":\"integer\",\"description\":\"素材类型，1：图片，2：视频\",\"format\":\"int32\"},\"materialUrls\":{\"type\":\"array\",\"description\":\"素材url，图片全量覆盖、视频取第一个\",\"example\":true,\"items\":{\"type\":\"string\",\"description\":\"素材url，图片全量覆盖、视频取第一个\",\"example\":\"true\"}}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error_code": {
+                    "type": "integer",
+                    "description": "错误码",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "返回信息"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "是否成功",
+                    "example": true
+                  }
+                },
+                "$$ref": "#/components/schemas/217570",
+                "x-schema": {
+                  "id": 217570,
+                  "name": "SuccessResponse",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-08-03T08:22:26.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"error_code\":{\"type\":\"integer\",\"description\":\"错误码\",\"format\":\"int32\",\"example\":1},\"data\":{\"type\":\"object\",\"description\":\"返回信息\"},\"success\":{\"type\":\"boolean\",\"description\":\"是否成功\",\"example\":true}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "updateItemImage"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-03-10T12:35:06.000Z"
+  },
+  "error_codes": [],
+  "category": "商品API",
+  "fetched_at": "2025-09-26 14:59:35"
+}

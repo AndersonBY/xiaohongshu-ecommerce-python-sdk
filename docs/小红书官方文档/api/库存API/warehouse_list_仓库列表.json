@@ -1,0 +1,174 @@
+{
+  "api_info": {
+    "apiId": 34451,
+    "apiNavigationId": 281,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 101,
+    "method": "post",
+    "navigationDetailDesc": "仓库列表",
+    "navigationDetailName": "仓库列表",
+    "path": "warehouse.list",
+    "seq": 7
+  },
+  "api_details": {
+    "id": 34451,
+    "path": "/api/openapi/warehouse/list",
+    "summary": "【开放平台-仓库】仓库列表",
+    "method": "post",
+    "specJson": {
+      "summary": "【开放平台-仓库】仓库列表",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [],
+              "properties": {
+                "pageNo": {
+                  "type": "number",
+                  "example": "1",
+                  "description": "页码，默认1"
+                },
+                "pageSize": {
+                  "type": "number",
+                  "description": "每页数量，默认10，限制100",
+                  "example": "10"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "仓库编码",
+                  "example": "test_01"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "仓库名称",
+                  "example": "测试仓库01"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "total": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "warehouseList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "code": {
+                              "type": "string",
+                              "description": "仓库编码",
+                              "example": "test_01"
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "仓库名称",
+                              "example": "测试仓库01"
+                            },
+                            "province": {
+                              "type": "string",
+                              "description": "省",
+                              "example": "上海"
+                            },
+                            "provinceCode": {
+                              "type": "string",
+                              "description": "省编码",
+                              "example": "310000"
+                            },
+                            "city": {
+                              "type": "string",
+                              "description": "市",
+                              "example": "上海市"
+                            },
+                            "cityCode": {
+                              "type": "string",
+                              "description": "市编码",
+                              "example": "310100"
+                            },
+                            "area": {
+                              "type": "string",
+                              "description": "区/县",
+                              "example": "黄浦区"
+                            },
+                            "areaCode": {
+                              "type": "string",
+                              "description": "区/县编码",
+                              "example": "310101"
+                            },
+                            "town": {
+                              "type": "string",
+                              "description": "街道/镇",
+                              "example": "淮海中路街道"
+                            },
+                            "townCode": {
+                              "type": "string",
+                              "description": "街道/镇编码",
+                              "example": "310101022000"
+                            },
+                            "address": {
+                              "type": "string",
+                              "description": "详细地址",
+                              "example": "XXX"
+                            },
+                            "contactName": {
+                              "type": "string",
+                              "description": "联系人",
+                              "example": "张三"
+                            },
+                            "contactTel": {
+                              "type": "string",
+                              "description": "联系电话",
+                              "example": "1234567"
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "error_code": {
+                    "type": "number",
+                    "example": 0
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "example": ""
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-04-16T09:05:39.000Z"
+  },
+  "error_codes": [],
+  "category": "库存API",
+  "fetched_at": "2025-09-26 14:59:41"
+}

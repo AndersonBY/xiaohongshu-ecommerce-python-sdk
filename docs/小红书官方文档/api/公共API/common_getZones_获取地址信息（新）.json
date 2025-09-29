@@ -1,0 +1,146 @@
+{
+  "api_info": {
+    "apiId": 23755,
+    "apiNavigationId": 100,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 23,
+    "method": "post",
+    "navigationDetailDesc": "获取地址信息（新）",
+    "navigationDetailName": "获取地址信息（新）",
+    "path": "common.getZones",
+    "seq": 16
+  },
+  "api_details": {
+    "id": 23755,
+    "path": "/ark/common.getZones",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getZones",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "行政区域代码"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "行政区域名称"
+                },
+                "upper": {
+                  "type": "string",
+                  "description": "上一级行政区域"
+                },
+                "filterNonContinental": {
+                  "type": "boolean",
+                  "description": "是否过滤非大陆行政区域"
+                }
+              },
+              "$$ref": "#/components/schemas/1326524",
+              "x-schema": {
+                "id": 1326524,
+                "name": "GetZonesRequest",
+                "desc": "",
+                "createTime": "2022-11-02T07:34:30.000Z",
+                "updateTime": "2022-11-02T07:34:30.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "58df922543c35002dfe88d82",
+                "createUserName": "王志华",
+                "spec": "{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"string\",\"description\":\"行政区域代码\"},\"name\":{\"type\":\"string\",\"description\":\"行政区域名称\"},\"upper\":{\"type\":\"string\",\"description\":\"上一级行政区域\"},\"filterNonContinental\":{\"type\":\"boolean\",\"description\":\"是否过滤非大陆行政区域\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "行政区域名称"
+                    },
+                    "shortName": {
+                      "type": "string",
+                      "description": "行政区域简称"
+                    },
+                    "code": {
+                      "type": "string",
+                      "description": "行政区域代码"
+                    },
+                    "upper": {
+                      "type": "string",
+                      "description": "上一级行政区域代码"
+                    },
+                    "initialPinyin": {
+                      "type": "string",
+                      "description": "行政区域名称拼音首字母"
+                    },
+                    "pinyin": {
+                      "type": "string",
+                      "description": "行政区域名称拼音"
+                    },
+                    "isActive": {
+                      "type": "string",
+                      "description": "是否有效，ACTIVE-有效；INACTIVE-无效"
+                    }
+                  },
+                  "$$ref": "#/components/schemas/1326525",
+                  "x-schema": {
+                    "id": 1326525,
+                    "name": "ZoneInfo",
+                    "desc": "",
+                    "createTime": "2022-11-02T07:34:30.000Z",
+                    "updateTime": "2022-11-02T07:34:30.000Z",
+                    "type": 2,
+                    "gatewayId": 103,
+                    "createUserId": "58df922543c35002dfe88d82",
+                    "createUserName": "王志华",
+                    "spec": "{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"description\":\"行政区域名称\"},\"shortName\":{\"type\":\"string\",\"description\":\"行政区域简称\"},\"code\":{\"type\":\"string\",\"description\":\"行政区域代码\"},\"upper\":{\"type\":\"string\",\"description\":\"上一级行政区域代码\"},\"initialPinyin\":{\"type\":\"string\",\"description\":\"行政区域名称拼音首字母\"},\"pinyin\":{\"type\":\"string\",\"description\":\"行政区域名称拼音\"},\"isActive\":{\"type\":\"string\",\"description\":\"是否有效，ACTIVE-有效；INACTIVE-无效\"}}}",
+                    "isBase": 0,
+                    "gatewayGroupId": 0,
+                    "gatewayGroupKey": "",
+                    "gatewayVersionId": 1661,
+                    "gatewayVersionName": "feature/logan",
+                    "isMaster": false,
+                    "groupId": 0,
+                    "groupKey": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getZones"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2022-11-02T07:34:31.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:59:04"
+}

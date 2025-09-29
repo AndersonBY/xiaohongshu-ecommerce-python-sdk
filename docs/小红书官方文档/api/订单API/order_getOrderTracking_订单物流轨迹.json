@@ -1,0 +1,274 @@
+{
+  "api_info": {
+    "apiId": 27239,
+    "apiNavigationId": 189,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 31,
+    "method": "post",
+    "navigationDetailDesc": "订单物流轨迹",
+    "navigationDetailName": "订单物流轨迹",
+    "path": "order.getOrderTracking",
+    "seq": 6
+  },
+  "api_details": {
+    "id": 27239,
+    "path": "/ark/order.getOrderTracking",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getOrderTracking",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "orderId"
+              ],
+              "type": "object",
+              "properties": {
+                "orderId": {
+                  "type": "string",
+                  "description": "订单号",
+                  "example": "P194****4183"
+                }
+              },
+              "$$ref": "#/components/schemas/1585783",
+              "x-schema": {
+                "id": 1585783,
+                "name": "GetOrderDetailRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2023-03-10T12:35:05.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"orderId\"],\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号\",\"example\":\"P194****4183\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderTrackInfos": {
+                    "type": "array",
+                    "description": "物流轨迹列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "orderId": {
+                          "type": "string",
+                          "description": "订单号",
+                          "example": "P194****4183"
+                        },
+                        "deliveryOrderId": {
+                          "type": "string",
+                          "description": "发货订单id",
+                          "example": "P219***9214"
+                        },
+                        "currentStatusDesc": {
+                          "type": "string",
+                          "description": "订单当前状态描述（待付款、已支付、海关申报中、海关通过、待配货、配货中、仓库作业中、已发货、待揽件、已揽件、运输中、已签收、已完成、已关闭、取消发货）",
+                          "example": "已发货"
+                        },
+                        "expressCompanyCode": {
+                          "type": "string",
+                          "description": "快递公司编码",
+                          "example": "shunfeng"
+                        },
+                        "expressCompanyName": {
+                          "type": "string",
+                          "description": "快递公司名称",
+                          "example": "顺丰速运"
+                        },
+                        "expressNo": {
+                          "type": "string",
+                          "description": "快递单号",
+                          "example": "SF1234567890"
+                        },
+                        "records": {
+                          "type": "array",
+                          "description": "快递轨迹（包括小红书对订单的处理流程节点以及发货后快递公司产生的路由轨迹）",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "eventAt": {
+                                "type": "string",
+                                "description": "路由时间发生时间",
+                                "example": "2021-04-19 22:06:48"
+                              },
+                              "eventDesc": {
+                                "type": "string",
+                                "description": "路由发生事件描述",
+                                "example": "重庆市北碚区 已发出 下一站 重庆转运中心"
+                              },
+                              "trackingPartnerSyncAt": {
+                                "type": "string",
+                                "description": "小红书系统同步到该路由的时间",
+                                "example": "2021-04-19 22:07:48"
+                              },
+                              "nodeId": {
+                                "type": "integer",
+                                "description": "轨迹系统 5:轨迹来自交易系统 6:轨迹来自履约系统 8:轨迹来自仓库系统 35:轨迹来自快递公司",
+                                "format": "int32",
+                                "example": 8
+                              },
+                              "subNodeId": {
+                                "type": "integer",
+                                "description": "每个系统下的子节点，例如nodeid=35,subNodeid=10表示轨迹来自快递公司，轨迹类型为揽收",
+                                "format": "int32",
+                                "example": 10
+                              },
+                              "trackingStatus": {
+                                "type": "integer",
+                                "description": "轨迹状态 每一条轨迹都会被对应到一个唯一的状态编码，1010：订单已创建，1015：订单已支付，1019：信息待补充，2010/2011/2012：海关申报中，2015：海关申报完成，3010：商家处理中，3015：商家打包中，3020：商家已发货，3050：仓库处理中，3055：an仓库分拣中，3060：仓库打包中，3065：仓库已发出，6020：快递运输中",
+                                "format": "int32"
+                              },
+                              "trackingStatusDesc": {
+                                "type": "string",
+                                "description": "轨迹状态编码的描述",
+                                "example": "null"
+                              },
+                              "location": {
+                                "type": "object",
+                                "properties": {
+                                  "provinceName": {
+                                    "type": "string",
+                                    "description": "省",
+                                    "example": "江苏省"
+                                  },
+                                  "cityName": {
+                                    "type": "string",
+                                    "description": "市",
+                                    "example": "苏州市"
+                                  }
+                                },
+                                "description": "轨迹发生的地点",
+                                "$$ref": "#/components/schemas/217581",
+                                "x-schema": {
+                                  "id": 217581,
+                                  "name": "ExpressLocation",
+                                  "desc": "轨迹发生的地点",
+                                  "createTime": "2021-08-03T08:22:26.000Z",
+                                  "updateTime": "2021-08-03T08:22:26.000Z",
+                                  "type": 2,
+                                  "gatewayId": 103,
+                                  "createUserId": "5fa4f48970742e0001faee4b",
+                                  "createUserName": "林松斌（实习）",
+                                  "spec": "{\"type\":\"object\",\"properties\":{\"provinceName\":{\"type\":\"string\",\"description\":\"省\",\"example\":\"江苏省\"},\"cityName\":{\"type\":\"string\",\"description\":\"市\",\"example\":\"苏州市\"}},\"description\":\"轨迹发生的地点\"}",
+                                  "isBase": 0,
+                                  "gatewayGroupId": 0,
+                                  "gatewayGroupKey": "",
+                                  "gatewayVersionId": 1661,
+                                  "gatewayVersionName": "feature/logan",
+                                  "isMaster": false,
+                                  "groupId": 0,
+                                  "groupKey": ""
+                                }
+                              }
+                            },
+                            "description": "快递轨迹（包括小红书对订单的处理流程节点以及发货后快递公司产生的路由轨迹）",
+                            "$$ref": "#/components/schemas/217584",
+                            "x-schema": {
+                              "id": 217584,
+                              "name": "TrackingRecord",
+                              "desc": "快递轨迹（包括小红书对订单的处理流程节点以及发货后快递公司产生的路由轨迹）",
+                              "createTime": "2021-08-03T08:22:26.000Z",
+                              "updateTime": "2023-06-06T07:26:51.000Z",
+                              "type": 2,
+                              "gatewayId": 103,
+                              "createUserId": "5fa4f48970742e0001faee4b",
+                              "createUserName": "林松斌（实习）",
+                              "spec": "{\"type\":\"object\",\"properties\":{\"eventAt\":{\"type\":\"string\",\"description\":\"路由时间发生时间\",\"example\":\"2021-04-19 22:06:48\"},\"eventDesc\":{\"type\":\"string\",\"description\":\"路由发生事件描述\",\"example\":\"重庆市北碚区 已发出 下一站 重庆转运中心\"},\"trackingPartnerSyncAt\":{\"type\":\"string\",\"description\":\"小红书系统同步到该路由的时间\",\"example\":\"2021-04-19 22:07:48\"},\"nodeId\":{\"type\":\"integer\",\"description\":\"轨迹系统 5:轨迹来自交易系统 6:轨迹来自履约系统 8:轨迹来自仓库系统 35:轨迹来自快递公司\",\"format\":\"int32\",\"example\":8},\"subNodeId\":{\"type\":\"integer\",\"description\":\"每个系统下的子节点，例如nodeid=35,subNodeid=10表示轨迹来自快递公司，轨迹类型为揽收\",\"format\":\"int32\",\"example\":10},\"trackingStatus\":{\"type\":\"integer\",\"description\":\"轨迹状态 每一条轨迹都会被对应到一个唯一的状态编码，1010：订单已创建，1015：订单已支付，1019：信息待补充，2010/2011/2012：海关申报中，2015：海关申报完成，3010：商家处理中，3015：商家打包中，3020：商家已发货，3050：仓库处理中，3055：an仓库分拣中，3060：仓库打包中，3065：仓库已发出，6020：快递运输中\",\"format\":\"int32\"},\"trackingStatusDesc\":{\"type\":\"string\",\"description\":\"轨迹状态编码的描述\",\"example\":\"null\"},\"location\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=ExpressLocation&schemaId=217581\"}},\"description\":\"快递轨迹（包括小红书对订单的处理流程节点以及发货后快递公司产生的路由轨迹）\"}",
+                              "isBase": 0,
+                              "gatewayGroupId": 0,
+                              "gatewayGroupKey": "",
+                              "gatewayVersionId": 1661,
+                              "gatewayVersionName": "feature/logan",
+                              "isMaster": false,
+                              "groupId": 0,
+                              "groupKey": ""
+                            }
+                          }
+                        }
+                      },
+                      "description": "物流轨迹列表",
+                      "$$ref": "#/components/schemas/1585784",
+                      "x-schema": {
+                        "id": 1585784,
+                        "name": "OrderTrackInfo",
+                        "desc": "物流轨迹列表",
+                        "createTime": "2023-03-10T12:35:05.000Z",
+                        "updateTime": "2023-03-10T12:35:05.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号\",\"example\":\"P194****4183\"},\"deliveryOrderId\":{\"type\":\"string\",\"description\":\"发货订单id\",\"example\":\"P219***9214\"},\"currentStatusDesc\":{\"type\":\"string\",\"description\":\"订单当前状态描述（待付款、已支付、海关申报中、海关通过、待配货、配货中、仓库作业中、已发货、待揽件、已揽件、运输中、已签收、已完成、已关闭、取消发货）\",\"example\":\"已发货\"},\"expressCompanyCode\":{\"type\":\"string\",\"description\":\"快递公司编码\",\"example\":\"shunfeng\"},\"expressCompanyName\":{\"type\":\"string\",\"description\":\"快递公司名称\",\"example\":\"顺丰速运\"},\"expressNo\":{\"type\":\"string\",\"description\":\"快递单号\",\"example\":\"SF1234567890\"},\"records\":{\"type\":\"array\",\"description\":\"快递轨迹（包括小红书对订单的处理流程节点以及发货后快递公司产生的路由轨迹）\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=TrackingRecord&schemaId=217584\"}}},\"description\":\"物流轨迹列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1585785",
+                "x-schema": {
+                  "id": 1585785,
+                  "name": "OrderTrackInfoList",
+                  "desc": "",
+                  "createTime": "2023-03-10T12:35:05.000Z",
+                  "updateTime": "2023-03-10T12:35:05.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"orderTrackInfos\":{\"type\":\"array\",\"description\":\"物流轨迹列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=OrderTrackInfo&schemaId=1585784\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getOrderTracking"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-03-10T12:35:06.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:11"
+}

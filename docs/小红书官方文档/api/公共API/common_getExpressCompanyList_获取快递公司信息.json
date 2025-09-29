@@ -1,0 +1,118 @@
+{
+  "api_info": {
+    "apiId": 5746,
+    "apiNavigationId": 58,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 5,
+    "method": "post",
+    "navigationDetailDesc": "获取快递公司信息",
+    "navigationDetailName": "获取快递公司信息",
+    "path": "common.getExpressCompanyList",
+    "seq": 4
+  },
+  "api_details": {
+    "id": 5746,
+    "path": "/ark/common.getExpressCompanyList",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getExpressCompanyList",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "expressCompanyInfos": {
+                    "type": "array",
+                    "description": "物流公司信息列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "expressCompanyId": {
+                          "type": "integer",
+                          "description": "小红书内部定义的快递公司id",
+                          "format": "int32"
+                        },
+                        "expressCompanyCode": {
+                          "type": "string",
+                          "description": "快递公司编码,发货时需要传的值",
+                          "example": "zto"
+                        },
+                        "expressCompanyName": {
+                          "type": "string",
+                          "description": "快递公司名称",
+                          "example": "中通速递"
+                        },
+                        "comment": {
+                          "type": "string",
+                          "description": "备注",
+                          "example": "该快递可做一单到底"
+                        }
+                      },
+                      "description": "物流公司信息列表",
+                      "$$ref": "#/components/schemas/217646",
+                      "x-schema": {
+                        "id": 217646,
+                        "name": "ExpressCompanyInfo",
+                        "desc": "物流公司信息列表",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2021-08-03T08:22:26.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"expressCompanyId\":{\"type\":\"integer\",\"description\":\"小红书内部定义的快递公司id\",\"format\":\"int32\"},\"expressCompanyCode\":{\"type\":\"string\",\"description\":\"快递公司编码,发货时需要传的值\",\"example\":\"zto\"},\"expressCompanyName\":{\"type\":\"string\",\"description\":\"快递公司名称\",\"example\":\"中通速递\"},\"comment\":{\"type\":\"string\",\"description\":\"备注\",\"example\":\"该快递可做一单到底\"}},\"description\":\"物流公司信息列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217647",
+                "x-schema": {
+                  "id": 217647,
+                  "name": "ExpressCompanyInfoList",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"expressCompanyInfos\":{\"type\":\"array\",\"description\":\"物流公司信息列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=ExpressCompanyInfo&schemaId=217646\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getExpressCompanyList"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-08-03T08:22:36.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:58:56"
+}

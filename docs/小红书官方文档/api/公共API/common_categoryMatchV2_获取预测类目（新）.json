@@ -1,0 +1,300 @@
+{
+  "api_info": {
+    "apiId": 30496,
+    "apiNavigationId": 255,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 94,
+    "method": "post",
+    "navigationDetailDesc": "获取预测类目（新）",
+    "navigationDetailName": "获取预测类目（新）",
+    "path": "common.categoryMatchV2",
+    "seq": 18
+  },
+  "api_details": {
+    "id": 30496,
+    "path": "/ark.xiaohongshu.com/ark/open_api/v3/common/categorymatchv2",
+    "summary": "获取预测类目",
+    "method": "post",
+    "specJson": {
+      "summary": "获取预测类目",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "name",
+                "scene",
+                "imageUrls"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "雅诗兰黛小棕瓶眼霜",
+                  "description": "商品名称"
+                },
+                "scene": {
+                  "type": "string",
+                  "example": "1",
+                  "description": "1:智能推断，2:智能发布，3:类目判定，默认为1"
+                },
+                "imageUrls": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    ""
+                  ],
+                  "description": "商品图片"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "data"
+                ],
+                "properties": {
+                  "data": {
+                    "required": [
+                      "recommendCategories"
+                    ],
+                    "properties": {
+                      "recommendCategories": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "categoryPathList": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "categoryType": {
+                                    "type": "number",
+                                    "example": 1
+                                  },
+                                  "level": {
+                                    "type": "number",
+                                    "example": 1
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "example": "美妆/个护"
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "example": "5a310dfa3f7d1712823b9dbe"
+                                  },
+                                  "isLeaf": {
+                                    "type": "boolean",
+                                    "example": false
+                                  },
+                                  "parentId": {
+                                    "type": "string",
+                                    "example": ""
+                                  }
+                                }
+                              },
+                              "example": [
+                                {
+                                  "categoryType": 1,
+                                  "level": 1,
+                                  "name": "美妆/个护",
+                                  "id": "5a310dfa3f7d1712823b9dbe",
+                                  "isLeaf": false,
+                                  "parentId": ""
+                                },
+                                {
+                                  "categoryType": 1,
+                                  "level": 2,
+                                  "name": "美容护肤/美体/精油",
+                                  "id": "5a310dfb3f7d1712823b9de1",
+                                  "isLeaf": false,
+                                  "parentId": "5a310dfa3f7d1712823b9dbe"
+                                },
+                                {
+                                  "categoryType": 1,
+                                  "level": 3,
+                                  "name": "眼部护肤",
+                                  "id": "5a310dfd3f7d1712823b9e29",
+                                  "isLeaf": false,
+                                  "parentId": "5a310dfb3f7d1712823b9de1"
+                                },
+                                {
+                                  "categoryType": 1,
+                                  "level": 4,
+                                  "name": "眼霜",
+                                  "id": "5a310dfd3f7d1712823b9e2a",
+                                  "isLeaf": true,
+                                  "parentId": "5a310dfd3f7d1712823b9e29"
+                                }
+                              ],
+                              "description": "类目树"
+                            },
+                            "marketable": {
+                              "type": "boolean",
+                              "example": true,
+                              "description": "商家是否可售"
+                            },
+                            "categoryName": {
+                              "type": "string",
+                              "example": "眼霜",
+                              "description": "类目名"
+                            },
+                            "categoryId": {
+                              "type": "string",
+                              "example": "5a310dfd3f7d1712823b9e2a",
+                              "description": "类目id"
+                            }
+                          }
+                        },
+                        "example": [
+                          {
+                            "categoryPathList": [
+                              {
+                                "categoryType": 1,
+                                "level": 1,
+                                "name": "美妆/个护",
+                                "id": "5a310dfa3f7d1712823b9dbe",
+                                "isLeaf": false,
+                                "parentId": ""
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 2,
+                                "name": "美容护肤/美体/精油",
+                                "id": "5a310dfb3f7d1712823b9de1",
+                                "isLeaf": false,
+                                "parentId": "5a310dfa3f7d1712823b9dbe"
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 3,
+                                "name": "眼部护肤",
+                                "id": "5a310dfd3f7d1712823b9e29",
+                                "isLeaf": false,
+                                "parentId": "5a310dfb3f7d1712823b9de1"
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 4,
+                                "name": "眼霜",
+                                "id": "5a310dfd3f7d1712823b9e2a",
+                                "isLeaf": true,
+                                "parentId": "5a310dfd3f7d1712823b9e29"
+                              }
+                            ],
+                            "marketable": true,
+                            "categoryName": "眼霜",
+                            "categoryId": "5a310dfd3f7d1712823b9e2a"
+                          },
+                          {
+                            "categoryPathList": [
+                              {
+                                "categoryType": 1,
+                                "level": 1,
+                                "name": "美妆/个护",
+                                "id": "5a310dfa3f7d1712823b9dbe",
+                                "isLeaf": false,
+                                "parentId": ""
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 2,
+                                "name": "美容护肤/美体/精油",
+                                "id": "5a310dfb3f7d1712823b9de1",
+                                "isLeaf": false,
+                                "parentId": "5a310dfa3f7d1712823b9dbe"
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 3,
+                                "name": "眼部护肤",
+                                "id": "5a310dfd3f7d1712823b9e29",
+                                "isLeaf": false,
+                                "parentId": "5a310dfb3f7d1712823b9de1"
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 4,
+                                "name": "眼部精华",
+                                "id": "5a310dfd3f7d1712823b9e2b",
+                                "isLeaf": true,
+                                "parentId": "5a310dfd3f7d1712823b9e29"
+                              }
+                            ],
+                            "marketable": true,
+                            "categoryName": "眼部精华",
+                            "categoryId": "5a310dfd3f7d1712823b9e2b"
+                          },
+                          {
+                            "categoryPathList": [
+                              {
+                                "categoryType": 1,
+                                "level": 1,
+                                "name": "美妆/个护",
+                                "id": "5a310dfa3f7d1712823b9dbe",
+                                "isLeaf": false,
+                                "parentId": ""
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 2,
+                                "name": "美容护肤/美体/精油",
+                                "id": "5a310dfb3f7d1712823b9de1",
+                                "isLeaf": false,
+                                "parentId": "5a310dfa3f7d1712823b9dbe"
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 3,
+                                "name": "男士面部护理",
+                                "id": "626a32ce0198890001bf4cc6",
+                                "isLeaf": false,
+                                "parentId": "5a310dfb3f7d1712823b9de1"
+                              },
+                              {
+                                "categoryType": 1,
+                                "level": 4,
+                                "name": "男士眼霜",
+                                "id": "626b96918660f7000163517b",
+                                "isLeaf": true,
+                                "parentId": "626a32ce0198890001bf4cc6"
+                              }
+                            ],
+                            "marketable": true,
+                            "categoryName": "男士眼霜",
+                            "categoryId": "626b96918660f7000163517b"
+                          }
+                        ],
+                        "description": "推荐类目列表"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-09-22T09:45:22.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:59:05"
+}

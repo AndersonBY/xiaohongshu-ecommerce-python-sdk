@@ -1,0 +1,129 @@
+{
+  "api_info": {
+    "apiId": 27223,
+    "apiNavigationId": 223,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 65,
+    "method": "post",
+    "navigationDetailDesc": "商品上下架",
+    "navigationDetailName": "商品上下架",
+    "path": "product.updateSkuAvailable",
+    "seq": 3
+  },
+  "api_details": {
+    "id": 27223,
+    "path": "/ark/product.updateSkuAvailable",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "updateAvailability_1",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "available",
+                "skuId"
+              ],
+              "type": "object",
+              "properties": {
+                "skuId": {
+                  "type": "string",
+                  "description": "skuId",
+                  "example": "1"
+                },
+                "available": {
+                  "type": "boolean",
+                  "description": "商家上架意愿",
+                  "example": false
+                }
+              },
+              "$$ref": "#/components/schemas/1585769",
+              "x-schema": {
+                "id": 1585769,
+                "name": "UpdateSkuAvailableRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2023-04-27T11:23:48.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"available\",\"skuId\"],\"type\":\"object\",\"properties\":{\"skuId\":{\"type\":\"string\",\"description\":\"skuId\",\"example\":\"1\"},\"available\":{\"type\":\"boolean\",\"description\":\"商家上架意愿\",\"example\":false}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error_code": {
+                    "type": "integer",
+                    "description": "错误码",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "返回信息"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "是否成功",
+                    "example": true
+                  }
+                },
+                "$$ref": "#/components/schemas/217570",
+                "x-schema": {
+                  "id": 217570,
+                  "name": "SuccessResponse",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-08-03T08:22:26.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"error_code\":{\"type\":\"integer\",\"description\":\"错误码\",\"format\":\"int32\",\"example\":1},\"data\":{\"type\":\"object\",\"description\":\"返回信息\"},\"success\":{\"type\":\"boolean\",\"description\":\"是否成功\",\"example\":true}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "updateAvailability_1"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-03-10T12:35:06.000Z"
+  },
+  "error_codes": [],
+  "category": "商品API",
+  "fetched_at": "2025-09-26 14:59:28"
+}

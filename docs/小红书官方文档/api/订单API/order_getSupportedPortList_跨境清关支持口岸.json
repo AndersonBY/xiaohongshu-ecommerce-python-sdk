@@ -1,0 +1,160 @@
+{
+  "api_info": {
+    "apiId": 27238,
+    "apiNavigationId": 193,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 35,
+    "method": "post",
+    "navigationDetailDesc": "跨境清关支持口岸",
+    "navigationDetailName": "跨境清关支持口岸",
+    "path": "order.getSupportedPortList",
+    "seq": 11
+  },
+  "api_details": {
+    "id": 27238,
+    "path": "/ark/order.getSupportedPortList",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getSupportedPortListNew",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "platSupportCustoms": {
+                    "type": "array",
+                    "description": "小红书平台支持的申报口岸信息列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "customs_name": {
+                          "type": "string",
+                          "description": "口岸名称",
+                          "example": "重庆"
+                        },
+                        "customs_code": {
+                          "type": "string",
+                          "description": "口岸代码",
+                          "example": "CHONGQING"
+                        }
+                      },
+                      "description": "当前商家支持的申报口岸信息列表",
+                      "$$ref": "#/components/schemas/217578",
+                      "x-schema": {
+                        "id": 217578,
+                        "name": "BondedCustomsInfo",
+                        "desc": "当前商家支持的申报口岸信息列表",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2021-08-03T08:22:26.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"customs_name\":{\"type\":\"string\",\"description\":\"口岸名称\",\"example\":\"重庆\"},\"customs_code\":{\"type\":\"string\",\"description\":\"口岸代码\",\"example\":\"CHONGQING\"}},\"description\":\"当前商家支持的申报口岸信息列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  },
+                  "sellerSupportCustoms": {
+                    "type": "array",
+                    "description": "当前商家支持的申报口岸信息列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "customs_name": {
+                          "type": "string",
+                          "description": "口岸名称",
+                          "example": "重庆"
+                        },
+                        "customs_code": {
+                          "type": "string",
+                          "description": "口岸代码",
+                          "example": "CHONGQING"
+                        }
+                      },
+                      "description": "当前商家支持的申报口岸信息列表",
+                      "$$ref": "#/components/schemas/217578",
+                      "x-schema": {
+                        "id": 217578,
+                        "name": "BondedCustomsInfo",
+                        "desc": "当前商家支持的申报口岸信息列表",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2021-08-03T08:22:26.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"customs_name\":{\"type\":\"string\",\"description\":\"口岸名称\",\"example\":\"重庆\"},\"customs_code\":{\"type\":\"string\",\"description\":\"口岸代码\",\"example\":\"CHONGQING\"}},\"description\":\"当前商家支持的申报口岸信息列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217579",
+                "x-schema": {
+                  "id": 217579,
+                  "name": "PortList",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"platSupportCustoms\":{\"type\":\"array\",\"description\":\"小红书平台支持的申报口岸信息列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=BondedCustomsInfo&schemaId=217578\"}},\"sellerSupportCustoms\":{\"type\":\"array\",\"description\":\"当前商家支持的申报口岸信息列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=BondedCustomsInfo&schemaId=217578\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getSupportedPortListNew"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-03-10T12:35:06.000Z"
+  },
+  "error_codes": [
+    {
+      "apiNavigationDetailId": 35,
+      "errorCode": -1010001,
+      "errorDesc": "获取商家信息出错"
+    },
+    {
+      "apiNavigationDetailId": 35,
+      "errorCode": -1009001,
+      "errorDesc": "未找到类目的子类目"
+    }
+  ],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:13"
+}

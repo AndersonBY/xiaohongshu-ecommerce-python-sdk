@@ -1,0 +1,811 @@
+{
+  "api_info": {
+    "apiId": 38758,
+    "apiNavigationId": 306,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 109,
+    "method": "post",
+    "navigationDetailDesc": "更新商品Item+Sku（新）",
+    "navigationDetailName": "更新商品Item+Sku（新）",
+    "path": "product.updateItemAndSku",
+    "seq": 15
+  },
+  "api_details": {
+    "id": 38758,
+    "path": "/ark/product.updateItemAndSku",
+    "summary": "更新商品（Item+Sku）",
+    "method": "post",
+    "specJson": {
+      "summary": "更新商品（Item+Sku）",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "name",
+                "shippingTemplateId",
+                "categoryId",
+                "itemId",
+                "images"
+              ],
+              "properties": {
+                "itemId": {
+                  "type": "string",
+                  "example": "",
+                  "description": "商品id"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "新版OPENAPI更新商品",
+                  "description": ""
+                },
+                "ename": {
+                  "type": "string",
+                  "example": "itemEName",
+                  "description": "item英文名"
+                },
+                "brandId": {
+                  "type": "string",
+                  "example": "",
+                  "description": "品牌ID,目前查询品牌返回均为String但是是数字可以强转成Long使用"
+                },
+                "categoryId": {
+                  "type": "string",
+                  "example": "",
+                  "description": "末级商品类目ID,根据common.getCategories获取"
+                },
+                "attributes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "valueId": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "propertyId": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "value": {
+                        "type": "string",
+                        "example": "松糕底"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "跟底款式"
+                      },
+                      "valueList": {
+                        "type": "array",
+                        "description": "属性值列表，多选属性填入列表",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "valueId": {
+                              "type": "string",
+                              "description": "属性值ID"
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "属性值"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "example": "",
+                  "description": "item属性，根据common.getAttributeLists和common.getAttributeValues获取，必填属性必填，无必填属性可不填"
+                },
+                "shippingTemplateId": {
+                  "type": "string",
+                  "example": "运费模板ID，根据common.getCarriageTemplateList获取"
+                },
+                "shippingGrossWeight": {
+                  "type": "number",
+                  "example": 0,
+                  "description": "商品物流重量（克），当运费模版选择按重量计费时，该值必须大于0"
+                },
+                "variantIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": "",
+                  "description": "定义item可以有的规格类型，例如颜色，尺码，sku依赖了此处定义的规格类型"
+                },
+                "enableStepPresale": {
+                  "type": "boolean",
+                  "example": "false",
+                  "description": "是否开启阶梯预售"
+                },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "link": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "example": "",
+                  "description": "商品主图(必传)"
+                },
+                "videos": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "link": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "example": "",
+                  "description": "主图视频"
+                },
+                "articleNo": {
+                  "type": "string",
+                  "example": "test货号",
+                  "description": "商品货号"
+                },
+                "imageDescriptions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "link": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "example": "",
+                  "description": "商品详情描述图片"
+                },
+                "transparentImage": {
+                  "type": "string",
+                  "example": "",
+                  "description": "透明图"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "test描述",
+                  "description": "商品描述文字，上限500字"
+                },
+                "deliveryMode": {
+                  "type": "integer",
+                  "example": "0",
+                  "description": "物流模式,0：普通，1：支持无物流发货（限定类目支持，不支持的类目创建会报错）"
+                },
+                "freeReturn": {
+                  "type": "integer",
+                  "example": "1",
+                  "description": "是否支持7天无理由,1：支持，2：不支持，不传会按照规则给默认值，必须支持则支持，不必须则不支持"
+                },
+                "enableMultiWarehouse": {
+                  "type": "boolean",
+                  "example": "false",
+                  "description": "是否启用多仓"
+                },
+                "enableMainSpecImage": {
+                  "type": "integer",
+                  "example": "2",
+                  "description": "是否启用规格大图1开启2关闭"
+                },
+                "sizeTableImage": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "link": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "example": "",
+                  "description": "基础尺码表图片"
+                },
+                "recommendSizeTableImage": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "link": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "example": "",
+                  "description": "尺码推荐表图片"
+                },
+                "modelTryOnSizeTableImage": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "link": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "example": "",
+                  "description": "模特试穿表图片"
+                },
+                "createSkuList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "originalPrice": {
+                        "type": "integer",
+                        "description": "市场价，单位分"
+                      },
+                      "price": {
+                        "type": "integer",
+                        "description": "售价，单位分，要求小于市场价，上限10w元，即10000000分"
+                      },
+                      "stock": {
+                        "type": "integer",
+                        "description": "库存"
+                      },
+                      "logisticsPlanId": {
+                        "type": "string",
+                        "description": "物流方案Id，通过common.getLogisticsList获取"
+                      },
+                      "includeTax": {
+                        "type": "boolean",
+                        "description": "是否包税"
+                      },
+                      "erpCode": {
+                        "type": "string",
+                        "description": "商家编码"
+                      },
+                      "variants": {
+                        "type": "array",
+                        "description": "规格列表，根据item定义对规格填写具体规格值，item没有则不填",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "description": "规格ID(规格根据common.getVariations区分，规格集合需要与item规格对齐)"
+                            },
+                            "name": {
+                              "type": "string",
+                              "description": "规格名称"
+                            },
+                            "value": {
+                              "type": "string",
+                              "description": "规格值(通过common.getAttributeValues获取)，查不到则自行填写"
+                            },
+                            "valueId": {
+                              "type": "string",
+                              "description": "规格值ID(通过common.getAttributeValues获取)查不到可以不填"
+                            }
+                          }
+                        }
+                      },
+                      "deliveryTime": {
+                        "type": "object",
+                        "description": "发货时间信息",
+                        "properties": {
+                          "time": {
+                            "type": "string",
+                            "description": "发货时间，相对时间(X)，X为整数数字，绝对时间(YYYY/MM/DD)该天24点之前发货"
+                          },
+                          "type": {
+                            "type": "integer",
+                            "description": "发货时间类型，3:当日发，4:相对时间（小时）,5:绝对时间"
+                          }
+                        }
+                      },
+                      "specImage": {
+                        "type": "string",
+                        "description": "规格图"
+                      },
+                      "barcode": {
+                        "type": "string",
+                        "description": "商品条形码，创建特定品类必填"
+                      },
+                      "deliveryFlag": {
+                        "type": "integer",
+                        "description": "IMMEDIATE(1, \"现货\"),PRE_SALE(2, \"预售\");"
+                      }
+                    },
+                    "required": [
+                      "deliveryTime",
+                      "price",
+                      "logisticsPlanId"
+                    ]
+                  },
+                  "example": [],
+                  "description": "创建sku"
+                },
+                "updateSkuList": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "ipq": {
+                        "type": "number",
+                        "example": 1,
+                        "description": "ipq"
+                      },
+                      "skuId": {
+                        "type": "string",
+                        "example": "",
+                        "description": "skuId"
+                      },
+                      "price": {
+                        "type": "number",
+                        "example": 990000,
+                        "description": "售价，单位分，要求小于市场价，上限10w元，即10000000分"
+                      },
+                      "stock": {
+                        "type": "number",
+                        "example": 1000,
+                        "description": "库存"
+                      },
+                      "logisticsPlanId": {
+                        "type": "string",
+                        "example": "",
+                        "description": "物流方案Id，通过common.getLogisticsList获取"
+                      },
+                      "variants": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "",
+                              "description": "规格ID(规格根据common.getVariations区分，规格集合需要与item规格对齐)"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "颜色分类",
+                              "description": "规格名称"
+                            },
+                            "value": {
+                              "type": "string",
+                              "example": "新黑色",
+                              "description": "规格值(通过common.getAttributeValues获取)，查不到则自行填写"
+                            },
+                            "valueId": {
+                              "type": "string",
+                              "description": "规格值ID(通过common.getAttributeValues获取)查不到可以不填"
+                            }
+                          }
+                        },
+                        "example": "",
+                        "description": "规格列表，根据item定义对规格填写具体规格值，item没有则不填"
+                      },
+                      "deliveryTime": {
+                        "properties": {
+                          "type": {
+                            "type": "number",
+                            "example": 4,
+                            "description": "发货时间类型，3:当日发，4:相对时间（小时）,5:绝对时间"
+                          },
+                          "time": {
+                            "type": "string",
+                            "example": 48,
+                            "description": "发货时间，相对时间(X)，X为整数数字，绝对时间(YYYY/MM/DD)该天24点之前发货"
+                          }
+                        },
+                        "type": "object",
+                        "description": "发货时间信息"
+                      },
+                      "includeTax": {
+                        "type": "boolean",
+                        "example": "true",
+                        "description": "是否包税"
+                      },
+                      "erpCode": {
+                        "type": "string",
+                        "example": "erpCode",
+                        "description": "商家编码"
+                      },
+                      "barcode": {
+                        "type": "string",
+                        "example": "",
+                        "description": "商品条形码，创建特定品类必填"
+                      },
+                      "specImage": {
+                        "type": "string",
+                        "example": "",
+                        "description": "规格图"
+                      },
+                      "deliveryFlag": {
+                        "type": "number",
+                        "example": 0,
+                        "description": "IMMEDIATE(1, \"现货\"),PRE_SALE(2, \"预售\");"
+                      },
+                      "originalPrice": {
+                        "type": "integer",
+                        "description": "市场价，单位分"
+                      }
+                    },
+                    "required": [
+                      "price",
+                      "deliveryTime",
+                      "logisticsPlanId"
+                    ]
+                  },
+                  "example": "",
+                  "description": "更新sku"
+                },
+                "deleteSkuIdList": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [],
+                  "description": "要删除的skuIdList"
+                },
+                "itemShortTitle": {
+                  "type": "string",
+                  "description": "商品短标题 (长度限制：最小6个汉字12个字符，最大12个汉字24个字符)"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "error_msg": {
+                    "type": "string",
+                    "example": "ok"
+                  },
+                  "error_code": {
+                    "type": "number",
+                    "example": 200
+                  },
+                  "data": {
+                    "properties": {
+                      "sizeTableImage": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "link": {
+                              "type": "string",
+                              "example": ""
+                            }
+                          }
+                        },
+                        "example": "",
+                        "description": "基础尺码表图片"
+                      },
+                      "images": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "link": {
+                              "type": "string",
+                              "example": ""
+                            }
+                          }
+                        },
+                        "example": "",
+                        "description": "商品主图"
+                      },
+                      "skuList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "includeTax": {
+                              "type": "boolean",
+                              "example": true,
+                              "description": "是否包税"
+                            },
+                            "originalPrice": {
+                              "type": "integer",
+                              "description": "市场价，单位分"
+                            },
+                            "deliveryTime": {
+                              "properties": {
+                                "time": {
+                                  "type": "string",
+                                  "example": "48"
+                                },
+                                "type": {
+                                  "type": "number",
+                                  "example": 4
+                                }
+                              },
+                              "type": "object",
+                              "description": "发货时间信息"
+                            },
+                            "price": {
+                              "type": "number",
+                              "example": 990000,
+                              "description": "售价，单位分，要求小于市场价，上限10w元，即10000000分"
+                            },
+                            "erpCode": {
+                              "type": "string",
+                              "example": "erpCode",
+                              "description": "商家编码"
+                            },
+                            "variants": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "string",
+                                    "example": "颜色分类",
+                                    "description": "规格名称"
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "example": "",
+                                    "description": "规格ID(规格根据common.getVariations区分，规格集合需要与item规格对齐)"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "example": "新黑色",
+                                    "description": "规格值(通过common.getAttributeValues获取)，查不到则自行填写"
+                                  },
+                                  "valueId": {
+                                    "type": "string",
+                                    "description": "规格值ID(通过common.getAttributeValues获取)查不到可以不填"
+                                  }
+                                }
+                              },
+                              "example": "",
+                              "description": "规格列表，根据item定义对规格填写具体规格值，item没有则不填"
+                            },
+                            "stock": {
+                              "type": "number",
+                              "example": 1000,
+                              "description": "库存"
+                            },
+                            "barcode": {
+                              "type": "string",
+                              "example": "",
+                              "description": "商品条形码，创建特定品类必填"
+                            },
+                            "specImage": {
+                              "type": "string",
+                              "example": "",
+                              "description": "规格图"
+                            },
+                            "logisticsPlanId": {
+                              "type": "string",
+                              "example": "",
+                              "description": "物流方案Id，通过common.getLogisticsList获取"
+                            },
+                            "skuId": {
+                              "type": "string",
+                              "example": "",
+                              "description": "skuId"
+                            },
+                            "deliveryFlag": {
+                              "type": "number",
+                              "example": 0,
+                              "description": "IMMEDIATE(1, \"现货\"),PRE_SALE(2, \"预售\");"
+                            }
+                          }
+                        },
+                        "example": "",
+                        "description": "skuList"
+                      },
+                      "shippingTemplateId": {
+                        "type": "string",
+                        "example": "",
+                        "description": "运费模板ID，根据common.getCarriageTemplateList获取"
+                      },
+                      "freeReturn": {
+                        "type": "number",
+                        "example": 1,
+                        "description": "是否支持7天无理由,1：支持，2：不支持，不传会按照规则给默认值，必须支持则支持，不必须则不支持"
+                      },
+                      "description": {
+                        "type": "string",
+                        "example": "test描述",
+                        "description": "商品描述文字，上限500字"
+                      },
+                      "videos": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "link": {
+                              "type": "string",
+                              "example": ""
+                            }
+                          }
+                        },
+                        "example": "",
+                        "description": "主图视频"
+                      },
+                      "imageDescriptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "link": {
+                              "type": "string",
+                              "example": ""
+                            }
+                          }
+                        },
+                        "example": "",
+                        "description": "商品详情描述图片"
+                      },
+                      "articleNo": {
+                        "type": "string",
+                        "example": "test货号",
+                        "description": "商品货号"
+                      },
+                      "modelTryOnSizeTableImage": {
+                        "type": "array",
+                        "description": "模特试穿表图片"
+                      },
+                      "enableMultiWarehouse": {
+                        "type": "boolean",
+                        "example": false,
+                        "description": "是否启用多仓"
+                      },
+                      "shippingGrossWeight": {
+                        "type": "number",
+                        "example": 0,
+                        "description": "商品物流重量（克），当运费模版选择按重量计费时，该值必须大于0"
+                      },
+                      "itemId": {
+                        "type": "string",
+                        "example": "",
+                        "description": "itemId"
+                      },
+                      "ename": {
+                        "type": "string",
+                        "example": "itemEName",
+                        "description": "item英文名"
+                      },
+                      "enableStepPresale": {
+                        "type": "boolean",
+                        "example": false,
+                        "description": "是否开启阶梯预售"
+                      },
+                      "transparentImage": {
+                        "type": "string",
+                        "example": "",
+                        "description": "透明图"
+                      },
+                      "deliveryMode": {
+                        "type": "number",
+                        "example": 0,
+                        "description": "物流模式,0：普通，1：支持无物流发货（限定类目支持，不支持的类目创建会报错）"
+                      },
+                      "variantIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "example": "",
+                        "description": "定义item可以有的规格类型，例如颜色，尺码，sku依赖了此处定义的规格类型"
+                      },
+                      "enableMainSpecImage": {
+                        "type": "number",
+                        "example": 2,
+                        "description": "是否启用规格大图1开启2关闭"
+                      },
+                      "brandId": {
+                        "type": "string",
+                        "example": "",
+                        "description": "品牌ID,目前查询品牌返回均为String但是是数字可以强转成Long使用"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "新版OPENAPI更新商品",
+                        "description": "item标题"
+                      },
+                      "recommendSizeTableImage": {
+                        "type": "array",
+                        "description": "尺码推荐表图片"
+                      },
+                      "attributes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "valueId": {
+                              "type": "string",
+                              "example": ""
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "跟底款式"
+                            },
+                            "propertyId": {
+                              "type": "string",
+                              "example": ""
+                            },
+                            "value": {
+                              "type": "string",
+                              "example": "松糕底"
+                            },
+                            "valueList": {
+                              "type": "array",
+                              "description": "属性值列表，多选属性填入列表",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "valueId": {
+                                    "type": "string",
+                                    "description": "属性值ID"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "description": "属性值"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "example": "",
+                        "description": "item属性，根据common.getAttributeLists和common.getAttributeValues获取，必填属性必填，无必填属性可不填"
+                      },
+                      "categoryId": {
+                        "type": "string",
+                        "example": "",
+                        "description": "末级商品类目ID,根据common.getCategories获取"
+                      },
+                      "standardImages": {
+                        "type": "array",
+                        "description": "1:1主图"
+                      },
+                      "longImages": {
+                        "type": "array",
+                        "description": "3:4主图"
+                      },
+                      "itemShortTitle": {
+                        "type": "string",
+                        "description": "商品短标题 (长度限制：最小6个汉字12个字符，最大12个汉字24个字符)"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-08-13T06:41:54.000Z"
+  },
+  "error_codes": [],
+  "category": "商品API",
+  "fetched_at": "2025-09-26 14:59:36"
+}

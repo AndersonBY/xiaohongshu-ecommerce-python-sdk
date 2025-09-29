@@ -1,0 +1,359 @@
+{
+  "api_info": {
+    "apiId": 5815,
+    "apiNavigationId": 61,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 8,
+    "method": "post",
+    "navigationDetailDesc": "运费模版详情",
+    "navigationDetailName": "运费模版详情",
+    "path": "common.getCarriageTemplate",
+    "seq": 7
+  },
+  "api_details": {
+    "id": 5815,
+    "path": "/ark/common.getCarriageTemplate",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getCarriageTemplate",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "templateId"
+              ],
+              "type": "object",
+              "properties": {
+                "templateId": {
+                  "type": "string",
+                  "description": "运费模板id",
+                  "example": "601a****fb4b"
+                }
+              },
+              "$$ref": "#/components/schemas/217651",
+              "x-schema": {
+                "id": 217651,
+                "name": "GetCarriageTemplateRequest",
+                "desc": "",
+                "createTime": "2021-08-03T08:22:26.000Z",
+                "updateTime": "2021-08-03T08:22:26.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"templateId\"],\"type\":\"object\",\"properties\":{\"templateId\":{\"type\":\"string\",\"description\":\"运费模板id\",\"example\":\"601a****fb4b\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "templateId": {
+                    "type": "string",
+                    "description": "运费模板id ",
+                    "example": "601a6186095e7a0001c5fb49"
+                  },
+                  "templateName": {
+                    "type": "string",
+                    "description": "运费模板名称",
+                    "example": "不包邮-默认模板"
+                  },
+                  "templateType": {
+                    "type": "integer",
+                    "description": "运费模板类型 1-自定义邮费 2-卖家承担邮费",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "costType": {
+                    "type": "integer",
+                    "description": "计费类型 1-按件计费 2-按重量计费",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "expressType": {
+                    "type": "integer",
+                    "description": "快递方式(备用)",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "supportNotDelivery": {
+                    "type": "boolean",
+                    "description": "是否包含不可以配送区域",
+                    "example": true
+                  },
+                  "notDeliveryAreas": {
+                    "type": "array",
+                    "description": "不可配送区域，最细可到区级别（区对应的zonecode）",
+                    "items": {
+                      "type": "string",
+                      "description": "不可配送区域，最细可到区级别（区对应的zonecode）"
+                    }
+                  },
+                  "normalConfig": {
+                    "type": "object",
+                    "properties": {
+                      "firstStandard": {
+                        "type": "integer",
+                        "description": "首件数/首重 注意，为重量时单位为克",
+                        "format": "int32",
+                        "example": 1
+                      },
+                      "firstCost": {
+                        "type": "integer",
+                        "description": "首费，单位为分",
+                        "format": "int32",
+                        "example": 1000
+                      },
+                      "addStandard": {
+                        "type": "integer",
+                        "description": "续件数/续重 注意为重量时单位为克",
+                        "format": "int32",
+                        "example": 1
+                      },
+                      "addCost": {
+                        "type": "integer",
+                        "description": "续费，单位为分",
+                        "format": "int32",
+                        "example": 0
+                      },
+                      "areaCostConfigs": {
+                        "type": "array",
+                        "description": "特殊区域快递费用配置",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "areas": {
+                              "type": "array",
+                              "description": "配置区域列表，最细可到区级别（区对应的zonecode）",
+                              "items": {
+                                "type": "string",
+                                "description": "配置区域列表，最细可到区级别（区对应的zonecode）"
+                              }
+                            },
+                            "firstStandard": {
+                              "type": "integer",
+                              "description": "首件数/首重 注意，为重量时单位为克",
+                              "format": "int32",
+                              "example": 100
+                            },
+                            "firstCost": {
+                              "type": "integer",
+                              "description": "首费，单位为分",
+                              "format": "int32",
+                              "example": 1000
+                            },
+                            "addStandard": {
+                              "type": "integer",
+                              "description": "续件数/续重 注意为重量时单位为克",
+                              "format": "int32",
+                              "example": 500
+                            },
+                            "addCost": {
+                              "type": "integer",
+                              "description": "续费，单位为分",
+                              "format": "int32",
+                              "example": 500
+                            }
+                          },
+                          "description": "特殊区域快递费用配置",
+                          "$$ref": "#/components/schemas/217652",
+                          "x-schema": {
+                            "id": 217652,
+                            "name": "AreaCostConfigDTO",
+                            "desc": "特殊区域快递费用配置",
+                            "createTime": "2021-08-03T08:22:26.000Z",
+                            "updateTime": "2024-03-08T03:13:23.000Z",
+                            "type": 2,
+                            "gatewayId": 103,
+                            "createUserId": "5fa4f48970742e0001faee4b",
+                            "createUserName": "林松斌（实习）",
+                            "spec": "{\"type\":\"object\",\"properties\":{\"areas\":{\"type\":\"array\",\"description\":\"配置区域列表，最细可到区级别（区对应的zonecode）\",\"items\":{\"type\":\"string\",\"description\":\"配置区域列表，最细可到区级别（区对应的zonecode）\"}},\"firstStandard\":{\"type\":\"integer\",\"description\":\"首件数/首重 注意，为重量时单位为克\",\"format\":\"int32\",\"example\":100},\"firstCost\":{\"type\":\"integer\",\"description\":\"首费，单位为分\",\"format\":\"int32\",\"example\":1000},\"addStandard\":{\"type\":\"integer\",\"description\":\"续件数/续重 注意为重量时单位为克\",\"format\":\"int32\",\"example\":500},\"addCost\":{\"type\":\"integer\",\"description\":\"续费，单位为分\",\"format\":\"int32\",\"example\":500}},\"description\":\"特殊区域快递费用配置\"}",
+                            "isBase": 0,
+                            "gatewayGroupId": 0,
+                            "gatewayGroupKey": "",
+                            "gatewayVersionId": 1661,
+                            "gatewayVersionName": "feature/logan",
+                            "isMaster": false,
+                            "groupId": 0,
+                            "groupKey": ""
+                          }
+                        }
+                      }
+                    },
+                    "description": "快递运费配置",
+                    "$$ref": "#/components/schemas/217654",
+                    "x-schema": {
+                      "id": 217654,
+                      "name": "ExpressCostConfigDTO",
+                      "desc": "快递运费配置",
+                      "createTime": "2021-08-03T08:22:26.000Z",
+                      "updateTime": "2021-10-21T08:14:55.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "5fa4f48970742e0001faee4b",
+                      "createUserName": "林松斌（实习）",
+                      "spec": "{\"type\":\"object\",\"properties\":{\"firstStandard\":{\"type\":\"integer\",\"description\":\"首件数/首重 注意，为重量时单位为克\",\"format\":\"int32\",\"example\":1},\"firstCost\":{\"type\":\"integer\",\"description\":\"首费，单位为分\",\"format\":\"int32\",\"example\":1000},\"addStandard\":{\"type\":\"integer\",\"description\":\"续件数/续重 注意为重量时单位为克\",\"format\":\"int32\",\"example\":1},\"addCost\":{\"type\":\"integer\",\"description\":\"续费，单位为分\",\"format\":\"int32\",\"example\":0},\"areaCostConfigs\":{\"type\":\"array\",\"description\":\"特殊区域快递费用配置\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=AreaCostConfigDTO&schemaId=217652\"}}},\"description\":\"快递运费配置\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  },
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "是否有效",
+                    "example": true
+                  },
+                  "syncdAt": {
+                    "type": "integer",
+                    "description": "同步商品时间",
+                    "format": "int64",
+                    "example": 1612341638092
+                  },
+                  "createBy": {
+                    "type": "string",
+                    "description": "创建人",
+                    "example": "丁铛"
+                  },
+                  "createAt": {
+                    "type": "integer",
+                    "description": "创建时间 单位ms",
+                    "format": "int64",
+                    "example": 1612341638092
+                  },
+                  "updateAt": {
+                    "type": "integer",
+                    "description": "更新时间 单位ms",
+                    "format": "int64",
+                    "example": 1612940629718
+                  },
+                  "sendAddress": {
+                    "type": "object",
+                    "properties": {
+                      "countryCode": {
+                        "type": "string",
+                        "description": "国家code",
+                        "example": "500"
+                      },
+                      "countryName": {
+                        "type": "string",
+                        "description": "国家名",
+                        "example": "500"
+                      },
+                      "provinceCode": {
+                        "type": "string",
+                        "description": "省份code",
+                        "example": "500"
+                      },
+                      "provinceName": {
+                        "type": "string",
+                        "description": "省份名",
+                        "example": "500"
+                      },
+                      "cityCode": {
+                        "type": "string",
+                        "description": "城市code",
+                        "example": "500"
+                      },
+                      "cityName": {
+                        "type": "string",
+                        "description": "城市名",
+                        "example": "500"
+                      },
+                      "areaCode": {
+                        "type": "string",
+                        "description": "区code",
+                        "example": "500"
+                      },
+                      "areaName": {
+                        "type": "string",
+                        "description": "区名",
+                        "example": "500"
+                      }
+                    },
+                    "description": "发货地址信息",
+                    "example": 1612940629718,
+                    "$$ref": "#/components/schemas/406197",
+                    "x-schema": {
+                      "id": 406197,
+                      "name": "SendAddress",
+                      "desc": "发货地址信息",
+                      "createTime": "2021-10-28T09:52:20.000Z",
+                      "updateTime": "2021-10-28T09:52:20.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "",
+                      "createUserName": "",
+                      "spec": "{\"type\":\"object\",\"properties\":{\"countryCode\":{\"type\":\"string\",\"description\":\"国家code\",\"example\":\"500\"},\"countryName\":{\"type\":\"string\",\"description\":\"国家名\",\"example\":\"500\"},\"provinceCode\":{\"type\":\"string\",\"description\":\"省份code\",\"example\":\"500\"},\"provinceName\":{\"type\":\"string\",\"description\":\"省份名\",\"example\":\"500\"},\"cityCode\":{\"type\":\"string\",\"description\":\"城市code\",\"example\":\"500\"},\"cityName\":{\"type\":\"string\",\"description\":\"城市名\",\"example\":\"500\"},\"areaCode\":{\"type\":\"string\",\"description\":\"区code\",\"example\":\"500\"},\"areaName\":{\"type\":\"string\",\"description\":\"区名\",\"example\":\"500\"}},\"description\":\"发货地址信息\",\"example\":1612940629718}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217653",
+                "x-schema": {
+                  "id": 217653,
+                  "name": "CarriageTemplate",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2024-03-08T03:13:23.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"templateId\":{\"type\":\"string\",\"description\":\"运费模板id \",\"example\":\"601a6186095e7a0001c5fb49\"},\"templateName\":{\"type\":\"string\",\"description\":\"运费模板名称\",\"example\":\"不包邮-默认模板\"},\"templateType\":{\"type\":\"integer\",\"description\":\"运费模板类型 1-自定义邮费 2-卖家承担邮费\",\"format\":\"int32\",\"example\":1},\"costType\":{\"type\":\"integer\",\"description\":\"计费类型 1-按件计费 2-按重量计费\",\"format\":\"int32\",\"example\":1},\"expressType\":{\"type\":\"integer\",\"description\":\"快递方式(备用)\",\"format\":\"int32\",\"example\":1},\"supportNotDelivery\":{\"type\":\"boolean\",\"description\":\"是否包含不可以配送区域\",\"example\":true},\"notDeliveryAreas\":{\"type\":\"array\",\"description\":\"不可配送区域，最细可到区级别（区对应的zonecode）\",\"items\":{\"type\":\"string\",\"description\":\"不可配送区域，最细可到区级别（区对应的zonecode）\"}},\"normalConfig\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=ExpressCostConfigDTO&schemaId=217654\"},\"enabled\":{\"type\":\"boolean\",\"description\":\"是否有效\",\"example\":true},\"syncdAt\":{\"type\":\"integer\",\"description\":\"同步商品时间\",\"format\":\"int64\",\"example\":1612341638092},\"createBy\":{\"type\":\"string\",\"description\":\"创建人\",\"example\":\"丁铛\"},\"createAt\":{\"type\":\"integer\",\"description\":\"创建时间 单位ms\",\"format\":\"int64\",\"example\":1612341638092},\"updateAt\":{\"type\":\"integer\",\"description\":\"更新时间 单位ms\",\"format\":\"int64\",\"example\":1612940629718},\"sendAddress\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=SendAddress&schemaId=406197\"}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getCarriageTemplate"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-08-03T08:22:36.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:58:58"
+}

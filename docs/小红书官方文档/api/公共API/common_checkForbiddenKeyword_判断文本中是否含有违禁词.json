@@ -1,0 +1,97 @@
+{
+  "api_info": {
+    "apiId": 31356,
+    "apiNavigationId": 261,
+    "gatewayId": 165,
+    "gatewayVersionId": 2804,
+    "id": 95,
+    "method": "post",
+    "navigationDetailDesc": "判断文本中是否含有违禁词",
+    "navigationDetailName": "判断文本中是否含有违禁词",
+    "path": "common.checkForbiddenKeyword",
+    "seq": 19
+  },
+  "api_details": {
+    "id": 31356,
+    "path": "/api/openapi/common/checkforbiddenkeyword",
+    "summary": "判断文本中是否含有违禁词",
+    "method": "post",
+    "specJson": {
+      "summary": "判断文本中是否含有违禁词",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "text"
+              ],
+              "properties": {
+                "text": {
+                  "type": "string",
+                  "description": "文本",
+                  "example": "这是一个标题包含违禁词防脱发"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code",
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "msg": {
+                    "type": "string"
+                  },
+                  "success": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "forbiddenKeywords": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "防脱发"
+                        },
+                        "description": "违禁词列表，为空表示无违禁词",
+                        "example": ""
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "x-genric": "data"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2023-10-24T06:37:18.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:59:06"
+}

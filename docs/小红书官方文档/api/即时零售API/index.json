@@ -1,0 +1,14 @@
+{
+  "category_name": "即时零售API",
+  "api_count": 1,
+  "apis": [
+    {
+      "name": "近场轨迹推送",
+      "path": "express.instantshopping.updateInstantShoppingTrack",
+      "method": "post",
+      "description": "近场轨迹推送",
+      "api_id": 38304
+    }
+  ],
+  "created_at": "2025-09-26 14:59:54"
+}

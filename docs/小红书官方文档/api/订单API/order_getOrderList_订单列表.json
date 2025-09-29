@@ -1,0 +1,353 @@
+{
+  "api_info": {
+    "apiId": 27241,
+    "apiNavigationId": 183,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 25,
+    "method": "post",
+    "navigationDetailDesc": "订单列表",
+    "navigationDetailName": "订单列表",
+    "path": "order.getOrderList",
+    "seq": 0
+  },
+  "api_details": {
+    "id": 27241,
+    "path": "/ark/order.getOrderList",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "订单列表",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "endTime",
+                "startTime",
+                "timeType"
+              ],
+              "type": "object",
+              "properties": {
+                "startTime": {
+                  "type": "integer",
+                  "description": "时间范围起点",
+                  "format": "int64",
+                  "example": 1612518379
+                },
+                "endTime": {
+                  "type": "integer",
+                  "description": "时间范围终点",
+                  "format": "int64",
+                  "example": 1612518379
+                },
+                "timeType": {
+                  "type": "integer",
+                  "description": "startTime/endTime对应的时间类型，1 创建时间  限制 end-start<=24h、2 更新时间 限制 end-start<=30min 倒序拉取 最后一页到第一页",
+                  "format": "int32",
+                  "example": 1
+                },
+                "orderType": {
+                  "type": "integer",
+                  "description": "订单类型，0/null 全部 1 现货 normal 2 定金预售   3 全款预售(废弃)  4 全款预售(新)  5 换货补发 ",
+                  "format": "int32",
+                  "example": 1
+                },
+                "orderStatus": {
+                  "type": "integer",
+                  "description": "订单状态，0全部 1已下单待付款 2已支付处理中 3清关中 4待发货 5部分发货 6待收货 7已完成 8已关闭 9已取消 10换货申请中",
+                  "format": "int32",
+                  "example": 1
+                },
+                "pageNo": {
+                  "type": "integer",
+                  "description": "页码，默认1，限制100 ",
+                  "format": "int32",
+                  "example": 1
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "description": "查询总数，默认50，限制100",
+                  "format": "int32",
+                  "example": 50
+                }
+              },
+              "$$ref": "#/components/schemas/1585790",
+              "x-schema": {
+                "id": 1585790,
+                "name": "GetOrderListRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2024-04-07T06:32:27.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"endTime\",\"startTime\",\"timeType\"],\"type\":\"object\",\"properties\":{\"startTime\":{\"type\":\"integer\",\"description\":\"时间范围起点\",\"format\":\"int64\",\"example\":1612518379},\"endTime\":{\"type\":\"integer\",\"description\":\"时间范围终点\",\"format\":\"int64\",\"example\":1612518379},\"timeType\":{\"type\":\"integer\",\"description\":\"startTime/endTime对应的时间类型，1 创建时间  限制 end-start<=24h、2 更新时间 限制 end-start<=30min 倒序拉取 最后一页到第一页\",\"format\":\"int32\",\"example\":1},\"orderType\":{\"type\":\"integer\",\"description\":\"订单类型，0/null 全部 1 现货 normal 2 定金预售   3 全款预售(废弃)  4 全款预售(新)  5 换货补发 \",\"format\":\"int32\",\"example\":1},\"orderStatus\":{\"type\":\"integer\",\"description\":\"订单状态，0全部 1已下单待付款 2已支付处理中 3清关中 4待发货 5部分发货 6待收货 7已完成 8已关闭 9已取消 10换货申请中\",\"format\":\"int32\",\"example\":1},\"pageNo\":{\"type\":\"integer\",\"description\":\"页码，默认1，限制100 \",\"format\":\"int32\",\"example\":1},\"pageSize\":{\"type\":\"integer\",\"description\":\"查询总数，默认50，限制100\",\"format\":\"int32\",\"example\":50}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "total": {
+                    "type": "integer",
+                    "description": "订单总数",
+                    "format": "int32",
+                    "example": 500
+                  },
+                  "pageNo": {
+                    "type": "integer",
+                    "description": "当前页数  请求参数中的值",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "description": "页大小 请求参数中的值",
+                    "format": "int32",
+                    "example": 50
+                  },
+                  "maxPageNo": {
+                    "type": "integer",
+                    "description": "最大页码数 方便 直接从最后一页拉数据",
+                    "format": "int32",
+                    "example": 100
+                  },
+                  "orderList": {
+                    "type": "array",
+                    "description": "订单信息",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "orderId": {
+                          "type": "string",
+                          "description": "订单号",
+                          "example": "P141***1412"
+                        },
+                        "orderType": {
+                          "type": "integer",
+                          "description": "订单类型，1普通 2定金预售 3全款预售(废弃) 4全款预售(新) 5换货补发",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "orderStatus": {
+                          "type": "integer",
+                          "description": "订单状态，1已下单待付款 2已支付处理中 3清关中 4待发货 5部分发货 6待收货 7已完成 8已关闭 9已取消 10换货申请中",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "orderAfterSalesStatus": {
+                          "type": "integer",
+                          "description": "售后状态，1无售后 2售后处理中 3售后完成 4售后拒绝 5售后关闭 6平台介入中 7售后取消",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "cancelStatus": {
+                          "type": "integer",
+                          "description": "申请取消状态，0未申请取消 1取消处理中",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "createdTime": {
+                          "type": "integer",
+                          "description": "创建时间 单位ms",
+                          "format": "int64",
+                          "example": 1612518379000
+                        },
+                        "paidTime": {
+                          "type": "integer",
+                          "description": "支付时间 单位ms",
+                          "format": "int64",
+                          "example": 1612518379000
+                        },
+                        "updateTime": {
+                          "type": "integer",
+                          "description": "更新时间 单位ms",
+                          "format": "int64",
+                          "example": 1612518379000
+                        },
+                        "deliveryTime": {
+                          "type": "integer",
+                          "description": "订单发货时间 单位ms",
+                          "format": "int64",
+                          "example": 1612518379000
+                        },
+                        "cancelTime": {
+                          "type": "integer",
+                          "description": "订单取消时间 单位ms",
+                          "format": "int64",
+                          "example": 1612518379000
+                        },
+                        "finishTime": {
+                          "type": "integer",
+                          "description": "订单完成时间 单位ms",
+                          "format": "int64",
+                          "example": 1612518379000
+                        },
+                        "promiseLastDeliveryTime": {
+                          "type": "integer",
+                          "description": "承诺最晚发货时间 单位ms",
+                          "format": "int64",
+                          "example": 1612518379000
+                        },
+                        "planInfoId": {
+                          "type": "string",
+                          "description": "物流方案id",
+                          "example": "null"
+                        },
+                        "planInfoName": {
+                          "type": "string",
+                          "description": "物流方案名称",
+                          "example": "null"
+                        },
+                        "receiverCountryId": {
+                          "type": "string",
+                          "description": "收件人国家id",
+                          "example": "null"
+                        },
+                        "receiverCountryName": {
+                          "type": "string",
+                          "description": "目前仅 中国 ",
+                          "example": "中国"
+                        },
+                        "receiverProvinceId": {
+                          "type": "string",
+                          "description": "收件人省份id",
+                          "example": "null"
+                        },
+                        "receiverProvinceName": {
+                          "type": "string",
+                          "description": "收件人省份",
+                          "example": "江苏省"
+                        },
+                        "receiverCityId": {
+                          "type": "string",
+                          "description": "收件人城市id",
+                          "example": "null"
+                        },
+                        "receiverCityName": {
+                          "type": "string",
+                          "description": "收件人城市",
+                          "example": "苏州市"
+                        },
+                        "receiverDistrictId": {
+                          "type": "string",
+                          "description": "收件人区县id",
+                          "example": "null"
+                        },
+                        "receiverDistrictName": {
+                          "type": "string",
+                          "description": "收件人区县名称",
+                          "example": "相城区"
+                        },
+                        "customerRemark": {
+                          "type": "string",
+                          "description": "用户备注",
+                          "example": "null"
+                        },
+                        "sellerRemark": {
+                          "type": "string",
+                          "description": "商家标记备注",
+                          "example": "null"
+                        },
+                        "sellerRemarkFlag": {
+                          "type": "integer",
+                          "description": "商家标记优先级，ark订单列表展示旗子颜色 1灰旗 2红旗 3黄旗 4绿旗 5蓝旗 6紫旗",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "originalOrderId": {
+                          "type": "string",
+                          "description": "原始订单编号，换货订单的原订单",
+                          "example": "P123***4123"
+                        },
+                        "logistics": {
+                          "type": "string",
+                          "description": "物流模式red_express三方备货直邮(备货海外仓),red_domestic_trade(三方备货内贸),red_standard(三方备货保税仓),red_auto(三方自主发货),red_box(三方小包),red_bonded(三方保税)",
+                          "example": "red_express"
+                        },
+                        "orderTagList": {
+                          "type": "array",
+                          "description": "订单标签列表 NEW_YEAR 新年礼  PLATFORM_DECLARE 平台报备 SELLER_DECLARE 商家报备 CONSULT 协商发货 MODIFIED_ADDR 已改地址 MODIFIED_PRICE 已改价 NO_LOGISTICS_SHIP 无物流发货 PRINTED 部分打单/已打单 URGENT_SHIP 催发货 QIC QIC质检 SAMPLE 拿样  HOME_DELIVERY 送货上门 LACK_GOOD 缺货 EXPLODE 发生现货爆单的订单 EXEMPT 发生现货爆单享受豁免 CERTIFICATION_WAREHOUSE 认证仓   COUNTRY_SUBSIDY: 国家补贴  CITY_SUBSIDY:城市补贴  BUY_AGENT:代购  ",
+                          "items": {
+                            "type": "string",
+                            "description": "订单标签列表 NEW_YEAR 新年礼  PLATFORM_DECLARE 平台报备 SELLER_DECLARE 商家报备 CONSULT 协商发货 MODIFIED_ADDR 已改地址 MODIFIED_PRICE 已改价 NO_LOGISTICS_SHIP 无物流发货 PRINTED 部分打单/已打单 URGENT_SHIP 催发货 QIC QIC质检 SAMPLE 拿样  HOME_DELIVERY 送货上门 LACK_GOOD 缺货 EXPLODE 发生现货爆单的订单 EXEMPT 发生现货爆单享受豁免"
+                          }
+                        }
+                      },
+                      "description": "订单信息",
+                      "$$ref": "#/components/schemas/1585792",
+                      "x-schema": {
+                        "id": 1585792,
+                        "name": "OrderSimpleDetail",
+                        "desc": "订单信息",
+                        "createTime": "2023-03-10T12:35:05.000Z",
+                        "updateTime": "2024-12-19T11:22:10.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号\",\"example\":\"P141***1412\"},\"orderType\":{\"type\":\"integer\",\"description\":\"订单类型，1普通 2定金预售 3全款预售(废弃) 4全款预售(新) 5换货补发\",\"format\":\"int32\",\"example\":1},\"orderStatus\":{\"type\":\"integer\",\"description\":\"订单状态，1已下单待付款 2已支付处理中 3清关中 4待发货 5部分发货 6待收货 7已完成 8已关闭 9已取消 10换货申请中\",\"format\":\"int32\",\"example\":1},\"orderAfterSalesStatus\":{\"type\":\"integer\",\"description\":\"售后状态，1无售后 2售后处理中 3售后完成 4售后拒绝 5售后关闭 6平台介入中 7售后取消\",\"format\":\"int32\",\"example\":1},\"cancelStatus\":{\"type\":\"integer\",\"description\":\"申请取消状态，0未申请取消 1取消处理中\",\"format\":\"int32\",\"example\":1},\"createdTime\":{\"type\":\"integer\",\"description\":\"创建时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"paidTime\":{\"type\":\"integer\",\"description\":\"支付时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"updateTime\":{\"type\":\"integer\",\"description\":\"更新时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"deliveryTime\":{\"type\":\"integer\",\"description\":\"订单发货时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"cancelTime\":{\"type\":\"integer\",\"description\":\"订单取消时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"finishTime\":{\"type\":\"integer\",\"description\":\"订单完成时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"promiseLastDeliveryTime\":{\"type\":\"integer\",\"description\":\"承诺最晚发货时间 单位ms\",\"format\":\"int64\",\"example\":1612518379000},\"planInfoId\":{\"type\":\"string\",\"description\":\"物流方案id\",\"example\":\"null\"},\"planInfoName\":{\"type\":\"string\",\"description\":\"物流方案名称\",\"example\":\"null\"},\"receiverCountryId\":{\"type\":\"string\",\"description\":\"收件人国家id\",\"example\":\"null\"},\"receiverCountryName\":{\"type\":\"string\",\"description\":\"目前仅 中国 \",\"example\":\"中国\"},\"receiverProvinceId\":{\"type\":\"string\",\"description\":\"收件人省份id\",\"example\":\"null\"},\"receiverProvinceName\":{\"type\":\"string\",\"description\":\"收件人省份\",\"example\":\"江苏省\"},\"receiverCityId\":{\"type\":\"string\",\"description\":\"收件人城市id\",\"example\":\"null\"},\"receiverCityName\":{\"type\":\"string\",\"description\":\"收件人城市\",\"example\":\"苏州市\"},\"receiverDistrictId\":{\"type\":\"string\",\"description\":\"收件人区县id\",\"example\":\"null\"},\"receiverDistrictName\":{\"type\":\"string\",\"description\":\"收件人区县名称\",\"example\":\"相城区\"},\"customerRemark\":{\"type\":\"string\",\"description\":\"用户备注\",\"example\":\"null\"},\"sellerRemark\":{\"type\":\"string\",\"description\":\"商家标记备注\",\"example\":\"null\"},\"sellerRemarkFlag\":{\"type\":\"integer\",\"description\":\"商家标记优先级，ark订单列表展示旗子颜色 1灰旗 2红旗 3黄旗 4绿旗 5蓝旗 6紫旗\",\"format\":\"int32\",\"example\":1},\"originalOrderId\":{\"type\":\"string\",\"description\":\"原始订单编号，换货订单的原订单\",\"example\":\"P123***4123\"},\"logistics\":{\"type\":\"string\",\"description\":\"物流模式red_express三方备货直邮(备货海外仓),red_domestic_trade(三方备货内贸),red_standard(三方备货保税仓),red_auto(三方自主发货),red_box(三方小包),red_bonded(三方保税)\",\"example\":\"red_express\"},\"orderTagList\":{\"type\":\"array\",\"description\":\"订单标签列表 NEW_YEAR 新年礼  PLATFORM_DECLARE 平台报备 SELLER_DECLARE 商家报备 CONSULT 协商发货 MODIFIED_ADDR 已改地址 MODIFIED_PRICE 已改价 NO_LOGISTICS_SHIP 无物流发货 PRINTED 部分打单/已打单 URGENT_SHIP 催发货 QIC QIC质检 SAMPLE 拿样  HOME_DELIVERY 送货上门 LACK_GOOD 缺货 EXPLODE 发生现货爆单的订单 EXEMPT 发生现货爆单享受豁免 CERTIFICATION_WAREHOUSE 认证仓   COUNTRY_SUBSIDY: 国家补贴  CITY_SUBSIDY:城市补贴  BUY_AGENT:代购  \",\"items\":{\"type\":\"string\",\"description\":\"订单标签列表 NEW_YEAR 新年礼  PLATFORM_DECLARE 平台报备 SELLER_DECLARE 商家报备 CONSULT 协商发货 MODIFIED_ADDR 已改地址 MODIFIED_PRICE 已改价 NO_LOGISTICS_SHIP 无物流发货 PRINTED 部分打单/已打单 URGENT_SHIP 催发货 QIC QIC质检 SAMPLE 拿样  HOME_DELIVERY 送货上门 LACK_GOOD 缺货 EXPLODE 发生现货爆单的订单 EXEMPT 发生现货爆单享受豁免\"}}},\"description\":\"订单信息\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1585791",
+                "x-schema": {
+                  "id": 1585791,
+                  "name": "OrderListV3",
+                  "desc": "",
+                  "createTime": "2023-03-10T12:35:05.000Z",
+                  "updateTime": "2023-03-10T12:35:05.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"total\":{\"type\":\"integer\",\"description\":\"订单总数\",\"format\":\"int32\",\"example\":500},\"pageNo\":{\"type\":\"integer\",\"description\":\"当前页数  请求参数中的值\",\"format\":\"int32\",\"example\":1},\"pageSize\":{\"type\":\"integer\",\"description\":\"页大小 请求参数中的值\",\"format\":\"int32\",\"example\":50},\"maxPageNo\":{\"type\":\"integer\",\"description\":\"最大页码数 方便 直接从最后一页拉数据\",\"format\":\"int32\",\"example\":100},\"orderList\":{\"type\":\"array\",\"description\":\"订单信息\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=OrderSimpleDetail&schemaId=1585792\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2024-12-19T11:22:10.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:07"
+}

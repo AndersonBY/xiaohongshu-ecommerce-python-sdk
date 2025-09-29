@@ -1,0 +1,116 @@
+{
+  "api_info": {
+    "apiId": 29205,
+    "apiNavigationId": 199,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 41,
+    "method": "post",
+    "navigationDetailDesc": "开票结果回传（正向蓝票开具）",
+    "navigationDetailName": "开票结果回传（正向蓝票开具）",
+    "path": "invoice.confirmInvoice",
+    "seq": 17
+  },
+  "api_details": {
+    "id": 29205,
+    "path": "/ark/invoice.confirmInvoice",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "开票结果回传（正向蓝票开具）",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "file",
+                "invoiceNo",
+                "invoiceType",
+                "refNo",
+                "xhsInvoiceNo"
+              ],
+              "type": "object",
+              "properties": {
+                "xhsInvoiceNo": {
+                  "type": "string",
+                  "description": "财务开票编码",
+                  "example": "null"
+                },
+                "refNo": {
+                  "type": "string",
+                  "description": "来源单号",
+                  "example": "null"
+                },
+                "invoiceType": {
+                  "type": "integer",
+                  "description": "发票类型，0:发票类型未知;1:增值税专用发票；2:增值税纸质普通发票；3:增值税电子普通发票；4:形式发票；5:电子专票；6:全电票电子普票；7:全电票纸质专票；8:全电票纸质普票",
+                  "format": "int32",
+                  "example": "1"
+                },
+                "file": {
+                  "type": "string",
+                  "description": "发票pdf文件字节数组，使用读取照片或视频后的byte[]数组， 请求转json时byte[]数组通过base64编码转成String",
+                  "example": "xLjcKJeLjz9MKMSAwIG9iago8PC9NZX"
+                },
+                "invoiceNo": {
+                  "type": "string",
+                  "description": "发票号码，20位数字",
+                  "example": "null"
+                },
+                "operatorId": {
+                  "type": "string",
+                  "description": "操作人ID",
+                  "example": "null"
+                },
+                "operatorName": {
+                  "type": "string",
+                  "description": "操作人名称",
+                  "example": "null"
+                }
+              },
+              "$$ref": "#/components/schemas/1757901",
+              "x-schema": {
+                "id": 1757901,
+                "name": "ConfirmInvoice",
+                "desc": "",
+                "createTime": "2023-06-06T07:26:51.000Z",
+                "updateTime": "2025-09-10T07:17:08.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"file\",\"invoiceNo\",\"invoiceType\",\"refNo\",\"xhsInvoiceNo\"],\"type\":\"object\",\"properties\":{\"xhsInvoiceNo\":{\"type\":\"string\",\"description\":\"财务开票编码\",\"example\":\"null\"},\"refNo\":{\"type\":\"string\",\"description\":\"来源单号\",\"example\":\"null\"},\"invoiceType\":{\"type\":\"integer\",\"description\":\"发票类型，0:发票类型未知;1:增值税专用发票；2:增值税纸质普通发票；3:增值税电子普通发票；4:形式发票；5:电子专票；6:全电票电子普票；7:全电票纸质专票；8:全电票纸质普票\",\"format\":\"int32\",\"example\":\"1\"},\"file\":{\"type\":\"string\",\"description\":\"发票pdf文件字节数组，使用读取照片或视频后的byte[]数组， 请求转json时byte[]数组通过base64编码转成String\",\"example\":\"xLjcKJeLjz9MKMSAwIG9iago8PC9NZX\"},\"invoiceNo\":{\"type\":\"string\",\"description\":\"发票号码，20位数字\",\"example\":\"null\"},\"operatorId\":{\"type\":\"string\",\"description\":\"操作人ID\",\"example\":\"null\"},\"operatorName\":{\"type\":\"string\",\"description\":\"操作人名称\",\"example\":\"null\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-09-10T07:17:08.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:16"
+}

@@ -1,0 +1,219 @@
+{
+  "api_info": {
+    "apiId": 29207,
+    "apiNavigationId": 202,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 44,
+    "method": "post",
+    "navigationDetailDesc": "批量脱敏",
+    "navigationDetailName": "批量脱敏",
+    "path": "data.batchDesensitise",
+    "seq": 20
+  },
+  "api_details": {
+    "id": 29207,
+    "path": "/ark/data.batchDesensitise",
+    "summary": "数据脱敏",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "summary": "数据脱敏",
+      "operationId": "batchDesensitise",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "actionType",
+                "appUserId",
+                "baseInfos"
+              ],
+              "type": "object",
+              "properties": {
+                "baseInfos": {
+                  "type": "array",
+                  "description": "加密数据列表，上限100条",
+                  "items": {
+                    "required": [
+                      "dataTag",
+                      "encryptedData"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "dataTag": {
+                        "type": "string",
+                        "description": "标签，订单场景为packageId（具体订单号），售后场景为returnId（具体售后单号）",
+                        "example": "null"
+                      },
+                      "encryptedData": {
+                        "type": "string",
+                        "description": "密文数据",
+                        "example": "null"
+                      }
+                    },
+                    "description": "加密数据列表，上限100条",
+                    "example": null,
+                    "$$ref": "#/components/schemas/1757910",
+                    "x-schema": {
+                      "id": 1757910,
+                      "name": "baseInfo",
+                      "desc": "加密数据列表，上限100条",
+                      "createTime": "2023-06-06T07:26:51.000Z",
+                      "updateTime": "2023-06-06T07:26:51.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "5fa4f48970742e0001faee4b",
+                      "createUserName": "林松斌（实习）",
+                      "spec": "{\"required\":[\"dataTag\",\"encryptedData\"],\"type\":\"object\",\"properties\":{\"dataTag\":{\"type\":\"string\",\"description\":\"标签，订单场景为packageId（具体订单号），售后场景为returnId（具体售后单号）\",\"example\":\"null\"},\"encryptedData\":{\"type\":\"string\",\"description\":\"密文数据\",\"example\":\"null\"}},\"description\":\"加密数据列表，上限100条\",\"example\":null}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  }
+                },
+                "actionType": {
+                  "type": "string",
+                  "description": "操作类型1 - 单个查看订单明文，2 - 批量解密打单，3 - 批量解密后面向三方的数据下发，4 - 其他场景,解密接口必填",
+                  "example": "null"
+                },
+                "appUserId": {
+                  "type": "string",
+                  "description": "旧逻辑字段无实际意义，由服务商自定义，非空即可",
+                  "example": "null"
+                }
+              },
+              "$$ref": "#/components/schemas/1757909",
+              "x-schema": {
+                "id": 1757909,
+                "name": "DecryptBaseInfoRequest",
+                "desc": "",
+                "createTime": "2023-06-06T07:26:51.000Z",
+                "updateTime": "2025-04-30T08:57:38.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"actionType\",\"appUserId\",\"baseInfos\"],\"type\":\"object\",\"properties\":{\"baseInfos\":{\"type\":\"array\",\"description\":\"加密数据列表，上限100条\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=baseInfo&schemaId=1757910\"}},\"actionType\":{\"type\":\"string\",\"description\":\"操作类型1 - 单个查看订单明文，2 - 批量解密打单，3 - 批量解密后面向三方的数据下发，4 - 其他场景,解密接口必填\",\"example\":\"null\"},\"appUserId\":{\"type\":\"string\",\"description\":\"旧逻辑字段无实际意义，由服务商自定义，非空即可\",\"example\":\"null\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "desensitiseInfoList": {
+                    "type": "array",
+                    "description": "脱敏结果",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "dataTag": {
+                          "type": "string",
+                          "description": "标签，订单场景为packageId",
+                          "example": "null"
+                        },
+                        "encryptedData": {
+                          "type": "string",
+                          "description": "密文数据",
+                          "example": "null"
+                        },
+                        "desensitisedData": {
+                          "type": "string",
+                          "description": "脱敏信息",
+                          "example": "null"
+                        },
+                        "errorCode": {
+                          "type": "integer",
+                          "description": "错误码",
+                          "format": "int32"
+                        },
+                        "errorMsg": {
+                          "type": "string",
+                          "description": "错误信息",
+                          "example": "null"
+                        }
+                      },
+                      "description": "脱敏结果",
+                      "example": null,
+                      "$$ref": "#/components/schemas/1757911",
+                      "x-schema": {
+                        "id": 1757911,
+                        "name": "DesensitiseInfo",
+                        "desc": "脱敏结果",
+                        "createTime": "2023-06-06T07:26:51.000Z",
+                        "updateTime": "2023-06-06T07:26:51.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"dataTag\":{\"type\":\"string\",\"description\":\"标签，订单场景为packageId\",\"example\":\"null\"},\"encryptedData\":{\"type\":\"string\",\"description\":\"密文数据\",\"example\":\"null\"},\"desensitisedData\":{\"type\":\"string\",\"description\":\"脱敏信息\",\"example\":\"null\"},\"errorCode\":{\"type\":\"integer\",\"description\":\"错误码\",\"format\":\"int32\"},\"errorMsg\":{\"type\":\"string\",\"description\":\"错误信息\",\"example\":\"null\"}},\"description\":\"脱敏结果\",\"example\":null}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1757912",
+                "x-schema": {
+                  "id": 1757912,
+                  "name": "DesensitiseResultInfo",
+                  "desc": "",
+                  "createTime": "2023-06-06T07:26:51.000Z",
+                  "updateTime": "2023-06-06T07:26:52.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"desensitiseInfoList\":{\"type\":\"array\",\"description\":\"脱敏结果\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=DesensitiseInfo&schemaId=1757911\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "batchDesensitise"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-06-06T11:01:46.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:18"
+}

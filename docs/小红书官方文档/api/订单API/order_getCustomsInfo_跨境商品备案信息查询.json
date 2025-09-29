@@ -1,0 +1,171 @@
+{
+  "api_info": {
+    "apiId": 27244,
+    "apiNavigationId": 196,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 38,
+    "method": "post",
+    "navigationDetailDesc": "跨境商品备案信息查询",
+    "navigationDetailName": "跨境商品备案信息查询",
+    "path": "order.getCustomsInfo",
+    "seq": 14
+  },
+  "api_details": {
+    "id": 27244,
+    "path": "/ark/order.getCustomsInfo",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getCustomsInfo",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "barcode"
+              ],
+              "type": "object",
+              "properties": {
+                "barcode": {
+                  "type": "string",
+                  "description": "商品条形码",
+                  "example": "RTI***350"
+                }
+              },
+              "$$ref": "#/components/schemas/217600",
+              "x-schema": {
+                "id": 217600,
+                "name": "GetItemCustomInfoRequest",
+                "desc": "",
+                "createTime": "2021-08-03T08:22:26.000Z",
+                "updateTime": "2021-08-03T08:22:26.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"barcode\"],\"type\":\"object\",\"properties\":{\"barcode\":{\"type\":\"string\",\"description\":\"商品条形码\",\"example\":\"RTI***350\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "providerSyncCustomsInfoV3List": {
+                    "type": "array",
+                    "description": "备案信息列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "barcode": {
+                          "type": "string",
+                          "description": "商品条形码",
+                          "example": "RTI***350"
+                        },
+                        "customsName": {
+                          "type": "string",
+                          "description": "口岸编码，取值为三方保税支持口岸接口返回的口岸编码集合中的某个值",
+                          "example": "01425"
+                        },
+                        "hsCode": {
+                          "type": "string",
+                          "description": "HS编码，即海关税则号",
+                          "example": "27101991"
+                        },
+                        "generalTaxRate": {
+                          "type": "number",
+                          "description": "税率",
+                          "format": "double",
+                          "example": 0.1
+                        },
+                        "quantity1": {
+                          "type": "number",
+                          "description": "法一数量",
+                          "format": "double",
+                          "example": 5
+                        },
+                        "quantity2": {
+                          "type": "number",
+                          "description": "法二数量",
+                          "format": "double",
+                          "example": 5
+                        }
+                      },
+                      "$$ref": "#/components/schemas/217572",
+                      "x-schema": {
+                        "id": 217572,
+                        "name": "ProviderSyncCustomsInfoV3",
+                        "desc": "",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2021-08-13T06:10:03.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"barcode\":{\"type\":\"string\",\"description\":\"商品条形码\",\"example\":\"RTI***350\"},\"customsName\":{\"type\":\"string\",\"description\":\"口岸编码，取值为三方保税支持口岸接口返回的口岸编码集合中的某个值\",\"example\":\"01425\"},\"hsCode\":{\"type\":\"string\",\"description\":\"HS编码，即海关税则号\",\"example\":\"27101991\"},\"generalTaxRate\":{\"type\":\"number\",\"description\":\"税率\",\"format\":\"double\",\"example\":0.1},\"quantity1\":{\"type\":\"number\",\"description\":\"法一数量\",\"format\":\"double\",\"example\":5},\"quantity2\":{\"type\":\"number\",\"description\":\"法二数量\",\"format\":\"double\",\"example\":5}}}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217601",
+                "x-schema": {
+                  "id": 217601,
+                  "name": "ProviderSyncCustomsInfoV3List",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"providerSyncCustomsInfoV3List\":{\"type\":\"array\",\"description\":\"备案信息列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=ProviderSyncCustomsInfoV3&schemaId=217572\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getCustomsInfo"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-03-10T12:35:06.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:14"
+}

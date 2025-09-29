@@ -1,0 +1,80 @@
+{
+  "api_info": {
+    "apiId": 14419,
+    "apiNavigationId": 240,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 82,
+    "method": "post",
+    "navigationDetailDesc": "删除素材",
+    "navigationDetailName": "删除素材",
+    "path": "material.deleteMaterial",
+    "seq": 3
+  },
+  "api_details": {
+    "id": 14419,
+    "path": "/ark/material.deleteMaterial",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "deleteMaterial",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "materialId": {
+                  "type": "string"
+                }
+              },
+              "$$ref": "#/components/schemas/547358",
+              "x-schema": {
+                "id": 547358,
+                "name": "DeleteMaterialInfoRequest",
+                "desc": "",
+                "createTime": "2021-12-16T04:31:20.000Z",
+                "updateTime": "2021-12-16T04:31:20.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"type\":\"object\",\"properties\":{\"materialId\":{\"type\":\"string\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "deleteMaterial"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-12-16T04:31:24.000Z"
+  },
+  "error_codes": [],
+  "category": "素材中心API",
+  "fetched_at": "2025-09-26 14:59:46"
+}

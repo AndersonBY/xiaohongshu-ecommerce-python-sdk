@@ -1,0 +1,297 @@
+{
+  "api_info": {
+    "apiId": 29635,
+    "apiNavigationId": 244,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 86,
+    "method": "post",
+    "navigationDetailDesc": "更新面单",
+    "navigationDetailName": "更新面单",
+    "path": "express.updateEbillOrder",
+    "seq": 3
+  },
+  "api_details": {
+    "id": 29635,
+    "path": "/api/openapi/express/updateebillorder",
+    "summary": "[开放平台][电子面单]更新面单",
+    "method": "post",
+    "specJson": {
+      "summary": "[开放平台][电子面单]更新面单",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "cpCode",
+                "waybillCode",
+                "objectId"
+              ],
+              "properties": {
+                "cpCode": {
+                  "type": "string",
+                  "description": "快递公司编码",
+                  "example": ""
+                },
+                "waybillCode": {
+                  "type": "string",
+                  "description": "快递单号，注意顺丰和京东不支持修改",
+                  "example": ""
+                },
+                "objectId": {
+                  "type": "string",
+                  "description": "请求id",
+                  "example": "1"
+                },
+                "logisticsServices": {
+                  "type": "string",
+                  "description": "增值服务,见[对接说明](https://open.xiaohongshu.com/document/developer/file/52)附录物流增值服务",
+                  "example": ""
+                },
+                "packageInfo": {
+                  "required": [],
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "required": [],
+                        "properties": {
+                          "count": {
+                            "type": "number",
+                            "description": "数量",
+                            "example": ""
+                          },
+                          "name": {
+                            "type": "string",
+                            "description": "名称",
+                            "example": ""
+                          },
+                          "specification": {
+                            "type": "string",
+                            "description": "规格",
+                            "example": ""
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "description": "商品信息"
+                    },
+                    "volume": {
+                      "type": "number",
+                      "description": "体积, 单位 ml",
+                      "example": ""
+                    },
+                    "weight": {
+                      "type": "number",
+                      "description": "重量,单位 g",
+                      "example": ""
+                    },
+                    "length": {
+                      "type": "number",
+                      "description": "包裹长，单位厘米",
+                      "example": ""
+                    },
+                    "width": {
+                      "type": "number",
+                      "description": "包裹宽，单位厘米",
+                      "example": ""
+                    },
+                    "height": {
+                      "type": "number",
+                      "description": "包裹高，单位厘米",
+                      "example": ""
+                    }
+                  },
+                  "type": "object"
+                },
+                "recipient": {
+                  "required": [],
+                  "properties": {
+                    "address": {
+                      "required": [],
+                      "properties": {
+                        "city": {
+                          "type": "string",
+                          "description": "城市",
+                          "example": ""
+                        },
+                        "detail": {
+                          "type": "string",
+                          "description": "详细地址",
+                          "example": ""
+                        },
+                        "district": {
+                          "type": "string",
+                          "description": "区县",
+                          "example": ""
+                        },
+                        "province": {
+                          "type": "string",
+                          "description": "省份",
+                          "example": ""
+                        },
+                        "town": {
+                          "type": "string",
+                          "description": "乡镇街道",
+                          "example": ""
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "mobile": {
+                      "type": "string",
+                      "description": "手机号码，明文或者密文",
+                      "example": ""
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "姓名，明文或者密文",
+                      "example": ""
+                    },
+                    "phone": {
+                      "type": "string",
+                      "description": "电话号码",
+                      "example": ""
+                    },
+                    "openAddressId": {
+                      "type": "string",
+                      "description": "用来查询收件人详情，需要和orderId匹配使用",
+                      "example": ""
+                    }
+                  },
+                  "type": "object",
+                  "description": "注意顺丰不支持更新收件人、发件人信息"
+                },
+                "sender": {
+                  "properties": {
+                    "mobile": {
+                      "type": "string",
+                      "description": "手机号码，明文",
+                      "example": ""
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "姓名，明文",
+                      "example": ""
+                    },
+                    "phone": {
+                      "type": "string",
+                      "description": "电话号码",
+                      "example": ""
+                    }
+                  },
+                  "type": "object",
+                  "description": "注意顺丰不支持更新收件人、发件人信息"
+                },
+                "templateId": {
+                  "type": "number",
+                  "description": "电子面单模板ID",
+                  "example": ""
+                },
+                "billVersion": {
+                  "type": "number",
+                  "description": "电子面单版本号，1-默认值旧版电子面单 2-新版电子面单",
+                  "example": "1"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "error_code": {
+                    "type": "number",
+                    "description": "错误码",
+                    "example": 0
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "description": "错误描述",
+                    "example": ""
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "请求是否成功",
+                    "example": "true"
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "waybill": {
+                        "required": [
+                          "printData"
+                        ],
+                        "properties": {
+                          "objectId": {
+                            "type": "string",
+                            "description": "请求ID",
+                            "example": "1"
+                          },
+                          "waybillCode": {
+                            "type": "string",
+                            "description": "面单号",
+                            "example": "78689455849606"
+                          },
+                          "printData": {
+                            "type": "string",
+                            "description": "面单打印数据",
+                            "example": "{\\\"encryptedData\\\":\\\"打印数据密文\\\",\\\"signature\\\":\\\"MD:lH0r2gNxcIuY7dY3VvV4ag==\\\",\\\"templateURL\\\":\\\"http://cloudprint.cainiao.com/template/standard/644703\\\",\\\"ver\\\":\\\"waybill_print_xiaohongshu_secret\\\"}"
+                          },
+                          "parentWaybillCode": {
+                            "type": "string",
+                            "description": "子母单会返回母单",
+                            "example": ""
+                          },
+                          "extraInfo": {
+                            "type": "string",
+                            "description": "扩展信息",
+                            "example": ""
+                          },
+                          "cpCode": {
+                            "type": "string",
+                            "description": "快递公司编码",
+                            "example": ""
+                          },
+                          "customerPrintData": {
+                            "type": "string",
+                            "description": "自定义打印数据",
+                            "example": "{\\\"data\\\":{\\\"item\\\":[\\\"商品名称\\\"],\\\"order\\\":[\\\"P000000001\\\"]},\\\"templateURL\\\":\\\"https://cloudprint.cainiao.com/template/standard/629505/24\\\"}"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "subErrorCode": {
+                        "type": "string",
+                        "description": "子错误码",
+                        "example": ""
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-10-28T11:20:13.000Z"
+  },
+  "error_codes": [],
+  "category": "物流API",
+  "fetched_at": "2025-09-26 14:59:48"
+}

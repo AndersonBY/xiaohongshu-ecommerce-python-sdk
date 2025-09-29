@@ -1,0 +1,206 @@
+{
+  "api_info": {
+    "apiId": 34050,
+    "apiNavigationId": 272,
+    "gatewayId": 165,
+    "gatewayVersionId": 6302,
+    "id": 96,
+    "method": "post",
+    "navigationDetailDesc": "获取KOS员工数据 ",
+    "navigationDetailName": "获取KOS员工数据 ",
+    "path": "businessdata.getKosData",
+    "seq": 22
+  },
+  "api_details": {
+    "id": 34050,
+    "path": "/api/openapi/businessdata/getkosdata",
+    "summary": "商家获取kos员工数据",
+    "method": "post",
+    "specJson": {
+      "summary": "商家获取kos员工数据",
+      "servers": [
+        {
+          "url": "edith.beta.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "startDate",
+                "endDate",
+                "pageNo",
+                "pageSize"
+              ],
+              "properties": {
+                "startDate": {
+                  "type": "string",
+                  "description": "开始日期 yyyy-MM-dd",
+                  "example": ""
+                },
+                "endDate": {
+                  "type": "string",
+                  "description": "结束日期 yyyy-MM-dd",
+                  "example": ""
+                },
+                "pageNo": {
+                  "type": "number",
+                  "description": "分页页码",
+                  "example": ""
+                },
+                "pageSize": {
+                  "type": "number",
+                  "description": "分页条数，一次最多返回1000条",
+                  "example": ""
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code",
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "msg": {
+                    "type": "string"
+                  },
+                  "success": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "count": {
+                        "type": "number",
+                        "description": "总条数",
+                        "example": ""
+                      },
+                      "data": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {
+                            "packageId": {
+                              "type": "string",
+                              "description": "订单包裹id",
+                              "example": ""
+                            },
+                            "skuId": {
+                              "type": "string",
+                              "description": "商品sku_id",
+                              "example": ""
+                            },
+                            "skuName": {
+                              "type": "string",
+                              "description": "商品名称",
+                              "example": ""
+                            },
+                            "itemId": {
+                              "type": "string",
+                              "description": "商品id",
+                              "example": ""
+                            },
+                            "itemName": {
+                              "type": "string",
+                              "description": "商品名称",
+                              "example": ""
+                            },
+                            "payDate": {
+                              "type": "string",
+                              "description": "支付日期",
+                              "example": ""
+                            },
+                            "accountUserId": {
+                              "type": "string",
+                              "description": "小红书id",
+                              "example": ""
+                            },
+                            "accountUserName": {
+                              "type": "string",
+                              "description": "KOS员工名称",
+                              "example": ""
+                            },
+                            "accountType": {
+                              "type": "string",
+                              "description": "账号类型",
+                              "example": ""
+                            },
+                            "newCarrierNameGroup": {
+                              "type": "string",
+                              "description": "载体",
+                              "example": ""
+                            },
+                            "entranceChannel": {
+                              "type": "string",
+                              "description": "渠道",
+                              "example": ""
+                            },
+                            "carrierId": {
+                              "type": "string",
+                              "description": "载体id",
+                              "example": ""
+                            },
+                            "carrierName": {
+                              "type": "string",
+                              "description": "载体标题",
+                              "example": ""
+                            },
+                            "carrierCreateTime": {
+                              "type": "string",
+                              "description": "载体发布/开始时间",
+                              "example": ""
+                            },
+                            "goodsTotal": {
+                              "type": "number",
+                              "description": "支付商品件数",
+                              "example": ""
+                            },
+                            "payGmv": {
+                              "type": "number",
+                              "description": "支付金额",
+                              "example": ""
+                            },
+                            "redAccountUserId": {
+                              "type": "string",
+                              "description": "社区用户id",
+                              "example": "62b02cac******19029b8f"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": "result"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "x-genric": "data"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "beta",
+    "updateTime": "2025-08-05T14:25:25.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:19"
+}

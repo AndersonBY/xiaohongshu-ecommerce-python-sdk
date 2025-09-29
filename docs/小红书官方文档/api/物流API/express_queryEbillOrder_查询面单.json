@@ -1,0 +1,131 @@
+{
+  "api_info": {
+    "apiId": 29638,
+    "apiNavigationId": 246,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 88,
+    "method": "post",
+    "navigationDetailDesc": "查询面单",
+    "navigationDetailName": "查询面单",
+    "path": "express.queryEbillOrder",
+    "seq": 5
+  },
+  "api_details": {
+    "id": 29638,
+    "path": "/api/openapi/express/queryebillorder",
+    "summary": "[开放平台][电子面单]查询电子面单打印数据",
+    "method": "post",
+    "specJson": {
+      "summary": "[开放平台][电子面单]查询电子面单打印数据",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "cpCode",
+                "waybillCode"
+              ],
+              "properties": {
+                "cpCode": {
+                  "type": "string",
+                  "description": "快递公司编码",
+                  "example": "zto"
+                },
+                "waybillCode": {
+                  "type": "string",
+                  "description": "面单号",
+                  "example": "78689455849606"
+                },
+                "billVersion": {
+                  "type": "number",
+                  "description": "电子面单版本号，1-默认值旧版电子面单 2-新版电子面单"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "error_code",
+                  "success"
+                ],
+                "properties": {
+                  "error_code": {
+                    "type": "number",
+                    "description": "返回值code",
+                    "example": "0"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "请求是否成功",
+                    "example": "true"
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "description": "错误信息",
+                    "example": ""
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "waybillCode": {
+                        "type": "string",
+                        "description": "面单号",
+                        "example": "78689455849606"
+                      },
+                      "printData": {
+                        "type": "string",
+                        "description": "面单打印数据",
+                        "example": "{\\\"encryptedData\\\":\\\"打印数据密文\\\",\\\"signature\\\":\\\"MD:lH0r2gNxcIuY7dY3VvV4ag==\\\",\\\"templateURL\\\":\\\"http://cloudprint.cainiao.com/template/standard/644703\\\",\\\"ver\\\":\\\"waybill_print_xiaohongshu_secret\\\"}"
+                      },
+                      "parentWaybillCode": {
+                        "type": "string",
+                        "description": "子母单会返回母单",
+                        "example": ""
+                      },
+                      "extraInfo": {
+                        "type": "string",
+                        "description": "扩展信息",
+                        "example": ""
+                      },
+                      "cpCode": {
+                        "type": "string",
+                        "description": "快递公司编码",
+                        "example": "zto"
+                      },
+                      "customerPrintData": {
+                        "type": "string",
+                        "description": "自定义打印数据",
+                        "example": "{\\\"data\\\":{\\\"item\\\":[\\\"商品名称\\\"],\\\"order\\\":[\\\"P000000001\\\"]},\\\"templateURL\\\":\\\"https://cloudprint.cainiao.com/template/standard/629505/24\\\"}"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-10-28T11:21:53.000Z"
+  },
+  "error_codes": [],
+  "category": "物流API",
+  "fetched_at": "2025-09-26 14:59:50"
+}

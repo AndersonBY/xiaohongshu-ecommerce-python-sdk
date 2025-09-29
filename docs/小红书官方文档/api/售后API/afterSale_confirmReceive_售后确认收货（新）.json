@@ -1,0 +1,101 @@
+{
+  "api_info": {
+    "apiId": 17602,
+    "apiNavigationId": 207,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 49,
+    "method": "post",
+    "navigationDetailDesc": "售后确认收货（新）",
+    "navigationDetailName": "售后确认收货（新）",
+    "path": "afterSale.confirmReceive",
+    "seq": 3
+  },
+  "api_details": {
+    "id": 17602,
+    "path": "/ark/afterSale.confirmReceiveNew",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "confirmReceiveApiNew",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "action",
+                "returnsId"
+              ],
+              "type": "object",
+              "properties": {
+                "returnsId": {
+                  "type": "string",
+                  "description": "售后id",
+                  "example": "R7488183140002901"
+                },
+                "action": {
+                  "type": "integer",
+                  "description": "操作类型，1：确认收货；2：拒绝；3：延期",
+                  "format": "int32"
+                },
+                "reason": {
+                  "type": "integer",
+                  "description": "拒绝时必填，需要通过afterSale.rejectReasons获取原因传参，非法参数将拦截请求",
+                  "format": "int32"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "拒绝原因描述",
+                  "example": "false"
+                }
+              },
+              "$$ref": "#/components/schemas/807419",
+              "x-schema": {
+                "id": 807419,
+                "name": "ConfirmReceiveRequestNew",
+                "desc": "",
+                "createTime": "2022-03-22T03:24:59.000Z",
+                "updateTime": "2023-09-06T03:07:07.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"action\",\"returnsId\"],\"type\":\"object\",\"properties\":{\"returnsId\":{\"type\":\"string\",\"description\":\"售后id\",\"example\":\"R7488183140002901\"},\"action\":{\"type\":\"integer\",\"description\":\"操作类型，1：确认收货；2：拒绝；3：延期\",\"format\":\"int32\"},\"reason\":{\"type\":\"integer\",\"description\":\"拒绝时必填，需要通过afterSale.rejectReasons获取原因传参，非法参数将拦截请求\",\"format\":\"int32\"},\"description\":{\"type\":\"string\",\"description\":\"拒绝原因描述\",\"example\":\"false\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "confirmReceiveApiNew"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2022-03-22T03:24:59.000Z"
+  },
+  "error_codes": [],
+  "category": "售后API",
+  "fetched_at": "2025-09-26 14:59:23"
+}

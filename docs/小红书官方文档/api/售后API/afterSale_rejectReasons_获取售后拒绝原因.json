@@ -1,0 +1,119 @@
+{
+  "api_info": {
+    "apiId": 30109,
+    "apiNavigationId": 209,
+    "gatewayId": 165,
+    "gatewayVersionId": 2804,
+    "id": 51,
+    "method": "post",
+    "navigationDetailDesc": " 获取售后拒绝原因",
+    "navigationDetailName": " 获取售后拒绝原因",
+    "path": "afterSale.rejectReasons",
+    "seq": 5
+  },
+  "api_details": {
+    "id": 30109,
+    "path": "/api/openapi/aftersale/rejectreasons",
+    "summary": "【openAPI】openAPI售后获取拒绝原因",
+    "method": "post",
+    "specJson": {
+      "summary": "【openAPI】openAPI售后获取拒绝原因",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "returnsId",
+                "rejectReasonType"
+              ],
+              "properties": {
+                "returnsId": {
+                  "type": "string",
+                  "description": "售后单ID",
+                  "example": ""
+                },
+                "rejectReasonType": {
+                  "type": "number",
+                  "description": "拒绝原因类型 1：审核拒绝 2：收货拒绝",
+                  "example": ""
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code",
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "msg": {
+                    "type": "string"
+                  },
+                  "success": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "rejectReasons": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {
+                            "reasonType": {
+                              "type": "number",
+                              "description": "拒绝理由类型 0：拒绝售后 1：拒绝收货",
+                              "example": ""
+                            },
+                            "reasonId": {
+                              "type": "number",
+                              "description": "拒绝原因ID",
+                              "example": ""
+                            },
+                            "reasonName": {
+                              "type": "string",
+                              "description": "拒绝原因名称",
+                              "example": ""
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": "//"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "x-genric": "data"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2023-09-26T08:52:13.000Z"
+  },
+  "error_codes": [],
+  "category": "售后API",
+  "fetched_at": "2025-09-26 14:59:24"
+}

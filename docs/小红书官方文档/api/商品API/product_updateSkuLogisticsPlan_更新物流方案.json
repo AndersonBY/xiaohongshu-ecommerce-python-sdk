@@ -1,0 +1,125 @@
+{
+  "api_info": {
+    "apiId": 27222,
+    "apiNavigationId": 222,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 64,
+    "method": "post",
+    "navigationDetailDesc": "更新物流方案",
+    "navigationDetailName": "更新物流方案",
+    "path": "product.updateSkuLogisticsPlan",
+    "seq": 2
+  },
+  "api_details": {
+    "id": 27222,
+    "path": "/ark/product.updateSkuLogisticsPlan",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "updateItemLogisticsPlan",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "skuId": {
+                  "type": "string",
+                  "description": "skuId",
+                  "example": "1"
+                },
+                "logisticsPlanId": {
+                  "type": "string",
+                  "description": "wuliufanganid",
+                  "example": "1"
+                }
+              },
+              "$$ref": "#/components/schemas/1585768",
+              "x-schema": {
+                "id": 1585768,
+                "name": "UpdateLogisticsPlanRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2023-03-10T12:35:05.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"type\":\"object\",\"properties\":{\"skuId\":{\"type\":\"string\",\"description\":\"skuId\",\"example\":\"1\"},\"logisticsPlanId\":{\"type\":\"string\",\"description\":\"wuliufanganid\",\"example\":\"1\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error_code": {
+                    "type": "integer",
+                    "description": "错误码",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "返回信息"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "是否成功",
+                    "example": true
+                  }
+                },
+                "$$ref": "#/components/schemas/217570",
+                "x-schema": {
+                  "id": 217570,
+                  "name": "SuccessResponse",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-08-03T08:22:26.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"error_code\":{\"type\":\"integer\",\"description\":\"错误码\",\"format\":\"int32\",\"example\":1},\"data\":{\"type\":\"object\",\"description\":\"返回信息\"},\"success\":{\"type\":\"boolean\",\"description\":\"是否成功\",\"example\":true}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "updateItemLogisticsPlan"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2024-09-23T08:56:31.000Z"
+  },
+  "error_codes": [],
+  "category": "商品API",
+  "fetched_at": "2025-09-26 14:59:27"
+}

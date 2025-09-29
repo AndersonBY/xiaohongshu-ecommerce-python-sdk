@@ -1,0 +1,406 @@
+{
+  "api_info": {
+    "apiId": 5699,
+    "apiNavigationId": 205,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 47,
+    "method": "post",
+    "navigationDetailDesc": "售后详情（旧）",
+    "navigationDetailName": "售后详情（旧）",
+    "path": "afterSale.getAfterSaleDetail",
+    "seq": 1
+  },
+  "api_details": {
+    "id": 5699,
+    "path": "/ark/afterSale.getAfterSaleDetail",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getAfterSaleDetail",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "afterSaleId"
+              ],
+              "type": "object",
+              "properties": {
+                "afterSaleId": {
+                  "type": "string",
+                  "description": "售后id",
+                  "example": "1"
+                }
+              },
+              "$$ref": "#/components/schemas/217715",
+              "x-schema": {
+                "id": 217715,
+                "name": "GetAfterSaleDetailRequest",
+                "desc": "",
+                "createTime": "2021-08-03T08:22:26.000Z",
+                "updateTime": "2022-05-20T12:11:11.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"afterSaleId\"],\"type\":\"object\",\"properties\":{\"afterSaleId\":{\"type\":\"string\",\"description\":\"售后id\",\"example\":\"1\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "returnsId": {
+                    "type": "string",
+                    "description": "售后id",
+                    "example": "R7488183140002901"
+                  },
+                  "returnType": {
+                    "type": "integer",
+                    "description": "退货类型 1-退货退款, 2-换货, 3:仅退款(old) 4:仅退款(new) 理论上不会有3出现 5:未发货仅退款",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "reasonId": {
+                    "type": "integer",
+                    "description": "售后原因id",
+                    "format": "int32",
+                    "example": 0
+                  },
+                  "reason": {
+                    "type": "string",
+                    "description": "售后原因说明",
+                    "example": "质量问题"
+                  },
+                  "status": {
+                    "type": "integer",
+                    "description": "售后状态 1：待审核；2:待用户寄回；3:待收货；4:完成；5:取消；6:关闭；9:拒绝；9001：商家收货拒绝；11：换货转退款；12:包裹商家已确认收货，等待商家发货；13:包裹商家已发货，等待用户确认收货。不传默认全部；14：平台介入中",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "subStatus": {
+                    "type": "integer",
+                    "description": "售后子状态 301-待审核 302-快递已签收 304-收货异常",
+                    "format": "int32",
+                    "example": 301
+                  },
+                  "receiveAbnormalType": {
+                    "type": "integer",
+                    "description": "收货异常类型 1:商家已开工单 2:仓库质检异常 3:收货地异常 4:寄回包裹物流超时 5:仓库反向创建退货 6:快递轨迹异常 7:拒收退仓超时 8:退款金额超限 9:收货地不一致 10:仓库质检假货 11:已退款，未收货 21:未收到货 22:退货数量不符 23:退货商品不符 24:退货质检异常 25:其他",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "orderId": {
+                    "type": "string",
+                    "description": "订单id",
+                    "example": "P617****3941"
+                  },
+                  "exchangeOrderId": {
+                    "type": "string",
+                    "description": "换货订单id",
+                    "example": "P617****941"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "description": "用户id",
+                    "example": "1419231"
+                  },
+                  "createdAt": {
+                    "type": "integer",
+                    "description": "创建时间",
+                    "format": "int64",
+                    "example": 1617724800
+                  },
+                  "returnExpressNo": {
+                    "type": "string",
+                    "description": "售后订单快递单号",
+                    "example": "6411****2491"
+                  },
+                  "returnExpressCompany": {
+                    "type": "string",
+                    "description": "售后订单快递公司",
+                    "example": "中通"
+                  },
+                  "returnAddress": {
+                    "type": "string",
+                    "description": "售后寄回地址",
+                    "example": "上海是徐汇区****"
+                  },
+                  "shipNeeded": {
+                    "type": "integer",
+                    "description": "是否需要寄回 0-否 1-是 -1-全部",
+                    "format": "int32",
+                    "example": 0
+                  },
+                  "refunded": {
+                    "type": "boolean",
+                    "description": "是否已退款",
+                    "example": true
+                  },
+                  "refundStatus": {
+                    "type": "integer",
+                    "description": "退款状态",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "autoReceiveDeadline": {
+                    "type": "integer",
+                    "description": "超时自动确认收货的时间",
+                    "format": "int64",
+                    "example": 1617724800
+                  },
+                  "useFastRefund": {
+                    "type": "boolean",
+                    "description": "是否急速退款 0-否 1-是 -1-全部"
+                  },
+                  "proofPhotos": {
+                    "type": "array",
+                    "description": "照片凭证",
+                    "items": {
+                      "type": "string",
+                      "description": "照片凭证"
+                    }
+                  },
+                  "desc": {
+                    "type": "string",
+                    "description": "描述",
+                    "example": "质量不好"
+                  },
+                  "note": {
+                    "type": "string",
+                    "description": "备注",
+                    "example": "质量不好"
+                  },
+                  "refundTime": {
+                    "type": "integer",
+                    "description": "退款时间",
+                    "format": "int64",
+                    "example": 1617724800
+                  },
+                  "fillExpressTime": {
+                    "type": "integer",
+                    "description": "填写退货快递单时间",
+                    "format": "int64",
+                    "example": 1617724800
+                  },
+                  "expressSignTime": {
+                    "type": "integer",
+                    "description": "退货快递签收时间",
+                    "format": "int64",
+                    "example": 1617724800
+                  },
+                  "skus": {
+                    "type": "array",
+                    "description": "售后商品",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "skuId": {
+                          "type": "string",
+                          "description": "商品id",
+                          "example": "5e216****04d5"
+                        },
+                        "skuName": {
+                          "type": "string",
+                          "description": "商品名称",
+                          "example": "测试商品"
+                        },
+                        "image": {
+                          "type": "string",
+                          "description": "商品主图",
+                          "example": "http://img.xiaohongshu.com/items/3135edc58855dcf047fc39161ee9f687@2o.jpg"
+                        },
+                        "price": {
+                          "type": "number",
+                          "description": "商品价格",
+                          "format": "double",
+                          "example": 100
+                        },
+                        "boughtCount": {
+                          "type": "integer",
+                          "description": "购买数量",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "appliedCount": {
+                          "type": "integer",
+                          "description": "申请退货数量",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "returnedCount": {
+                          "type": "integer",
+                          "description": "实际收货数量",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "refundedCount": {
+                          "type": "integer",
+                          "description": "退款数量",
+                          "format": "int32",
+                          "example": 3
+                        },
+                        "returnPrice": {
+                          "type": "number",
+                          "description": "实际退款",
+                          "format": "double",
+                          "example": 100
+                        },
+                        "exchangeSkuId": {
+                          "type": "string",
+                          "description": "换货商品id",
+                          "example": "5e216****04d5"
+                        },
+                        "exchangeSkuName": {
+                          "type": "string",
+                          "description": "换货商品名称",
+                          "example": "测试换货商品"
+                        },
+                        "exchangeSkuImage": {
+                          "type": "string",
+                          "description": "换货商品主图",
+                          "example": "http://img.xiaohongshu.com/items/3135edc58855dcf047fc39161ee9f687@2o.jpg"
+                        },
+                        "scSkucode": {
+                          "type": "string",
+                          "description": "商品代码,即将废弃",
+                          "example": "RTI2***50-AL"
+                        },
+                        "barcode": {
+                          "type": "string",
+                          "description": "商品条码",
+                          "example": "xhsbo***901"
+                        },
+                        "exchangeScskuCode": {
+                          "type": "string",
+                          "description": "换货商品代码,即将废弃",
+                          "example": "RTI2***50-AL"
+                        },
+                        "exchangeBarcode": {
+                          "type": "string",
+                          "description": "换货商品条码",
+                          "example": "xhsbo***901"
+                        }
+                      },
+                      "description": "售后商品",
+                      "$$ref": "#/components/schemas/1585036",
+                      "x-schema": {
+                        "id": 1585036,
+                        "name": "AfterSaleSKu",
+                        "desc": "售后商品",
+                        "createTime": "2023-03-10T03:46:43.000Z",
+                        "updateTime": "2023-11-30T02:47:29.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"skuId\":{\"type\":\"string\",\"description\":\"商品id\",\"example\":\"5e216****04d5\"},\"skuName\":{\"type\":\"string\",\"description\":\"商品名称\",\"example\":\"测试商品\"},\"image\":{\"type\":\"string\",\"description\":\"商品主图\",\"example\":\"http://img.xiaohongshu.com/items/3135edc58855dcf047fc39161ee9f687@2o.jpg\"},\"price\":{\"type\":\"number\",\"description\":\"商品价格\",\"format\":\"double\",\"example\":100},\"boughtCount\":{\"type\":\"integer\",\"description\":\"购买数量\",\"format\":\"int32\",\"example\":1},\"appliedCount\":{\"type\":\"integer\",\"description\":\"申请退货数量\",\"format\":\"int32\",\"example\":1},\"returnedCount\":{\"type\":\"integer\",\"description\":\"实际收货数量\",\"format\":\"int32\",\"example\":1},\"refundedCount\":{\"type\":\"integer\",\"description\":\"退款数量\",\"format\":\"int32\",\"example\":3},\"returnPrice\":{\"type\":\"number\",\"description\":\"实际退款\",\"format\":\"double\",\"example\":100},\"exchangeSkuId\":{\"type\":\"string\",\"description\":\"换货商品id\",\"example\":\"5e216****04d5\"},\"exchangeSkuName\":{\"type\":\"string\",\"description\":\"换货商品名称\",\"example\":\"测试换货商品\"},\"exchangeSkuImage\":{\"type\":\"string\",\"description\":\"换货商品主图\",\"example\":\"http://img.xiaohongshu.com/items/3135edc58855dcf047fc39161ee9f687@2o.jpg\"},\"scSkucode\":{\"type\":\"string\",\"description\":\"商品代码,即将废弃\",\"example\":\"RTI2***50-AL\"},\"barcode\":{\"type\":\"string\",\"description\":\"商品条码\",\"example\":\"xhsbo***901\"},\"exchangeScskuCode\":{\"type\":\"string\",\"description\":\"换货商品代码,即将废弃\",\"example\":\"RTI2***50-AL\"},\"exchangeBarcode\":{\"type\":\"string\",\"description\":\"换货商品条码\",\"example\":\"xhsbo***901\"}},\"description\":\"售后商品\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  },
+                  "refundFee": {
+                    "type": "number",
+                    "description": "退款金额，单位元",
+                    "format": "double",
+                    "example": 100
+                  },
+                  "returnExpressRefundable": {
+                    "type": "boolean",
+                    "description": "退货运费是否可退",
+                    "example": true
+                  },
+                  "returnExpressRefunded": {
+                    "type": "boolean",
+                    "description": "退货运费是否已退",
+                    "example": false
+                  },
+                  "expectRefundFee": {
+                    "type": "number",
+                    "description": "(废弃)期望退款金额，单位元，目前是售后单包含的商品总金额",
+                    "format": "double",
+                    "example": 110
+                  },
+                  "updatedAt": {
+                    "type": "integer",
+                    "description": "更新时间",
+                    "format": "int64",
+                    "example": 1617724800
+                  },
+                  "returnExpressCompanyCode": {
+                    "type": "string",
+                    "description": "退货快递公司编号"
+                  },
+                  "openAddressId": {
+                    "type": "string",
+                    "description": "收件信息id"
+                  },
+                  "expectedRefundAmount": {
+                    "type": "number",
+                    "description": "预期退款金额，单位元",
+                    "format": "double",
+                    "example": 100
+                  }
+                },
+                "$$ref": "#/components/schemas/217716",
+                "x-schema": {
+                  "id": 217716,
+                  "name": "AfterSaleDetailV3",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2023-03-10T12:35:05.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"returnsId\":{\"type\":\"string\",\"description\":\"售后id\",\"example\":\"R7488183140002901\"},\"returnType\":{\"type\":\"integer\",\"description\":\"退货类型 1-退货退款, 2-换货, 3:仅退款(old) 4:仅退款(new) 理论上不会有3出现 5:未发货仅退款\",\"format\":\"int32\",\"example\":1},\"reasonId\":{\"type\":\"integer\",\"description\":\"售后原因id\",\"format\":\"int32\",\"example\":0},\"reason\":{\"type\":\"string\",\"description\":\"售后原因说明\",\"example\":\"质量问题\"},\"status\":{\"type\":\"integer\",\"description\":\"售后状态 1：待审核；2:待用户寄回；3:待收货；4:完成；5:取消；6:关闭；9:拒绝；9001：商家收货拒绝；11：换货转退款；12:包裹商家已确认收货，等待商家发货；13:包裹商家已发货，等待用户确认收货。不传默认全部；14：平台介入中\",\"format\":\"int32\",\"example\":1},\"subStatus\":{\"type\":\"integer\",\"description\":\"售后子状态 301-待审核 302-快递已签收 304-收货异常\",\"format\":\"int32\",\"example\":301},\"receiveAbnormalType\":{\"type\":\"integer\",\"description\":\"收货异常类型 1:商家已开工单 2:仓库质检异常 3:收货地异常 4:寄回包裹物流超时 5:仓库反向创建退货 6:快递轨迹异常 7:拒收退仓超时 8:退款金额超限 9:收货地不一致 10:仓库质检假货 11:已退款，未收货 21:未收到货 22:退货数量不符 23:退货商品不符 24:退货质检异常 25:其他\",\"format\":\"int32\",\"example\":1},\"orderId\":{\"type\":\"string\",\"description\":\"订单id\",\"example\":\"P617****3941\"},\"exchangeOrderId\":{\"type\":\"string\",\"description\":\"换货订单id\",\"example\":\"P617****941\"},\"userId\":{\"type\":\"string\",\"description\":\"用户id\",\"example\":\"1419231\"},\"createdAt\":{\"type\":\"integer\",\"description\":\"创建时间\",\"format\":\"int64\",\"example\":1617724800},\"returnExpressNo\":{\"type\":\"string\",\"description\":\"售后订单快递单号\",\"example\":\"6411****2491\"},\"returnExpressCompany\":{\"type\":\"string\",\"description\":\"售后订单快递公司\",\"example\":\"中通\"},\"returnAddress\":{\"type\":\"string\",\"description\":\"售后寄回地址\",\"example\":\"上海是徐汇区****\"},\"shipNeeded\":{\"type\":\"integer\",\"description\":\"是否需要寄回 0-否 1-是 -1-全部\",\"format\":\"int32\",\"example\":0},\"refunded\":{\"type\":\"boolean\",\"description\":\"是否已退款\",\"example\":true},\"refundStatus\":{\"type\":\"integer\",\"description\":\"退款状态\",\"format\":\"int32\",\"example\":1},\"autoReceiveDeadline\":{\"type\":\"integer\",\"description\":\"超时自动确认收货的时间\",\"format\":\"int64\",\"example\":1617724800},\"useFastRefund\":{\"type\":\"boolean\",\"description\":\"是否急速退款 0-否 1-是 -1-全部\"},\"proofPhotos\":{\"type\":\"array\",\"description\":\"照片凭证\",\"items\":{\"type\":\"string\",\"description\":\"照片凭证\"}},\"desc\":{\"type\":\"string\",\"description\":\"描述\",\"example\":\"质量不好\"},\"note\":{\"type\":\"string\",\"description\":\"备注\",\"example\":\"质量不好\"},\"refundTime\":{\"type\":\"integer\",\"description\":\"退款时间\",\"format\":\"int64\",\"example\":1617724800},\"fillExpressTime\":{\"type\":\"integer\",\"description\":\"填写退货快递单时间\",\"format\":\"int64\",\"example\":1617724800},\"expressSignTime\":{\"type\":\"integer\",\"description\":\"退货快递签收时间\",\"format\":\"int64\",\"example\":1617724800},\"skus\":{\"type\":\"array\",\"description\":\"售后商品\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=AfterSaleSKu&schemaId=1585036\"}},\"refundFee\":{\"type\":\"number\",\"description\":\"退款金额，单位元\",\"format\":\"double\",\"example\":100},\"returnExpressRefundable\":{\"type\":\"boolean\",\"description\":\"退货运费是否可退\",\"example\":true},\"returnExpressRefunded\":{\"type\":\"boolean\",\"description\":\"退货运费是否已退\",\"example\":false},\"expectRefundFee\":{\"type\":\"number\",\"description\":\"(废弃)期望退款金额，单位元，目前是售后单包含的商品总金额\",\"format\":\"double\",\"example\":110},\"updatedAt\":{\"type\":\"integer\",\"description\":\"更新时间\",\"format\":\"int64\",\"example\":1617724800},\"returnExpressCompanyCode\":{\"type\":\"string\",\"description\":\"退货快递公司编号\"},\"openAddressId\":{\"type\":\"string\",\"description\":\"收件信息id\"},\"expectedRefundAmount\":{\"type\":\"number\",\"description\":\"预期退款金额，单位元\",\"format\":\"double\",\"example\":100}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getAfterSaleDetail"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-08-03T08:22:36.000Z"
+  },
+  "error_codes": [],
+  "category": "售后API",
+  "fetched_at": "2025-09-26 14:59:21"
+}

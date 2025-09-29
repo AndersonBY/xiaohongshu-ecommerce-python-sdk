@@ -1,0 +1,63 @@
+{
+  "category_name": "售后API",
+  "api_count": 8,
+  "apis": [
+    {
+      "name": "获取售后列表（旧）",
+      "path": "afterSale.listAfterSaleApi",
+      "method": "post",
+      "description": "获取售后列表（旧）",
+      "api_id": 5698
+    },
+    {
+      "name": "售后详情（旧）",
+      "path": "afterSale.getAfterSaleDetail",
+      "method": "post",
+      "description": "售后详情（旧）",
+      "api_id": 5699
+    },
+    {
+      "name": "售后审核（新）",
+      "path": "afterSale.auditReturns",
+      "method": "post",
+      "description": "售后审核（新）",
+      "api_id": 17603
+    },
+    {
+      "name": "售后确认收货（新）",
+      "path": "afterSale.confirmReceive",
+      "method": "post",
+      "description": "售后确认收货（新）",
+      "api_id": 17602
+    },
+    {
+      "name": "售后换货确认收货并发货",
+      "path": "afterSale.receiveAndShip",
+      "method": "post",
+      "description": "售后换货确认收货并发货",
+      "api_id": 21309
+    },
+    {
+      "name": " 获取售后拒绝原因",
+      "path": "afterSale.rejectReasons",
+      "method": "post",
+      "description": " 获取售后拒绝原因",
+      "api_id": 30109
+    },
+    {
+      "name": " 获取售后列表（新）",
+      "path": "afterSale.listAfterSaleInfos",
+      "method": "post",
+      "description": " 获取售后列表（新）",
+      "api_id": 30115
+    },
+    {
+      "name": "获取售后详情（新）",
+      "path": "afterSale.getAfterSaleInfo",
+      "method": "post",
+      "description": "获取售后详情（新）",
+      "api_id": 30038
+    }
+  ],
+  "created_at": "2025-09-26 14:59:21"
+}

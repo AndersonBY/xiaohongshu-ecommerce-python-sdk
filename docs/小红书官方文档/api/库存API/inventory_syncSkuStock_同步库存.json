@@ -1,0 +1,370 @@
+{
+  "api_info": {
+    "apiId": 27263,
+    "apiNavigationId": 235,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 77,
+    "method": "post",
+    "navigationDetailDesc": "同步库存",
+    "navigationDetailName": "同步库存",
+    "path": "inventory.syncSkuStock",
+    "seq": 1
+  },
+  "api_details": {
+    "id": 27263,
+    "path": "/ark/inventory.syncSkuStock",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "同步库存",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "skuId",
+                "qty"
+              ],
+              "type": "object",
+              "properties": {
+                "skuId": {
+                  "type": "string",
+                  "description": "规格ID（限定为未开启多仓区域库存的普通品）",
+                  "example": "66ee****873d"
+                },
+                "qty": {
+                  "type": "integer",
+                  "description": "qty是需要同步的sku总库存数，其总库存数包含了普通品本身库存+渠道品独立库存+活动独立库存+待支付订单占用库存。接口逻辑会用qty与现在sku的总库存数进行差值计算，去设置可售库存",
+                  "example": 100
+                }
+              },
+              "$$ref": "#/components/schemas/1757902",
+              "x-schema": {
+                "id": 1757902,
+                "name": "SyncSkuStockRequest",
+                "desc": "",
+                "createTime": "2023-06-06T07:26:51.000Z",
+                "updateTime": "2024-10-17T09:19:00.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"skuId\",\"qty\"],\"type\":\"object\",\"properties\":{\"skuId\":{\"type\":\"string\",\"description\":\"规格ID（限定为未开启多仓区域库存的普通品）\",\"example\":\"66ee****873d\"},\"qty\":{\"type\":\"integer\",\"description\":\"qty是需要同步的sku总库存数，其总库存数包含了普通品本身库存+渠道品独立库存+活动独立库存+待支付订单占用库存。接口逻辑会用qty与现在sku的总库存数进行差值计算，去设置可售库存\",\"example\":100}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "skuId",
+                  "apiVersion",
+                  "skuStock",
+                  "skuStockInfoWithWhcode"
+                ],
+                "properties": {
+                  "skuId": {
+                    "type": "string",
+                    "example": "66ee733f265f590001ee873d",
+                    "description": "规格ID"
+                  },
+                  "apiVersion": {
+                    "type": "string",
+                    "example": "V1",
+                    "description": "接口版本（V0未命中灰度，V1命中灰度）"
+                  },
+                  "skuStock": {
+                    "required": [
+                      "available",
+                      "total",
+                      "occupiedQuantity",
+                      "productChannelQuantity",
+                      "productChannelOccupiedQuantity",
+                      "activityChannelQuantity",
+                      "reserved",
+                      "standalone"
+                    ],
+                    "properties": {
+                      "available": {
+                        "type": "integer",
+                        "example": 25,
+                        "description": "可售库存"
+                      },
+                      "standalone": {
+                        "type": "integer",
+                        "example": "0",
+                        "description": "废弃字段"
+                      },
+                      "reserved": {
+                        "type": "integer",
+                        "example": "0",
+                        "description": "废弃字段"
+                      },
+                      "total": {
+                        "type": "integer",
+                        "example": 100,
+                        "description": "总库存"
+                      },
+                      "occupiedQuantity": {
+                        "type": "integer",
+                        "example": 35,
+                        "description": "占用库存（该商品可售库存被用户下单，处于未支付状态下导致的库存占用）"
+                      },
+                      "productChannelQuantity": {
+                        "type": "integer",
+                        "example": 15,
+                        "description": "商品渠道可售库存（该商品衍生的渠道品，分配给其独立库存中的可售部分）"
+                      },
+                      "productChannelOccupiedQuantity": {
+                        "type": "integer",
+                        "example": 15,
+                        "description": "商品渠道占用库存（该商品衍生的渠道品，分配给其独立库存中的订单占用部分）"
+                      },
+                      "activityChannelQuantity": {
+                        "type": "integer",
+                        "example": 10,
+                        "description": "活动渠道可售库存（该商品分配给活动渠道的独立库存中的可售部分）"
+                      },
+                      "activityChannelOccupiedQuantity": {
+                        "type": "integer",
+                        "example": "0",
+                        "description": "活动渠道占用库存（该商品分配给活动渠道的独立库存中的订单占用部分）"
+                      }
+                    },
+                    "type": "object",
+                    "description": "sku维度库存数据（所有仓之和）",
+                    "$$ref": "#/components/schemas/2158331",
+                    "x-schema": {
+                      "id": 2158331,
+                      "name": "SkuStock",
+                      "desc": "sku维度库存数据（所有仓之和）",
+                      "createTime": "2024-10-17T06:49:43.000Z",
+                      "updateTime": "2024-10-17T08:56:29.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "65791033110000000000001c",
+                      "createUserName": "黑猫（陈才华）",
+                      "spec": "{\"required\":[\"available\",\"total\",\"occupiedQuantity\",\"productChannelQuantity\",\"productChannelOccupiedQuantity\",\"activityChannelQuantity\",\"reserved\",\"standalone\"],\"properties\":{\"available\":{\"type\":\"integer\",\"example\":25,\"description\":\"可售库存\"},\"standalone\":{\"type\":\"integer\",\"example\":\"0\",\"description\":\"废弃字段\"},\"reserved\":{\"type\":\"integer\",\"example\":\"0\",\"description\":\"废弃字段\"},\"total\":{\"type\":\"integer\",\"example\":100,\"description\":\"总库存\"},\"occupiedQuantity\":{\"type\":\"integer\",\"example\":35,\"description\":\"占用库存（该商品可售库存被用户下单，处于未支付状态下导致的库存占用）\"},\"productChannelQuantity\":{\"type\":\"integer\",\"example\":15,\"description\":\"商品渠道可售库存（该商品衍生的渠道品，分配给其独立库存中的可售部分）\"},\"productChannelOccupiedQuantity\":{\"type\":\"integer\",\"example\":15,\"description\":\"商品渠道占用库存（该商品衍生的渠道品，分配给其独立库存中的订单占用部分）\"},\"activityChannelQuantity\":{\"type\":\"integer\",\"example\":10,\"description\":\"活动渠道可售库存（该商品分配给活动渠道的独立库存中的可售部分）\"},\"activityChannelOccupiedQuantity\":{\"type\":\"integer\",\"example\":\"0\",\"description\":\"活动渠道占用库存（该商品分配给活动渠道的独立库存中的订单占用部分）\"}},\"type\":\"object\",\"description\":\"sku维度库存数据（所有仓之和）\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 1242,
+                      "gatewayGroupKey": "Inventory",
+                      "gatewayVersionId": 0,
+                      "gatewayVersionName": "master",
+                      "isMaster": true,
+                      "groupId": 1242,
+                      "groupKey": "Inventory"
+                    }
+                  },
+                  "skuStockInfoWithWhcode": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "skuId": {
+                          "type": "string",
+                          "example": "66ee733f265f590001ee873d",
+                          "description": "规格ID"
+                        },
+                        "whcode": {
+                          "type": "string",
+                          "example": "CPartner",
+                          "description": "仓库编码"
+                        },
+                        "skuStock": {
+                          "required": [
+                            "standalone",
+                            "reserved",
+                            "total",
+                            "occupiedQuantity",
+                            "productChannelQuantity",
+                            "productChannelOccupiedQuantity",
+                            "activityChannelQuantity",
+                            "activityChannelOccupiedQuantity",
+                            "available"
+                          ],
+                          "properties": {
+                            "available": {
+                              "type": "integer",
+                              "example": 25,
+                              "description": "可售库存"
+                            },
+                            "standalone": {
+                              "type": "integer",
+                              "example": "0",
+                              "description": "废弃字段"
+                            },
+                            "reserved": {
+                              "type": "integer",
+                              "example": "0",
+                              "description": "废弃字段"
+                            },
+                            "total": {
+                              "type": "integer",
+                              "example": 100,
+                              "description": "总库存"
+                            },
+                            "occupiedQuantity": {
+                              "type": "integer",
+                              "example": 35,
+                              "description": "占用库存（该商品可售库存被用户下单，处于未支付状态下导致的库存占用）"
+                            },
+                            "productChannelQuantity": {
+                              "type": "integer",
+                              "example": 15,
+                              "description": "商品渠道可售库存（该商品衍生的渠道品，分配给其独立库存中的可售部分）"
+                            },
+                            "productChannelOccupiedQuantity": {
+                              "type": "integer",
+                              "example": 15,
+                              "description": "商品渠道占用库存（该商品衍生的渠道品，分配给其独立库存中的订单占用部分）"
+                            },
+                            "activityChannelQuantity": {
+                              "type": "integer",
+                              "example": 10,
+                              "description": "活动渠道可售库存（该商品分配给活动渠道的独立库存中的可售部分）"
+                            },
+                            "activityChannelOccupiedQuantity": {
+                              "type": "integer",
+                              "example": "0",
+                              "description": "活动渠道占用库存（该商品分配给活动渠道的独立库存中的订单占用部分）"
+                            }
+                          },
+                          "type": "object",
+                          "description": "仓维度库存数据",
+                          "$$ref": "#/components/schemas/2158333",
+                          "x-schema": {
+                            "id": 2158333,
+                            "name": "SkuStockInfoWithWhcodeSkuStock",
+                            "desc": "仓维度库存数据",
+                            "createTime": "2024-10-17T06:49:43.000Z",
+                            "updateTime": "2024-10-17T07:12:17.000Z",
+                            "type": 2,
+                            "gatewayId": 103,
+                            "createUserId": "65791033110000000000001c",
+                            "createUserName": "黑猫（陈才华）",
+                            "spec": "{\"required\":[\"standalone\",\"reserved\",\"total\",\"occupiedQuantity\",\"productChannelQuantity\",\"productChannelOccupiedQuantity\",\"activityChannelQuantity\",\"activityChannelOccupiedQuantity\",\"available\"],\"properties\":{\"available\":{\"type\":\"integer\",\"example\":25,\"description\":\"可售库存\"},\"standalone\":{\"type\":\"integer\",\"example\":\"0\",\"description\":\"废弃字段\"},\"reserved\":{\"type\":\"integer\",\"example\":\"0\",\"description\":\"废弃字段\"},\"total\":{\"type\":\"integer\",\"example\":100,\"description\":\"总库存\"},\"occupiedQuantity\":{\"type\":\"integer\",\"example\":35,\"description\":\"占用库存（该商品可售库存被用户下单，处于未支付状态下导致的库存占用）\"},\"productChannelQuantity\":{\"type\":\"integer\",\"example\":15,\"description\":\"商品渠道可售库存（该商品衍生的渠道品，分配给其独立库存中的可售部分）\"},\"productChannelOccupiedQuantity\":{\"type\":\"integer\",\"example\":15,\"description\":\"商品渠道占用库存（该商品衍生的渠道品，分配给其独立库存中的订单占用部分）\"},\"activityChannelQuantity\":{\"type\":\"integer\",\"example\":10,\"description\":\"活动渠道可售库存（该商品分配给活动渠道的独立库存中的可售部分）\"},\"activityChannelOccupiedQuantity\":{\"type\":\"integer\",\"example\":\"0\",\"description\":\"活动渠道占用库存（该商品分配给活动渠道的独立库存中的订单占用部分）\"}},\"type\":\"object\",\"description\":\"仓维度库存数据\"}",
+                            "isBase": 0,
+                            "gatewayGroupId": 1242,
+                            "gatewayGroupKey": "Inventory",
+                            "gatewayVersionId": 0,
+                            "gatewayVersionName": "master",
+                            "isMaster": true,
+                            "groupId": 1242,
+                            "groupKey": "Inventory"
+                          }
+                        }
+                      },
+                      "$$ref": "#/components/schemas/2158332",
+                      "x-schema": {
+                        "id": 2158332,
+                        "name": "SkuStockInfoWithWhcode",
+                        "desc": "",
+                        "createTime": "2024-10-17T06:49:43.000Z",
+                        "updateTime": "2024-10-17T06:49:44.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "65791033110000000000001c",
+                        "createUserName": "黑猫（陈才华）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"skuId\":{\"type\":\"string\",\"example\":\"66ee733f265f590001ee873d\",\"description\":\"规格ID\"},\"whcode\":{\"type\":\"string\",\"example\":\"CPartner\",\"description\":\"仓库编码\"},\"skuStock\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=SkuStockInfoWithWhcodeSkuStock&schemaId=2158333\"}}}",
+                        "isBase": 0,
+                        "gatewayGroupId": 1242,
+                        "gatewayGroupKey": "Inventory",
+                        "gatewayVersionId": 0,
+                        "gatewayVersionName": "master",
+                        "isMaster": true,
+                        "groupId": 1242,
+                        "groupKey": "Inventory"
+                      }
+                    },
+                    "example": [
+                      {
+                        "skuId": "66ee733f265f590001ee873d",
+                        "whcode": "CPartner",
+                        "skuStock": {
+                          "available": 25,
+                          "standalone": 1,
+                          "reserved": 1,
+                          "total": 100,
+                          "occupiedQuantity": 35,
+                          "productChannelQuantity": 15,
+                          "productChannelOccupiedQuantity": 15,
+                          "activityChannelQuantity": 10,
+                          "activityChannelOccupiedQuantity": 1
+                        }
+                      }
+                    ],
+                    "description": "仓维度库存数据"
+                  },
+                  "response": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "boolean",
+                        "description": "是否成功",
+                        "example": "true"
+                      },
+                      "message": {
+                        "type": "string",
+                        "description": "提示信息",
+                        "example": "同步成功，但有占用库存未扣减，请检查独立库存占用情况和用户待支付订单占用库存情况"
+                      },
+                      "code": {
+                        "type": "integer",
+                        "description": "状态码",
+                        "example": "-9028"
+                      }
+                    },
+                    "code": "N/A",
+                    "msg": "Error",
+                    "$$ref": "#/components/schemas/2160902",
+                    "x-schema": {
+                      "id": 2160902,
+                      "name": "Response",
+                      "desc": "",
+                      "createTime": "2024-10-25T04:01:26.000Z",
+                      "updateTime": "2024-10-25T04:02:14.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "65791033110000000000001c",
+                      "createUserName": "黑猫（陈才华）",
+                      "spec": "{\"type\":\"object\",\"properties\":{\"success\":{\"type\":\"boolean\",\"description\":\"是否成功\",\"example\":\"true\"},\"message\":{\"type\":\"string\",\"description\":\"提示信息\",\"example\":\"同步成功，但有占用库存未扣减，请检查独立库存占用情况和用户待支付订单占用库存情况\"},\"code\":{\"type\":\"integer\",\"description\":\"状态码\",\"example\":\"-9028\"}},\"code\":\"N/A\",\"msg\":\"Error\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 1244,
+                      "gatewayGroupKey": "SyncSkuStock",
+                      "gatewayVersionId": 0,
+                      "gatewayVersionName": "master",
+                      "isMaster": true,
+                      "groupId": 1244,
+                      "groupKey": "SyncSkuStock"
+                    }
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2024-10-25T04:02:14.000Z"
+  },
+  "error_codes": [],
+  "category": "库存API",
+  "fetched_at": "2025-09-26 14:59:38"
+}

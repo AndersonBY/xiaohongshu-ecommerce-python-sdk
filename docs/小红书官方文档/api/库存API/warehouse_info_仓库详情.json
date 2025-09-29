@@ -1,0 +1,191 @@
+{
+  "api_info": {
+    "apiId": 34459,
+    "apiNavigationId": 282,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 102,
+    "method": "post",
+    "navigationDetailDesc": "仓库详情",
+    "navigationDetailName": "仓库详情",
+    "path": "warehouse.info",
+    "seq": 8
+  },
+  "api_details": {
+    "id": 34459,
+    "path": "/api/openapi/warehouse/info",
+    "summary": "【开放平台-仓库】仓库详情",
+    "method": "post",
+    "specJson": {
+      "summary": "【开放平台-仓库】仓库详情",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "仓库编码",
+                  "example": "test_01"
+                }
+              },
+              "required": [
+                "code"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "success",
+                  "data"
+                ],
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "error_code": {
+                    "type": "number",
+                    "example": 0
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "data": {
+                    "required": [
+                      "code",
+                      "name",
+                      "province",
+                      "provinceCode",
+                      "city",
+                      "cityCode",
+                      "area",
+                      "areaCode"
+                    ],
+                    "properties": {
+                      "code": {
+                        "type": "string",
+                        "example": "test_01"
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "测试仓库01"
+                      },
+                      "province": {
+                        "type": "string",
+                        "example": "上海"
+                      },
+                      "provinceCode": {
+                        "type": "string",
+                        "example": "310000"
+                      },
+                      "city": {
+                        "type": "string",
+                        "example": "上海市"
+                      },
+                      "cityCode": {
+                        "type": "string",
+                        "example": "310100"
+                      },
+                      "area": {
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "areaCode": {
+                        "type": "string",
+                        "example": "310101"
+                      },
+                      "town": {
+                        "type": "string",
+                        "example": "淮海中路街道"
+                      },
+                      "townCode": {
+                        "type": "string",
+                        "example": "310101022000"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "contactName": {
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "contactTel": {
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "coverageList": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "province": {
+                              "type": "string",
+                              "example": "上海"
+                            },
+                            "provinceCode": {
+                              "type": "string",
+                              "example": "310000"
+                            },
+                            "city": {
+                              "type": "string",
+                              "example": "上海市"
+                            },
+                            "cityCode": {
+                              "type": "string",
+                              "example": "310100"
+                            },
+                            "area": {
+                              "type": "string",
+                              "example": "string"
+                            },
+                            "areaCode": {
+                              "type": "string",
+                              "example": "310101"
+                            }
+                          },
+                          "required": [
+                            "province",
+                            "provinceCode"
+                          ]
+                        },
+                        "example": [
+                          {
+                            "province": "上海",
+                            "provinceCode": "310000",
+                            "city": "上海市",
+                            "cityCode": "310100",
+                            "area": "string",
+                            "areaCode": "310101"
+                          }
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-04-20T02:11:46.000Z"
+  },
+  "error_codes": [],
+  "category": "库存API",
+  "fetched_at": "2025-09-26 14:59:42"
+}

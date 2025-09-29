@@ -1,0 +1,577 @@
+{
+  "api_info": {
+    "apiId": 30038,
+    "apiNavigationId": 211,
+    "gatewayId": 165,
+    "gatewayVersionId": 2804,
+    "id": 53,
+    "method": "post",
+    "navigationDetailDesc": "获取售后详情（新）",
+    "navigationDetailName": "获取售后详情（新）",
+    "path": "afterSale.getAfterSaleInfo",
+    "seq": 7
+  },
+  "api_details": {
+    "id": 30038,
+    "path": "/api/openapi/aftersale/getaftersaleinfo",
+    "summary": "openAPI获取售后详情（新）",
+    "method": "post",
+    "specJson": {
+      "summary": "openAPI获取售后详情（新）",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [],
+              "properties": {
+                "requestHeader": {
+                  "required": [],
+                  "properties": {
+                    "requestFrom": {
+                      "type": "number",
+                      "description": "//",
+                      "example": ""
+                    }
+                  },
+                  "type": "object"
+                },
+                "returnsId": {
+                  "type": "string",
+                  "description": "售后单号",
+                  "example": ""
+                },
+                "needNegotiateRecord": {
+                  "type": "boolean",
+                  "description": "是否需要协商记录",
+                  "example": ""
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code",
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "msg": {
+                    "type": "string"
+                  },
+                  "success": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "afterSaleInfo": {
+                        "required": [],
+                        "properties": {
+                          "returnsId": {
+                            "type": "string",
+                            "description": "售后id",
+                            "example": ""
+                          },
+                          "returnType": {
+                            "type": "number",
+                            "description": "售后类型",
+                            "example": ""
+                          },
+                          "reasonId": {
+                            "type": "number",
+                            "description": "申请售后的原因id",
+                            "example": ""
+                          },
+                          "reasonNameZh": {
+                            "type": "string",
+                            "description": "申请售后的原因名称",
+                            "example": ""
+                          },
+                          "status": {
+                            "type": "number",
+                            "description": "售后状态",
+                            "example": ""
+                          },
+                          "userId": {
+                            "type": "string",
+                            "description": "用户id",
+                            "example": ""
+                          },
+                          "orderId": {
+                            "type": "string",
+                            "description": "包裹id",
+                            "example": ""
+                          },
+                          "applyTime": {
+                            "type": "number",
+                            "description": "售后申请时间",
+                            "example": ""
+                          },
+                          "updatedAt": {
+                            "type": "number",
+                            "description": "更新时间",
+                            "example": ""
+                          },
+                          "expireTime": {
+                            "type": "number",
+                            "description": "售后逾期时间（只提供待商家处理状态下的，其余的状态为-1)",
+                            "example": ""
+                          },
+                          "returnAddress": {
+                            "required": [],
+                            "properties": {
+                              "province": {
+                                "type": "string",
+                                "description": "省份",
+                                "example": ""
+                              },
+                              "city": {
+                                "type": "string",
+                                "description": "城市",
+                                "example": ""
+                              },
+                              "county": {
+                                "type": "string",
+                                "description": "区/县",
+                                "example": ""
+                              },
+                              "town": {
+                                "type": "string",
+                                "description": "镇/街道名称",
+                                "example": ""
+                              },
+                              "street": {
+                                "type": "string",
+                                "description": "镇/街道之下的详细地址",
+                                "example": ""
+                              },
+                              "phone": {
+                                "type": "string",
+                                "description": "手机",
+                                "example": ""
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "姓名",
+                                "example": ""
+                              },
+                              "fullAddress": {
+                                "type": "string",
+                                "description": "兼容历史逻辑：售后实例中存在没有分级地址信息的情况，只有整个地址字符串",
+                                "example": ""
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "proofPhotos": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            },
+                            "description": "用户申请售后上传的图片列表"
+                          },
+                          "desc": {
+                            "type": "string",
+                            "description": "用户申请售后的备注",
+                            "example": ""
+                          },
+                          "supportCarriageInsurance": {
+                            "type": "boolean",
+                            "description": "是否支持运费险",
+                            "example": ""
+                          },
+                          "openAddressId": {
+                            "type": "string",
+                            "description": "提供给openapi的用户地址md5",
+                            "example": ""
+                          },
+                          "skus": {
+                            "type": "array",
+                            "items": {
+                              "required": [],
+                              "properties": {
+                                "skuId": {
+                                  "type": "string",
+                                  "description": "商品id",
+                                  "example": ""
+                                },
+                                "skuName": {
+                                  "type": "string",
+                                  "description": "商品名称",
+                                  "example": ""
+                                },
+                                "image": {
+                                  "type": "string",
+                                  "description": "商品图片",
+                                  "example": ""
+                                },
+                                "price": {
+                                  "type": "number",
+                                  "description": "sku单价",
+                                  "example": ""
+                                },
+                                "boughtCount": {
+                                  "type": "number",
+                                  "description": "购买件数",
+                                  "example": ""
+                                },
+                                "appliedCount": {
+                                  "type": "number",
+                                  "description": "用户申请件数",
+                                  "example": ""
+                                },
+                                "appliedTotalAmountYuan": {
+                                  "type": "number",
+                                  "description": "用户申请售后商品的钱",
+                                  "example": ""
+                                },
+                                "scskucode": {
+                                  "type": "string",
+                                  "description": "小红书编码",
+                                  "example": ""
+                                },
+                                "barcode": {
+                                  "type": "string",
+                                  "description": "条形码",
+                                  "example": ""
+                                },
+                                "variants": {
+                                  "type": "array",
+                                  "items": {
+                                    "required": [],
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "description": "规格名称",
+                                        "example": ""
+                                      },
+                                      "value": {
+                                        "type": "string",
+                                        "description": "规格值",
+                                        "example": ""
+                                      }
+                                    },
+                                    "type": "object"
+                                  },
+                                  "description": "规格"
+                                },
+                                "skuERPCode": {
+                                  "type": "string",
+                                  "description": "商品ERPCode",
+                                  "example": ""
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "description": "用户申请售后的商品"
+                          },
+                          "exchangeSKUs": {
+                            "type": "array",
+                            "items": {
+                              "required": [],
+                              "properties": {
+                                "skuId": {
+                                  "type": "string",
+                                  "description": "商品id",
+                                  "example": ""
+                                },
+                                "skuName": {
+                                  "type": "string",
+                                  "description": "商品名称",
+                                  "example": ""
+                                },
+                                "image": {
+                                  "type": "string",
+                                  "description": "商品图片",
+                                  "example": ""
+                                },
+                                "price": {
+                                  "type": "number",
+                                  "description": "sku单价",
+                                  "example": ""
+                                },
+                                "boughtCount": {
+                                  "type": "number",
+                                  "description": "购买件数",
+                                  "example": ""
+                                },
+                                "appliedCount": {
+                                  "type": "number",
+                                  "description": "用户申请件数",
+                                  "example": ""
+                                },
+                                "appliedTotalAmountYuan": {
+                                  "type": "number",
+                                  "description": "用户申请售后商品的钱",
+                                  "example": ""
+                                },
+                                "scskucode": {
+                                  "type": "string",
+                                  "description": "小红书编码",
+                                  "example": ""
+                                },
+                                "barcode": {
+                                  "type": "string",
+                                  "description": "条形码",
+                                  "example": ""
+                                },
+                                "variants": {
+                                  "type": "array",
+                                  "items": {
+                                    "required": [],
+                                    "properties": {
+                                      "name": {
+                                        "type": "string",
+                                        "description": "规格名称",
+                                        "example": ""
+                                      },
+                                      "value": {
+                                        "type": "string",
+                                        "description": "规格值",
+                                        "example": ""
+                                      }
+                                    },
+                                    "type": "object"
+                                  },
+                                  "description": "规格"
+                                },
+                                "skuERPCode": {
+                                  "type": "string",
+                                  "description": "商品ERP Code",
+                                  "example": ""
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "description": "用户换货的商品"
+                          },
+                          "closeReasonZh": {
+                            "type": "string",
+                            "description": "商家拒绝售后的原因",
+                            "example": ""
+                          },
+                          "returnsTag": {
+                            "type": "number",
+                            "description": "0-未命中极速退款，1-命中平台极速退款，2-命中商家极速退款，3-命中售后助手",
+                            "example": ""
+                          },
+                          "appliedShipFeeAmountYuan": {
+                            "type": "number",
+                            "description": "用户申请售后运费金额，元",
+                            "example": ""
+                          },
+                          "appliedSkusAmountYuan": {
+                            "type": "number",
+                            "description": "用户申请售后商品金额，元",
+                            "example": ""
+                          },
+                          "expectedRefundAmountYuan": {
+                            "type": "number",
+                            "description": "本次售后预期退的钱总额，元",
+                            "example": ""
+                          },
+                          "refundAmountYuan": {
+                            "type": "number",
+                            "description": "实际已退款总额，包括定金，元",
+                            "example": ""
+                          },
+                          "refundStatus": {
+                            "type": "number",
+                            "description": "退款状态 退款状态 108触发退款 1退款中 3退款失败 2退款成功 401已取消 101已创建 201待审核 301审核通过 302审核不通过 402自动关闭",
+                            "example": ""
+                          },
+                          "cargoStatus": {
+                            "type": "number",
+                            "description": "已发货仅退款申请时 选择的货物状态 0:未选择 1：未收到货 2:已收到货",
+                            "example": ""
+                          },
+                          "refundTime": {
+                            "type": "number",
+                            "description": "退款完成时间",
+                            "example": ""
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "logisticsInfo": {
+                        "required": [],
+                        "properties": {
+                          "afterSale": {
+                            "required": [],
+                            "properties": {
+                              "expressNo": {
+                                "type": "string",
+                                "description": "物流单号",
+                                "example": ""
+                              },
+                              "expressCompanyCode": {
+                                "type": "string",
+                                "description": "物流公司code",
+                                "example": ""
+                              },
+                              "expressCompanyName": {
+                                "type": "string",
+                                "description": "物流公司名称",
+                                "example": ""
+                              },
+                              "fillExpressNoTime": {
+                                "type": "number",
+                                "description": "填单时间",
+                                "example": ""
+                              },
+                              "expressSignTime": {
+                                "type": "number",
+                                "description": "轨迹签收时间",
+                                "example": ""
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "exchange": {
+                            "required": [],
+                            "properties": {
+                              "expressNo": {
+                                "type": "string",
+                                "description": "物流单号",
+                                "example": ""
+                              },
+                              "expressCompanyCode": {
+                                "type": "string",
+                                "description": "物流公司code",
+                                "example": ""
+                              },
+                              "expressCompanyName": {
+                                "type": "string",
+                                "description": "物流公司名称",
+                                "example": ""
+                              },
+                              "fillExpressNoTime": {
+                                "type": "number",
+                                "description": "填单时间",
+                                "example": ""
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "order": {
+                            "required": [],
+                            "properties": {
+                              "expressNo": {
+                                "type": "string",
+                                "description": "物流单号",
+                                "example": ""
+                              },
+                              "expressCompanyCode": {
+                                "type": "string",
+                                "description": "物流公司code",
+                                "example": ""
+                              },
+                              "expressCompanyName": {
+                                "type": "string",
+                                "description": "物流公司名称",
+                                "example": ""
+                              }
+                            },
+                            "type": "object"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "negotiateRecords": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {
+                            "title": {
+                              "type": "string",
+                              "description": "节点标题",
+                              "example": ""
+                            },
+                            "operatorRoleName": {
+                              "type": "string",
+                              "description": "操作人名称",
+                              "example": ""
+                            },
+                            "operatorRole": {
+                              "type": "number",
+                              "description": "操作人角色",
+                              "example": ""
+                            },
+                            "attributes": {
+                              "type": "array",
+                              "items": {
+                                "required": [],
+                                "properties": {
+                                  "type": {
+                                    "type": "number",
+                                    "description": "节点属性类型，见NegotiateNodeAttributeType",
+                                    "example": ""
+                                  },
+                                  "key": {
+                                    "type": "string",
+                                    "description": "节点属性键，如 【售后类型】",
+                                    "example": ""
+                                  },
+                                  "desc": {
+                                    "type": "string",
+                                    "description": "节点属性对应描述，eg: 字符串类型时，值为【换货】",
+                                    "example": ""
+                                  },
+                                  "photos": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    },
+                                    "description": "节点属性对应描述，eg: 图片类型时，值为【换货照片链接列表】"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "description": "节点属性值"
+                            },
+                            "time": {
+                              "type": "string",
+                              "description": "节点发生的时间，yyyy-MM-dd HH:mm:ss",
+                              "example": ""
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": "售后协商记录"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "x-genric": "data"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2025-01-14T14:19:18.000Z"
+  },
+  "error_codes": [],
+  "category": "售后API",
+  "fetched_at": "2025-09-26 14:59:26"
+}

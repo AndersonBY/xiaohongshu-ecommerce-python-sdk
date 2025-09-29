@@ -1,0 +1,75 @@
+{
+  "api_info": {
+    "apiId": 6487,
+    "apiNavigationId": 65,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 12,
+    "method": "post",
+    "navigationDetailDesc": "获取老版本商家授权信息",
+    "navigationDetailName": "获取老版本商家授权信息",
+    "path": "common.getSellerKeyInfo",
+    "seq": 11
+  },
+  "api_details": {
+    "id": 6487,
+    "path": "/ark/common.getSellerKeyInfo",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getSellerKey",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sellerId": {
+                    "type": "string",
+                    "description": "商家id(新授权体系)"
+                  },
+                  "appKey": {
+                    "type": "string",
+                    "description": "商家Key(旧授权体系)"
+                  }
+                },
+                "$$ref": "#/components/schemas/217643",
+                "x-schema": {
+                  "id": 217643,
+                  "name": "SellerKeyInfo",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-08-03T08:22:26.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"sellerId\":{\"type\":\"string\",\"description\":\"商家id(新授权体系)\"},\"appKey\":{\"type\":\"string\",\"description\":\"商家Key(旧授权体系)\"}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getSellerKey"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-08-03T08:22:36.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:59:01"
+}

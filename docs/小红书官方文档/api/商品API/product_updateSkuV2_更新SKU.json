@@ -1,0 +1,566 @@
+{
+  "api_info": {
+    "apiId": 27221,
+    "apiNavigationId": 228,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 70,
+    "method": "post",
+    "navigationDetailDesc": "更新SKU",
+    "navigationDetailName": "更新SKU",
+    "path": "product.updateSkuV2",
+    "seq": 8
+  },
+  "api_details": {
+    "id": 27221,
+    "path": "/ark/product.updateSkuNew",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "updateItem_2",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "deliveryTime",
+                "id",
+                "itemId",
+                "logisticsPlanId",
+                "price",
+                "stock",
+                "variants"
+              ],
+              "type": "object",
+              "properties": {
+                "itemId": {
+                  "type": "string",
+                  "description": "itemId",
+                  "example": "64ff12f***fd12f1"
+                },
+                "ipq": {
+                  "type": "integer",
+                  "description": "打包数，只允许创建ipq为1的商品，该字段查询使用",
+                  "format": "int32",
+                  "example": 100
+                },
+                "originalPrice": {
+                  "type": "integer",
+                  "description": "市场价，单位分",
+                  "format": "int32",
+                  "example": 88
+                },
+                "price": {
+                  "type": "integer",
+                  "description": "售价，单位分，要求小于市场价，上限10w元，即10000000分",
+                  "format": "int32",
+                  "example": 80
+                },
+                "stock": {
+                  "type": "integer",
+                  "description": "库存",
+                  "format": "int32",
+                  "example": 5000
+                },
+                "logisticsPlanId": {
+                  "type": "string",
+                  "description": "物流方案Id，通过common.getLogisticsList获取",
+                  "example": "5e37***a9f0"
+                },
+                "whcode": {
+                  "type": "string",
+                  "description": "仓库号",
+                  "example": "C01"
+                },
+                "priceType": {
+                  "type": "integer",
+                  "description": "是否包税",
+                  "format": "int32",
+                  "example": 1
+                },
+                "erpCode": {
+                  "type": "string",
+                  "description": "商家编码",
+                  "example": "001231"
+                },
+                "variants": {
+                  "type": "array",
+                  "description": "规格列表，根据item定义对规格填写具体规格值，item没有则不填",
+                  "items": {
+                    "required": [
+                      "id",
+                      "value"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "规格ID(规格根据common.getVariations区分，规格集合需要与item规格对齐)",
+                        "example": "5a60***9ce6"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "规格名称",
+                        "example": "尺码"
+                      },
+                      "value": {
+                        "type": "string",
+                        "description": "规格值(通过common.getAttributeValues获取)，查不到则自行填写",
+                        "example": "36"
+                      },
+                      "valueId": {
+                        "type": "string",
+                        "description": "规格值ID(通过common.getAttributeValues获取)查不到可以不填",
+                        "example": "f423***921f"
+                      }
+                    },
+                    "description": "规格列表，根据item定义对规格填写具体规格值，item没有则不填",
+                    "$$ref": "#/components/schemas/217555",
+                    "x-schema": {
+                      "id": 217555,
+                      "name": "VariantV3",
+                      "desc": "SPV规格",
+                      "createTime": "2021-08-03T08:22:26.000Z",
+                      "updateTime": "2023-08-23T13:12:30.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "5fa4f48970742e0001faee4b",
+                      "createUserName": "林松斌（实习）",
+                      "spec": "{\"required\":[\"id\",\"value\"],\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"规格ID(规格根据common.getVariations区分，规格集合需要与item规格对齐)\",\"example\":\"5a60***9ce6\"},\"name\":{\"type\":\"string\",\"description\":\"规格名称\",\"example\":\"尺码\"},\"value\":{\"type\":\"string\",\"description\":\"规格值(通过common.getAttributeValues获取)，查不到则自行填写\",\"example\":\"36\"},\"valueId\":{\"type\":\"string\",\"description\":\"规格值ID(通过common.getAttributeValues获取)查不到可以不填\",\"example\":\"f423***921f\"}},\"description\":\"规格列表，根据item定义对规格填写具体规格值，item没有则不填\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  }
+                },
+                "deliveryTime": {
+                  "type": "object",
+                  "properties": {
+                    "time": {
+                      "type": "string",
+                      "description": "发货时间，相对时间(X)，X为整数数字，绝对时间(YYYY/MM/DD)该天24点之前发货",
+                      "example": "2021/06/01"
+                    },
+                    "type": {
+                      "type": "string",
+                      "description": "发货时间类型，DEFAULT:不设置 RELATIVE_TIME:相对时间（天，即将弃用） ABSOLUTE_TIME:绝对时间（即将弃用）,TODAY:当日发，RELATIVE_TIME_NEW:相对时间（小时）,ABSOLUTE_TIME_NEW:绝对时间",
+                      "example": "ABSOLUTE_TIME",
+                      "enum": [
+                        "DEFAULT",
+                        "RELATIVE_TIME",
+                        "ABSOLUTE_TIME",
+                        "TODAY",
+                        "RELATIVE_TIME_NEW",
+                        "ABSOLUTE_TIME_NEW"
+                      ]
+                    }
+                  },
+                  "description": "发货时间信息",
+                  "$$ref": "#/components/schemas/217549",
+                  "x-schema": {
+                    "id": 217549,
+                    "name": "DeliveryTimeV3",
+                    "desc": "发货时间信息",
+                    "createTime": "2021-08-03T08:22:26.000Z",
+                    "updateTime": "2023-03-10T12:35:05.000Z",
+                    "type": 2,
+                    "gatewayId": 103,
+                    "createUserId": "5fa4f48970742e0001faee4b",
+                    "createUserName": "林松斌（实习）",
+                    "spec": "{\"type\":\"object\",\"properties\":{\"time\":{\"type\":\"string\",\"description\":\"发货时间，相对时间(X)，X为整数数字，绝对时间(YYYY/MM/DD)该天24点之前发货\",\"example\":\"2021/06/01\"},\"type\":{\"type\":\"string\",\"description\":\"发货时间类型，DEFAULT:不设置 RELATIVE_TIME:相对时间（天，即将弃用） ABSOLUTE_TIME:绝对时间（即将弃用）,TODAY:当日发，RELATIVE_TIME_NEW:相对时间（小时）,ABSOLUTE_TIME_NEW:绝对时间\",\"example\":\"ABSOLUTE_TIME\",\"enum\":[\"DEFAULT\",\"RELATIVE_TIME\",\"ABSOLUTE_TIME\",\"TODAY\",\"RELATIVE_TIME_NEW\",\"ABSOLUTE_TIME_NEW\"]}},\"description\":\"发货时间信息\"}",
+                    "isBase": 0,
+                    "gatewayGroupId": 0,
+                    "gatewayGroupKey": "",
+                    "gatewayVersionId": 1661,
+                    "gatewayVersionName": "feature/logan",
+                    "isMaster": false,
+                    "groupId": 0,
+                    "groupKey": ""
+                  }
+                },
+                "specImage": {
+                  "type": "string",
+                  "description": "规格图",
+                  "example": "http://img.xiaohongshu.com/items/123456789"
+                },
+                "barcode": {
+                  "type": "string",
+                  "description": "商品条形码，创建特定品类必填",
+                  "example": "RedTest20200507001"
+                },
+                "rowNumber": {
+                  "type": "integer",
+                  "description": "sku在item中的顺序,不支持更新",
+                  "format": "int32"
+                },
+                "id": {
+                  "type": "string",
+                  "description": "skuid",
+                  "example": "100"
+                },
+                "updatedFields": {
+                  "type": "array",
+                  "description": "更新字段，不填默认全量，填入后只有传入的字段会被更新",
+                  "items": {
+                    "type": "string",
+                    "description": "更新字段，不填默认全量，填入后只有传入的字段会被更新"
+                  }
+                }
+              },
+              "$$ref": "#/components/schemas/1585766",
+              "x-schema": {
+                "id": 1585766,
+                "name": "SkuUpdateV3",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2023-10-26T06:29:54.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"deliveryTime\",\"id\",\"itemId\",\"logisticsPlanId\",\"price\",\"stock\",\"variants\"],\"type\":\"object\",\"properties\":{\"itemId\":{\"type\":\"string\",\"description\":\"itemId\",\"example\":\"64ff12f***fd12f1\"},\"ipq\":{\"type\":\"integer\",\"description\":\"打包数，只允许创建ipq为1的商品，该字段查询使用\",\"format\":\"int32\",\"example\":100},\"originalPrice\":{\"type\":\"integer\",\"description\":\"市场价，单位分\",\"format\":\"int32\",\"example\":88},\"price\":{\"type\":\"integer\",\"description\":\"售价，单位分，要求小于市场价，上限10w元，即10000000分\",\"format\":\"int32\",\"example\":80},\"stock\":{\"type\":\"integer\",\"description\":\"库存\",\"format\":\"int32\",\"example\":5000},\"logisticsPlanId\":{\"type\":\"string\",\"description\":\"物流方案Id，通过common.getLogisticsList获取\",\"example\":\"5e37***a9f0\"},\"whcode\":{\"type\":\"string\",\"description\":\"仓库号\",\"example\":\"C01\"},\"priceType\":{\"type\":\"integer\",\"description\":\"是否包税\",\"format\":\"int32\",\"example\":1},\"erpCode\":{\"type\":\"string\",\"description\":\"商家编码\",\"example\":\"001231\"},\"variants\":{\"type\":\"array\",\"description\":\"规格列表，根据item定义对规格填写具体规格值，item没有则不填\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=VariantV3&schemaId=217555\"}},\"deliveryTime\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=DeliveryTimeV3&schemaId=217549\"},\"specImage\":{\"type\":\"string\",\"description\":\"规格图\",\"example\":\"http://img.xiaohongshu.com/items/123456789\"},\"barcode\":{\"type\":\"string\",\"description\":\"商品条形码，创建特定品类必填\",\"example\":\"RedTest20200507001\"},\"rowNumber\":{\"type\":\"integer\",\"description\":\"sku在item中的顺序,不支持更新\",\"format\":\"int32\"},\"id\":{\"type\":\"string\",\"description\":\"skuid\",\"example\":\"100\"},\"updatedFields\":{\"type\":\"array\",\"description\":\"更新字段，不填默认全量，填入后只有传入的字段会被更新\",\"items\":{\"type\":\"string\",\"description\":\"更新字段，不填默认全量，填入后只有传入的字段会被更新\"}}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "required": [
+                  "deliveryTime",
+                  "itemId",
+                  "logisticsPlanId",
+                  "price",
+                  "scSkucode",
+                  "stock",
+                  "variants"
+                ],
+                "type": "object",
+                "properties": {
+                  "itemId": {
+                    "type": "string",
+                    "description": "itemId",
+                    "example": "64ff12f***fd12f1"
+                  },
+                  "ipq": {
+                    "type": "integer",
+                    "description": "打包数，只允许创建ipq为1的商品，该字段查询使用",
+                    "format": "int32",
+                    "example": 100
+                  },
+                  "originalPrice": {
+                    "type": "integer",
+                    "description": "市场价，单位分",
+                    "format": "int32",
+                    "example": 88
+                  },
+                  "price": {
+                    "type": "integer",
+                    "description": "售价，单位分，要求小于市场价，上限10w元，即10000000分",
+                    "format": "int32",
+                    "example": 80
+                  },
+                  "stock": {
+                    "type": "integer",
+                    "description": "库存",
+                    "format": "int32",
+                    "example": 5000
+                  },
+                  "logisticsPlanId": {
+                    "type": "string",
+                    "description": "物流方案Id，通过common.getLogisticsList获取",
+                    "example": "5e37***a9f0"
+                  },
+                  "whcode": {
+                    "type": "string",
+                    "description": "仓库号",
+                    "example": "C01"
+                  },
+                  "priceType": {
+                    "type": "integer",
+                    "description": "是否包税",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "erpCode": {
+                    "type": "string",
+                    "description": "商家编码",
+                    "example": "001231"
+                  },
+                  "variants": {
+                    "type": "array",
+                    "description": "规格列表，根据item定义对规格填写具体规格值，item没有则不填",
+                    "items": {
+                      "required": [
+                        "id",
+                        "value"
+                      ],
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "规格ID(规格根据common.getVariations区分，规格集合需要与item规格对齐)",
+                          "example": "5a60***9ce6"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "规格名称",
+                          "example": "尺码"
+                        },
+                        "value": {
+                          "type": "string",
+                          "description": "规格值(通过common.getAttributeValues获取)，查不到则自行填写",
+                          "example": "36"
+                        },
+                        "valueId": {
+                          "type": "string",
+                          "description": "规格值ID(通过common.getAttributeValues获取)查不到可以不填",
+                          "example": "f423***921f"
+                        }
+                      },
+                      "description": "规格列表，根据item定义对规格填写具体规格值，item没有则不填",
+                      "$$ref": "#/components/schemas/217555",
+                      "x-schema": {
+                        "id": 217555,
+                        "name": "VariantV3",
+                        "desc": "SPV规格",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2023-08-23T13:12:30.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"required\":[\"id\",\"value\"],\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"规格ID(规格根据common.getVariations区分，规格集合需要与item规格对齐)\",\"example\":\"5a60***9ce6\"},\"name\":{\"type\":\"string\",\"description\":\"规格名称\",\"example\":\"尺码\"},\"value\":{\"type\":\"string\",\"description\":\"规格值(通过common.getAttributeValues获取)，查不到则自行填写\",\"example\":\"36\"},\"valueId\":{\"type\":\"string\",\"description\":\"规格值ID(通过common.getAttributeValues获取)查不到可以不填\",\"example\":\"f423***921f\"}},\"description\":\"规格列表，根据item定义对规格填写具体规格值，item没有则不填\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  },
+                  "deliveryTime": {
+                    "type": "object",
+                    "properties": {
+                      "time": {
+                        "type": "string",
+                        "description": "发货时间，相对时间(X)，X为整数数字，绝对时间(YYYY/MM/DD)该天24点之前发货",
+                        "example": "2021/06/01"
+                      },
+                      "type": {
+                        "type": "string",
+                        "description": "发货时间类型，DEFAULT:不设置 RELATIVE_TIME:相对时间（天，即将弃用） ABSOLUTE_TIME:绝对时间（即将弃用）,TODAY:当日发，RELATIVE_TIME_NEW:相对时间（小时）,ABSOLUTE_TIME_NEW:绝对时间",
+                        "example": "ABSOLUTE_TIME",
+                        "enum": [
+                          "DEFAULT",
+                          "RELATIVE_TIME",
+                          "ABSOLUTE_TIME",
+                          "TODAY",
+                          "RELATIVE_TIME_NEW",
+                          "ABSOLUTE_TIME_NEW"
+                        ]
+                      }
+                    },
+                    "description": "发货时间信息",
+                    "$$ref": "#/components/schemas/217549",
+                    "x-schema": {
+                      "id": 217549,
+                      "name": "DeliveryTimeV3",
+                      "desc": "发货时间信息",
+                      "createTime": "2021-08-03T08:22:26.000Z",
+                      "updateTime": "2023-03-10T12:35:05.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "5fa4f48970742e0001faee4b",
+                      "createUserName": "林松斌（实习）",
+                      "spec": "{\"type\":\"object\",\"properties\":{\"time\":{\"type\":\"string\",\"description\":\"发货时间，相对时间(X)，X为整数数字，绝对时间(YYYY/MM/DD)该天24点之前发货\",\"example\":\"2021/06/01\"},\"type\":{\"type\":\"string\",\"description\":\"发货时间类型，DEFAULT:不设置 RELATIVE_TIME:相对时间（天，即将弃用） ABSOLUTE_TIME:绝对时间（即将弃用）,TODAY:当日发，RELATIVE_TIME_NEW:相对时间（小时）,ABSOLUTE_TIME_NEW:绝对时间\",\"example\":\"ABSOLUTE_TIME\",\"enum\":[\"DEFAULT\",\"RELATIVE_TIME\",\"ABSOLUTE_TIME\",\"TODAY\",\"RELATIVE_TIME_NEW\",\"ABSOLUTE_TIME_NEW\"]}},\"description\":\"发货时间信息\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  },
+                  "specImage": {
+                    "type": "string",
+                    "description": "规格图",
+                    "example": "http://img.xiaohongshu.com/items/123456789"
+                  },
+                  "barcode": {
+                    "type": "string",
+                    "description": "商品条形码，创建特定品类必填",
+                    "example": "RedTest20200507001"
+                  },
+                  "rowNumber": {
+                    "type": "integer",
+                    "description": "sku在item中的顺序,不支持更新",
+                    "format": "int32"
+                  },
+                  "id": {
+                    "type": "string",
+                    "description": "skuId",
+                    "example": "6123**5132"
+                  },
+                  "scSkucode": {
+                    "type": "string",
+                    "description": "scSkuCode编号,小红书编码,即将废弃",
+                    "example": "XHSd12f1r1f"
+                  },
+                  "logisticsName": {
+                    "type": "string",
+                    "description": "物流模式名",
+                    "example": "red_auto"
+                  },
+                  "buyable": {
+                    "type": "boolean",
+                    "description": "是否在架上，仅用于返回",
+                    "example": true
+                  },
+                  "unionItemDetails": {
+                    "type": "array",
+                    "description": "组合商品子商品信息，仅返回使用",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "子商品编号",
+                          "example": "607***450"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "子商品名称",
+                          "example": "口红"
+                        },
+                        "scSkuCode": {
+                          "type": "string",
+                          "description": "子商品小红书编码,即将废弃",
+                          "example": "690***466"
+                        },
+                        "barcode": {
+                          "type": "string",
+                          "description": "子商品商品条形码",
+                          "example": "690***452"
+                        },
+                        "ipq": {
+                          "type": "integer",
+                          "description": "子商品在组合品中的个数",
+                          "format": "int32",
+                          "example": 100
+                        },
+                        "erpCode": {
+                          "type": "string",
+                          "description": "子商品商家编码",
+                          "example": "dq123da"
+                        }
+                      },
+                      "description": "组合商品子商品信息，仅返回使用",
+                      "$$ref": "#/components/schemas/217548",
+                      "x-schema": {
+                        "id": 217548,
+                        "name": "UnionItemResultV3",
+                        "desc": "组合商品子商品信息",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2023-11-30T02:47:29.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"子商品编号\",\"example\":\"607***450\"},\"name\":{\"type\":\"string\",\"description\":\"子商品名称\",\"example\":\"口红\"},\"scSkuCode\":{\"type\":\"string\",\"description\":\"子商品小红书编码,即将废弃\",\"example\":\"690***466\"},\"barcode\":{\"type\":\"string\",\"description\":\"子商品商品条形码\",\"example\":\"690***452\"},\"ipq\":{\"type\":\"integer\",\"description\":\"子商品在组合品中的个数\",\"format\":\"int32\",\"example\":100},\"erpCode\":{\"type\":\"string\",\"description\":\"子商品商家编码\",\"example\":\"dq123da\"}},\"description\":\"组合商品子商品信息，仅返回使用\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  },
+                  "createTime": {
+                    "type": "integer",
+                    "description": "商品创建时间，仅返回使用",
+                    "format": "int64"
+                  },
+                  "updateTime": {
+                    "type": "integer",
+                    "description": "商品更新时间，仅返回使用",
+                    "format": "int64"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "商品名称，仅返回使用"
+                  },
+                  "isGift": {
+                    "type": "boolean",
+                    "description": "是否是赠品,",
+                    "example": true
+                  },
+                  "deliveryFlag": {
+                    "type": "integer",
+                    "description": "1-现货，2-预售（仅开启阶梯预售改字段才有效）"
+                  }
+                },
+                "$$ref": "#/components/schemas/1585765",
+                "x-schema": {
+                  "id": 1585765,
+                  "name": "SkuDetailNew",
+                  "desc": "",
+                  "createTime": "2023-03-10T12:35:05.000Z",
+                  "updateTime": "2025-01-21T09:07:51.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"required\":[\"deliveryTime\",\"itemId\",\"logisticsPlanId\",\"price\",\"scSkucode\",\"stock\",\"variants\"],\"type\":\"object\",\"properties\":{\"itemId\":{\"type\":\"string\",\"description\":\"itemId\",\"example\":\"64ff12f***fd12f1\"},\"ipq\":{\"type\":\"integer\",\"description\":\"打包数，只允许创建ipq为1的商品，该字段查询使用\",\"format\":\"int32\",\"example\":100},\"originalPrice\":{\"type\":\"integer\",\"description\":\"市场价，单位分\",\"format\":\"int32\",\"example\":88},\"price\":{\"type\":\"integer\",\"description\":\"售价，单位分，要求小于市场价，上限10w元，即10000000分\",\"format\":\"int32\",\"example\":80},\"stock\":{\"type\":\"integer\",\"description\":\"库存\",\"format\":\"int32\",\"example\":5000},\"logisticsPlanId\":{\"type\":\"string\",\"description\":\"物流方案Id，通过common.getLogisticsList获取\",\"example\":\"5e37***a9f0\"},\"whcode\":{\"type\":\"string\",\"description\":\"仓库号\",\"example\":\"C01\"},\"priceType\":{\"type\":\"integer\",\"description\":\"是否包税\",\"format\":\"int32\",\"example\":1},\"erpCode\":{\"type\":\"string\",\"description\":\"商家编码\",\"example\":\"001231\"},\"variants\":{\"type\":\"array\",\"description\":\"规格列表，根据item定义对规格填写具体规格值，item没有则不填\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=VariantV3&schemaId=217555\"}},\"deliveryTime\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=DeliveryTimeV3&schemaId=217549\"},\"specImage\":{\"type\":\"string\",\"description\":\"规格图\",\"example\":\"http://img.xiaohongshu.com/items/123456789\"},\"barcode\":{\"type\":\"string\",\"description\":\"商品条形码，创建特定品类必填\",\"example\":\"RedTest20200507001\"},\"rowNumber\":{\"type\":\"integer\",\"description\":\"sku在item中的顺序,不支持更新\",\"format\":\"int32\"},\"id\":{\"type\":\"string\",\"description\":\"skuId\",\"example\":\"6123**5132\"},\"scSkucode\":{\"type\":\"string\",\"description\":\"scSkuCode编号,小红书编码,即将废弃\",\"example\":\"XHSd12f1r1f\"},\"logisticsName\":{\"type\":\"string\",\"description\":\"物流模式名\",\"example\":\"red_auto\"},\"buyable\":{\"type\":\"boolean\",\"description\":\"是否在架上，仅用于返回\",\"example\":true},\"unionItemDetails\":{\"type\":\"array\",\"description\":\"组合商品子商品信息，仅返回使用\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=UnionItemResultV3&schemaId=217548\"}},\"createTime\":{\"type\":\"integer\",\"description\":\"商品创建时间，仅返回使用\",\"format\":\"int64\"},\"updateTime\":{\"type\":\"integer\",\"description\":\"商品更新时间，仅返回使用\",\"format\":\"int64\"},\"name\":{\"type\":\"string\",\"description\":\"商品名称，仅返回使用\"},\"isGift\":{\"type\":\"boolean\",\"description\":\"是否是赠品,\",\"example\":true},\"deliveryFlag\":{\"type\":\"integer\",\"description\":\"1-现货，2-预售（仅开启阶梯预售改字段才有效）\"}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "updateItem_2"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-03-15T08:30:32.000Z"
+  },
+  "error_codes": [],
+  "category": "商品API",
+  "fetched_at": "2025-09-26 14:59:31"
+}

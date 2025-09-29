@@ -1,0 +1,147 @@
+{
+  "category_name": "公共API",
+  "api_count": 20,
+  "apis": [
+    {
+      "name": "获取分类列表",
+      "path": "common.getCategories",
+      "method": "post",
+      "description": "获取分类列表",
+      "api_id": 5747
+    },
+    {
+      "name": "由末级分类获取规格（新）",
+      "path": "common.getVariations",
+      "method": "post",
+      "description": "由末级分类获取规格（新）",
+      "api_id": 5744
+    },
+    {
+      "name": "由末级分类获取属性",
+      "path": "common.getAttributeLists",
+      "method": "post",
+      "description": "由末级分类获取属性",
+      "api_id": 5749
+    },
+    {
+      "name": "由属性获取属性值",
+      "path": "common.getAttributeValues",
+      "method": "post",
+      "description": "由属性获取属性值",
+      "api_id": 5748
+    },
+    {
+      "name": "获取快递公司信息",
+      "path": "common.getExpressCompanyList",
+      "method": "post",
+      "description": "获取快递公司信息",
+      "api_id": 5746
+    },
+    {
+      "name": "获取物流方案列表",
+      "path": "common.getLogisticsList",
+      "method": "post",
+      "description": "获取物流方案列表",
+      "api_id": 5745
+    },
+    {
+      "name": "运费模版列表",
+      "path": "common.getCarriageTemplateList",
+      "method": "post",
+      "description": "运费模版列表",
+      "api_id": 5816
+    },
+    {
+      "name": "运费模版详情",
+      "path": "common.getCarriageTemplate",
+      "method": "post",
+      "description": "运费模版详情",
+      "api_id": 5815
+    },
+    {
+      "name": "获取品牌信息",
+      "path": "common.brandSearch",
+      "method": "post",
+      "description": "获取品牌信息",
+      "api_id": 5965
+    },
+    {
+      "name": "获取物流模式列表",
+      "path": "common.logisticsMode",
+      "method": "post",
+      "description": "获取物流模式列表",
+      "api_id": 5964
+    },
+    {
+      "name": "获取地址信息",
+      "path": "common.getNestZone",
+      "method": "post",
+      "description": "获取地址信息",
+      "api_id": 9618
+    },
+    {
+      "name": "获取老版本商家授权信息",
+      "path": "common.getSellerKeyInfo",
+      "method": "post",
+      "description": "获取老版本商家授权信息",
+      "api_id": 6487
+    },
+    {
+      "name": "cc资质检查",
+      "path": "common.ccCheck",
+      "method": "post",
+      "description": "cc资质检查",
+      "api_id": 29209
+    },
+    {
+      "name": "商品标题类目预测",
+      "path": "common.categoryMatch",
+      "method": "post",
+      "description": "商品标题类目预测",
+      "api_id": 29202
+    },
+    {
+      "name": "由末级分类获取规格（旧）",
+      "path": "common.getVariations",
+      "method": "post",
+      "description": "由末级分类获取规格（旧）",
+      "api_id": 5744
+    },
+    {
+      "name": "批量获取发货时间规则",
+      "path": "common.getDeliveryRule",
+      "method": "post",
+      "description": "批量获取发货时间规则",
+      "api_id": 22012
+    },
+    {
+      "name": "获取地址信息（新）",
+      "path": "common.getZones",
+      "method": "post",
+      "description": "获取地址信息（新）",
+      "api_id": 23755
+    },
+    {
+      "name": "获取商家地址库",
+      "path": "common.getAddressRecord",
+      "method": "post",
+      "description": "获取商家地址库",
+      "api_id": 23756
+    },
+    {
+      "name": "获取预测类目（新）",
+      "path": "common.categoryMatchV2",
+      "method": "post",
+      "description": "获取预测类目（新）",
+      "api_id": 30496
+    },
+    {
+      "name": "判断文本中是否含有违禁词",
+      "path": "common.checkForbiddenKeyword",
+      "method": "post",
+      "description": "判断文本中是否含有违禁词",
+      "api_id": 31356
+    }
+  ],
+  "created_at": "2025-09-26 14:58:53"
+}

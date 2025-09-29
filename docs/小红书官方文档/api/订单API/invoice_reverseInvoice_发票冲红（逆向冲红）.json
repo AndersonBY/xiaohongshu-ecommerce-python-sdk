@@ -1,0 +1,95 @@
+{
+  "api_info": {
+    "apiId": 29203,
+    "apiNavigationId": 200,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 42,
+    "method": "post",
+    "navigationDetailDesc": "发票冲红（逆向冲红）",
+    "navigationDetailName": "发票冲红（逆向冲红）",
+    "path": "invoice.reverseInvoice",
+    "seq": 18
+  },
+  "api_details": {
+    "id": 29203,
+    "path": "/ark/invoice.reverseInvoice",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "reverseInvoice",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "xhsInvoiceNo"
+              ],
+              "type": "object",
+              "properties": {
+                "xhsInvoiceNo": {
+                  "type": "string",
+                  "description": "系统开票号",
+                  "example": "null"
+                },
+                "operatorId": {
+                  "type": "string",
+                  "description": "操作人ID",
+                  "example": "null"
+                },
+                "operatorName": {
+                  "type": "string",
+                  "description": "操作人名称",
+                  "example": "null"
+                }
+              },
+              "$$ref": "#/components/schemas/1757894",
+              "x-schema": {
+                "id": 1757894,
+                "name": "ReverseInvoiceRequest",
+                "desc": "",
+                "createTime": "2023-06-06T07:26:51.000Z",
+                "updateTime": "2023-06-06T07:26:51.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"xhsInvoiceNo\"],\"type\":\"object\",\"properties\":{\"xhsInvoiceNo\":{\"type\":\"string\",\"description\":\"系统开票号\",\"example\":\"null\"},\"operatorId\":{\"type\":\"string\",\"description\":\"操作人ID\",\"example\":\"null\"},\"operatorName\":{\"type\":\"string\",\"description\":\"操作人名称\",\"example\":\"null\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "reverseInvoice"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-06-06T11:01:46.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:17"
+}

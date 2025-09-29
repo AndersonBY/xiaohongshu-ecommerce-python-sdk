@@ -1,0 +1,90 @@
+{
+  "api_info": {
+    "apiId": 34465,
+    "apiNavigationId": 283,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 103,
+    "method": "post",
+    "navigationDetailDesc": "设置仓库覆盖地区",
+    "navigationDetailName": "设置仓库覆盖地区",
+    "path": "warehouse.setCoverage",
+    "seq": 9
+  },
+  "api_details": {
+    "id": 34465,
+    "path": "/api/openapi/warehouse/setcoverage",
+    "summary": "【开放平台-仓库】设置仓库覆盖地区",
+    "method": "post",
+    "specJson": {
+      "summary": "【开放平台-仓库】设置仓库覆盖地区",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "whCode": {
+                  "type": "string",
+                  "description": "仓库编码",
+                  "example": "test_01"
+                },
+                "zoneCodeList": {
+                  "type": "array",
+                  "description": "行政地区编码列表，只能是一级、二级或三级地区编码",
+                  "items": {
+                    "type": "string",
+                    "description": "地区编码",
+                    "example": "310101"
+                  }
+                }
+              },
+              "required": [
+                "whCode",
+                "zoneCodeList"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "success"
+                ],
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "是否成功"
+                  },
+                  "error_code": {
+                    "type": "number",
+                    "example": 0,
+                    "description": "错误编码"
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "example": "",
+                    "description": "错误信息"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-04-20T02:26:23.000Z"
+  },
+  "error_codes": [],
+  "category": "库存API",
+  "fetched_at": "2025-09-26 14:59:43"
+}

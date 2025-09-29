@@ -1,0 +1,49 @@
+{
+  "category_name": "物流API",
+  "api_count": 6,
+  "apis": [
+    {
+      "name": "查询电子面单订购关系",
+      "path": "express.queryEbillSubscribes",
+      "method": "post",
+      "description": "查询电子面单订购关系",
+      "api_id": 29631
+    },
+    {
+      "name": "查询电子面单模板列表",
+      "path": "express.queryEbillTemplates",
+      "method": "post",
+      "description": "查询电子面单模板列表",
+      "api_id": 29632
+    },
+    {
+      "name": "批量取号",
+      "path": "express.createEbillOrders",
+      "method": "post",
+      "description": "批量取号",
+      "api_id": 29636
+    },
+    {
+      "name": "更新面单",
+      "path": "express.updateEbillOrder",
+      "method": "post",
+      "description": "更新面单",
+      "api_id": 29635
+    },
+    {
+      "name": "取消面单",
+      "path": "express.cancelEbillOrder",
+      "method": "post",
+      "description": "取消面单",
+      "api_id": 29637
+    },
+    {
+      "name": "查询面单",
+      "path": "express.queryEbillOrder",
+      "method": "post",
+      "description": "查询面单",
+      "api_id": 29638
+    }
+  ],
+  "created_at": "2025-09-26 14:59:46"
+}

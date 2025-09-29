@@ -1,0 +1,171 @@
+{
+  "api_info": {
+    "apiId": 29632,
+    "apiNavigationId": 242,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 84,
+    "method": "post",
+    "navigationDetailDesc": "查询电子面单模板列表",
+    "navigationDetailName": "查询电子面单模板列表",
+    "path": "express.queryEbillTemplates",
+    "seq": 1
+  },
+  "api_details": {
+    "id": 29632,
+    "path": "/api/openapi/express/queryebilltemplates",
+    "summary": "[开放平台][电子面单]查询模板列表",
+    "method": "post",
+    "specJson": {
+      "summary": "[开放平台][电子面单]查询模板列表",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [],
+              "properties": {
+                "cpCode": {
+                  "type": "string",
+                  "description": "快递公司编码",
+                  "example": ""
+                },
+                "brandCode": {
+                  "type": "string",
+                  "description": "品牌编码，当前只有顺丰快运和顺丰速运查询需要传值",
+                  "example": ""
+                },
+                "type": {
+                  "type": "string",
+                  "description": "类型，默认不填返回标准模板列表， ark-返回小红书商家配置的模板列表",
+                  "example": ""
+                },
+                "templateCustomerType": {
+                  "type": "number",
+                  "description": "自定义类型 0-标准 1-订单号 2-商品名称/规格/数量 3-商品名称/规格/数量 + 买家留言 + 商家备注 4-订单号 + 商品名称/规格/数量 + 买家留言 + 商家  10-商家云打印系统自定义 20-自定义打印项组合"
+                },
+                "billVersion": {
+                  "type": "number",
+                  "description": "电子面单版本号，1-默认值旧版电子面单 2-新版电子面单"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "error_code": {
+                    "type": "number",
+                    "description": "错误码",
+                    "example": 0
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "description": "错误描述",
+                    "example": ""
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "请求是否成功"
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "templateList": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "id",
+                            "cpCode",
+                            "templateType"
+                          ],
+                          "properties": {
+                            "id": {
+                              "type": "number",
+                              "description": "模板id，取号的时候传入此值",
+                              "example": ""
+                            },
+                            "cpCode": {
+                              "type": "string",
+                              "description": "快递公司编码",
+                              "example": ""
+                            },
+                            "brandCode": {
+                              "type": "string",
+                              "description": "品牌，仅部分快递支持",
+                              "example": ""
+                            },
+                            "templateType": {
+                              "type": "string",
+                              "description": "模板尺寸，76*130-一联，100*150-二联，100*180-三联",
+                              "example": "100*150"
+                            },
+                            "templateCustomerType": {
+                              "type": "number",
+                              "description": "自定义类型 0-标准 1-订单号 2-商品名称/规格/数量 3-商品名称/规格/数量 + 买家留言 + 商家备注 4-订单号 + 商品名称/规格/数量 + 买家留言 + 商家备注  10-商家云打印系统自定义",
+                              "example": ""
+                            },
+                            "templateName": {
+                              "type": "string",
+                              "description": "模板名称",
+                              "example": ""
+                            },
+                            "templateDesc": {
+                              "type": "string",
+                              "description": "模板描述",
+                              "example": ""
+                            },
+                            "templatePreviewUrl": {
+                              "type": "string",
+                              "description": "预览URL",
+                              "example": ""
+                            },
+                            "standardTemplateUrl": {
+                              "type": "string",
+                              "description": "标准模板URL",
+                              "example": "https://cloudprint.cainiao.com/template/standard/644703/24"
+                            },
+                            "customerTemplateUrl": {
+                              "type": "string",
+                              "description": "自定义模板URL，templateCustomerType=0时该字段为空，支持的大小是76*30和100*40两种尺寸;isv可根据标记语言规则自己实现自定义区域，新版是小红书自研的标记语言，语法格式是json；旧版使用的菜鸟的标记语言，语法格式是xml",
+                              "example": "https://cloudprint.xiaohongshu.com/template/standard/15/1"
+                            },
+                            "customerPrintItems": {
+                              "type": "object",
+                              "description": "自定义打印项参数列表，注意格式是List<String>，示例：[\"order\",\"buyerMemo\"]",
+                              "example": "[\"order\",\"buyerMemo\"]"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": "模板列表"
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2025-09-09T03:49:48.000Z"
+  },
+  "error_codes": [],
+  "category": "物流API",
+  "fetched_at": "2025-09-26 14:59:47"
+}

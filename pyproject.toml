@@ -1,0 +1,41 @@
+[project]
+authors = [
+  {name = "andersonby", email = "andersonby@163.com"},
+]
+dependencies = ["httpx>=0.28.1"]
+description = "Default template for PDM package"
+license = {text = "MIT"}
+name = "xiaohongshu-ecommerce"
+readme = "README.md"
+requires-python = ">=3.12"
+version = "0.1.0"
+
+[build-system]
+build-backend = "pdm.backend"
+requires = ["pdm-backend"]
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.scripts]
+build-docs = "mkdocs build"
+check = {composite = ["lint", "format-check", "typecheck"]}
+docs = "mkdocs serve"
+fix = {composite = ["lint-fix", "format"]}
+format = "ruff format ."
+format-check = "ruff format --check ."
+lint = "ruff check ."
+lint-fix = "ruff check --fix ."
+typecheck = "pyright"
+
+[dependency-groups]
+dev = [
+  "pyright>=1.1.405",
+  "ruff>=0.6.8",
+  "pytest>=8.4.2",
+]
+docs = [
+  "mkdocs>=1.5.0",
+  "mkdocs-material>=9.0.0",
+  "mkdocstrings[python]>=0.23.0",
+]

@@ -1,0 +1,112 @@
+{
+  "api_info": {
+    "apiId": 22568,
+    "apiNavigationId": 248,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 90,
+    "method": "post",
+    "navigationDetailDesc": "查询月度结算单下载地址",
+    "navigationDetailName": "查询月度结算单下载地址",
+    "path": "bill.downloadStatement",
+    "seq": 1
+  },
+  "api_details": {
+    "id": 22568,
+    "path": "/ark/bill.downloadStatement",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "downloadMonthlyStatement",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "month"
+              ],
+              "type": "object",
+              "properties": {
+                "month": {
+                  "type": "string",
+                  "description": "结算月份，yyyy-MM格式",
+                  "example": "null"
+                }
+              },
+              "$$ref": "#/components/schemas/1233315",
+              "x-schema": {
+                "id": 1233315,
+                "name": "DownloadMonthlyStatementRequest",
+                "desc": "",
+                "createTime": "2022-09-19T11:17:38.000Z",
+                "updateTime": "2022-09-19T11:17:38.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"month\"],\"type\":\"object\",\"properties\":{\"month\":{\"type\":\"string\",\"description\":\"结算月份，yyyy-MM格式\",\"example\":\"null\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "downloadUrl": {
+                    "type": "string",
+                    "description": "下载地址，2小时有效期",
+                    "example": "null"
+                  }
+                },
+                "$$ref": "#/components/schemas/1233316",
+                "x-schema": {
+                  "id": 1233316,
+                  "name": "DownloadMonthlyStatementResponse",
+                  "desc": "",
+                  "createTime": "2022-09-19T11:17:38.000Z",
+                  "updateTime": "2022-09-19T11:17:38.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"downloadUrl\":{\"type\":\"string\",\"description\":\"下载地址，2小时有效期\",\"example\":\"null\"}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "downloadMonthlyStatement"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2022-09-19T11:17:39.000Z"
+  },
+  "error_codes": [],
+  "category": "财务API",
+  "fetched_at": "2025-09-26 14:59:51"
+}

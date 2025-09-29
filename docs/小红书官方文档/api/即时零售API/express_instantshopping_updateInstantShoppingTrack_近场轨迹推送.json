@@ -1,0 +1,196 @@
+{
+  "api_info": {
+    "apiId": 38304,
+    "apiNavigationId": 303,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 107,
+    "method": "post",
+    "navigationDetailDesc": "近场轨迹推送",
+    "navigationDetailName": "近场轨迹推送",
+    "path": "express.instantshopping.updateInstantShoppingTrack",
+    "seq": 0
+  },
+  "api_details": {
+    "id": 38304,
+    "path": "/ark/express/instantshopping/updateinstantshoppingtrack",
+    "summary": "近地轨迹推送",
+    "method": "post",
+    "specJson": {
+      "summary": "近地轨迹推送",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "xhsOrderId",
+                "expressCompanyCode",
+                "expressNo",
+                "traces"
+              ],
+              "properties": {
+                "xhsOrderId": {
+                  "type": "string",
+                  "example": ""
+                },
+                "expressCompanyCode": {
+                  "type": "string",
+                  "example": ""
+                },
+                "expressNo": {
+                  "type": "string",
+                  "example": ""
+                },
+                "traces": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "xhsOrderId": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "expressCompanyCode": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "expressNo": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "leafNodeType": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "eventAt": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "eventDesc": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "exceptionCode": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "exceptionReason": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "courierName": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "courierPhone": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "courierPhoneType": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "expectArrivalTime": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "deliveryDistance": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "currentLocation": {
+                        "required": [
+                          "longitude",
+                          "latitude",
+                          "coordinateSystem"
+                        ],
+                        "properties": {
+                          "longitude": {
+                            "type": "string",
+                            "example": "81552887"
+                          },
+                          "latitude": {
+                            "type": "string",
+                            "example": "36937819"
+                          },
+                          "coordinateSystem": {
+                            "type": "string",
+                            "example": "GCJ-02"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "ext": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "xhsOrderId": "P732676080389468281",
+                      "expressCompanyCode": "meituan",
+                      "expressNo": "1717124279363001636",
+                      "leafNodeType": "SIGNED_SIGNED",
+                      "eventAt": "2024-05-31 15:48:58",
+                      "eventDesc": "已签收",
+                      "exceptionCode": "1717124279363001636",
+                      "exceptionReason": "1717124279363001636",
+                      "courierName": "勿动海葵商家加盟测试专用配送员2",
+                      "courierPhone": "13788908755",
+                      "courierPhoneType": "0",
+                      "expectArrivalTime": "2024-05-31 11:47:59",
+                      "deliveryDistance": "1717124279363001636cm",
+                      "currentLocation": {
+                        "longitude": "81552887",
+                        "latitude": "36937819",
+                        "coordinateSystem": "GCJ-02"
+                      },
+                      "ext": "扩展字段"
+                    }
+                  ]
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "description": "是否成功",
+                    "example": true
+                  },
+                  "error_code": {
+                    "type": "integer",
+                    "description": "错误码",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "description": "信息"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-01-16T08:37:36.000Z"
+  },
+  "error_codes": [],
+  "category": "即时零售API",
+  "fetched_at": "2025-09-26 14:59:54"
+}

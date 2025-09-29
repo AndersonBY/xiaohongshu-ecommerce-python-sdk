@@ -1,0 +1,108 @@
+{
+  "api_info": {
+    "apiId": 34461,
+    "apiNavigationId": 279,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 99,
+    "method": "post",
+    "navigationDetailDesc": "创建仓库",
+    "navigationDetailName": "创建仓库",
+    "path": "warehouse.create",
+    "seq": 5
+  },
+  "api_details": {
+    "id": 34461,
+    "path": "/api/openapi/warehouse/create",
+    "summary": "【开放平台-仓库】创建仓库",
+    "method": "post",
+    "specJson": {
+      "summary": "【开放平台-仓库】创建仓库",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "code",
+                "name",
+                "zoneCode",
+                "address"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "example": "test_01",
+                  "description": "仓库编码，不可重复，创建后不可修改，只能是数字、字母和下划线，长度限制24"
+                },
+                "name": {
+                  "type": "string",
+                  "example": "测试仓库01",
+                  "description": "仓库名称，长度限制50"
+                },
+                "zoneCode": {
+                  "type": "string",
+                  "example": "310105004000",
+                  "description": "城镇/街道对应的行政地区编码，需要选到最末级地区编码"
+                },
+                "address": {
+                  "type": "string",
+                  "example": "详细地址***",
+                  "description": "详细地址"
+                },
+                "contactName": {
+                  "type": "string",
+                  "example": "张三",
+                  "description": "联系人"
+                },
+                "contactTel": {
+                  "type": "string",
+                  "example": "1234567",
+                  "description": "联系人电话"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "success"
+                ],
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "是否成功"
+                  },
+                  "error_code": {
+                    "type": "number",
+                    "example": 0,
+                    "description": "错误编码"
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "example": "",
+                    "description": "错误信息"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-04-28T02:57:18.000Z"
+  },
+  "error_codes": [],
+  "category": "库存API",
+  "fetched_at": "2025-09-26 14:59:40"
+}

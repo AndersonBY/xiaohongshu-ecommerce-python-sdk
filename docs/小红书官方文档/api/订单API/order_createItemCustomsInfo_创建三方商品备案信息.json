@@ -1,0 +1,101 @@
+{
+  "api_info": {
+    "apiId": 34872,
+    "apiNavigationId": 287,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 106,
+    "method": "post",
+    "navigationDetailDesc": "创建三方商品备案信息",
+    "navigationDetailName": "创建三方商品备案信息",
+    "path": "order.createItemCustomsInfo",
+    "seq": 23
+  },
+  "api_details": {
+    "id": 34872,
+    "path": "/api/openapi/order/createitemcustomsinfo",
+    "summary": "创建三方商品备案信息",
+    "method": "post",
+    "specJson": {
+      "summary": "创建三方商品备案信息",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "barcode": {
+                  "type": "string",
+                  "description": "商品条形码",
+                  "example": "RTI***350"
+                },
+                "hs_code": {
+                  "type": "string",
+                  "description": "HS编码",
+                  "example": "122323"
+                },
+                "port_code": {
+                  "type": "string",
+                  "description": "口岸编码，口岸枚举：郑州：zz_custom ,郑州：zz_custom ,深圳：sz_custom ,广州：gz_custom ,上海：sh_custom ,厦门：xm_custom ,宁波：nb_custom ,杭州：hz_custom ,重庆：cq_custom ,北京：bj_custom ,青岛：qd_custom ,天津：tj_custom ,合肥：hf_custom ,金华：jh_custom ,东莞：dg_custom ,义乌：yw_custom ,平潭：pt_custom ,唐山：ts_custom ,金义：jy_custom ,威海：wh_custom ,南京：nj_custom ,福州：fz_custom ,赣州：gan_zhou_custom ,南昌：nc_custom ,兰州：lz_custom ,温州：wz_custom ,成都：cd_custom ,西安：xa_custom ,武汉：wuhan_custom ,长沙黄花保税：changsha_hh_custom ,临沂：linyi_custom ,珠海：zh_custom ,南宁口岸：NANNING ,邯郸口岸：HANDAN ,大连口岸：DALIAN",
+                  "example": "ZHENGZHOU"
+                },
+                "quantity1": {
+                  "type": "number",
+                  "description": "法一数量",
+                  "example": "1"
+                },
+                "quantity2": {
+                  "type": "number",
+                  "description": "法二数量",
+                  "example": "2"
+                }
+              },
+              "required": [
+                "barcode",
+                "hs_code",
+                "quantity1",
+                "port_code",
+                "quantity2"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "success"
+                ],
+                "properties": {
+                  "error_code": {
+                    "type": "number",
+                    "example": 0
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "example": "成功"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-06-24T11:22:26.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:20"
+}

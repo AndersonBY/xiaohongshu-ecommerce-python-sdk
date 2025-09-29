@@ -1,0 +1,188 @@
+{
+  "api_info": {
+    "apiId": 17603,
+    "apiNavigationId": 206,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 48,
+    "method": "post",
+    "navigationDetailDesc": "售后审核（新）",
+    "navigationDetailName": "售后审核（新）",
+    "path": "afterSale.auditReturns",
+    "seq": 2
+  },
+  "api_details": {
+    "id": 17603,
+    "path": "/ark/afterSale.auditReturnsNew",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "auditReturnsNew",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "action",
+                "returnsId"
+              ],
+              "type": "object",
+              "properties": {
+                "returnsId": {
+                  "type": "string",
+                  "description": "售后订单ID",
+                  "example": "1"
+                },
+                "action": {
+                  "type": "integer",
+                  "description": "操作类型，1：同意直接退款 (退货退款、换货不适用)；2：同意寄回(仅退款不适用)；3：拒绝; ",
+                  "format": "int32",
+                  "example": 1
+                },
+                "reason": {
+                  "type": "integer",
+                  "description": "拒绝原因, 需要通过afterSale.rejectReasons获取原因传参，非法参数将拦截请求",
+                  "format": "int32",
+                  "example": 1
+                },
+                "description": {
+                  "type": "string",
+                  "description": "拒绝原因描述, 当拒绝原因为“其他”时必填",
+                  "example": "1"
+                },
+                "message": {
+                  "type": "string",
+                  "description": "给用户留言, 当操作类型为“同意寄回”时字段有效",
+                  "example": "1"
+                },
+                "receiverInfo": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "string",
+                      "description": "寄回地址邮政编码，废弃字段",
+                      "example": "1"
+                    },
+                    "country": {
+                      "type": "string",
+                      "description": "寄回地址国家名称，废弃字段",
+                      "example": "1"
+                    },
+                    "city": {
+                      "type": "string",
+                      "description": "寄回地址城市名称，废弃字段",
+                      "example": "1"
+                    },
+                    "province": {
+                      "type": "string",
+                      "description": "寄回地址省份名称，废弃字段",
+                      "example": "1"
+                    },
+                    "district": {
+                      "type": "string",
+                      "description": "寄回地址行政区，废弃字段",
+                      "example": "1"
+                    },
+                    "street": {
+                      "type": "string",
+                      "description": "寄回地址街道名称，废弃字段",
+                      "example": "1"
+                    },
+                    "receiverName": {
+                      "type": "string",
+                      "description": "寄回收件人姓名，废弃字段",
+                      "example": "1"
+                    },
+                    "receiverPhone": {
+                      "type": "string",
+                      "description": "寄回收件人手机号，废弃字段",
+                      "example": "1"
+                    },
+                    "sellerAddressRecordId": {
+                      "type": "integer",
+                      "description": "商家地址库Id，同意寄回时必填，通过common.getAddressRecord获取",
+                      "format": "int64",
+                      "example": 123
+                    },
+                    "sellerAddressRecordVersion": {
+                      "type": "integer",
+                      "description": "商家地址库版本，废弃字段",
+                      "format": "int32",
+                      "example": 1
+                    }
+                  },
+                  "description": "寄回地址信息, 同意寄回时必填",
+                  "example": 1,
+                  "$$ref": "#/components/schemas/948100",
+                  "x-schema": {
+                    "id": 948100,
+                    "name": "ReceiverInfoNew",
+                    "desc": "寄回地址信息, 同意寄回时字段有效 ",
+                    "createTime": "2022-05-16T06:37:03.000Z",
+                    "updateTime": "2023-09-06T03:07:07.000Z",
+                    "type": 2,
+                    "gatewayId": 103,
+                    "createUserId": "",
+                    "createUserName": "",
+                    "spec": "{\"type\":\"object\",\"properties\":{\"code\":{\"type\":\"string\",\"description\":\"寄回地址邮政编码，废弃字段\",\"example\":\"1\"},\"country\":{\"type\":\"string\",\"description\":\"寄回地址国家名称，废弃字段\",\"example\":\"1\"},\"city\":{\"type\":\"string\",\"description\":\"寄回地址城市名称，废弃字段\",\"example\":\"1\"},\"province\":{\"type\":\"string\",\"description\":\"寄回地址省份名称，废弃字段\",\"example\":\"1\"},\"district\":{\"type\":\"string\",\"description\":\"寄回地址行政区，废弃字段\",\"example\":\"1\"},\"street\":{\"type\":\"string\",\"description\":\"寄回地址街道名称，废弃字段\",\"example\":\"1\"},\"receiverName\":{\"type\":\"string\",\"description\":\"寄回收件人姓名，废弃字段\",\"example\":\"1\"},\"receiverPhone\":{\"type\":\"string\",\"description\":\"寄回收件人手机号，废弃字段\",\"example\":\"1\"},\"sellerAddressRecordId\":{\"type\":\"integer\",\"description\":\"商家地址库Id，同意寄回时必填，通过common.getAddressRecord获取\",\"format\":\"int64\",\"example\":123},\"sellerAddressRecordVersion\":{\"type\":\"integer\",\"description\":\"商家地址库版本，废弃字段\",\"format\":\"int32\",\"example\":1}},\"description\":\"寄回地址信息, 同意寄回时必填\",\"example\":1}",
+                    "isBase": 0,
+                    "gatewayGroupId": 0,
+                    "gatewayGroupKey": "",
+                    "gatewayVersionId": 1661,
+                    "gatewayVersionName": "feature/logan",
+                    "isMaster": false,
+                    "groupId": 0,
+                    "groupKey": ""
+                  }
+                }
+              },
+              "$$ref": "#/components/schemas/807420",
+              "x-schema": {
+                "id": 807420,
+                "name": "AuditReturnsRequestNew",
+                "desc": "",
+                "createTime": "2022-03-22T03:24:59.000Z",
+                "updateTime": "2023-09-06T03:07:07.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"action\",\"returnsId\"],\"type\":\"object\",\"properties\":{\"returnsId\":{\"type\":\"string\",\"description\":\"售后订单ID\",\"example\":\"1\"},\"action\":{\"type\":\"integer\",\"description\":\"操作类型，1：同意直接退款 (退货退款、换货不适用)；2：同意寄回(仅退款不适用)；3：拒绝; \",\"format\":\"int32\",\"example\":1},\"reason\":{\"type\":\"integer\",\"description\":\"拒绝原因, 需要通过afterSale.rejectReasons获取原因传参，非法参数将拦截请求\",\"format\":\"int32\",\"example\":1},\"description\":{\"type\":\"string\",\"description\":\"拒绝原因描述, 当拒绝原因为“其他”时必填\",\"example\":\"1\"},\"message\":{\"type\":\"string\",\"description\":\"给用户留言, 当操作类型为“同意寄回”时字段有效\",\"example\":\"1\"},\"receiverInfo\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=ReceiverInfoNew&schemaId=948100\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "auditReturnsNew"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2022-03-22T03:24:59.000Z"
+  },
+  "error_codes": [],
+  "category": "售后API",
+  "fetched_at": "2025-09-26 14:59:22"
+}

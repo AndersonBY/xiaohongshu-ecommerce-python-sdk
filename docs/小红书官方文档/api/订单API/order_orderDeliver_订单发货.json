@@ -1,0 +1,186 @@
+{
+  "api_info": {
+    "apiId": 27235,
+    "apiNavigationId": 187,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 29,
+    "method": "post",
+    "navigationDetailDesc": " 订单发货",
+    "navigationDetailName": " 订单发货",
+    "path": "order.orderDeliver",
+    "seq": 4
+  },
+  "api_details": {
+    "id": 27235,
+    "path": "/ark/order.orderDeliver",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "订单发货",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "expressCompanyCode",
+                "expressNo",
+                "orderId"
+              ],
+              "type": "object",
+              "properties": {
+                "orderId": {
+                  "type": "string",
+                  "description": "订单号",
+                  "example": "P032***1421"
+                },
+                "expressNo": {
+                  "type": "string",
+                  "description": "快递单号（如使用的是无物流发货，expressNo为发货内容）",
+                  "example": "1074****2048"
+                },
+                "expressCompanyCode": {
+                  "type": "string",
+                  "description": "快递公司编码（如使用无物流发货，expressCompanyCode为selfdelivery）",
+                  "example": "zto"
+                },
+                "expressCompanyName": {
+                  "type": "string",
+                  "description": "快递公司名称(如传入，则以传入为准，如未传入，则根据expressCompanyCode进行匹配)",
+                  "example": "中通"
+                },
+                "deliveringTime": {
+                  "type": "integer",
+                  "description": "发货时间 不传默认当前时间（ms）",
+                  "format": "int64",
+                  "example": 1612341639394
+                },
+                "unpack": {
+                  "type": "boolean",
+                  "description": "是否拆包发货  true 拆包发货  false正常发货",
+                  "example": true
+                },
+                "skuIdList": {
+                  "type": "array",
+                  "description": "拆包发货时 必填",
+                  "items": {
+                    "type": "string",
+                    "description": "拆包发货时 必填"
+                  }
+                },
+                "returnAddressId": {
+                  "type": "string",
+                  "description": "退货地址id 非必填",
+                  "example": "16123416393941"
+                },
+                "skuIdentifyCodeInfo": {
+                  "type": "object",
+                  "description": "国补订单序列号等信息 非必填，仅部分类目国补订单需要",
+                  "properties": {
+                    "sNCode": {
+                      "type": "string",
+                      "description": "序列号",
+                      "example": "123"
+                    },
+                    "barCode": {
+                      "type": "string",
+                      "description": "商品条码",
+                      "example": "234"
+                    },
+                    "iMEI1Code": {
+                      "type": "string",
+                      "description": "IMEI1",
+                      "example": "345"
+                    },
+                    "iMEI2Code": {
+                      "type": "string",
+                      "description": "IMEI2",
+                      "example": "456"
+                    }
+                  }
+                }
+              },
+              "$$ref": "#/components/schemas/1585781",
+              "x-schema": {
+                "id": 1585781,
+                "name": "OrderDeliverRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2025-05-28T08:28:09.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"expressCompanyCode\",\"expressNo\",\"orderId\"],\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号\",\"example\":\"P032***1421\"},\"expressNo\":{\"type\":\"string\",\"description\":\"快递单号（如使用的是无物流发货，expressNo为发货内容）\",\"example\":\"1074****2048\"},\"expressCompanyCode\":{\"type\":\"string\",\"description\":\"快递公司编码（如使用无物流发货，expressCompanyCode为selfdelivery）\",\"example\":\"zto\"},\"expressCompanyName\":{\"type\":\"string\",\"description\":\"快递公司名称(如传入，则以传入为准，如未传入，则根据expressCompanyCode进行匹配)\",\"example\":\"中通\"},\"deliveringTime\":{\"type\":\"integer\",\"description\":\"发货时间 不传默认当前时间（ms）\",\"format\":\"int64\",\"example\":1612341639394},\"unpack\":{\"type\":\"boolean\",\"description\":\"是否拆包发货  true 拆包发货  false正常发货\",\"example\":true},\"skuIdList\":{\"type\":\"array\",\"description\":\"拆包发货时 必填\",\"items\":{\"type\":\"string\",\"description\":\"拆包发货时 必填\"}},\"returnAddressId\":{\"type\":\"string\",\"description\":\"退货地址id 非必填\",\"example\":\"16123416393941\"},\"skuIdentifyCodeInfo\":{\"type\":\"object\",\"description\":\"国补订单序列号等信息 非必填，仅部分类目国补订单需要\",\"properties\":{\"sNCode\":{\"type\":\"string\",\"description\":\"序列号\",\"example\":\"123\"},\"barCode\":{\"type\":\"string\",\"description\":\"商品条码\",\"example\":\"234\"},\"iMEI1Code\":{\"type\":\"string\",\"description\":\"IMEI1\",\"example\":\"345\"},\"iMEI2Code\":{\"type\":\"string\",\"description\":\"IMEI2\",\"example\":\"456\"}}}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error_code": {
+                    "type": "integer",
+                    "description": "错误码",
+                    "format": "int32",
+                    "example": 1
+                  },
+                  "data": {
+                    "type": "object",
+                    "description": "返回信息"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "是否成功",
+                    "example": true
+                  }
+                },
+                "$$ref": "#/components/schemas/217570",
+                "x-schema": {
+                  "id": 217570,
+                  "name": "SuccessResponse",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-08-03T08:22:26.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"error_code\":{\"type\":\"integer\",\"description\":\"错误码\",\"format\":\"int32\",\"example\":1},\"data\":{\"type\":\"object\",\"description\":\"返回信息\"},\"success\":{\"type\":\"boolean\",\"description\":\"是否成功\",\"example\":true}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-05-28T08:28:09.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:09"
+}

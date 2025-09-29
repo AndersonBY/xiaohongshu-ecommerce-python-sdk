@@ -1,0 +1,256 @@
+{
+  "api_info": {
+    "apiId": 9618,
+    "apiNavigationId": 64,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 11,
+    "method": "post",
+    "navigationDetailDesc": "获取地址信息",
+    "navigationDetailName": "获取地址信息",
+    "path": "common.getNestZone",
+    "seq": 10
+  },
+  "api_details": {
+    "id": 9618,
+    "path": "/ark/common.getNestZone",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getNestZone",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "provinceZoneList": {
+                    "type": "array",
+                    "description": "省级行政区划列表",
+                    "example": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "行政区划在系统中的id",
+                          "example": "1"
+                        },
+                        "code": {
+                          "type": "string",
+                          "description": "行政区划代码",
+                          "example": "1"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "行政区划名称",
+                          "example": "1"
+                        },
+                        "upper": {
+                          "type": "string",
+                          "description": "上一级的行政区划代码，省级行政区划的upper为1",
+                          "example": "1"
+                        },
+                        "zipcode": {
+                          "type": "string",
+                          "description": "行政区划的邮政编码",
+                          "example": "1"
+                        },
+                        "isDeactive": {
+                          "type": "boolean",
+                          "description": "是否已停用",
+                          "example": false
+                        },
+                        "zones": {
+                          "type": "array",
+                          "description": "市级行政区划列表",
+                          "example": 1,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string",
+                                "description": "行政区划在系统中的id",
+                                "example": "1"
+                              },
+                              "code": {
+                                "type": "string",
+                                "description": "行政区划代码",
+                                "example": "1"
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "行政区划名称",
+                                "example": "1"
+                              },
+                              "upper": {
+                                "type": "string",
+                                "description": "上一级的行政区划代码",
+                                "example": "1"
+                              },
+                              "zipcode": {
+                                "type": "string",
+                                "description": "行政区划的邮政编码",
+                                "example": "1"
+                              },
+                              "isDeactive": {
+                                "type": "boolean",
+                                "description": "是否已停用",
+                                "example": false
+                              },
+                              "zones": {
+                                "type": "array",
+                                "description": "县级行政区划列表",
+                                "example": 1,
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "id": {
+                                      "type": "string",
+                                      "description": "行政区划在系统中的id",
+                                      "example": "1"
+                                    },
+                                    "code": {
+                                      "type": "string",
+                                      "description": "行政区划代码",
+                                      "example": "1"
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "description": "行政区划名称",
+                                      "example": "1"
+                                    },
+                                    "upper": {
+                                      "type": "string",
+                                      "description": "上一级的行政区划代码",
+                                      "example": "1"
+                                    },
+                                    "zipcode": {
+                                      "type": "string",
+                                      "description": "行政区划的邮政编码",
+                                      "example": "1"
+                                    },
+                                    "isDeactive": {
+                                      "type": "boolean",
+                                      "description": "是否已停用",
+                                      "example": false
+                                    }
+                                  },
+                                  "description": "县级行政区划列表",
+                                  "example": 1,
+                                  "$$ref": "#/components/schemas/378477",
+                                  "x-schema": {
+                                    "id": 378477,
+                                    "name": "Zone",
+                                    "desc": "县级行政区划列表",
+                                    "createTime": "2021-10-18T09:04:23.000Z",
+                                    "updateTime": "2021-10-18T09:04:23.000Z",
+                                    "type": 2,
+                                    "gatewayId": 103,
+                                    "createUserId": "",
+                                    "createUserName": "",
+                                    "spec": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"行政区划在系统中的id\",\"example\":\"1\"},\"code\":{\"type\":\"string\",\"description\":\"行政区划代码\",\"example\":\"1\"},\"name\":{\"type\":\"string\",\"description\":\"行政区划名称\",\"example\":\"1\"},\"upper\":{\"type\":\"string\",\"description\":\"上一级的行政区划代码\",\"example\":\"1\"},\"zipcode\":{\"type\":\"string\",\"description\":\"行政区划的邮政编码\",\"example\":\"1\"},\"isDeactive\":{\"type\":\"boolean\",\"description\":\"是否已停用\",\"example\":false}},\"description\":\"县级行政区划列表\",\"example\":1}",
+                                    "isBase": 0,
+                                    "gatewayGroupId": 0,
+                                    "gatewayGroupKey": "",
+                                    "gatewayVersionId": 1661,
+                                    "gatewayVersionName": "feature/logan",
+                                    "isMaster": false,
+                                    "groupId": 0,
+                                    "groupKey": ""
+                                  }
+                                }
+                              }
+                            },
+                            "description": "市级行政区划列表",
+                            "example": 1,
+                            "$$ref": "#/components/schemas/378474",
+                            "x-schema": {
+                              "id": 378474,
+                              "name": "CityZone",
+                              "desc": "市级行政区划列表",
+                              "createTime": "2021-10-18T09:04:23.000Z",
+                              "updateTime": "2021-10-21T08:14:55.000Z",
+                              "type": 2,
+                              "gatewayId": 103,
+                              "createUserId": "",
+                              "createUserName": "",
+                              "spec": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"行政区划在系统中的id\",\"example\":\"1\"},\"code\":{\"type\":\"string\",\"description\":\"行政区划代码\",\"example\":\"1\"},\"name\":{\"type\":\"string\",\"description\":\"行政区划名称\",\"example\":\"1\"},\"upper\":{\"type\":\"string\",\"description\":\"上一级的行政区划代码\",\"example\":\"1\"},\"zipcode\":{\"type\":\"string\",\"description\":\"行政区划的邮政编码\",\"example\":\"1\"},\"isDeactive\":{\"type\":\"boolean\",\"description\":\"是否已停用\",\"example\":false},\"zones\":{\"type\":\"array\",\"description\":\"县级行政区划列表\",\"example\":1,\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=Zone&schemaId=378477\"}}},\"description\":\"市级行政区划列表\",\"example\":1}",
+                              "isBase": 0,
+                              "gatewayGroupId": 0,
+                              "gatewayGroupKey": "",
+                              "gatewayVersionId": 1661,
+                              "gatewayVersionName": "feature/logan",
+                              "isMaster": false,
+                              "groupId": 0,
+                              "groupKey": ""
+                            }
+                          }
+                        }
+                      },
+                      "description": "省级行政区划列表",
+                      "example": 1,
+                      "$$ref": "#/components/schemas/378476",
+                      "x-schema": {
+                        "id": 378476,
+                        "name": "ProvinceZone",
+                        "desc": "省级行政区划列表",
+                        "createTime": "2021-10-18T09:04:23.000Z",
+                        "updateTime": "2021-10-21T08:14:55.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"行政区划在系统中的id\",\"example\":\"1\"},\"code\":{\"type\":\"string\",\"description\":\"行政区划代码\",\"example\":\"1\"},\"name\":{\"type\":\"string\",\"description\":\"行政区划名称\",\"example\":\"1\"},\"upper\":{\"type\":\"string\",\"description\":\"上一级的行政区划代码，省级行政区划的upper为1\",\"example\":\"1\"},\"zipcode\":{\"type\":\"string\",\"description\":\"行政区划的邮政编码\",\"example\":\"1\"},\"isDeactive\":{\"type\":\"boolean\",\"description\":\"是否已停用\",\"example\":false},\"zones\":{\"type\":\"array\",\"description\":\"市级行政区划列表\",\"example\":1,\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=CityZone&schemaId=378474\"}}},\"description\":\"省级行政区划列表\",\"example\":1}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/378475",
+                "x-schema": {
+                  "id": 378475,
+                  "name": "GetNestZoneResponse",
+                  "desc": "",
+                  "createTime": "2021-10-18T09:04:23.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"provinceZoneList\":{\"type\":\"array\",\"description\":\"省级行政区划列表\",\"example\":1,\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=ProvinceZone&schemaId=378476\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getNestZone"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-10-18T09:04:26.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:59:00"
+}

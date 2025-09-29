@@ -1,0 +1,228 @@
+{
+  "api_info": {
+    "apiId": 29631,
+    "apiNavigationId": 241,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 83,
+    "method": "post",
+    "navigationDetailDesc": "查询电子面单订购关系",
+    "navigationDetailName": "查询电子面单订购关系",
+    "path": "express.queryEbillSubscribes",
+    "seq": 0
+  },
+  "api_details": {
+    "id": 29631,
+    "path": "/api/openapi/express/queryebillsubscribes",
+    "summary": "[开放平台][电子面单]查询订购关系和使用情况",
+    "method": "post",
+    "specJson": {
+      "summary": "[开放平台][电子面单]查询订购关系和使用情况",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "cpCode": {
+                  "type": "string",
+                  "description": "快递公司编码",
+                  "example": ""
+                },
+                "needUsage": {
+                  "type": "boolean",
+                  "description": "是否需要返回使用情况，注意会影响接口性能，有些商家订购超过了100个以上的网点会该字段如果设置为true会导致接口响应时间超过3s",
+                  "example": ""
+                },
+                "brandCode": {
+                  "type": "string",
+                  "description": "品牌编码",
+                  "example": ""
+                },
+                "billVersion": {
+                  "type": "number",
+                  "description": "电子面单版本号，1-默认值旧版电子面单 2-新版电子面单"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "error_code": {
+                    "type": "number",
+                    "description": "错误码",
+                    "example": 0
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "description": "错误描述",
+                    "example": ""
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "请求是否成功"
+                  },
+                  "data": {
+                    "properties": {
+                      "subscribeList": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "cpCode",
+                            "cpType"
+                          ],
+                          "properties": {
+                            "cpCode": {
+                              "type": "string",
+                              "description": "快递公司编码",
+                              "example": ""
+                            },
+                            "cpName": {
+                              "type": "string",
+                              "description": "快递公司名称",
+                              "example": ""
+                            },
+                            "cpType": {
+                              "type": "number",
+                              "description": "类型，1-直营 2-加盟",
+                              "example": ""
+                            },
+                            "branchCode": {
+                              "type": "string",
+                              "description": "网点编码",
+                              "example": ""
+                            },
+                            "branchName": {
+                              "type": "string",
+                              "description": "网点名称",
+                              "example": ""
+                            },
+                            "brandCode": {
+                              "type": "string",
+                              "description": "品牌code",
+                              "example": ""
+                            },
+                            "customerCode": {
+                              "type": "string",
+                              "description": "月结卡号，仅邮政、EMS、京东、顺丰、德邦等直营快递支持",
+                              "example": ""
+                            },
+                            "senderAddressList": {
+                              "type": "array",
+                              "items": {
+                                "properties": {
+                                  "address": {
+                                    "properties": {
+                                      "city": {
+                                        "type": "string",
+                                        "description": "城市",
+                                        "example": ""
+                                      },
+                                      "detail": {
+                                        "type": "string",
+                                        "description": "详细地址",
+                                        "example": ""
+                                      },
+                                      "district": {
+                                        "type": "string",
+                                        "description": "区县",
+                                        "example": ""
+                                      },
+                                      "province": {
+                                        "type": "string",
+                                        "description": "省份",
+                                        "example": ""
+                                      },
+                                      "town": {
+                                        "type": "string",
+                                        "description": "乡镇街道",
+                                        "example": ""
+                                      }
+                                    },
+                                    "type": "object"
+                                  },
+                                  "mobile": {
+                                    "type": "string",
+                                    "description": "手机号码，明文",
+                                    "example": ""
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "description": "姓名，明文",
+                                    "example": ""
+                                  },
+                                  "phone": {
+                                    "type": "string",
+                                    "description": "电话号码",
+                                    "example": ""
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "description": "发货地址"
+                            },
+                            "usage": {
+                              "properties": {
+                                "quantity": {
+                                  "type": "number",
+                                  "description": "可用余额，直营没有这个数据默认全部返回0",
+                                  "example": ""
+                                },
+                                "allocatedQuantity": {
+                                  "type": "number",
+                                  "description": "累计已经分配的数量",
+                                  "example": ""
+                                },
+                                "cancelQuantity": {
+                                  "type": "number",
+                                  "description": "取消的面单数量 ",
+                                  "example": ""
+                                },
+                                "recycledQuantity": {
+                                  "type": "number",
+                                  "description": "回收的面单数量，直营没有这个数据默认全部返回0",
+                                  "example": ""
+                                }
+                              },
+                              "type": "object",
+                              "description": "needUsage=true才会返回"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": "订阅列表"
+                      },
+                      "accountId": {
+                        "type": "number",
+                        "description": "长整型，电子面单账号ID"
+                      }
+                    },
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-10-28T11:20:34.000Z"
+  },
+  "error_codes": [],
+  "category": "物流API",
+  "fetched_at": "2025-09-26 14:59:47"
+}

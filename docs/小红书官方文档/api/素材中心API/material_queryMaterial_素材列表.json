@@ -1,0 +1,244 @@
+{
+  "api_info": {
+    "apiId": 14418,
+    "apiNavigationId": 237,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 79,
+    "method": "post",
+    "navigationDetailDesc": "素材列表",
+    "navigationDetailName": "素材列表",
+    "path": "material.queryMaterial",
+    "seq": 0
+  },
+  "api_details": {
+    "id": 14418,
+    "path": "/ark/material.queryMaterial",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "queryMaterial",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "materialId": {
+                  "type": "string",
+                  "description": "素材id",
+                  "example": "null"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "素材名",
+                  "example": "测试图片"
+                },
+                "type": {
+                  "type": "string",
+                  "description": "素材类型",
+                  "example": "测试图片",
+                  "enum": [
+                    "IMAGE",
+                    "VIDEO"
+                  ]
+                },
+                "status": {
+                  "type": "integer",
+                  "description": "状态,1:上传成功，2：上传中，3：上传失败",
+                  "format": "int32",
+                  "example": 1
+                },
+                "createTimeFrom": {
+                  "type": "integer",
+                  "description": "创建开始时间 ms",
+                  "format": "int64",
+                  "example": 1639707435512
+                },
+                "createTimeTo": {
+                  "type": "integer",
+                  "description": "创建结束时间 ms",
+                  "format": "int64",
+                  "example": 1639707435512
+                },
+                "ascByCreateTime": {
+                  "type": "boolean",
+                  "description": "创建时间升序",
+                  "example": true
+                },
+                "pageNo": {
+                  "type": "integer",
+                  "description": "分页查询，页码",
+                  "format": "int32",
+                  "example": 1
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "description": "分页查询，页面大小",
+                  "format": "int32",
+                  "example": 20
+                }
+              },
+              "$$ref": "#/components/schemas/547356",
+              "x-schema": {
+                "id": 547356,
+                "name": "QueryMaterialInfoRequest",
+                "desc": "",
+                "createTime": "2021-12-16T04:31:20.000Z",
+                "updateTime": "2021-12-20T03:46:45.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"type\":\"object\",\"properties\":{\"materialId\":{\"type\":\"string\",\"description\":\"素材id\",\"example\":\"null\"},\"name\":{\"type\":\"string\",\"description\":\"素材名\",\"example\":\"测试图片\"},\"type\":{\"type\":\"string\",\"description\":\"素材类型\",\"example\":\"测试图片\",\"enum\":[\"IMAGE\",\"VIDEO\"]},\"status\":{\"type\":\"integer\",\"description\":\"状态,1:上传成功，2：上传中，3：上传失败\",\"format\":\"int32\",\"example\":1},\"createTimeFrom\":{\"type\":\"integer\",\"description\":\"创建开始时间 ms\",\"format\":\"int64\",\"example\":1639707435512},\"createTimeTo\":{\"type\":\"integer\",\"description\":\"创建结束时间 ms\",\"format\":\"int64\",\"example\":1639707435512},\"ascByCreateTime\":{\"type\":\"boolean\",\"description\":\"创建时间升序\",\"example\":true},\"pageNo\":{\"type\":\"integer\",\"description\":\"分页查询，页码\",\"format\":\"int32\",\"example\":1},\"pageSize\":{\"type\":\"integer\",\"description\":\"分页查询，页面大小\",\"format\":\"int32\",\"example\":20}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "materialDetailList": {
+                    "type": "array",
+                    "description": "素材列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "materialId": {
+                          "type": "string",
+                          "description": "素材id",
+                          "example": "null"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "素材名",
+                          "example": "测试图片"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "素材类型",
+                          "example": "VIDEO",
+                          "enum": [
+                            "IMAGE",
+                            "VIDEO"
+                          ]
+                        },
+                        "url": {
+                          "type": "string",
+                          "description": "素材小红书内链url",
+                          "example": "null"
+                        },
+                        "width": {
+                          "type": "integer",
+                          "description": "图片宽度",
+                          "format": "int32",
+                          "example": 100
+                        },
+                        "height": {
+                          "type": "integer",
+                          "description": "图片高度",
+                          "format": "int32",
+                          "example": 100
+                        },
+                        "duration": {
+                          "type": "number",
+                          "description": "视频时长,double",
+                          "format": "double",
+                          "example": 60
+                        },
+                        "status": {
+                          "type": "integer",
+                          "description": "状态,1:上传成功，2：上传中，3：上传失败",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "createTime": {
+                          "type": "integer",
+                          "description": "创建时间 ms",
+                          "format": "int64",
+                          "example": 1639707435512
+                        },
+                        "updateTime": {
+                          "type": "integer",
+                          "description": "更新时间 ms",
+                          "format": "int64",
+                          "example": 1639707435512
+                        }
+                      },
+                      "$$ref": "#/components/schemas/547355",
+                      "x-schema": {
+                        "id": 547355,
+                        "name": "MaterialDetail",
+                        "desc": "",
+                        "createTime": "2021-12-16T04:31:20.000Z",
+                        "updateTime": "2022-03-09T08:39:24.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"materialId\":{\"type\":\"string\",\"description\":\"素材id\",\"example\":\"null\"},\"name\":{\"type\":\"string\",\"description\":\"素材名\",\"example\":\"测试图片\"},\"type\":{\"type\":\"string\",\"description\":\"素材类型\",\"example\":\"VIDEO\",\"enum\":[\"IMAGE\",\"VIDEO\"]},\"url\":{\"type\":\"string\",\"description\":\"素材小红书内链url\",\"example\":\"null\"},\"width\":{\"type\":\"integer\",\"description\":\"图片宽度\",\"format\":\"int32\",\"example\":100},\"height\":{\"type\":\"integer\",\"description\":\"图片高度\",\"format\":\"int32\",\"example\":100},\"duration\":{\"type\":\"number\",\"description\":\"视频时长,double\",\"format\":\"double\",\"example\":60},\"status\":{\"type\":\"integer\",\"description\":\"状态,1:上传成功，2：上传中，3：上传失败\",\"format\":\"int32\",\"example\":1},\"createTime\":{\"type\":\"integer\",\"description\":\"创建时间 ms\",\"format\":\"int64\",\"example\":1639707435512},\"updateTime\":{\"type\":\"integer\",\"description\":\"更新时间 ms\",\"format\":\"int64\",\"example\":1639707435512}}}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/547357",
+                "x-schema": {
+                  "id": 547357,
+                  "name": "QueryMaterialInfoResponse",
+                  "desc": "",
+                  "createTime": "2021-12-16T04:31:20.000Z",
+                  "updateTime": "2022-04-13T12:19:32.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"materialDetailList\":{\"type\":\"array\",\"description\":\"素材列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=MaterialDetail&schemaId=547355\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "queryMaterial"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-12-16T04:31:24.000Z"
+  },
+  "error_codes": [],
+  "category": "素材中心API",
+  "fetched_at": "2025-09-26 14:59:44"
+}

@@ -1,0 +1,177 @@
+{
+  "api_info": {
+    "apiId": 5747,
+    "apiNavigationId": 35,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 1,
+    "method": "post",
+    "navigationDetailDesc": "获取分类列表",
+    "navigationDetailName": "获取分类列表",
+    "path": "common.getCategories",
+    "seq": 0
+  },
+  "api_details": {
+    "id": 5747,
+    "path": "/ark/common.getCategories",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "获取可售类目列表",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "categoryId": {
+                  "type": "string",
+                  "description": "父级分类,如果该参数为空，则返回所有的一级分类",
+                  "example": "52ce****8933"
+                }
+              },
+              "$$ref": "#/components/schemas/217648",
+              "x-schema": {
+                "id": 217648,
+                "name": "GetCategoriesRequest",
+                "desc": "",
+                "createTime": "2021-08-03T08:22:26.000Z",
+                "updateTime": "2021-08-03T08:22:26.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"type\":\"object\",\"properties\":{\"categoryId\":{\"type\":\"string\",\"description\":\"父级分类,如果该参数为空，则返回所有的一级分类\",\"example\":\"52ce****8933\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "categoryV3s": {
+                    "type": "array",
+                    "description": "规格列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "description": "分类id，用于创建商品时使用",
+                          "example": "5a9c***88d1"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "分类中文名",
+                          "example": "男装"
+                        },
+                        "enName": {
+                          "type": "string",
+                          "description": "分类英文名",
+                          "example": "Men's clothing"
+                        },
+                        "supportSizeTable": {
+                          "type": "boolean",
+                          "description": "是否支持基础尺码图",
+                          "example": "true"
+                        },
+                        "supportRecommendSizeTable": {
+                          "type": "boolean",
+                          "description": "是否支持尺码推荐图",
+                          "example": "true"
+                        },
+                        "supportModelTryOnSizeTable": {
+                          "type": "boolean",
+                          "description": "是否支持模特试穿图",
+                          "example": "true"
+                        },
+                        "supportMainSpecImage": {
+                          "type": "boolean",
+                          "description": "是否支持规格大图",
+                          "example": "true"
+                        },
+                        "mainSpecId": {
+                          "type": "string",
+                          "description": "主规格id",
+                          "example": "5a9c***8823"
+                        },
+                        "isLeaf": {
+                          "type": "boolean",
+                          "description": "是否是叶子类目",
+                          "example": "true"
+                        }
+                      },
+                      "description": "规格列表",
+                      "$$ref": "#/components/schemas/217650",
+                      "x-schema": {
+                        "id": 217650,
+                        "name": "CategoryV3",
+                        "desc": "规格列表",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2024-12-10T03:22:28.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"description\":\"分类id，用于创建商品时使用\",\"example\":\"5a9c***88d1\"},\"name\":{\"type\":\"string\",\"description\":\"分类中文名\",\"example\":\"男装\"},\"enName\":{\"type\":\"string\",\"description\":\"分类英文名\",\"example\":\"Men's clothing\"},\"supportSizeTable\":{\"type\":\"boolean\",\"description\":\"是否支持基础尺码图\",\"example\":\"true\"},\"supportRecommendSizeTable\":{\"type\":\"boolean\",\"description\":\"是否支持尺码推荐图\",\"example\":\"true\"},\"supportModelTryOnSizeTable\":{\"type\":\"boolean\",\"description\":\"是否支持模特试穿图\",\"example\":\"true\"},\"supportMainSpecImage\":{\"type\":\"boolean\",\"description\":\"是否支持规格大图\",\"example\":\"true\"},\"mainSpecId\":{\"type\":\"string\",\"description\":\"主规格id\",\"example\":\"5a9c***8823\"},\"isLeaf\":{\"type\":\"boolean\",\"description\":\"是否是叶子类目\",\"example\":\"true\"}},\"description\":\"规格列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217649",
+                "x-schema": {
+                  "id": 217649,
+                  "name": "CategorieListV3",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"categoryV3s\":{\"type\":\"array\",\"description\":\"规格列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=CategoryV3&schemaId=217650\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2024-12-10T03:22:28.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:58:53"
+}

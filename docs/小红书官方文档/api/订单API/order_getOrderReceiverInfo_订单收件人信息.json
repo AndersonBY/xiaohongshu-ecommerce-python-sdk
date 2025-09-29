@@ -1,0 +1,234 @@
+{
+  "api_info": {
+    "apiId": 27240,
+    "apiNavigationId": 185,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 27,
+    "method": "post",
+    "navigationDetailDesc": "订单收件人信息",
+    "navigationDetailName": "订单收件人信息",
+    "path": "order.getOrderReceiverInfo",
+    "seq": 2
+  },
+  "api_details": {
+    "id": 27240,
+    "path": "/ark/order.getOrderReceiverInfo",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getPackageReceiverInfoApi_1",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "isReturn",
+                "receiverQueries"
+              ],
+              "type": "object",
+              "properties": {
+                "receiverQueries": {
+                  "type": "array",
+                  "description": "收件人详情查询列表，请务必在发货前调用一次避免用户修改导致不一致",
+                  "items": {
+                    "required": [
+                      "openAddressId",
+                      "orderId"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "orderId": {
+                        "type": "string",
+                        "description": "订单号，待发货才可以拉到收件人信息",
+                        "example": "P132***4125"
+                      },
+                      "openAddressId": {
+                        "type": "string",
+                        "description": "详情接口返回，标识此单收件人信息",
+                        "example": "1948201"
+                      }
+                    },
+                    "description": "收件人详情查询列表，请务必在发货前调用一次避免用户修改导致不一致",
+                    "$$ref": "#/components/schemas/1585787",
+                    "x-schema": {
+                      "id": 1585787,
+                      "name": "OrderReceiverQuery",
+                      "desc": "收件人详情查询列表，请务必在发货前调用一次避免用户修改导致不一致",
+                      "createTime": "2023-03-10T12:35:05.000Z",
+                      "updateTime": "2023-04-27T11:23:48.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "",
+                      "createUserName": "",
+                      "spec": "{\"required\":[\"openAddressId\",\"orderId\"],\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号，待发货才可以拉到收件人信息\",\"example\":\"P132***4125\"},\"openAddressId\":{\"type\":\"string\",\"description\":\"详情接口返回，标识此单收件人信息\",\"example\":\"1948201\"}},\"description\":\"收件人详情查询列表，请务必在发货前调用一次避免用户修改导致不一致\"}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  }
+                },
+                "isReturn": {
+                  "type": "boolean",
+                  "description": "是否是换货单"
+                }
+              },
+              "$$ref": "#/components/schemas/1585786",
+              "x-schema": {
+                "id": 1585786,
+                "name": "GetOrderReceiverInfoRequest",
+                "desc": "",
+                "createTime": "2023-03-10T12:35:05.000Z",
+                "updateTime": "2023-03-10T12:35:05.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "",
+                "createUserName": "",
+                "spec": "{\"required\":[\"isReturn\",\"receiverQueries\"],\"type\":\"object\",\"properties\":{\"receiverQueries\":{\"type\":\"array\",\"description\":\"收件人详情查询列表，请务必在发货前调用一次避免用户修改导致不一致\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=OrderReceiverQuery&schemaId=1585787\"}},\"isReturn\":{\"type\":\"boolean\",\"description\":\"是否是换货单\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "receiverInfos": {
+                    "type": "array",
+                    "description": "收件人信息列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "orderId": {
+                          "type": "string",
+                          "description": "订单号 用来对应",
+                          "example": "P132***4125"
+                        },
+                        "matched": {
+                          "type": "boolean",
+                          "description": "当前openAddressId是否与传入的相符，不相符时不返回相关信息，且需要重新 拉取订单详情",
+                          "example": true
+                        },
+                        "receiverProvinceName": {
+                          "type": "string",
+                          "description": "收件人省份",
+                          "example": "浙江"
+                        },
+                        "receiverCityName": {
+                          "type": "string",
+                          "description": "收件人城市",
+                          "example": "杭州市"
+                        },
+                        "receiverDistrictName": {
+                          "type": "string",
+                          "description": "收件人区县",
+                          "example": "西湖区"
+                        },
+                        "receiverTownName": {
+                          "type": "string",
+                          "description": "收件人镇/街道",
+                          "example": "xx街道"
+                        },
+                        "receiverName": {
+                          "type": "string",
+                          "description": "收件人姓名",
+                          "example": "张三"
+                        },
+                        "receiverPhone": {
+                          "type": "string",
+                          "description": "收件人电话",
+                          "example": "123456789"
+                        },
+                        "receiverAddress": {
+                          "type": "string",
+                          "description": "收件人详细地址",
+                          "example": "XX路XX号"
+                        },
+                        "location": {
+                          "type": "string",
+                          "description": "收件人POI",
+                          "example": "111.222,333.444"
+                        }
+                      },
+                      "description": "收件人信息列表",
+                      "$$ref": "#/components/schemas/1585789",
+                      "x-schema": {
+                        "id": 1585789,
+                        "name": "OrderReceiverInfo",
+                        "desc": "收件人信息列表",
+                        "createTime": "2023-03-10T12:35:05.000Z",
+                        "updateTime": "2024-05-22T02:30:07.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "",
+                        "createUserName": "",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"orderId\":{\"type\":\"string\",\"description\":\"订单号 用来对应\",\"example\":\"P132***4125\"},\"matched\":{\"type\":\"boolean\",\"description\":\"当前openAddressId是否与传入的相符，不相符时不返回相关信息，且需要重新 拉取订单详情\",\"example\":true},\"receiverProvinceName\":{\"type\":\"string\",\"description\":\"收件人省份\",\"example\":\"浙江\"},\"receiverCityName\":{\"type\":\"string\",\"description\":\"收件人城市\",\"example\":\"杭州市\"},\"receiverDistrictName\":{\"type\":\"string\",\"description\":\"收件人区县\",\"example\":\"西湖区\"},\"receiverTownName\":{\"type\":\"string\",\"description\":\"收件人镇/街道\",\"example\":\"xx街道\"},\"receiverName\":{\"type\":\"string\",\"description\":\"收件人姓名\",\"example\":\"张三\"},\"receiverPhone\":{\"type\":\"string\",\"description\":\"收件人电话\",\"example\":\"123456789\"},\"receiverAddress\":{\"type\":\"string\",\"description\":\"收件人详细地址\",\"example\":\"XX路XX号\"},\"location\":{\"type\":\"string\",\"description\":\"收件人POI\",\"example\":\"111.222,333.444\"}},\"description\":\"收件人信息列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1585788",
+                "x-schema": {
+                  "id": 1585788,
+                  "name": "OrderReceiveInfoList",
+                  "desc": "",
+                  "createTime": "2023-03-10T12:35:05.000Z",
+                  "updateTime": "2023-03-10T12:35:05.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "",
+                  "createUserName": "",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"receiverInfos\":{\"type\":\"array\",\"description\":\"收件人信息列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=OrderReceiverInfo&schemaId=1585789\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getPackageReceiverInfoApi_1"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-03-10T12:35:06.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:08"
+}

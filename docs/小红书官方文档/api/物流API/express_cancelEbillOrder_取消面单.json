@@ -1,0 +1,106 @@
+{
+  "api_info": {
+    "apiId": 29637,
+    "apiNavigationId": 245,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 87,
+    "method": "post",
+    "navigationDetailDesc": "取消面单",
+    "navigationDetailName": "取消面单",
+    "path": "express.cancelEbillOrder",
+    "seq": 4
+  },
+  "api_details": {
+    "id": 29637,
+    "path": "/api/openapi/express/cancelebillorder",
+    "summary": "[开放平台][电子面单]取消面单",
+    "method": "post",
+    "specJson": {
+      "summary": "[开放平台][电子面单]取消面单",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "cpCode",
+                "waybillCode"
+              ],
+              "properties": {
+                "cpCode": {
+                  "type": "string",
+                  "description": "快递公司编码",
+                  "example": "zto"
+                },
+                "waybillCode": {
+                  "type": "string",
+                  "description": "快递单号，注意子母件要用母单号才能取消",
+                  "example": "78689455849606"
+                },
+                "billVersion": {
+                  "type": "number",
+                  "description": "电子面单版本号，1-默认值旧版电子面单 2-新版电子面单"
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "error_code",
+                  "success"
+                ],
+                "properties": {
+                  "error_code": {
+                    "type": "number",
+                    "description": "返回值code",
+                    "example": "0"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "请求是否成功",
+                    "example": "true"
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "description": "信息",
+                    "example": ""
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "subErrorCode": {
+                        "type": "string",
+                        "description": "子错误码",
+                        "example": ""
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-10-28T11:20:57.000Z"
+  },
+  "error_codes": [],
+  "category": "物流API",
+  "fetched_at": "2025-09-26 14:59:49"
+}

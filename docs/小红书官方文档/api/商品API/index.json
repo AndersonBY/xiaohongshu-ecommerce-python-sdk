@@ -1,0 +1,112 @@
+{
+  "category_name": "商品API",
+  "api_count": 15,
+  "apis": [
+    {
+      "name": "商品列表完整版",
+      "path": "product.getDetailSkuList",
+      "method": "post",
+      "description": "商品列表完整版",
+      "api_id": 27228
+    },
+    {
+      "name": "更新物流方案",
+      "path": "product.updateSkuLogisticsPlan",
+      "method": "post",
+      "description": "更新物流方案",
+      "api_id": 27222
+    },
+    {
+      "name": "商品上下架",
+      "path": "product.updateSkuAvailable",
+      "method": "post",
+      "description": "商品上下架",
+      "api_id": 27223
+    },
+    {
+      "name": "创建ITEM（即将废弃）",
+      "path": "product.createItemV2",
+      "method": "post",
+      "description": "创建ITEM（即将废弃）",
+      "api_id": 27232
+    },
+    {
+      "name": "更新ITEM",
+      "path": "product.updateItemV2",
+      "method": "post",
+      "description": "更新ITEM",
+      "api_id": 27224
+    },
+    {
+      "name": " 删除ITEM",
+      "path": "product.deleteItemV2",
+      "method": "post",
+      "description": " 删除ITEM",
+      "api_id": 27230
+    },
+    {
+      "name": "创建SKU（即将废弃）",
+      "path": "product.createSkuV2",
+      "method": "post",
+      "description": "创建SKU（即将废弃）",
+      "api_id": 27231
+    },
+    {
+      "name": "更新SKU",
+      "path": "product.updateSkuV2",
+      "method": "post",
+      "description": "更新SKU",
+      "api_id": 27221
+    },
+    {
+      "name": "删除SKU",
+      "path": "product.deleteSkuV2",
+      "method": "post",
+      "description": "删除SKU",
+      "api_id": 27229
+    },
+    {
+      "name": "查询Item列表",
+      "path": "product.searchItemList",
+      "method": "post",
+      "description": "查询Item列表",
+      "api_id": 27226
+    },
+    {
+      "name": "获取ITEM详情",
+      "path": "product.getItemInfo",
+      "method": "post",
+      "description": "获取ITEM详情",
+      "api_id": 27227
+    },
+    {
+      "name": "修改价格",
+      "path": "product.updateSkuPrice",
+      "method": "post",
+      "description": "修改价格",
+      "api_id": 27220
+    },
+    {
+      "name": "修改商品主图、主图视频",
+      "path": "product.updateItemImage",
+      "method": "post",
+      "description": "修改商品主图、主图视频",
+      "api_id": 27225
+    },
+    {
+      "name": "创建商品Item+Sku（新）",
+      "path": "product.createItemAndSku",
+      "method": "post",
+      "description": "创建商品Item+Sku（新）",
+      "api_id": 38757
+    },
+    {
+      "name": "更新商品Item+Sku（新）",
+      "path": "product.updateItemAndSku",
+      "method": "post",
+      "description": "更新商品Item+Sku（新）",
+      "api_id": 38758
+    }
+  ],
+  "created_at": "2025-09-26 14:59:26"
+}

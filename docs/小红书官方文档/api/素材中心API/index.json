@@ -1,0 +1,35 @@
+{
+  "category_name": "素材中心API",
+  "api_count": 4,
+  "apis": [
+    {
+      "name": "素材列表",
+      "path": "material.queryMaterial",
+      "method": "post",
+      "description": "素材列表",
+      "api_id": 14418
+    },
+    {
+      "name": "上传素材",
+      "path": "material.uploadMaterial",
+      "method": "post",
+      "description": "上传素材",
+      "api_id": 14416
+    },
+    {
+      "name": "修改素材",
+      "path": "material.updateMaterial",
+      "method": "post",
+      "description": "修改素材",
+      "api_id": 14417
+    },
+    {
+      "name": "删除素材",
+      "path": "material.deleteMaterial",
+      "method": "post",
+      "description": "删除素材",
+      "api_id": 14419
+    }
+  ],
+  "created_at": "2025-09-26 14:59:44"
+}

@@ -1,0 +1,106 @@
+{
+  "api_info": {
+    "apiId": 5964,
+    "apiNavigationId": 63,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 10,
+    "method": "post",
+    "navigationDetailDesc": "获取物流模式列表",
+    "navigationDetailName": "获取物流模式列表",
+    "path": "common.logisticsMode",
+    "seq": 9
+  },
+  "api_details": {
+    "id": 5964,
+    "path": "/ark/common.logisticsMode",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "logistics",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "logisticModes": {
+                    "type": "array",
+                    "description": "物流模式列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "logisticsCode": {
+                          "type": "string",
+                          "description": "物流模式代码"
+                        },
+                        "logisticsTranslation": {
+                          "type": "string",
+                          "description": "物流模式名解释"
+                        }
+                      },
+                      "description": "物流模式列表",
+                      "$$ref": "#/components/schemas/217638",
+                      "x-schema": {
+                        "id": 217638,
+                        "name": "LogisticMode",
+                        "desc": "物流模式列表",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2021-08-03T08:22:26.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"logisticsCode\":{\"type\":\"string\",\"description\":\"物流模式代码\"},\"logisticsTranslation\":{\"type\":\"string\",\"description\":\"物流模式名解释\"}},\"description\":\"物流模式列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217639",
+                "x-schema": {
+                  "id": 217639,
+                  "name": "LogisticsModeList",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"logisticModes\":{\"type\":\"array\",\"description\":\"物流模式列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=LogisticMode&schemaId=217638\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "logistics"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-08-03T08:22:36.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:58:59"
+}

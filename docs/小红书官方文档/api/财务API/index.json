@@ -1,0 +1,42 @@
+{
+  "category_name": "财务API",
+  "api_count": 5,
+  "apis": [
+    {
+      "name": "带货达人侧详情查询",
+      "path": "bill.queryCpsSettle",
+      "method": "post",
+      "description": "带货达人侧详情查询",
+      "api_id": 22567
+    },
+    {
+      "name": "查询月度结算单下载地址",
+      "path": "bill.downloadStatement",
+      "method": "post",
+      "description": "查询月度结算单下载地址",
+      "api_id": 22568
+    },
+    {
+      "name": "分页查询账户动账流水",
+      "path": "finance.querySellerAccountRecords",
+      "method": "post",
+      "description": "分页查询账户动账流水",
+      "api_id": 29893
+    },
+    {
+      "name": "分页查询订单货款结算明细",
+      "path": "finance.pageQueryTransaction",
+      "method": "post",
+      "description": "分页查询订单货款结算明细",
+      "api_id": 29896
+    },
+    {
+      "name": "分页查询其他服务款结算明细",
+      "path": "finance.pageQueryExpense",
+      "method": "post",
+      "description": "分页查询其他服务款结算明细",
+      "api_id": 29894
+    }
+  ],
+  "created_at": "2025-09-26 14:59:50"
+}

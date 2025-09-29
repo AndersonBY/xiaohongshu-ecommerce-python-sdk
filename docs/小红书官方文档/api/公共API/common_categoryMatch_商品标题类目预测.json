@@ -1,0 +1,158 @@
+{
+  "api_info": {
+    "apiId": 29202,
+    "apiNavigationId": 67,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 14,
+    "method": "post",
+    "navigationDetailDesc": "商品标题类目预测",
+    "navigationDetailName": "商品标题类目预测",
+    "path": "common.categoryMatch",
+    "seq": 13
+  },
+  "api_details": {
+    "id": 29202,
+    "path": "/ark/common.categoryMatch",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "categoryMatch",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "spuName"
+              ],
+              "type": "object",
+              "properties": {
+                "spuName": {
+                  "type": "string",
+                  "description": "spu名称",
+                  "example": "爱马仕手提包包"
+                },
+                "topK": {
+                  "type": "integer",
+                  "description": "返回最符合的类目数量，默认为1",
+                  "format": "int32",
+                  "example": 1
+                },
+                "externalCategoryName": {
+                  "type": "string",
+                  "description": "可能的类目名称",
+                  "example": "双肩包"
+                }
+              },
+              "$$ref": "#/components/schemas/1757917",
+              "x-schema": {
+                "id": 1757917,
+                "name": "CategoryMatchRequest",
+                "desc": "",
+                "createTime": "2023-06-06T07:26:51.000Z",
+                "updateTime": "2023-06-06T07:26:51.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"spuName\"],\"type\":\"object\",\"properties\":{\"spuName\":{\"type\":\"string\",\"description\":\"spu名称\",\"example\":\"爱马仕手提包包\"},\"topK\":{\"type\":\"integer\",\"description\":\"返回最符合的类目数量，默认为1\",\"format\":\"int32\",\"example\":1},\"externalCategoryName\":{\"type\":\"string\",\"description\":\"可能的类目名称\",\"example\":\"双肩包\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "categoryInfo": {
+                    "type": "array",
+                    "description": "末级类目信息",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "ename": {
+                          "type": "string"
+                        }
+                      },
+                      "$$ref": "#/components/schemas/217509",
+                      "x-schema": {
+                        "id": 217509,
+                        "name": "CategoryInfo",
+                        "desc": "",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2021-08-03T08:22:26.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"ename\":{\"type\":\"string\"}}}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1757918",
+                "x-schema": {
+                  "id": 1757918,
+                  "name": "CategoryMatchResponse",
+                  "desc": "",
+                  "createTime": "2023-06-06T07:26:51.000Z",
+                  "updateTime": "2023-06-06T07:26:51.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"categoryInfo\":{\"type\":\"array\",\"description\":\"末级类目信息\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=CategoryInfo&schemaId=217509\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "categoryMatch"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-06-06T10:24:38.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:59:02"
+}

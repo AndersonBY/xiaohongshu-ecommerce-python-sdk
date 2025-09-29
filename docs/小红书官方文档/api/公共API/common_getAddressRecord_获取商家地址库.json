@@ -1,0 +1,270 @@
+{
+  "api_info": {
+    "apiId": 23756,
+    "apiNavigationId": 101,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 24,
+    "method": "post",
+    "navigationDetailDesc": "获取商家地址库",
+    "navigationDetailName": "获取商家地址库",
+    "path": "common.getAddressRecord",
+    "seq": 17
+  },
+  "api_details": {
+    "id": 23756,
+    "path": "/ark/common.getAddressRecord",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getAddressRecord",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pageIndex": {
+                  "type": "integer",
+                  "description": "默认返回商家收货地址的页数为1，限制 小于100",
+                  "format": "int32",
+                  "example": 1
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "description": "默认返回20，限制 小于200",
+                  "format": "int32",
+                  "example": 20
+                }
+              },
+              "$$ref": "#/components/schemas/1326526",
+              "x-schema": {
+                "id": 1326526,
+                "name": "GetSellerAddressRecordBySellerIdRequest",
+                "desc": "",
+                "createTime": "2022-11-02T07:34:30.000Z",
+                "updateTime": "2022-11-02T07:34:30.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "58df922543c35002dfe88d82",
+                "createUserName": "王志华",
+                "spec": "{\"type\":\"object\",\"properties\":{\"pageIndex\":{\"type\":\"integer\",\"description\":\"默认返回商家收货地址的页数为1，限制 小于100\",\"format\":\"int32\",\"example\":1},\"pageSize\":{\"type\":\"integer\",\"description\":\"默认返回20，限制 小于200\",\"format\":\"int32\",\"example\":20}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sellerAddressRecordList": {
+                    "type": "array",
+                    "description": "商家地址列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "sellerAddressRecordId": {
+                          "type": "integer",
+                          "description": "商家地址id",
+                          "format": "int64",
+                          "example": 105380
+                        },
+                        "contactName": {
+                          "type": "string",
+                          "description": "联系人",
+                          "example": "张xx"
+                        },
+                        "phoneAreaCode": {
+                          "type": "string",
+                          "description": "手机区号",
+                          "example": "86"
+                        },
+                        "phone": {
+                          "type": "string",
+                          "description": "手机号",
+                          "example": "12312345678"
+                        },
+                        "landlineAreaCode": {
+                          "type": "string",
+                          "description": "座机区号"
+                        },
+                        "landlinePhone": {
+                          "type": "string",
+                          "description": "座机号"
+                        },
+                        "landlineExtensionNumber": {
+                          "type": "string",
+                          "description": "分机号"
+                        },
+                        "countryCode": {
+                          "type": "string",
+                          "description": "国家代码",
+                          "example": "001"
+                        },
+                        "provinceCode": {
+                          "type": "string",
+                          "description": "省代码",
+                          "example": "220000"
+                        },
+                        "cityCode": {
+                          "type": "string",
+                          "description": "市代码",
+                          "example": "220100"
+                        },
+                        "countyCode": {
+                          "type": "string",
+                          "description": "区/县代码"
+                        },
+                        "townCode": {
+                          "type": "string",
+                          "description": "镇/街道代码"
+                        },
+                        "countryName": {
+                          "type": "string",
+                          "description": "国家名称",
+                          "example": "中国大陆"
+                        },
+                        "provinceName": {
+                          "type": "string",
+                          "description": "省名称",
+                          "example": "吉林省"
+                        },
+                        "cityName": {
+                          "type": "string",
+                          "description": "市名称",
+                          "example": "长春市"
+                        },
+                        "countyName": {
+                          "type": "string",
+                          "description": "区/县名称"
+                        },
+                        "townName": {
+                          "type": "string",
+                          "description": "镇/街道名称"
+                        },
+                        "address": {
+                          "type": "string",
+                          "description": "详细地址",
+                          "example": "111"
+                        },
+                        "fullAddress": {
+                          "type": "string",
+                          "description": "完整地址",
+                          "example": "吉林省 长春市 111"
+                        },
+                        "deliveryDefault": {
+                          "type": "string",
+                          "description": "是否发货默认 NON_DEFAULT-非默认; DEFAULT-默认",
+                          "example": "NON_DEFAULT"
+                        },
+                        "aftersaleDefault": {
+                          "type": "string",
+                          "description": "是否售后默认 NON_DEFAULT-非默认; DEFAULT-默认",
+                          "example": "NON_DEFAULT"
+                        },
+                        "version": {
+                          "type": "integer",
+                          "description": "版本号",
+                          "format": "int32",
+                          "example": 1
+                        },
+                        "active": {
+                          "type": "string",
+                          "description": "是否生效 ACTIVE-生效; INACTIVE-无效",
+                          "example": "ACTIVE"
+                        },
+                        "createTime": {
+                          "type": "integer",
+                          "description": "创建时间",
+                          "format": "int64",
+                          "example": 1663048640000
+                        },
+                        "updateTime": {
+                          "type": "integer",
+                          "description": "更新时间",
+                          "format": "int64",
+                          "example": 1663048640000
+                        }
+                      },
+                      "description": "商家地址列表",
+                      "$$ref": "#/components/schemas/1326527",
+                      "x-schema": {
+                        "id": 1326527,
+                        "name": "SellerAddressRecord",
+                        "desc": "商家地址列表",
+                        "createTime": "2022-11-02T07:34:30.000Z",
+                        "updateTime": "2022-11-02T07:34:30.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "58df922543c35002dfe88d82",
+                        "createUserName": "王志华",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"sellerAddressRecordId\":{\"type\":\"integer\",\"description\":\"商家地址id\",\"format\":\"int64\",\"example\":105380},\"contactName\":{\"type\":\"string\",\"description\":\"联系人\",\"example\":\"张xx\"},\"phoneAreaCode\":{\"type\":\"string\",\"description\":\"手机区号\",\"example\":\"86\"},\"phone\":{\"type\":\"string\",\"description\":\"手机号\",\"example\":\"12312345678\"},\"landlineAreaCode\":{\"type\":\"string\",\"description\":\"座机区号\"},\"landlinePhone\":{\"type\":\"string\",\"description\":\"座机号\"},\"landlineExtensionNumber\":{\"type\":\"string\",\"description\":\"分机号\"},\"countryCode\":{\"type\":\"string\",\"description\":\"国家代码\",\"example\":\"001\"},\"provinceCode\":{\"type\":\"string\",\"description\":\"省代码\",\"example\":\"220000\"},\"cityCode\":{\"type\":\"string\",\"description\":\"市代码\",\"example\":\"220100\"},\"countyCode\":{\"type\":\"string\",\"description\":\"区/县代码\"},\"townCode\":{\"type\":\"string\",\"description\":\"镇/街道代码\"},\"countryName\":{\"type\":\"string\",\"description\":\"国家名称\",\"example\":\"中国大陆\"},\"provinceName\":{\"type\":\"string\",\"description\":\"省名称\",\"example\":\"吉林省\"},\"cityName\":{\"type\":\"string\",\"description\":\"市名称\",\"example\":\"长春市\"},\"countyName\":{\"type\":\"string\",\"description\":\"区/县名称\"},\"townName\":{\"type\":\"string\",\"description\":\"镇/街道名称\"},\"address\":{\"type\":\"string\",\"description\":\"详细地址\",\"example\":\"111\"},\"fullAddress\":{\"type\":\"string\",\"description\":\"完整地址\",\"example\":\"吉林省 长春市 111\"},\"deliveryDefault\":{\"type\":\"string\",\"description\":\"是否发货默认 NON_DEFAULT-非默认; DEFAULT-默认\",\"example\":\"NON_DEFAULT\"},\"aftersaleDefault\":{\"type\":\"string\",\"description\":\"是否售后默认 NON_DEFAULT-非默认; DEFAULT-默认\",\"example\":\"NON_DEFAULT\"},\"version\":{\"type\":\"integer\",\"description\":\"版本号\",\"format\":\"int32\",\"example\":1},\"active\":{\"type\":\"string\",\"description\":\"是否生效 ACTIVE-生效; INACTIVE-无效\",\"example\":\"ACTIVE\"},\"createTime\":{\"type\":\"integer\",\"description\":\"创建时间\",\"format\":\"int64\",\"example\":1663048640000},\"updateTime\":{\"type\":\"integer\",\"description\":\"更新时间\",\"format\":\"int64\",\"example\":1663048640000}},\"description\":\"商家地址列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  },
+                  "total": {
+                    "type": "integer",
+                    "description": "返回的商家地址总数",
+                    "format": "int64",
+                    "example": 50
+                  }
+                },
+                "$$ref": "#/components/schemas/1326528",
+                "x-schema": {
+                  "id": 1326528,
+                  "name": "SellerAddressRecordList",
+                  "desc": "",
+                  "createTime": "2022-11-02T07:34:30.000Z",
+                  "updateTime": "2022-11-02T07:34:30.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "58df922543c35002dfe88d82",
+                  "createUserName": "王志华",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"sellerAddressRecordList\":{\"type\":\"array\",\"description\":\"商家地址列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=SellerAddressRecord&schemaId=1326527\"}},\"total\":{\"type\":\"integer\",\"description\":\"返回的商家地址总数\",\"format\":\"int64\",\"example\":50}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getAddressRecord"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2022-11-02T07:34:31.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:59:05"
+}

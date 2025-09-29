@@ -1,0 +1,218 @@
+{
+  "api_info": {
+    "apiId": 30115,
+    "apiNavigationId": 210,
+    "gatewayId": 165,
+    "gatewayVersionId": 2804,
+    "id": 52,
+    "method": "post",
+    "navigationDetailDesc": " 获取售后列表（新）",
+    "navigationDetailName": " 获取售后列表（新）",
+    "path": "afterSale.listAfterSaleInfos",
+    "seq": 6
+  },
+  "api_details": {
+    "id": 30115,
+    "path": "/api/openapi/aftersale/listaftersaleinfos",
+    "summary": "【openAPI】openAPI获取售后列表（新）",
+    "method": "post",
+    "specJson": {
+      "summary": "【openAPI】openAPI获取售后列表（新）",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "pageNo",
+                "pageSize"
+              ],
+              "properties": {
+                "pageNo": {
+                  "type": "number",
+                  "description": "页数，从1开始",
+                  "example": ""
+                },
+                "pageSize": {
+                  "type": "number",
+                  "description": "页大小大于0小于等于100  pageNo*pageSize 最大值不能超过50000",
+                  "example": ""
+                },
+                "orderId": {
+                  "type": "string",
+                  "description": "包裹号，包裹号和时间类型至少传一个",
+                  "example": ""
+                },
+                "statuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "description": "售后状态列表 1-待审核  2-待用户寄回  3-待商家收货  4-已完成  5-已取消6-已关闭  9-商家审核拒绝  9001-商家收货拒绝12-换货待商家发货  13-换货待用户确认收货  14-平台介入中"
+                },
+                "returnTypes": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "description": "售后类型列表 1-退货  2-换货  4-已发货仅退款  5-未发货仅退款 6-保价"
+                },
+                "startTime": {
+                  "type": "number",
+                  "description": "时间起点（毫秒，包含），选择时间类型后必传",
+                  "example": ""
+                },
+                "endTime": {
+                  "type": "number",
+                  "description": "时间终点（毫秒，包含）  时间终点应当大于时间起点，选择时间类型后必传",
+                  "example": ""
+                },
+                "timeType": {
+                  "type": "number",
+                  "description": "时间类型  1-创建时间，范围不大于24小时  2-更新时间，范围不大于30分钟，包裹号和时间类型至少传一个",
+                  "example": ""
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code",
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "code": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "msg": {
+                    "type": "string"
+                  },
+                  "success": {
+                    "type": "boolean"
+                  },
+                  "data": {
+                    "required": [],
+                    "properties": {
+                      "afterSaleBasicInfos": {
+                        "type": "array",
+                        "items": {
+                          "required": [],
+                          "properties": {
+                            "returnsId": {
+                              "type": "string",
+                              "description": "售后id",
+                              "example": ""
+                            },
+                            "returnType": {
+                              "type": "number",
+                              "description": "售后类型 1-退货  2-换货  4-已发货仅退款  5-未发货仅退款",
+                              "example": ""
+                            },
+                            "reasonId": {
+                              "type": "number",
+                              "description": "申请售后的原因id",
+                              "example": ""
+                            },
+                            "reasonNameZh": {
+                              "type": "string",
+                              "description": "申请售后的原因名称",
+                              "example": ""
+                            },
+                            "status": {
+                              "type": "number",
+                              "description": "售后状态 1-待审核  2-待用户寄回  3-待商家收货  4-已完成  5-已取消6-已关闭  9-商家审核拒绝  9001-商家收货拒绝12-换货待商家发货  13-换货待用户确认收货  14-平台介入中",
+                              "example": ""
+                            },
+                            "userId": {
+                              "type": "string",
+                              "description": "用户id",
+                              "example": ""
+                            },
+                            "orderId": {
+                              "type": "string",
+                              "description": "包裹id",
+                              "example": ""
+                            },
+                            "applyTime": {
+                              "type": "number",
+                              "description": "售后申请时间（毫秒）",
+                              "example": ""
+                            },
+                            "updatedAt": {
+                              "type": "number",
+                              "description": "更新时间（毫秒）",
+                              "example": ""
+                            },
+                            "expireTime": {
+                              "type": "number",
+                              "description": "售后逾期时间（只提供待商家处理状态下的，其余的状态为-1)",
+                              "example": ""
+                            },
+                            "desc": {
+                              "type": "string",
+                              "description": "用户申请售后的备注",
+                              "example": ""
+                            },
+                            "returnsTag": {
+                              "type": "number",
+                              "description": "售后自动流程标记  1-命中平台极速退款  2-命中商家极速退款3-命中售后助手策略4-七天无理由自动审核32-命中发货后极速退款  35-命中发货后极速退款+售后助手策略36-命中发货后极速退款+七天无理由审核",
+                              "example": ""
+                            },
+                            "expectedRefundAmountYuan": {
+                              "type": "number",
+                              "description": "本次售后预期退的钱总额，元",
+                              "example": ""
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": "售后列表信息"
+                      },
+                      "totalCount": {
+                        "type": "number",
+                        "description": "当前条件下的售后总数",
+                        "example": ""
+                      },
+                      "pageNo": {
+                        "type": "number",
+                        "description": "查询的页数",
+                        "example": ""
+                      },
+                      "pageSize": {
+                        "type": "number",
+                        "description": "查询页的大小",
+                        "example": ""
+                      }
+                    },
+                    "type": "object"
+                  }
+                },
+                "x-genric": "data"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2025-09-11T08:04:45.000Z"
+  },
+  "error_codes": [],
+  "category": "售后API",
+  "fetched_at": "2025-09-26 14:59:25"
+}

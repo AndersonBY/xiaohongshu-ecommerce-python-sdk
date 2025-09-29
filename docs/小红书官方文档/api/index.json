@@ -1,0 +1,60 @@
+{
+  "title": "Xiaohongshu Open API Documentation",
+  "categories": [
+    {
+      "name": "公共API",
+      "id": 14,
+      "seq": 0,
+      "directory": "公共API"
+    },
+    {
+      "name": "订单API",
+      "id": 15,
+      "seq": 1,
+      "directory": "订单API"
+    },
+    {
+      "name": "售后API",
+      "id": 16,
+      "seq": 2,
+      "directory": "售后API"
+    },
+    {
+      "name": "商品API",
+      "id": 17,
+      "seq": 3,
+      "directory": "商品API"
+    },
+    {
+      "name": "库存API",
+      "id": 18,
+      "seq": 4,
+      "directory": "库存API"
+    },
+    {
+      "name": "素材中心API",
+      "id": 19,
+      "seq": 5,
+      "directory": "素材中心API"
+    },
+    {
+      "name": "物流API",
+      "id": 20,
+      "seq": 6,
+      "directory": "物流API"
+    },
+    {
+      "name": "财务API",
+      "id": 21,
+      "seq": 7,
+      "directory": "财务API"
+    },
+    {
+      "name": "即时零售API",
+      "id": 304,
+      "seq": 9,
+      "directory": "即时零售API"
+    }
+  ],
+  "created_at": "2025-09-26 14:59:54"
+}

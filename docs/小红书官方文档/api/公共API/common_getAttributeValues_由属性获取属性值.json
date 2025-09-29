@@ -1,0 +1,149 @@
+{
+  "api_info": {
+    "apiId": 5748,
+    "apiNavigationId": 57,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 4,
+    "method": "post",
+    "navigationDetailDesc": "由属性获取属性值",
+    "navigationDetailName": "由属性获取属性值",
+    "path": "common.getAttributeValues",
+    "seq": 3
+  },
+  "api_details": {
+    "id": 5748,
+    "path": "/ark/common.getAttributeValues",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getAttributeValues",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "attributeId"
+              ],
+              "type": "object",
+              "properties": {
+                "attributeId": {
+                  "type": "string",
+                  "description": "属性值编号",
+                  "example": "5845***325e"
+                }
+              },
+              "$$ref": "#/components/schemas/217657",
+              "x-schema": {
+                "id": 217657,
+                "name": "GetAttributeValuesRequest",
+                "desc": "",
+                "createTime": "2021-08-03T08:22:26.000Z",
+                "updateTime": "2021-08-03T08:22:26.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"attributeId\"],\"type\":\"object\",\"properties\":{\"attributeId\":{\"type\":\"string\",\"description\":\"属性值编号\",\"example\":\"5845***325e\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "attributeValueV3s": {
+                    "type": "array",
+                    "description": "属性值列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "valueId": {
+                          "type": "string",
+                          "description": "属性编号",
+                          "example": "5845***325e"
+                        },
+                        "valueName": {
+                          "type": "string",
+                          "description": "属性名",
+                          "example": "舒缓肌肤"
+                        }
+                      },
+                      "description": "属性值列表",
+                      "$$ref": "#/components/schemas/217659",
+                      "x-schema": {
+                        "id": 217659,
+                        "name": "AttributeValueV3",
+                        "desc": "属性值列表",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2021-08-03T08:22:26.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"valueId\":{\"type\":\"string\",\"description\":\"属性编号\",\"example\":\"5845***325e\"},\"valueName\":{\"type\":\"string\",\"description\":\"属性名\",\"example\":\"舒缓肌肤\"}},\"description\":\"属性值列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217658",
+                "x-schema": {
+                  "id": 217658,
+                  "name": "AttributeValueListV3",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"attributeValueV3s\":{\"type\":\"array\",\"description\":\"属性值列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=AttributeValueV3&schemaId=217659\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getAttributeValues"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-08-03T08:22:36.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:58:55"
+}

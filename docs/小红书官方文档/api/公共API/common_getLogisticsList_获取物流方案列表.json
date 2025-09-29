@@ -1,0 +1,170 @@
+{
+  "api_info": {
+    "apiId": 5745,
+    "apiNavigationId": 59,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 6,
+    "method": "post",
+    "navigationDetailDesc": "获取物流方案列表",
+    "navigationDetailName": "获取物流方案列表",
+    "path": "common.getLogisticsList",
+    "seq": 5
+  },
+  "api_details": {
+    "id": 5745,
+    "path": "/ark/common.getLogisticsList",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "operationId": "getLogisticsList",
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "logisticsPlans": {
+                    "type": "array",
+                    "description": "物流方案列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "planInfoId": {
+                          "type": "string",
+                          "description": "物流方案Id",
+                          "example": "5db0****80a1"
+                        },
+                        "shopName": {
+                          "type": "string",
+                          "description": "店铺名称",
+                          "example": "一号店"
+                        },
+                        "planInfoName": {
+                          "type": "string",
+                          "description": "物流方案名称",
+                          "example": "阿富汗 自主发货"
+                        },
+                        "tradeMode": {
+                          "type": "integer",
+                          "description": "贸易模式 0：内贸 1：保税 2：直邮",
+                          "format": "int32",
+                          "example": 0
+                        },
+                        "customsCode": {
+                          "type": "string",
+                          "description": "申报口岸代码",
+                          "example": "null"
+                        },
+                        "logisticsCompanyCode": {
+                          "type": "string",
+                          "description": "快递公司代码",
+                          "example": "null"
+                        },
+                        "logisticName": {
+                          "type": "string",
+                          "description": "物流方案名称",
+                          "example": "null"
+                        },
+                        "isValid": {
+                          "type": "boolean",
+                          "description": "是否有效",
+                          "example": true
+                        },
+                        "countryName": {
+                          "type": "string",
+                          "description": "发货地国家名称",
+                          "example": "阿富汗"
+                        },
+                        "privinceName": {
+                          "type": "string",
+                          "description": "发货地省份名称",
+                          "example": "null"
+                        },
+                        "cityName": {
+                          "type": "string",
+                          "description": "发货地城市名称",
+                          "example": "Mazar-e Sharif"
+                        },
+                        "street": {
+                          "type": "string",
+                          "description": "发货地街道信息",
+                          "example": "dsfasdfasfdas"
+                        },
+                        "postCode": {
+                          "type": "string",
+                          "description": "发货地邮政编码",
+                          "example": "1231231"
+                        },
+                        "sellerAddressRecordId": {
+                          "type": "integer",
+                          "description": "商家地址库Id",
+                          "format": "int64",
+                          "example": 123
+                        }
+                      },
+                      "description": "物流方案列表",
+                      "$$ref": "#/components/schemas/217644",
+                      "x-schema": {
+                        "id": 217644,
+                        "name": "LogisticsPlan",
+                        "desc": "物流方案列表",
+                        "createTime": "2021-08-03T08:22:26.000Z",
+                        "updateTime": "2022-10-21T08:24:06.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"planInfoId\":{\"type\":\"string\",\"description\":\"物流方案Id\",\"example\":\"5db0****80a1\"},\"shopName\":{\"type\":\"string\",\"description\":\"店铺名称\",\"example\":\"一号店\"},\"planInfoName\":{\"type\":\"string\",\"description\":\"物流方案名称\",\"example\":\"阿富汗 自主发货\"},\"tradeMode\":{\"type\":\"integer\",\"description\":\"贸易模式 0：内贸 1：保税 2：直邮\",\"format\":\"int32\",\"example\":0},\"customsCode\":{\"type\":\"string\",\"description\":\"申报口岸代码\",\"example\":\"null\"},\"logisticsCompanyCode\":{\"type\":\"string\",\"description\":\"快递公司代码\",\"example\":\"null\"},\"logisticName\":{\"type\":\"string\",\"description\":\"物流方案名称\",\"example\":\"null\"},\"isValid\":{\"type\":\"boolean\",\"description\":\"是否有效\",\"example\":true},\"countryName\":{\"type\":\"string\",\"description\":\"发货地国家名称\",\"example\":\"阿富汗\"},\"privinceName\":{\"type\":\"string\",\"description\":\"发货地省份名称\",\"example\":\"null\"},\"cityName\":{\"type\":\"string\",\"description\":\"发货地城市名称\",\"example\":\"Mazar-e Sharif\"},\"street\":{\"type\":\"string\",\"description\":\"发货地街道信息\",\"example\":\"dsfasdfasfdas\"},\"postCode\":{\"type\":\"string\",\"description\":\"发货地邮政编码\",\"example\":\"1231231\"},\"sellerAddressRecordId\":{\"type\":\"integer\",\"description\":\"商家地址库Id\",\"format\":\"int64\",\"example\":123}},\"description\":\"物流方案列表\"}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/217645",
+                "x-schema": {
+                  "id": 217645,
+                  "name": "LogisticsPlanList",
+                  "desc": "",
+                  "createTime": "2021-08-03T08:22:26.000Z",
+                  "updateTime": "2021-10-21T08:14:55.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"logisticsPlans\":{\"type\":\"array\",\"description\":\"物流方案列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=LogisticsPlan&schemaId=217644\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "getLogisticsList"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2021-08-03T08:22:36.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:58:57"
+}

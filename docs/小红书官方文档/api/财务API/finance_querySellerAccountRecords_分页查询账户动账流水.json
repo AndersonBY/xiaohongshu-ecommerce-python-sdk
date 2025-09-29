@@ -1,0 +1,241 @@
+{
+  "api_info": {
+    "apiId": 29893,
+    "apiNavigationId": 249,
+    "gatewayId": 165,
+    "gatewayVersionId": 2804,
+    "id": 91,
+    "method": "post",
+    "navigationDetailDesc": "分页查询账户动账流水",
+    "navigationDetailName": "分页查询账户动账流水",
+    "path": "finance.querySellerAccountRecords",
+    "seq": 2
+  },
+  "api_details": {
+    "id": 29893,
+    "path": "/api/openapi/finance/queryselleraccountrecords",
+    "summary": "分页查询账户动账流水",
+    "method": "post",
+    "specJson": {
+      "summary": "分页查询账户动账流水",
+      "servers": [
+        {
+          "url": "edith.xiaohongshu.com"
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "startTime",
+                "endTime",
+                "pageNum",
+                "pageSize"
+              ],
+              "properties": {
+                "startTime": {
+                  "type": "number",
+                  "description": "开始时间（unix时间戳，例如按日查询则传入指定日期00:00:00的时间戳）",
+                  "example": ""
+                },
+                "endTime": {
+                  "type": "number",
+                  "description": "结束时间（unix时间戳，例如按日查询则传入指定日期23:59:59的时间戳）",
+                  "example": ""
+                },
+                "businessNo": {
+                  "type": "string",
+                  "description": "业务单号",
+                  "example": ""
+                },
+                "debitType": {
+                  "type": "string",
+                  "description": "资金流向：IN（收入）、OUT（支出）",
+                  "example": ""
+                },
+                "tradeTypes": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "交易类型：RECHARGE(充值)STATEMENT_IN(结算入账)STATEMENT_REFUND(退款)PAY_SUCCESS(提现)BOUNCE(提现退回)SELLER_FINE(扣款)REFUND(扣款退回)LOGISTIC_OUT(物流费用结算)MANUAL_ADJUST_STATEMENT(人工调账结算)TRANSFER_IN(转入)TRANSFER_OUT(转出)CUSTOMER_SERVICE_FEE(客服费用)MESSAGE_FEE(短信推送费)INVOICE_SEND(发票寄送费)COMMISION_RETURN(佣金返利)OTHER_IN(其他收入)OTHER_OUT(其他支出)"
+                },
+                "pageNum": {
+                  "type": "number",
+                  "description": "当前分页",
+                  "example": ""
+                },
+                "pageSize": {
+                  "type": "number",
+                  "description": "分页大小",
+                  "example": ""
+                },
+                "fundType": {
+                  "type": "number",
+                  "description": "账户类型：0(店铺余额)1(微信)2(支付宝)",
+                  "example": ""
+                }
+              },
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "error_msg",
+                  "data",
+                  "success"
+                ],
+                "properties": {
+                  "error_code": {
+                    "type": "integer",
+                    "description": "错误码"
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "description": "错误信息"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "description": "是否调用成功"
+                  },
+                  "data": {
+                    "type": "object",
+                    "required": [
+                      "total",
+                      "totalPage",
+                      "pageNum",
+                      "pageSize"
+                    ],
+                    "properties": {
+                      "pageNum": {
+                        "type": "number",
+                        "description": "当前分页",
+                        "example": ""
+                      },
+                      "pageSize": {
+                        "type": "number",
+                        "description": "分页大小",
+                        "example": ""
+                      },
+                      "total": {
+                        "type": "number",
+                        "description": "总数量",
+                        "example": ""
+                      },
+                      "totalPage": {
+                        "type": "number",
+                        "description": "总页数",
+                        "example": ""
+                      },
+                      "records": {
+                        "type": "array",
+                        "items": {
+                          "required": [
+                            "tradeNo"
+                          ],
+                          "properties": {
+                            "accountId": {
+                              "type": "number",
+                              "description": "账户唯一id",
+                              "example": ""
+                            },
+                            "sellerId": {
+                              "type": "string",
+                              "description": "店铺id",
+                              "example": ""
+                            },
+                            "tradeNo": {
+                              "type": "string",
+                              "description": "动账流水号",
+                              "example": ""
+                            },
+                            "incomeAmount": {
+                              "type": "string",
+                              "description": "收入（元）",
+                              "example": ""
+                            },
+                            "outcomeAmount": {
+                              "type": "string",
+                              "description": "支出（元）",
+                              "example": ""
+                            },
+                            "balanceAmount": {
+                              "type": "string",
+                              "description": "账户余额（元）",
+                              "example": ""
+                            },
+                            "businessNo": {
+                              "type": "string",
+                              "description": "业务单号",
+                              "example": ""
+                            },
+                            "remark": {
+                              "type": "string",
+                              "description": "备注",
+                              "example": ""
+                            },
+                            "type": {
+                              "type": "string",
+                              "description": "交易类型",
+                              "example": ""
+                            },
+                            "typeDesc": {
+                              "type": "string",
+                              "description": "交易类型中文描述",
+                              "example": ""
+                            },
+                            "createdTime": {
+                              "type": "number",
+                              "description": "创建时间",
+                              "example": ""
+                            },
+                            "businessType": {
+                              "type": "string",
+                              "description": "动账业务子类型",
+                              "example": ""
+                            },
+                            "balanceBefore": {
+                              "type": "string",
+                              "description": "交易前金额（元）",
+                              "example": ""
+                            },
+                            "fundType": {
+                              "type": "string",
+                              "description": "账户类型：NOT_ER_QING(店铺余额)ER_QING_WECHAT(微信)ER_QING_ALIPAY(支付宝)",
+                              "example": ""
+                            },
+                            "disableBusinessNoLink": {
+                              "type": "boolean",
+                              "description": "是否屏蔽业务跳转",
+                              "example": ""
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": "数据集"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2023-10-23T11:23:37.000Z"
+  },
+  "error_codes": [],
+  "category": "财务API",
+  "fetched_at": "2025-09-26 14:59:52"
+}

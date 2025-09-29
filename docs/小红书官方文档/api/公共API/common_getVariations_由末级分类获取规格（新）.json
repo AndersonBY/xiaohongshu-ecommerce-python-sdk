@@ -1,0 +1,172 @@
+{
+  "api_info": {
+    "apiId": 5744,
+    "apiNavigationId": 37,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 2,
+    "method": "post",
+    "navigationDetailDesc": "由末级分类获取规格（新）",
+    "navigationDetailName": "由末级分类获取规格（新）",
+    "path": "common.getVariations",
+    "seq": 1
+  },
+  "api_details": {
+    "id": 5744,
+    "path": "/ark/common.getVariations",
+    "summary": "",
+    "method": "post",
+    "specJson": {
+      "summary": "由末级分类获取规格",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "categoryId"
+              ],
+              "type": "object",
+              "properties": {
+                "categoryId": {
+                  "type": "string",
+                  "description": "末级分类",
+                  "example": "5845***325e"
+                }
+              },
+              "$$ref": "#/components/schemas/217640",
+              "x-schema": {
+                "id": 217640,
+                "name": "GetVariationsRequest",
+                "desc": "",
+                "createTime": "2021-08-03T08:22:26.000Z",
+                "updateTime": "2021-08-03T08:22:26.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"categoryId\"],\"type\":\"object\",\"properties\":{\"categoryId\":{\"type\":\"string\",\"description\":\"末级分类\",\"example\":\"5845***325e\"}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "error_code",
+                  "success",
+                  "data"
+                ],
+                "properties": {
+                  "error_code": {
+                    "type": "number",
+                    "example": 0,
+                    "description": "返回code"
+                  },
+                  "success": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "是否成功"
+                  },
+                  "data": {
+                    "required": [
+                      "variations",
+                      "splVariations"
+                    ],
+                    "properties": {
+                      "variations": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "60404e0de85df80001991224",
+                              "description": "ID"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "颜色分类",
+                              "description": "规格名"
+                            },
+                            "enName": {
+                              "type": "string",
+                              "example": "Not translated yet",
+                              "description": "规格英文名"
+                            }
+                          },
+                          "description": "规格列表"
+                        },
+                        "example": [
+                          {
+                            "id": "60404e0de85df80001991224",
+                            "name": "颜色分类",
+                            "enName": "Not translated yet"
+                          }
+                        ],
+                        "description": "规格列表"
+                      },
+                      "splVariations": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string",
+                              "example": "60404e0de85df80001991224",
+                              "description": "ID"
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "颜色分类",
+                              "description": "规格名"
+                            },
+                            "enName": {
+                              "type": "string",
+                              "example": "Not translated yet",
+                              "description": "规格英文名"
+                            }
+                          },
+                          "description": "规格列表"
+                        },
+                        "example": [
+                          {
+                            "id": "60404e0de85df80001991224",
+                            "name": "颜色分类",
+                            "enName": "Not translated yet"
+                          }
+                        ],
+                        "description": "规格列表"
+                      }
+                    },
+                    "type": "object",
+                    "description": "返回数据"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2025-09-22T07:33:57.000Z"
+  },
+  "error_codes": [],
+  "category": "公共API",
+  "fetched_at": "2025-09-26 14:58:54"
+}

@@ -1,0 +1,192 @@
+{
+  "api_info": {
+    "apiId": 29206,
+    "apiNavigationId": 203,
+    "gatewayId": 103,
+    "gatewayVersionId": 1661,
+    "id": 45,
+    "method": "post",
+    "navigationDetailDesc": " 批量获取索引串",
+    "navigationDetailName": " 批量获取索引串",
+    "path": "data.batchIndex",
+    "seq": 21
+  },
+  "api_details": {
+    "id": 29206,
+    "path": "/ark/data.batchIndex",
+    "summary": "索引串查询",
+    "method": "post",
+    "specJson": {
+      "tags": [
+        "api-generate-controller"
+      ],
+      "summary": "索引串查询",
+      "operationId": "batchIndex",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "required": [
+                "indexBaseInfoList"
+              ],
+              "type": "object",
+              "properties": {
+                "indexBaseInfoList": {
+                  "type": "array",
+                  "description": "索引串查询列表",
+                  "items": {
+                    "required": [
+                      "plainText",
+                      "type"
+                    ],
+                    "type": "object",
+                    "properties": {
+                      "plainText": {
+                        "type": "string",
+                        "description": "关键词",
+                        "example": "null"
+                      },
+                      "type": {
+                        "type": "integer",
+                        "description": "类型1：地址，2：姓名，3：电话，4：身份证号，5：身份证照片链接",
+                        "format": "int32"
+                      }
+                    },
+                    "description": "索引串查询列表",
+                    "example": null,
+                    "$$ref": "#/components/schemas/1757905",
+                    "x-schema": {
+                      "id": 1757905,
+                      "name": "IndexBaseInfo",
+                      "desc": "索引串查询列表",
+                      "createTime": "2023-06-06T07:26:51.000Z",
+                      "updateTime": "2023-06-06T07:26:51.000Z",
+                      "type": 2,
+                      "gatewayId": 103,
+                      "createUserId": "5fa4f48970742e0001faee4b",
+                      "createUserName": "林松斌（实习）",
+                      "spec": "{\"required\":[\"plainText\",\"type\"],\"type\":\"object\",\"properties\":{\"plainText\":{\"type\":\"string\",\"description\":\"关键词\",\"example\":\"null\"},\"type\":{\"type\":\"integer\",\"description\":\"类型1：地址，2：姓名，3：电话，4：身份证号，5：身份证照片链接\",\"format\":\"int32\"}},\"description\":\"索引串查询列表\",\"example\":null}",
+                      "isBase": 0,
+                      "gatewayGroupId": 0,
+                      "gatewayGroupKey": "",
+                      "gatewayVersionId": 1661,
+                      "gatewayVersionName": "feature/logan",
+                      "isMaster": false,
+                      "groupId": 0,
+                      "groupKey": ""
+                    }
+                  }
+                }
+              },
+              "$$ref": "#/components/schemas/1757906",
+              "x-schema": {
+                "id": 1757906,
+                "name": "IndexBaseInfoRequest",
+                "desc": "",
+                "createTime": "2023-06-06T07:26:51.000Z",
+                "updateTime": "2023-06-06T07:26:52.000Z",
+                "type": 2,
+                "gatewayId": 103,
+                "createUserId": "5fa4f48970742e0001faee4b",
+                "createUserName": "林松斌（实习）",
+                "spec": "{\"required\":[\"indexBaseInfoList\"],\"type\":\"object\",\"properties\":{\"indexBaseInfoList\":{\"type\":\"array\",\"description\":\"索引串查询列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=IndexBaseInfo&schemaId=1757905\"}}}}",
+                "isBase": 0,
+                "gatewayGroupId": 0,
+                "gatewayGroupKey": "",
+                "gatewayVersionId": 1661,
+                "gatewayVersionName": "feature/logan",
+                "isMaster": false,
+                "groupId": 0,
+                "groupKey": ""
+              }
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "indexInfoList": {
+                    "type": "array",
+                    "description": "索引串结果列表",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "plainText": {
+                          "type": "string",
+                          "description": "关键词",
+                          "example": "null"
+                        },
+                        "searchIndex": {
+                          "type": "string",
+                          "description": "索引串",
+                          "example": "null"
+                        }
+                      },
+                      "description": "索引串结果列表",
+                      "example": null,
+                      "$$ref": "#/components/schemas/1757907",
+                      "x-schema": {
+                        "id": 1757907,
+                        "name": "IndexInfo",
+                        "desc": "索引串结果列表",
+                        "createTime": "2023-06-06T07:26:51.000Z",
+                        "updateTime": "2023-06-06T07:26:51.000Z",
+                        "type": 2,
+                        "gatewayId": 103,
+                        "createUserId": "5fa4f48970742e0001faee4b",
+                        "createUserName": "林松斌（实习）",
+                        "spec": "{\"type\":\"object\",\"properties\":{\"plainText\":{\"type\":\"string\",\"description\":\"关键词\",\"example\":\"null\"},\"searchIndex\":{\"type\":\"string\",\"description\":\"索引串\",\"example\":\"null\"}},\"description\":\"索引串结果列表\",\"example\":null}",
+                        "isBase": 0,
+                        "gatewayGroupId": 0,
+                        "gatewayGroupKey": "",
+                        "gatewayVersionId": 1661,
+                        "gatewayVersionName": "feature/logan",
+                        "isMaster": false,
+                        "groupId": 0,
+                        "groupKey": ""
+                      }
+                    }
+                  }
+                },
+                "$$ref": "#/components/schemas/1757908",
+                "x-schema": {
+                  "id": 1757908,
+                  "name": "IndexResultInfo",
+                  "desc": "",
+                  "createTime": "2023-06-06T07:26:51.000Z",
+                  "updateTime": "2023-06-06T07:26:52.000Z",
+                  "type": 2,
+                  "gatewayId": 103,
+                  "createUserId": "5fa4f48970742e0001faee4b",
+                  "createUserName": "林松斌（实习）",
+                  "spec": "{\"type\":\"object\",\"properties\":{\"indexInfoList\":{\"type\":\"array\",\"description\":\"索引串结果列表\",\"items\":{\"$ref\":\"https://logan.devops.xiaohongshu.com/api/schema/spec?name=IndexInfo&schemaId=1757907\"}}}}",
+                  "isBase": 0,
+                  "gatewayGroupId": 0,
+                  "gatewayGroupKey": "",
+                  "gatewayVersionId": 1661,
+                  "gatewayVersionName": "feature/logan",
+                  "isMaster": false,
+                  "groupId": 0,
+                  "groupKey": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "__originalOperationId": "batchIndex"
+    },
+    "gatewayVersionName": "feature/logan",
+    "updateTime": "2023-06-06T11:01:46.000Z"
+  },
+  "error_codes": [],
+  "category": "订单API",
+  "fetched_at": "2025-09-26 14:59:19"
+}

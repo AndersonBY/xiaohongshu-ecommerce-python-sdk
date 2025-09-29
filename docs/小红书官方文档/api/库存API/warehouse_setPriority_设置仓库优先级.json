@@ -1,0 +1,97 @@
+{
+  "api_info": {
+    "apiId": 34467,
+    "apiNavigationId": 284,
+    "gatewayId": 278,
+    "gatewayVersionId": 6249,
+    "id": 104,
+    "method": "post",
+    "navigationDetailDesc": "设置仓库优先级",
+    "navigationDetailName": "设置仓库优先级",
+    "path": "warehouse.setPriority",
+    "seq": 10
+  },
+  "api_details": {
+    "id": 34467,
+    "path": "/api/openapi/warehouse/setpriority",
+    "summary": "【开放平台-仓库】设置仓库优先级",
+    "method": "post",
+    "specJson": {
+      "summary": "【开放平台-仓库】设置仓库优先级",
+      "servers": [],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "properties": {
+                "zoneCode": {
+                  "type": "string",
+                  "description": "地区编码，只支持一级、二级或三级地区编码"
+                },
+                "warehousePriorityList": {
+                  "type": "array",
+                  "description": "仓库优先级列表，优先级高的在前",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "whCode": {
+                        "type": "string",
+                        "description": "仓库编码",
+                        "example": "test_01"
+                      }
+                    },
+                    "required": [
+                      "whCode"
+                    ]
+                  }
+                }
+              },
+              "required": [
+                "zoneCode",
+                "warehousePriorityList"
+              ],
+              "type": "object"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "success",
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "success"
+                ],
+                "properties": {
+                  "success": {
+                    "type": "boolean",
+                    "example": true,
+                    "description": "是否成功"
+                  },
+                  "error_code": {
+                    "type": "number",
+                    "example": 0,
+                    "description": "错误编码"
+                  },
+                  "error_msg": {
+                    "type": "string",
+                    "example": "",
+                    "description": "错误信息"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gatewayVersionName": "master",
+    "updateTime": "2024-04-20T02:27:32.000Z"
+  },
+  "error_codes": [],
+  "category": "库存API",
+  "fetched_at": "2025-09-26 14:59:43"
+}
